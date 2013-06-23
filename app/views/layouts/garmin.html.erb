@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+  <title>AerobicIo</title>
+  <style type="text/css" media="all">@import "communicator-api/garmin/device/style/communicator2.css";</style>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+  <%= javascript_include_tag "garmin", "data-turbolinks-track" => true %>
+  <script type="text/javascript" src="communicator-api/garmin/device/GarminDeviceDisplay.js">&#160;</script>
+  <%= yield :javascript %>
+</body>
+</html>
