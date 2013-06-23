@@ -11,6 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20130623051638) do
+
+  create_table "fit_files", force: true do |t|
+    t.string "name"
+    t.binary "binary_data"
+  end
 
 end
