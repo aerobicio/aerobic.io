@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/repos/51ca61cc56b1023b06009574/badges/664073e19f2501b1fb61/gpa.png)](https://codeclimate.com/repos/51ca61cc56b1023b06009574/feed)
+
 == README
 
 This README would normally document whatever steps are necessary to get the
