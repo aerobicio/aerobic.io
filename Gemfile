@@ -10,6 +10,10 @@ gem 'sqlite3'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
+group :development do
+  gem 'dotenv'
+end
+
 group :doc do
   gem 'sdoc', require: false
 end
