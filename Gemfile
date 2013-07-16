@@ -16,6 +16,7 @@ end
 
 group :development, :test do
   gem 'cane'
+  gem 'rspec-rails', '~> 2.0'
 end
 
 group :doc do
