@@ -14,6 +14,10 @@ group :development do
   gem 'dotenv-rails'
 end
 
+group :development, :test do
+  gem 'cane'
+end
+
 group :doc do
   gem 'sdoc', require: false
 end
