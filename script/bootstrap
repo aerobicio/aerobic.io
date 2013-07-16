@@ -1,0 +1,23 @@
+#!/bin/sh
+
+function check_version {
+  $1
+
+  if [ $? -ne 0 ]; then
+    exit 1;
+  fi
+}
+
+check_version "git --version"
+check_version "ruby -v"
+check_version "gem -v"
+check_version "bundle -v"
+check_version "sqlite3 --version"
+
+bundle
+bundle binstubs rspec-core
+bundle binstubs cucumber
+
+cp -n .env.example .env
+
+rake db:create

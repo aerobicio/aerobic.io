@@ -4,6 +4,7 @@
 
 === Dependencies
 
+* Git
 * Ruby 2.0
 * Rubygems
 * Bundler
@@ -11,9 +12,33 @@
 
 === Getting Started
 
-These steps will eventually be wrapped up into a bootstrap script. For now,
-run them manually:
+The following steps will get your development environment up and running:
 
-    $ bundle
-    $ cp .env.example .env
-    $ rake db:create db:migrate
+    $ script/bootstrap
+    $ rake db:migrate
+
+As part of the bootstrap process we install a few binstubs:
+
+    bin/autospec
+    bin/rspec
+    bin/cucumber
+
+=== Running Tests
+
+You can run the full test suite like so:
+
+    $ script/cibuild
+
+You can also run each individual test suite manually:
+
+==== Rspec
+
+    $ bin/rspec
+
+==== Cucumber
+
+    $ bin/cucumber
+
+==== Cane
+
+    $ rake quality

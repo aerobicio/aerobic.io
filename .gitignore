@@ -9,6 +9,10 @@
 .env
 .DS_Store
 
+/bin/autospec
+/bin/rspec
+/bin/cucumber
+
 /coverage
 
 # Ignore the default SQLite database.
