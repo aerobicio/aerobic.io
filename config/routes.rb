@@ -1,4 +1,15 @@
 AerobicIo::Application.routes.draw do
+  root "dashboards#show"
+  get 'sign_up', to: 'identities#new'
+  get 'sign_in', to: 'sessions#new'
+  put 'sign_out', to: 'sessions#destroy'
+  post '/auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/sign_in')
+
+  resource :dashboard, only: [:show]
+  resources :identities, only: [:new, :create]
+  resources :sessions, only: [:create, :new]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

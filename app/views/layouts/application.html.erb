@@ -8,6 +8,11 @@
 </head>
 <body>
 
+  <% if current_user %>
+    <%= current_user.name %>
+    <%= link_to("sign out", sign_out_path, method: :put) %>
+  <% end %>
+
 <%= yield %>
 
 </body>
