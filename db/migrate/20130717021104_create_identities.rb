@@ -7,5 +7,7 @@ class CreateIdentities < ActiveRecord::Migration
 
       table.timestamps
     end
+
+    add_index :identities, [:email], unique: true
   end
 end

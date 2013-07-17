@@ -183,7 +183,7 @@ ALTER TABLE ONLY users
 -- Name: index_authentications_on_provider_and_uid; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_authentications_on_provider_and_uid ON authentications USING btree (provider, uid);
+CREATE UNIQUE INDEX index_authentications_on_provider_and_uid ON authentications USING btree (provider, uid);
 
 
 --
@@ -191,6 +191,13 @@ CREATE INDEX index_authentications_on_provider_and_uid ON authentications USING 
 --
 
 CREATE INDEX index_authentications_on_user_id ON authentications USING btree (user_id);
+
+
+--
+-- Name: index_identities_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_identities_on_email ON identities USING btree (email);
 
 
 --

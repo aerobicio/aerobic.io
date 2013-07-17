@@ -9,7 +9,7 @@ class CreateAuthentications < ActiveRecord::Migration
       table.timestamps
     end
 
-    add_index :authentications, [:provider, :uid]
+    add_index :authentications, [:provider, :uid], unique: true
     add_index :authentications, [:user_id]
 
     add_foreign_key(:authentications, :users)
