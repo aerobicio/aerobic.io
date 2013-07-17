@@ -13,6 +13,7 @@
 /bin/rspec
 /bin/cucumber
 
+/config/database.yml
 /coverage
 
 # Ignore the default SQLite database.

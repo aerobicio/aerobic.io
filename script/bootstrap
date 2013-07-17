@@ -19,5 +19,6 @@ bundle binstubs rspec-core --force
 bundle binstubs cucumber --force
 
 cp -n .env.example .env
+cp -n config/database.yml.example config/database.yml
 
 rake db:create
