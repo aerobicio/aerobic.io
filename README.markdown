@@ -32,7 +32,7 @@ We use three types of tests in the project:
 3. Static Analysis Tools
 
 To find out more about how we use each of these types of tests, please read
-the [testing strategy document](https://github.com/quamen/aerobic.io/blob/master/docs/testing_strategy.markdown).
+the [testing strategy document](https://github.com/quamen/aerobic.io/blob/master/doc/testing_strategy.markdown).
 
 You can run the full test suite like so:
 
