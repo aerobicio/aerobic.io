@@ -1,10 +1,10 @@
 AerobicIo::Application.routes.draw do
   root "dashboards#show"
-  get 'sign_up', to: 'identities#new'
-  get 'sign_in', to: 'sessions#new'
-  put 'sign_out', to: 'sessions#destroy'
-  post '/auth/:provider/callback', to: 'sessions#create'
-  get 'auth/failure', to: redirect('/sign_in')
+  get "sign_up", to: "identities#new"
+  get "sign_in", to: "sessions#new"
+  put "sign_out", to: "sessions#destroy"
+  post "/auth/:provider/callback", to: "sessions#create"
+  get "auth/failure", to: redirect("/sign_in")
 
   resource :dashboard, only: [:show]
   resources :identities, only: [:new, :create]
@@ -14,13 +14,13 @@ AerobicIo::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # root "welcome#index"
 
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  #   get "products/:id" => "catalog#view"
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  #   get "products/:id/purchase" => "catalog#purchase", as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
@@ -28,12 +28,12 @@ AerobicIo::Application.routes.draw do
   # Example resource route with options:
   #   resources :products do
   #     member do
-  #       get 'short'
-  #       post 'toggle'
+  #       get "short"
+  #       post "toggle"
   #     end
   #
   #     collection do
-  #       get 'sold'
+  #       get "sold"
   #     end
   #   end
 
@@ -47,13 +47,13 @@ AerobicIo::Application.routes.draw do
   #   resources :products do
   #     resources :comments
   #     resources :sales do
-  #       get 'recent', on: :collection
+  #       get "recent", on: :collection
   #     end
   #   end
   
   # Example resource route with concerns:
   #   concern :toggleable do
-  #     post 'toggle'
+  #     post "toggle"
   #   end
   #   resources :posts, concerns: :toggleable
   #   resources :photos, concerns: :toggleable
