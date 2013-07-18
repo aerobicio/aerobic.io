@@ -6,7 +6,7 @@ Feature: Sign Up
   Scenario: Sign up using a white listed email
     Given I have a white listed email address
     When I sign up
-    Then I should be logged in
+    Then I should be signed in
 
   Scenario: Sign up using a non white listed email
     Given I have a non white listed email address

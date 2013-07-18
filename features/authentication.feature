@@ -1,19 +1,19 @@
 Feature: Authentication
   In order to use my account
   As a registered user
-  I want to be able to log in and out
+  I want to be able to sign in and out
 
-  Scenario: Login using an email/password
+  Scenario: Signing in using an email/password
     Given I have a registered account
-    When I log in with valid credentials
-    Then I should be logged in
+    When I sign in with valid credentials
+    Then I should be signed in
 
-  Scenario: Login fails using an email/password
+  Scenario: Singing in fails using an email/password
     Given I have a registered account
-    When I log in with invalid credentials
-    Then I should not be logged in
+    When I sign in with invalid credentials
+    Then I should not be signed in
   
-  Scenario: Logout
-    Given I am logged in
-    When I log out
-    Then I should not be logged in
+  Scenario: Signing out
+    Given I am signed in
+    When I sign out
+    Then I should not be signed in

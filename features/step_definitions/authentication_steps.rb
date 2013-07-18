@@ -2,28 +2,28 @@ Given(/^I have a registered account$/) do
   create_registered_account
 end
 
-When(/^I log in with valid credentials$/) do
-  login
+When(/^I sign in with valid credentials$/) do
+ sign_in
 end
 
-Then(/^I should be logged in$/) do
+Then(/^I should be signed in$/) do
   page.should have_content(@name)
 end
 
-When(/^I log in with invalid credentials$/) do
-  login("not a real password")
+When(/^I sign in with invalid credentials$/) do
+  sign_in("not a real password")
 end
 
-Then(/^I should not be logged in$/) do
+Then(/^I should not be signed in$/) do
   page.should have_no_content(@name)
   current_path.should == sign_in_path
 end
 
-Given(/^I am logged in$/) do
+Given(/^I am signed in$/) do
   create_registered_account
-  login
+  sign_in
 end
 
-When(/^I log out$/) do
+When(/^I sign out$/) do
   click_link(I18n.t("sign_out"))
 end
