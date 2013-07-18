@@ -10,7 +10,7 @@ When(/^I sign up$/) do
   fill_in :password, with: 123456789
   fill_in :password_confirmation, with: 123456789
 
-  click_button "Register"
+  click_button(I18n.t("identities.new.submit"))
 end
 
 Given(/^I have a non white listed email address$/) do

@@ -1,7 +1,7 @@
 <%= form_tag registration_path do %>
   <% if @identity && @identity.errors.any? %>
     <div class="error_messages">
-      <h2><%= pluralize(@identity.errors.count, "error") %> prohibited this account from being saved:</h2>
+      <h2><%= t(".error_count", count: @identity.errors.count) %></h2>
       <ul>
         <% @identity.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -25,5 +25,5 @@
     <%= label_tag :password_confirmation %><br>
     <%= password_field_tag :password_confirmation %>
   </div>
-  <div class="actions"><%= submit_tag "Register" %></div>
+  <div class="actions"><%= submit_tag(t(".submit")) %></div>
 <% end %>

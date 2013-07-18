@@ -8,10 +8,10 @@ end
 
 When(/^I log in with valid credentials$/) do
   visit sign_in_path
-  fill_in "Email", with: @identity.email
+  fill_in(I18n.t("sessions.new.auth_key"), with: @identity.email)
   fill_in :password, with: @password
 
-  click_button "Login"
+  click_button(I18n.t("sessions.new.submit"))
 end
 
 Then(/^I should be logged in$/) do
@@ -20,10 +20,10 @@ end
 
 When(/^I log in with invalid credentials$/) do
   visit sign_in_path
-  fill_in "Email", with: @identity.email
+  fill_in(I18n.t("sessions.new.auth_key"), with: @identity.email)
   fill_in :password, with: "not a real password"
 
-  click_button "Login"
+  click_button(I18n.t("sessions.new.submit"))
 end
 
 Then(/^I should not be logged in$/) do
@@ -39,12 +39,12 @@ Given(/^I am logged in$/) do
   @name = @identity.name
 
   visit sign_in_path
-  fill_in "Email", with: @identity.email
+  fill_in(I18n.t("sessions.new.auth_key"), with: @identity.email)
   fill_in :password, with: @password
 
-  click_button "Login"
+  click_button(I18n.t("sessions.new.submit"))
 end
 
 When(/^I log out$/) do
-  click_link "sign out"
+  click_link(I18n.t("sign_out"))
 end

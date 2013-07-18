@@ -1,12 +1,12 @@
 <%= form_tag sessions_path(provider: "identity") do %>
   <div class="field">
-    <%= label_tag :auth_key, "Email" %><br>
+    <%= label_tag(:auth_key, t(".auth_key")) %><br>
     <%= text_field_tag :auth_key %>
   </div>
   <div class="field">
     <%= label_tag :password %><br>
     <%= password_field_tag :password %>
   </div>
-  <div class="actions"><%= submit_tag "Login" %></div>
+  <div class="actions"><%= submit_tag(t(".submit")) %></div>
 <% end %>
 
