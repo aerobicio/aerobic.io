@@ -1,4 +1,4 @@
-<%= form_tag "/auth/identity/callback" do %>
+<%= form_tag sessions_path(provider: "identity") do %>
   <div class="field">
     <%= label_tag :auth_key, "Email" %><br>
     <%= text_field_tag :auth_key %>

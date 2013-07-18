@@ -3,7 +3,7 @@ AerobicIo::Application.routes.draw do
   get "sign_up", to: "identities#new"
   get "sign_in", to: "sessions#new"
   put "sign_out", to: "sessions#destroy"
-  post "/auth/:provider/callback", to: "sessions#create"
+  post "/auth/:provider/callback", to: "sessions#create", as: :sessions
   get "auth/failure", to: redirect("/sign_in")
 
   resource :dashboard, only: [:show]
