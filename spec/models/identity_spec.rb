@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe Identity do
-  subject { FactoryGirl.create(:identity,
-                               password: "password",
-                               password_confirmation: "password") }
+  subject { Identity.create(name: "Gareth Townsend",
+                            email: "gareth.townsend@me.com",
+                            password: "password",
+                            password_confirmation: "password") }
 
   it { should validate_presence_of(:name) }
 
