@@ -15,7 +15,7 @@ end
 
 Given(/^I have a non white listed email address$/) do
   @email = "something@example.com"
-  @name = "White Listed"
+  @name = "Not White Listed"
 end
 
 Then(/^I should be told I am not on the beta list$/) do
