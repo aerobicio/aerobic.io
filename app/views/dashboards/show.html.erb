@@ -1,3 +1,4 @@
-<% @fit_files.each do |fit_file| %>
-  <%= fit_file.totals %>
+<% @workouts.each do |workout| %>
+  Duration: <%= (workout.active_duration / 1000 / 60.0).round(2) %> minutes 
+  Distance: <%= (workout.distance / 100000.0).round(2) %>km
 <% end %>

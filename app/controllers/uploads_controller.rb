@@ -28,7 +28,8 @@ class UploadsController < ApplicationController
     fit = strip_casing(fit)
     fit = Base64.decode64(fit)
 
-    FitFile.create(name: name, binary_data: fit)
+    fit_file = FitFile.new(name: name, binary_data: fit)
+    fit_file.save_workout!
   end
 
   def strip_casing(fit)

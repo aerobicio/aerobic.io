@@ -67,8 +67,9 @@ ALTER SEQUENCE authentications_id_seq OWNED BY authentications.id;
 
 CREATE TABLE fit_files (
     id integer NOT NULL,
-    name character varying(255),
-    binary_data bytea
+    name character varying(255) NOT NULL,
+    binary_data bytea NOT NULL,
+    workout_id integer NOT NULL
 );
 
 
@@ -165,6 +166,41 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
+-- Name: workouts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE workouts (
+    id integer NOT NULL,
+    active_duration integer NOT NULL,
+    duration integer NOT NULL,
+    distance integer NOT NULL,
+    start_time timestamp without time zone NOT NULL,
+    end_time timestamp without time zone NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: workouts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE workouts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: workouts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE workouts_id_seq OWNED BY workouts.id;
+
+
+--
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -190,6 +226,13 @@ ALTER TABLE ONLY identities ALTER COLUMN id SET DEFAULT nextval('identities_id_s
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY workouts ALTER COLUMN id SET DEFAULT nextval('workouts_id_seq'::regclass);
 
 
 --
@@ -225,6 +268,14 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: workouts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY workouts
+    ADD CONSTRAINT workouts_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: index_authentications_on_provider_and_uid; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -236,6 +287,13 @@ CREATE UNIQUE INDEX index_authentications_on_provider_and_uid ON authentications
 --
 
 CREATE INDEX index_authentications_on_user_id ON authentications USING btree (user_id);
+
+
+--
+-- Name: index_fit_files_on_workout_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_fit_files_on_workout_id ON fit_files USING btree (workout_id);
 
 
 --
@@ -261,6 +319,14 @@ ALTER TABLE ONLY authentications
 
 
 --
+-- Name: fit_files_workout_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY fit_files
+    ADD CONSTRAINT fit_files_workout_id_fk FOREIGN KEY (workout_id) REFERENCES workouts(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -273,3 +339,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130717021104');
 INSERT INTO schema_migrations (version) VALUES ('20130717044050');
 
 INSERT INTO schema_migrations (version) VALUES ('20130717044144');
+
+INSERT INTO schema_migrations (version) VALUES ('20130719044245');
+
+INSERT INTO schema_migrations (version) VALUES ('20130719044915');

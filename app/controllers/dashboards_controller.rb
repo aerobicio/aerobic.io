@@ -2,6 +2,6 @@
 #
 class DashboardsController < ApplicationController
   def show
-    @fit_files = FitFile.all
+    @workouts = Workout.all
   end
 end
