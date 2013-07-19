@@ -1,3 +1,5 @@
+puts "SimpleCov Required"
+
 class SimpleCov::Formatter::QualityFormatter
   def format(result)
     SimpleCov::Formatter::HTMLFormatter.new.format(result)
@@ -9,6 +11,8 @@ end
 
 SimpleCov.formatter = SimpleCov::Formatter::QualityFormatter
 
-SimpleCov.start 'rails' do
-  add_filter "/app/assets"
+if suite_name = ENV["COVERAGE_GROUP"]
+  SimpleCov.command_name(suite_name)
 end
+
+SimpleCov.start "rails"

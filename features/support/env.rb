@@ -4,8 +4,8 @@
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
 
+ENV["COVERAGE_GROUP"] ||= "acceptance"
 require 'simplecov'
-SimpleCov.command_name "features"
 
 require 'cucumber/rails'
 
