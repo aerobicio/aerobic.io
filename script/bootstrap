@@ -1,5 +1,24 @@
 #!/bin/sh
 
-bundle
+function check_version {
+  $1
 
-bin/rake db:migrate
+  if [ $? -ne 0 ]; then
+    exit 1;
+  fi
+}
+
+check_version "git --version"
+check_version "ruby -v"
+check_version "gem -v"
+check_version "bundle -v"
+check_version "psql --version"
+
+bundle
+bundle binstubs rspec-core --force
+bundle binstubs cucumber --force
+
+cp -n .env.example .env
+cp -n config/database.yml.example config/database.yml
+
+rake db:create
