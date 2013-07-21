@@ -9,9 +9,12 @@
 .env
 .DS_Store
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
+/bin/autospec
+/bin/rspec
+/bin/cucumber
+
+/config/database.yml
+/coverage
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
