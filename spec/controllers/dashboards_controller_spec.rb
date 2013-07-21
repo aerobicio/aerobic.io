@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe DashboardsController do
-  let(:user) { double(User) }
+  let(:user) { double(User, workouts: double(all: [])) }
 
   before do
     session[:user_id] = 1

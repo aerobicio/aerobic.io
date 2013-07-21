@@ -12,13 +12,14 @@ class FitFile < ActiveRecord::Base
     @fit ||= Fit::File.read(StringIO.new(binary_data))
   end
 
-  def save_workout!
+  def save_workout!(user)
     FitFile.transaction do
       self.workout = Workout.create!(active_duration: active_duration,
                                      distance: distance,
                                      duration: duration,
                                      end_time: end_time,
-                                     start_time: start_time)
+                                     start_time: start_time,
+                                     user: user)
 
       save!
     end

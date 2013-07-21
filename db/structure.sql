@@ -177,7 +177,8 @@ CREATE TABLE workouts (
     start_time timestamp without time zone NOT NULL,
     end_time timestamp without time zone NOT NULL,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    user_id integer NOT NULL
 );
 
 
@@ -304,6 +305,13 @@ CREATE UNIQUE INDEX index_identities_on_email ON identities USING btree (email);
 
 
 --
+-- Name: index_workouts_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_workouts_on_user_id ON workouts USING btree (user_id);
+
+
+--
 -- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -327,6 +335,14 @@ ALTER TABLE ONLY fit_files
 
 
 --
+-- Name: workouts_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY workouts
+    ADD CONSTRAINT workouts_user_id_fk FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -343,3 +359,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130717044144');
 INSERT INTO schema_migrations (version) VALUES ('20130719044245');
 
 INSERT INTO schema_migrations (version) VALUES ('20130719044915');
+
+INSERT INTO schema_migrations (version) VALUES ('20130721071632');
