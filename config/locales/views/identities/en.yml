@@ -1,0 +1,7 @@
+en:
+  identities:
+    new:
+      error_count:
+        one: "1 error prohibited this account from being created"
+        other: "%{count} errors prohibited this account from being created"
+      submit: "Sign up"

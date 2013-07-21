@@ -1,0 +1,26 @@
+#!/bin/sh
+
+function clean_assets_and_exit {
+  rm -r public/assets
+  exit $1
+}
+
+function run_command {
+  $1
+
+  if [ $? -ne 0 ]; then
+    clean_assets_and_exit 1
+  fi
+}
+
+script/bootstrap
+
+rake db:migrate
+rake assets:precompile
+
+run_command "rake spec"
+run_command "rake cucumber"
+
+run_command "rake quality"
+
+clean_assets_and_exit 0
