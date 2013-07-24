@@ -24,15 +24,18 @@
         uploadMaximum: 5,
         dataFound: "#{tracks} activities found on device",
         showReadDataElementOnDeviceFound: true,
+        afterFinishUploads: function(display) {
+          window.location = '<%= root_path %>'
+        },
         postActivityHandler: function(activityXml, display) {
           new Ajax.Request('/upload',
               {
               parameters: { activity: activityXml },
               onSuccess: function(transport){
-                var response = transport.responseText || "no response text";
-                alert("Success! \n\n" + response);
+                //var response = transport.responseText || "no response text";
+                //alert("Success! \n\n" + response);
               },
-              onFailure: function(){ alert('Something went wrong...') }
+              //onFailure: function(){ alert('Something went wrong...') }
             })
         }
       });
