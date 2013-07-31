@@ -16,10 +16,9 @@ build:
                 echo "ruby version $(ruby --version) running"
                 echo "from location $(which ruby)"
                 echo -p "gem list: $(gem list)"
-        # Add more steps here:
-        # - script:
-        #        name: rspec
-        #        code: bundle exec rspec
+        - script: db:test:prepare
+            name: db:test:prepare
+            code: bundle exec rake db:test:prepare
         - script:
             name: rspec
             code: bundle exec rspec
