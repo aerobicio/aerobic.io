@@ -28,7 +28,7 @@ build:
         - script:
             name: quality
             code: bundle exec rake quality
-        - wouter/campfire-notify:
+        - wercker/campfire-notify:
             token: $CAMPFIRE_TOKEN
             room-id: 541059
             subdomain: aerobicio
