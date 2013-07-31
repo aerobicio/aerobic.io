@@ -32,4 +32,3 @@ build:
             token: $CAMPFIRE_TOKEN
             room-id: 541059
             subdomain: aerobicio
-            message: $WERCKER_APPLICATION_OWNER_NAME/$WERCKER_APPLICATION_NAME build by $WERCKER_STARTED_BY finished
