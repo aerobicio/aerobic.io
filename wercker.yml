@@ -27,4 +27,4 @@ build:
             code: bundle exec cucumber
         - script:
             name: quality
-            code: bundle exec rake spec:quality
+            code: bundle exec rake quality
