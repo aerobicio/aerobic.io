@@ -18,7 +18,7 @@ build:
                 echo -p "gem list: $(gem list)"
         - script:
             name: db setup
-            code: bundle exec rake db:schema:load db:test:prepare
+            code: RAILS_ENV=test bundle exec rake db:schema:load db:test:prepare
         - script:
             name: rspec
             code: bundle exec rspec
