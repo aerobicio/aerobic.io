@@ -33,3 +33,4 @@ build:
             token: $CAMPFIRE_TOKEN
             room-id: 541059
             subdomain: aerobicio
+            on: failed
