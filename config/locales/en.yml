@@ -7,4 +7,4 @@ en:
         identity:
           attributes:
             email:
-              inclusion: "Email is not included in the beta list"
+              inclusion: "is not included in the beta list"
