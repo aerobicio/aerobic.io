@@ -2,4 +2,4 @@ en:
   sessions:
     new:
       auth_key: "Email"
-      submit: "Sign up"
+      submit: "Sign in"
