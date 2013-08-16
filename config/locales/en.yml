@@ -8,3 +8,8 @@ en:
           attributes:
             email:
               inclusion: "is not included in the beta list"
+
+  valid_email:
+    validations:
+      email:
+        invalid: "is not a valid email"
