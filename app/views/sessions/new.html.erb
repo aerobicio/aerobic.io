@@ -1,3 +1,7 @@
+<% if $rollout.active?(:sign_up) %>
+  <%= link_to(t("identities.new.submit"), sign_up_path) %>
+<% end %>
+
 <%= form_tag sessions_path(provider: "identity") do %>
   <div class="field">
     <%= label_tag(:auth_key, t(".auth_key")) %><br>
