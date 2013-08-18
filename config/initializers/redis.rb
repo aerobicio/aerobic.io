@@ -1,7 +1,7 @@
 # Load a redis instance from a local configuration file
 #
 
-if ENV["REDISCLOUD_URL")
+if ENV["REDISCLOUD_URL"]
   uri = URI.parse(ENV["REDISCLOUD_URL"])
   $redis = Redis.new(:host => uri.host,
                      :port => uri.port,
