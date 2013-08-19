@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/plasticine/nestive.git
+  revision: c913b3f66e476beaaafec40a1954f434d70a4b8c
+  specs:
+    nestive (0.4.0)
+      rails (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -186,6 +193,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   kss
+  nestive!
   omniauth
   omniauth-identity
   pg
