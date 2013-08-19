@@ -1,5 +1,4 @@
 AerobicIo::Application.routes.draw do
-  # root "dashboards#show"
   root "homes#show"
   get "sign_up", to: "identities#new"
   get "sign_in", to: "sessions#new"
