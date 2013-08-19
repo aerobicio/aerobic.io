@@ -15,7 +15,7 @@ describe SessionsController do
       session[:user_id].should == user.id
     end
 
-    it { should redirect_to(:root) }
+    it { should redirect_to(dashboard_path) }
   end
 
   describe 'destroy' do
