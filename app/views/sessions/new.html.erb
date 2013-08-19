@@ -1,4 +1,4 @@
-<%= view = SessionsHelper::NewSessionView.new %>
+<% view = SessionsHelper::NewSessionView.new %>
 
 <%= link_to(t("identities.new.submit"), sign_up_path) if view.sign_up_active? %>
 
