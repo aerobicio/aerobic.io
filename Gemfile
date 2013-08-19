@@ -19,6 +19,7 @@ group :development, :test do
   gem "cane"
   gem "dotenv-rails"
   gem "factory_girl_rails"
+  gem "kss"
   gem "rspec-rails", "~> 2.0"
 end
 
