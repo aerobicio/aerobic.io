@@ -1,5 +1,5 @@
 Given(/^the sign up feature is active$/) do
-  $rollout.activate(:sign_up)
+  $switch_board.activate_sign_up
 end
 
 When(/^I sign up with valid credentials$/) do
@@ -25,7 +25,7 @@ Then(/^I should see error messages$/) do
 end
 
 Given(/^the sign up feature is not active$/) do
-  $rollout.deactivate(:sign_up)
+  $switch_board.deactivate_sign_up
 end
 
 When(/^I visit the sign up page$/) do

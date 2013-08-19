@@ -5,12 +5,12 @@ module SessionsHelper
 
   # NewSessionView is the view class used in views/sessions/new
   class NewSessionView
-    def initialize(rollout = $rollout)
-      @rollout = rollout
+    def initialize(switch_board = $switch_board)
+      @switch_board = switch_board
     end
 
     def sign_up_active?
-      @rollout.active?(:sign_up)
+      @switch_board.sign_up_is_active?
     end
   end
 end
