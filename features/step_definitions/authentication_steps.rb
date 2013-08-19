@@ -16,7 +16,7 @@ end
 
 Then(/^I should not be signed in$/) do
   page.should have_no_content(@name)
-  current_path.should == sign_in_path
+  current_path.should == root_path
 end
 
 Given(/^I am signed in$/) do
