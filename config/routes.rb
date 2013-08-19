@@ -1,5 +1,6 @@
 AerobicIo::Application.routes.draw do
-  root "dashboards#show"
+  # root "dashboards#show"
+  root "homes#show"
   get "sign_up", to: "identities#new"
   get "sign_in", to: "sessions#new"
   put "sign_out", to: "sessions#destroy"
@@ -50,7 +51,7 @@ AerobicIo::Application.routes.draw do
   #       get "recent", on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post "toggle"
