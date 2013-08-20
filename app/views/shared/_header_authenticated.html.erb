@@ -1,0 +1,4 @@
+<% if current_user %>
+  <%= current_user.name %>
+  <%= link_to(t("sign_out"), sign_out_path, method: :put) %>
+<% end %>

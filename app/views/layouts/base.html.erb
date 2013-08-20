@@ -6,7 +6,9 @@
       <div class="page">
         <%= area :header do %>
           <header>
-            <%= area :header_inner %>
+            <%= area :header_inner do %>
+              <%= area :header_masthead, render(partial: 'shared/header_masthead') %>
+            <% end %>
           </header>
         <% end %>
         <%= area :content do %>

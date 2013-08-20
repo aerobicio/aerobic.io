@@ -1,5 +1,10 @@
 <%= extends :unauthenticated do %>
-  <%= replace :content_inner do %>
-    Home
+  <%= replace :title, 'Welcome to aerobic.io — Coming Soon' %>
+  <%= append :body_class, ' landing-page' %>
+
+  <%= replace :content do %>
+    <header class="landing-page--content">
+      Landing page content
+    </section>
   <% end %>
 <% end %>
