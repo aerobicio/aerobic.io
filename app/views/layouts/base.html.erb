@@ -1,0 +1,20 @@
+<%= extends :application do %>
+  <%= append :title, 'aerobic.io' %>
+
+  <%= replace :application do %>
+    <%= area :page do %>
+      <div class="page">
+        <%= area :header do %>
+          <header>
+            <%= area :header_inner %>
+          </header>
+        <% end %>
+        <%= area :content do %>
+          <section>
+            <%= area :content_inner %>
+          </section>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
