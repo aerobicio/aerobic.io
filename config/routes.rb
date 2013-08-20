@@ -10,6 +10,12 @@ AerobicIo::Application.routes.draw do
   resources :identities, only: [:new, :create]
   resources :sessions, only: [:create, :new]
 
+  if %w(development test).include?(Rails.env)
+    resources :styleguide, only: [:show, :index], controller: "documentation/styleguide" do
+      get ':example_id' => 'documentation/styleguide#example', :as => :example, :constraints => {:example_id =>  /[^\/]+/}
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
