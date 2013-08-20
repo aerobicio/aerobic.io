@@ -19,5 +19,6 @@ Given(/^I have a non white listed email address$/) do
 end
 
 Then(/^I should be told I am not on the beta list$/) do
+  # TODO: i18n
   page.should have_content("Email is not included in the beta list")
 end
