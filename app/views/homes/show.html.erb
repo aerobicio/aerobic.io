@@ -4,7 +4,25 @@
 
   <%= replace :content do %>
     <header class="landing-page--content">
-      Landing page content
+      <h1>Train Better</h1>
+      <p>
+        Aerobic.io makes planning your training, tracking your progress, and organising sessions with your friends easier. Coming soon.
+      </p>
+
+      <form action="">
+        <fieldset>
+          <legend>
+            Register below and we&rsquo;ll let you know when we&rsquo;re ready for testers.
+          </legend>
+          <div class="field">
+            <%= label_tag :email_address %><br>
+            <%= text_field_tag :email_address %>
+          </div>
+          <div class="actions">
+            <button type="submit">Sign Up</button>
+          </div>
+        </fieldset>
+      </form>
     </section>
   <% end %>
 <% end %>
