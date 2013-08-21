@@ -1,0 +1,9 @@
+.landing-page {
+
+}
+
+.landing-page__content {
+  @extend .padding-wide;
+
+  background-color: $landing-page-background-color;
+}

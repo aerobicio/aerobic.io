@@ -1,0 +1,19 @@
+.header {}
+
+.header__inner {
+  @extend .padding-wide;
+
+  overflow: auto;
+}
+
+.header__masthead {
+  float: left;
+}
+
+.header__navigation {
+  float: right;
+}
+
+.header__navigation__item {
+
+}

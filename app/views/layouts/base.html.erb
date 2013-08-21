@@ -2,21 +2,30 @@
   <%= append :title, t("title") %>
 
   <%= replace :application do %>
-    <%= area :page do %>
-      <div class="page">
-        <%= area :header do %>
-          <header>
-            <%= area :header_inner do %>
-              <%= area :header_masthead, render(partial: 'shared/header_masthead') %>
+
+    <div class="page">
+      <%= area :page do %>
+
+        <header class="header" role="header">
+          <%= area :header do %>
+            <div class="header__inner">
+              <%= area :header_inner do %>
+                <%= area :header_masthead, render(partial: 'shared/header_masthead') %>
+              <% end %>
+            </div>
+          <% end %>
+        </header>
+
+        <%= area :content_outer do %>
+          <section class="content" role="main">
+            <%= area :content do %>
+              <%= area :content_inner %>
             <% end %>
-          </header>
-        <% end %>
-        <%= area :content do %>
-          <section>
-            <%= area :content_inner %>
           </section>
         <% end %>
-      </div>
-    <% end %>
+
+      <% end %>
+    </div>
+
   <% end %>
 <% end %>

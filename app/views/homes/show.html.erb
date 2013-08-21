@@ -4,8 +4,8 @@
   <%= replace :title, t("homes.show.title")  %>
   <%= append :body_class, ' landing-page' %>
 
-  <%= replace :content do %>
-    <header class="landing-page--content">
+  <%= replace :content_outer do %>
+    <section class="landing-page__content" role="main">
       <h1><%= t("homes.show.landing_page.heading") %></h1>
       <p><%= t("homes.show.landing_page.intro_copy") %></p>
 
