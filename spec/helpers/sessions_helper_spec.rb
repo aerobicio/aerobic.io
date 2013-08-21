@@ -10,7 +10,7 @@ describe "SessionsHelper::NewSessionView" do
 
     context "when sign up feature flip is on" do
       before do
-        switch_board.should_receive(:sign_up_is_active?) { true }
+        switch_board.should_receive(:sign_up_active?) { true }
       end
 
       it { should be_true }
@@ -18,7 +18,7 @@ describe "SessionsHelper::NewSessionView" do
 
     context "when sign up feature flip is off" do
       before do
-        switch_board.should_receive(:sign_up_is_active?) { false }
+        switch_board.should_receive(:sign_up_active?) { false }
       end
 
       it { should be_false }

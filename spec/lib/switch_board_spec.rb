@@ -29,15 +29,15 @@ describe SwitchBoard do
       end
     end
 
-    describe "#{flip}_is_active?" do
-      subject(:is_active) { feature_flip.send("#{flip}_is_active?".to_sym) }
+    describe "#{flip}_active?" do
+      subject(:active) { feature_flip.send("#{flip}_active?".to_sym) }
 
       before do
         rollout.should_receive(:active?).with(flip) { true }
       end
 
       it "should return true if the flip is active" do
-        is_active.should == true
+        active.should == true
       end
     end
   end

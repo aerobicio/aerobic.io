@@ -10,7 +10,7 @@ module SessionsHelper
     end
 
     def sign_up_active?
-      @switch_board.sign_up_is_active?
+      @switch_board.sign_up_active?
     end
   end
 end

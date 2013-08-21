@@ -24,7 +24,7 @@ class SwitchBoard
       @rollout.deactivate(flip_name)
     end
 
-    define_method "#{flip_name}_is_active?" do
+    define_method "#{flip_name}_active?" do
       @rollout.active?(flip_name)
     end
   end

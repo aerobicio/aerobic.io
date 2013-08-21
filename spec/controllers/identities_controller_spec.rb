@@ -5,7 +5,7 @@ describe IdentitiesController do
   describe "#new", flip: true, sign_up: true do
     context "when sign up is active" do
       before do
-        $switch_board.stub(:sign_up_is_active?) { true }
+        $switch_board.stub(:sign_up_active?) { true }
         get :new
       end
 
@@ -15,7 +15,7 @@ describe IdentitiesController do
 
     context "when sign up is not active" do
       before do
-        $switch_board.stub(:sign_up_is_active?) { false }
+        $switch_board.stub(:sign_up_active?) { false }
         get :new
       end
 
