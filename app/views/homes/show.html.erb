@@ -1,25 +1,31 @@
+<% view = HomesHelper::NewHomesHelper.new %>
+
 <%= extends :unauthenticated do %>
-  <%= replace :title, 'Welcome to aerobic.io — Coming Soon' %>
+  <%= replace :title, t("homes.show.title")  %>
   <%= append :body_class, ' landing-page' %>
 
   <%= replace :content do %>
     <header class="landing-page--content">
-      <h1>Train Better</h1>
-      <p>
-        Aerobic.io makes planning your training, tracking your progress, and organising sessions with your friends easier. Coming soon.
-      </p>
+      <h1><%= t("homes.show.landing_page.heading") %></h1>
+      <p><%= t("homes.show.landing_page.intro_copy") %></p>
 
-      <form action="">
+      <form action="<%= view.newsletter_form_action %>">
         <fieldset>
           <legend>
-            Register below and we&rsquo;ll let you know when we&rsquo;re ready for testers.
+            <%= t("homes.show.landing_page.signup_form.copy") %>
           </legend>
           <div class="field">
-            <%= label_tag :email_address %><br>
-            <%= text_field_tag :email_address %>
+            <input
+              type="email"
+              placeholder="<%= t("homes.show.landing_page.signup_form.field_placeholder") %>"
+              name="<%= view.newsletter_form_field_name %>"
+              id="<%= view.newsletter_form_field_id %>"
+            >
           </div>
           <div class="actions">
-            <button type="submit">Sign Up</button>
+            <button type="submit">
+              <%= t("homes.show.landing_page.signup_form.submit_button") %>
+            </button>
           </div>
         </fieldset>
       </form>

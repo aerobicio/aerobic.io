@@ -1,4 +1,5 @@
 <% view = IdentitiesHelper::NewIdentityView.new(@identity) %>
+
 <%= extends :unauthenticated do %>
   <%= replace :content_inner do %>
     <%= form_tag registration_path do %>
