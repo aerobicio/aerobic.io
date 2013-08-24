@@ -1,3 +1,11 @@
+GIT
+  remote: git@github.com:quamen/fit.git
+  revision: e65ea01eb20dea137dd976e016a25b75609d3117
+  specs:
+    fit (0.0.2)
+      activesupport
+      bindata (~> 1.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -185,6 +193,7 @@ DEPENDENCIES
   database_cleaner
   dotenv-rails
   factory_girl_rails
+  fit!
   foreigner
   jbuilder (~> 1.2)
   jquery-rails
