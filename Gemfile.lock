@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:quamen/fit.git
+  remote: https://github.com/quamen/fit.git
   revision: e65ea01eb20dea137dd976e016a25b75609d3117
   specs:
     fit (0.0.2)
