@@ -4,6 +4,7 @@ ruby "2.0.0"
 gem "bcrypt-ruby", "~> 3.0.0"
 gem "coffee-rails", "~> 4.0.0"
 gem "foreigner"
+gem "foreman"
 gem "jbuilder", "~> 1.2"
 gem "jquery-rails"
 gem "rails", "4.0.0"
@@ -13,6 +14,7 @@ gem "pg"
 gem "sass-rails", "~> 4.0.0"
 gem "turbolinks"
 gem "uglifier", ">= 1.3.0"
+gem "unicorn"
 gem "valid_email", :require => "valid_email/email_validator"
 
 group :development, :test do
@@ -32,4 +34,8 @@ group :test do
   gem "database_cleaner"
   gem "simplecov", :require => false
   gem "shoulda-matchers"
+end
+
+group :production do
+  gem "rails_12factor"
 end
