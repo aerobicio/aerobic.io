@@ -1,0 +1,74 @@
+.content {
+  @include touchoverflow;
+  @include transform-style(preserve-3d);
+  @include prefixer(perspective, 2000px, webkit moz spec);
+
+  z-index: 3;
+  position: relative; // required for positioning the navigation-bar as fixed
+  background-color: $background-color;
+  border-radius: 4px;
+  overflow-x: hidden;
+  overflow-y: visible;
+
+  // don’t round the corners whent the application is being wrapped by a native
+  // client as it will make everything look sad.
+  body.native-wrapped & {
+    border-radius: 0;
+    margin-left: 0px;
+  }
+
+  @mixin _expanding-behaviour($contracted-size, $expanded-size) {
+    // need to override the default value of the expanded size to take the
+    // required left margin into account here
+    $expanded-size: $expanded-size - $contracted-size;
+
+    @include transition(transition-property-names(transform, webkit) $navigation-expand-timing $navigation-expand-timing-function);
+    @include transform-origin($contracted-size 0);
+    @include transform(translate3d(0, 0, 0));
+
+    margin-left: $contracted-size;
+    box-shadow: 0 0 8px 0 rgba(#000, 0.5);
+
+    // make room for the sidebar as it is expanded
+    .is-expanded + & {
+      @include transition(transition-property-names(transform, webkit) $navigation-expand-timing $navigation-expand-timing-function);
+      @include transform(translate3d($expanded-size, 0, 0));
+    }
+  }
+
+  // When the navigation is left aligned we want to have it allow space for the
+  // sidebar and navigation
+  @include media($palm-and-up) {
+    @include _expanding-behaviour($palm-navigation-width, $palm-navigation-width-expanded);
+  }
+  @include media($lap-and-up) {
+    @include _expanding-behaviour($lap-navigation-width, $lap-navigation-width-expanded);
+  }
+
+  // increased box shadow blur on bigger devices
+  @include media($lap-and-up) {
+    box-shadow: 0 0 15px 0 rgba(#000, 0.5);
+  }
+}
+
+// content wrapper div to ensure that we have adequate padding.
+.content__inner {
+  @extend .margin-medium;
+  @include clearfix;
+
+  padding-top: 2px; // This it to keep account banners from cropping.
+  margin-top: 0;
+  position: relative;
+
+  // padding for palm layouts
+  @include media($palm-and-up) {
+    margin: $spacing-medium;
+    margin-top: 0;
+  }
+
+  // padding for lap layouts
+  @include media($lap-and-up) {
+    margin: $spacing-wide;
+    margin-top: 0;
+  }
+}

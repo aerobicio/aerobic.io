@@ -1,0 +1,81 @@
+// TODO: delete everything in here;
+
+#filters {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  h2, a.filter-btn {
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: $headerBarPadding 10px;
+    border-right: 1px solid #e1e1e1;
+    line-height: $headerBarHeight;
+    display: inline-block;
+    height: $headerBarHeight;
+    margin-bottom: 0;
+  }
+
+  h2 {
+    color: #b4b4b4;
+  }
+
+  a[data-behaviours=reset] { display: none; }
+
+  a.filter-btn {
+    @extend %font-weight-bold;
+
+    color: #000;
+
+    span { font-size: 1.8em; line-height: 10px; display: inline-block; }
+    i { padding-left: 5px; }
+
+    &:hover { background-color: $hoverColor; }
+  }
+
+  .filter {
+    display: inline-block;
+
+    .date-range-picker { width: 806px; }
+    .date-range-picker > p { text-align: right; }
+    .date-ranges, .date-pickers {
+      float: left;
+    }
+
+    .date-ranges {
+      width: 180px;
+      margin-right: 20px;
+    }
+    .menu-items, .expandable {
+      top: 2 * $headerBarPadding + $headerBarHeight;
+      right: 0;
+    }
+  }
+
+  .from-picker, .to-picker {
+    float: left;
+    table thead th, table tbody td { padding: 0; }
+  }
+
+  .from-picker {
+    margin-right: 20px;
+  }
+
+  .drop-down-menu { position: relative; }
+  .date-range-picker { padding: 20px 20px 10px; }
+  .expandable {
+    background-color: white;
+    border: 1px solid #ddd;
+    display: none;
+    position: absolute;
+    z-index: 1;
+    @include box-shadow(0 2px 3px rgba(0,0,0,0.3));
+  }
+
+  .expanded .expandable { display: inline-block; }
+
+  &.filtered {
+    h2 { display: none; }
+    a[data-behaviours=reset] { display: inline-block; }
+  }
+}

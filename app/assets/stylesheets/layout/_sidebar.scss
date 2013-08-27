@@ -1,0 +1,38 @@
+// .sidebar contains the main navigation
+// by default this is positioned to the top of the screen and is position fixed
+.sidebar {
+  @extend .clearfix;
+  @include hardware-accelerate;
+  @include transition(width 200ms ease-in-out);
+
+  height: $micro-palm-navigation-height;
+  width: 100%;
+
+  &.is-expanded {
+    @include transition(none);
+  }
+
+  // on everything above very small devices we render the menu on the LHS
+  @include media($palm-and-up) {
+    width: $palm-navigation-width;
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    overflow: hidden;
+
+    &.is-expanded {
+      width: $palm-navigation-width-expanded;
+    }
+  }
+
+  @include media($lap-and-up) {
+    width: $lap-navigation-width;
+
+    &.is-expanded {
+      width: $lap-navigation-width-expanded;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+.span-one-third, .span-two-thirds, .span-half {
+  float: left;
+
+  &.span-one-third  { width: 33.33%; }
+  &.span-half       { width: 50%; }
+  &.span-two-thirds { width: 66.66%; }
+}
