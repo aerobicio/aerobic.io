@@ -2,7 +2,7 @@
 # running migrations:
 #   rake aborted!
 #   Error dumping database
-# 
+#
 # Solution from:
 #   http://stackoverflow.com/questions/17300341/migrate-not-working-on-heroku
 #
