@@ -1,7 +1,5 @@
 <%= extends :application do %>
-  <%= append :title, t("title") %>
-
-  <%= replace :application do %>
+  <%= replace :main do %>
 
     <div class="page">
       <%= area :page do %>
@@ -19,7 +17,9 @@
         <%= area :content_outer do %>
           <section class="content" role="main">
             <%= area :content do %>
-              <%= area :content_inner %>
+              <div class="content-inner">
+                <%= area :content_inner %>
+              </div>
             <% end %>
           </section>
         <% end %>

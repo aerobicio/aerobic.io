@@ -1,4 +1,4 @@
 <%= extends :base do %>
-  <%= prepend :body_class, 'authenticated' %>
+  <%= replace :body_class, 'authenticated' %>
   <%= append :header_masthead, render(partial: 'shared/header_authenticated') %>
 <% end %>

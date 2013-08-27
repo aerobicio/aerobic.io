@@ -6,6 +6,8 @@
 class HomesController < ApplicationController
   skip_before_filter :login_required
 
+  layout false
+
   def new
   end
 end
