@@ -28,6 +28,9 @@ build:
         - script:
             name: quality
             code: bundle exec rake quality
+        - script:
+            name: best practices
+            code: bundle exec rails_best_practices .
     after-steps:
         - wercker/campfire-notify@0.1.1:
             token: $CAMPFIRE_TOKEN
