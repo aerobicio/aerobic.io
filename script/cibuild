@@ -22,5 +22,6 @@ run_command "rake spec"
 run_command "rake cucumber"
 
 run_command "rake quality"
+run_command "bin/rails_best_practices ."
 
 clean_assets_and_exit 0

@@ -27,6 +27,7 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.0)
     atomic (1.1.9)
+    awesome_print (1.1.0)
     bcrypt-ruby (3.0.1)
     builder (3.1.4)
     cane (2.6.0)
@@ -37,6 +38,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    code_analyzer (0.4.2)
+      sexp_processor
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -44,6 +47,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    colored (1.2)
     cucumber (1.3.2)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
@@ -68,6 +72,9 @@ GEM
       railties (>= 3.0.0)
     foreigner (1.2.1)
       activerecord (>= 3.0.0)
+    foreman (0.63.0)
+      dotenv (>= 0.7)
+      thor (>= 0.13.6)
     gherkin (2.12.0)
       multi_json (~> 1.3)
     hashie (2.0.5)
@@ -80,6 +87,7 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.0)
+    kgio (2.8.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -109,15 +117,31 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.0)
       sprockets-rails (~> 2.0.0)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_best_practices (1.14.3)
+      activesupport
+      awesome_print
+      code_analyzer (>= 0.4.2)
+      colored
+      erubis
+      i18n
+      require_all
+      ruby-progressbar
+    rails_serve_static_assets (0.0.1)
+    rails_stdout_logging (0.0.1)
     railties (4.0.0)
       actionpack (= 4.0.0)
       activesupport (= 4.0.0)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
+    raindrops (0.11.0)
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
     redis (3.0.4)
+    require_all (1.2.1)
     rollout (2.0.0)
       redis
     rspec-core (2.13.1)
@@ -131,6 +155,7 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
+    ruby-progressbar (1.2.0)
     sass (3.2.9)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -139,6 +164,7 @@ GEM
     sdoc (0.3.20)
       json (>= 1.1.3)
       rdoc (~> 3.10)
+    sexp_processor (4.2.1)
     shoulda-matchers (2.2.0)
       activesupport (>= 3.0.0)
     simplecov (0.7.1)
@@ -167,6 +193,10 @@ GEM
     uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    unicorn (4.6.2)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
     valid_email (0.0.4)
       activemodel
       mail
@@ -185,12 +215,15 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   foreigner
+  foreman
   jbuilder (~> 1.2)
   jquery-rails
   omniauth
   omniauth-identity
   pg
   rails (= 4.0.0)
+  rails_12factor
+  rails_best_practices
   redis
   rollout
   rspec-rails (~> 2.0)
@@ -200,4 +233,5 @@ DEPENDENCIES
   simplecov
   turbolinks
   uglifier (>= 1.3.0)
+  unicorn
   valid_email
