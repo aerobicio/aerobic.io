@@ -52,6 +52,15 @@ You can also run each individual test suite manually:
 
     $ rake quality
 
+### Feature Flipping
+
+We use [Rollout](https://github.com/bitlove/rollout) to flip features in our
+user interface. Read the [Rollout](https://github.com/bitlove/rollout) docs
+for more information on how it works.
+
+We currently have the following feature flips active:
+  * "Sign Up" - Renders links to the sign up page if turned on. Status: OFF
+
 ### CI
 
 [Wercker](http://wercker.com) is used to run a build on every branch pushed
