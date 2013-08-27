@@ -1,6 +1,7 @@
 box: wercker/ubuntu12.04-ruby2.0.0
 services:
     - wercker/postgresql
+    - wercker/redis
 build:
     # The steps that will be executed on build
     steps:
