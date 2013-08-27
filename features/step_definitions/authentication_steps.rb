@@ -8,6 +8,7 @@ end
 
 Then(/^I should be signed in$/) do
   page.should have_content(@name)
+  current_path.should == root_path
 end
 
 When(/^I sign in with invalid credentials$/) do
