@@ -7,7 +7,7 @@ AerobicIo::Application.routes.draw do
   get "auth/failure", to: redirect("/sign_in")
 
   resource :dashboard, only: [:show]
-  resources :identities, only: [:new, :create]
+  resources :identities, only: [:new]
   resources :sessions, only: [:create, :new]
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -50,7 +50,7 @@ AerobicIo::Application.routes.draw do
   #       get "recent", on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post "toggle"
