@@ -12,6 +12,7 @@
 /bin/autospec
 /bin/rspec
 /bin/cucumber
+/bin/consistency_fail
 
 /config/database.yml
 /coverage
