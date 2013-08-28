@@ -11,6 +11,7 @@
 
 /bin/autospec
 /bin/rspec
+/bin/rails_best_practices
 /bin/cucumber
 
 /config/database.yml
