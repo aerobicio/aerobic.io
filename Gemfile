@@ -3,6 +3,7 @@ ruby "2.0.0"
 
 gem "bcrypt-ruby", "~> 3.0.0"
 gem "coffee-rails", "~> 4.0.0"
+gem "consistency_fail"
 gem "foreigner"
 gem "foreman"
 gem "jbuilder", "~> 1.2"
