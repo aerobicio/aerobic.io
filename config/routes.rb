@@ -7,7 +7,7 @@ AerobicIo::Application.routes.draw do
   get "auth/failure", to: redirect("/sign_in")
 
   resource :dashboard, only: [:show]
-  resources :identities, only: [:new, :create]
+  resources :identities, only: [:new]
   resources :sessions, only: [:create, :new]
   resource :upload, only: [ :show, :create ]
 
@@ -51,7 +51,7 @@ AerobicIo::Application.routes.draw do
   #       get "recent", on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post "toggle"

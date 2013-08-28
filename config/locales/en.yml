@@ -1,10 +1,7 @@
 en:
   sign_out: "Sign out"
 
-  activerecord:
-    errors:
-      models:
-        identity:
-          attributes:
-            email:
-              inclusion: "Email is not included in the beta list"
+  valid_email:
+    validations:
+      email:
+        invalid: "is not a valid email"
