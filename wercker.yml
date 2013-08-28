@@ -22,7 +22,7 @@ build:
             code: RAILS_ENV=test bundle exec rake db:structure:load
         - script:
             name: consistency fail
-            code: bundle exec consistency_fail
+            code: RAILS_ENV=test bundle exec consistency_fail
         - script:
             name: rspec
             code: bundle exec rspec
