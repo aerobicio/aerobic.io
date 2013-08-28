@@ -58,8 +58,7 @@ We use [Rollout](https://github.com/bitlove/rollout) to flip features in our
 user interface. Read the [Rollout](https://github.com/bitlove/rollout) docs
 for more information on how it works.
 
-We currently have the following feature flips active:
-  * "Sign Up" - Renders links to the sign up page if turned on. Status: OFF
+A list of active feature flips can be found in [SwitchBoard::FEATURE_FLIPS](https://github.com/quamen/aerobic.io/blob/master/lib/switch_board.rb#L16).
 
 ### CI
 
