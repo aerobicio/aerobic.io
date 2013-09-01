@@ -4,14 +4,6 @@ en:
   sign_in:    "Sign in"
   sign_out:   "Sign out"
 
-  activerecord:
-    errors:
-      models:
-        identity:
-          attributes:
-            email:
-              inclusion: "is not included in the beta list"
-
   valid_email:
     validations:
       email:

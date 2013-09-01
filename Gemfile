@@ -5,6 +5,7 @@ gem "bcrypt-ruby", "~> 3.0.0"
 gem "bourbon"
 gem "coffee-rails", "~> 4.0.0"
 gem "foreigner"
+gem "foreman"
 gem "jbuilder", "~> 1.2"
 gem "jquery-rails"
 gem "neat"
@@ -13,9 +14,12 @@ gem "omniauth"
 gem "omniauth-identity"
 gem "pg"
 gem "rails", "4.0.0"
+gem "redis"
+gem "rollout"
 gem "sass-rails", "~> 4.0.0"
 gem "turbolinks"
 gem "uglifier", ">= 1.3.0"
+gem "unicorn"
 gem "valid_email", :require => "valid_email/email_validator"
 
 group :development, :test do
@@ -23,6 +27,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "kss"
+  gem "rails_best_practices"
   gem "rspec-rails", "~> 2.0"
 end
 
@@ -35,4 +40,8 @@ group :test do
   gem "database_cleaner"
   gem "shoulda-matchers"
   gem "simplecov", :require => false
+end
+
+group :production do
+  gem "rails_12factor"
 end

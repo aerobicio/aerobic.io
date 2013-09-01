@@ -17,6 +17,7 @@ check_version "psql --version"
 bundle
 bundle binstubs rspec-core --force
 bundle binstubs cucumber --force
+bundle binstubs rails_best_practices --force
 
 cp -n .env.example .env
 cp -n config/database.yml.example config/database.yml

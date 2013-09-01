@@ -7,7 +7,7 @@ AerobicIo::Application.routes.draw do
   get "auth/failure", to: redirect("/sign_in")
 
   resource :dashboard, only: [:show]
-  resources :identities, only: [:new, :create]
+  resources :identities, only: [:new]
   resources :sessions, only: [:create, :new]
 
   if %w(development test).include?(Rails.env)

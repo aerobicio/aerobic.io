@@ -51,3 +51,41 @@ You can also run each individual test suite manually:
 #### Static Analysis Tools
 
     $ rake quality
+
+### Feature Flipping
+
+We use [Rollout](https://github.com/bitlove/rollout) to flip features in our
+user interface. Read the [Rollout](https://github.com/bitlove/rollout) docs
+for more information on how it works.
+
+A list of active feature flips can be found in [SwitchBoard::FEATURE_FLIPS](https://github.com/quamen/aerobic.io/blob/master/lib/switch_board.rb#L16).
+
+### CI
+
+[Wercker](http://wercker.com) is used to run a build on every branch pushed
+to [Github](http://github.com). If a build fails, it will show up in our
+[Campfire](https://aerobicio.campfirenow.com/room/541059/) room.
+
+Passing builds are expected and will not be announced in Campfire.
+
+### Deployment
+
+Deployment is handled automatically by [Wercker](http://wercker.com). Any build
+of master that passes will be automatically deployed to the staging environment
+at [beta-aerobic.herokuapp.com](http://beta-aerobic.herokuapp.com).
+
+#### Environment Variables
+
+If a new branch requires new environment variables to be set on Heroku, then
+the pull request must indicate that this has already occured before it can be
+merged. Otherwise [beta-aerobic.herokuapp.com](http://beta-aerobic.herokuapp.com)
+will crash due to missing configuration.
+
+#### Migrations
+
+[Wercker](http://wercker.com) does not run migrations for you. If you are merging
+a branch that requires migrations to be run, you must run them once the build
+has been deployed.
+
+If you can think of a way to make this seemless, open a pull request.
+

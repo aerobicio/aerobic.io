@@ -1,4 +1,6 @@
-DERP
+<% view = SessionsHelper::NewSessionView.new %>
+
+<%= link_to(t("identities.new.submit"), sign_up_path) if view.sign_up_active? %>
 
 <%= extends :unauthenticated do %>
   <%= replace :content_inner do %>
