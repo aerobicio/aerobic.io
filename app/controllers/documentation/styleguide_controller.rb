@@ -15,14 +15,16 @@ class Documentation::StyleguideController < ApplicationController
     render "documentation/styleguide/docs/#{clean_param(params[:id])}"
   end
 
-  def example
-    render "documentation/styleguide/docs/#{params[:styleguide_id]}/_section_#{clean_param(params[:example_id])}", :layout => "styleguide_example"
-  end
+  # def example
+  #   render "documentation/styleguide/docs/#{params[:styleguide_id]}/_section_\
+  #     #{clean_param(params[:example_id])}", :layout => "styleguide_example"
+  # end
 
   private
 
   def styleguide
-    @styleguide ||= Kss::Parser.new(File.expand_path('app/assets/stylesheets', Rails.root))
+    @styleguide ||= Kss::Parser.new(File.expand_path('app/assets/stylesheets',
+      Rails.root))
   end
 
   def clean_param(param)
