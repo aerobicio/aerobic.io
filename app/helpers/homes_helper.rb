@@ -1,5 +1,3 @@
-require "active_support/core_ext/object/try"
-
 # HomesHelper contains the view classes used in each view located in
 # homes/view.
 #
