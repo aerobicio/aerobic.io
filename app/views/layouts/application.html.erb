@@ -10,8 +10,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= area :body_class %>">
-  <%= yield %>
-  <%= area :main %>
+  <%= area :main, yield %>
   <%= area :js %>
 </body>
 </html>

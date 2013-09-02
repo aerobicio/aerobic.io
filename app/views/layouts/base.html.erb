@@ -1,5 +1,5 @@
 <%= extends :application do %>
-  <%= replace :main do %>
+  <% replace :main do %>
 
     <div class="page">
       <%= area :page do %>
@@ -18,7 +18,7 @@
           <section class="content" role="main">
             <%= area :content do %>
               <div class="content-inner">
-                <%= area :content_inner %>
+                <%= area :content_inner -%>
               </div>
             <% end %>
           </section>

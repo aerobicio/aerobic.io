@@ -1,4 +1,5 @@
 <%= extends :base do %>
-  <%= replace :body_class, 'unauthenticated' %>
-  <%= append :header_masthead, render(partial: 'shared/header_unauthenticated') %>
+  <% replace :body_class, 'unauthenticated' %>
+  <% append :header_masthead, render(partial: 'shared/header_unauthenticated') %>
+  <% replace :content_inner, yield %>
 <% end %>

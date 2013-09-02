@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/plasticine/nestive.git
-  revision: c913b3f66e476beaaafec40a1954f434d70a4b8c
+  revision: d741d0e130df7c23ee1fafd8e547a2231ad417dd
   specs:
     nestive (0.4.0)
       rails (>= 3.0.0)
@@ -144,7 +144,7 @@ GEM
       require_all
       ruby-progressbar
     rails_serve_static_assets (0.0.1)
-    rails_stdout_logging (0.0.2)
+    rails_stdout_logging (0.0.1)
     railties (4.0.0)
       actionpack (= 4.0.0)
       activesupport (= 4.0.0)
@@ -178,7 +178,7 @@ GEM
     sdoc (0.3.20)
       json (>= 1.1.3)
       rdoc (~> 3.10)
-    sexp_processor (4.3.0)
+    sexp_processor (4.2.1)
     shoulda-matchers (2.2.0)
       activesupport (>= 3.0.0)
     simplecov (0.7.1)
@@ -207,7 +207,7 @@ GEM
     uglifier (2.1.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    unicorn (4.6.3)
+    unicorn (4.6.2)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
