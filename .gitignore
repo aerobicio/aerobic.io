@@ -13,6 +13,7 @@
 /bin/rspec
 /bin/rails_best_practices
 /bin/cucumber
+/bin/consistency_fail
 
 /config/database.yml
 /coverage
