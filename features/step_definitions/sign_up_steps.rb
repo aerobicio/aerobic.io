@@ -40,11 +40,6 @@ Then(/^I should not see the sign up link$/) do
   page.should have_no_content(sign_up_text)
 end
 
-Then(/^I should be told I am not on the beta list$/) do
-  # TODO: i18n
-  page.should have_content("Email is not included in the beta list")
-end
-
 def sign_up(name, email)
   visit root_path
   click_link(sign_up_text)
