@@ -11,7 +11,6 @@ Then(/^I should be signed in$/) do
 end
 
 When(/^I sign in with invalid credentials$/) do
-  # TODO: i18n
   sign_in("not a real password")
 end
 
