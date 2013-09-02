@@ -1,5 +1,6 @@
 <% unless current_user %>
   <nav class="header__navigation">
-    <%= link_to(t("sign_in"), sign_in_path, class: "header__navigation__item") %>
+    <%= link_to(t("sessions.new.submit"), sign_up_path, class: "header__navigation__item") %>
+    <%= link_to(t("identities.new.submit"), sign_in_path, class: "header__navigation__item") %>
   </nav>
 <% end %>
