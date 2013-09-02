@@ -10,7 +10,7 @@ AerobicIo::Application.routes.draw do
   resources :identities, only: [:new]
   resources :sessions, only: [:create, :new]
 
-  if %w(development test).include?(Rails.env)
+  unless Rails.env.production?
     resources :styleguide, only: [:show, :index], controller: "documentation/styleguide" do
       get ':example_id' => 'documentation/styleguide#example', :as => :example, :constraints => {:example_id =>  /[^\/]+/}
     end
