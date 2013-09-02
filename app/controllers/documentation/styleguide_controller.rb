@@ -15,6 +15,7 @@ class Documentation::StyleguideController < ApplicationController
     render "documentation/styleguide/docs/#{clean_param(params[:id])}"
   end
 
+  # keeping rails_best_practices happy until I write some docs...
   # def example
   #   render "documentation/styleguide/docs/#{params[:styleguide_id]}/_section_\
   #     #{clean_param(params[:example_id])}", :layout => "styleguide_example"
