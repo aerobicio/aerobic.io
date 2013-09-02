@@ -1,6 +1,4 @@
 %plane {
-  @include box-shadow(0 1px 0 #fff);
-
   border: 1px solid #ccc;
   border-radius: 3px;
   background-color: #fff;
@@ -9,8 +7,6 @@
 
 %well {
   @extend %plane;
-  @include box-shadow(
-    0 1px 0 #fff,
-    0 3px 0 #F7F7F7 inset
-  );
+
+  box-shadow: 0 1px 0 #fff, 0 3px 0 #F7F7F7 inset;
 }
