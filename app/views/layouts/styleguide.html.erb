@@ -1,0 +1,5 @@
+<%= extends :base do %>
+  <% purge :header %>
+  <% replace :body_class, 'styleguide' %>
+  <% replace :content_inner, yield %>
+<% end %>
