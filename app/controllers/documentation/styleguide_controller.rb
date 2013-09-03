@@ -12,7 +12,7 @@ class Documentation::StyleguideController < ApplicationController
   def show
     @section = @styleguide.section(params[:id])
 
-    render "documentation/styleguide/docs/#{clean_param(params[:id])}"
+    render "documentation/styleguide/#{clean_param(params[:id])}"
   end
 
   # keeping rails_best_practices happy until I write some docs...

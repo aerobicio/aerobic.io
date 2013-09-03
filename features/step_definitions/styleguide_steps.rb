@@ -6,8 +6,7 @@ end
 Then(/^I should be able to browse rule classifications in the styleguide$/) do
   @styleguide_views.each do |view|
     visit "/styleguide/#{view}"
-    page.should have_content(view.to_s.titleize)
-    page.should have_selector("body#styleguide")
+    page.should have_content("Welcome to the styleguide. Here you will find all the styles.")
   end
 end
 
