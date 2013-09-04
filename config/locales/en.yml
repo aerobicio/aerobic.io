@@ -1,5 +1,6 @@
 en:
   sign_out: "Sign out"
+  upload: "Upload"
 
   valid_email:
     validations:

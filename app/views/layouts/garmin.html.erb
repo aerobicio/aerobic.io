@@ -8,6 +8,12 @@
 </head>
 <body>
 
+  <% if current_user %>
+    <%= current_user.name %>
+    <%= link_to(t("upload"), upload_path) %>
+    <%= link_to(t("sign_out"), sign_out_path, method: :put) %>
+  <% end %>
+
 <%= yield %>
 
   <%= javascript_include_tag "garmin", "data-turbolinks-track" => true %>
