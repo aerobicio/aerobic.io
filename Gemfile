@@ -7,10 +7,10 @@ gem "foreigner"
 gem "foreman"
 gem "jbuilder", "~> 1.2"
 gem "jquery-rails"
-gem "rails", "4.0.0"
 gem "omniauth"
 gem "omniauth-identity"
 gem "pg"
+gem "rails", "4.0.0"
 gem "redis"
 gem "rollout"
 gem "sass-rails", "~> 4.0.0"
@@ -34,8 +34,9 @@ end
 group :test do
   gem "cucumber-rails", :require => false
   gem "database_cleaner"
-  gem "simplecov", :require => false
+  gem "rspec-nc"
   gem "shoulda-matchers"
+  gem "simplecov", :require => false
 end
 
 group :production do
