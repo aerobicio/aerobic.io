@@ -25,7 +25,7 @@ build:
             code: RAILS_ENV=test bundle exec consistency_fail
         - script:
             name: rspec
-            code: bundle exec rspec
+            code: bundle exec rspec --format=progress
         - script:
             name: cucumber
             code: bundle exec cucumber
