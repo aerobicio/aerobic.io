@@ -1,0 +1,34 @@
+<% view = HomesHelper::NewHomesHelper.new %>
+
+<%= extends :unauthenticated do %>
+  <%= replace :title, t(".title")  %>
+  <%= append :body_class, ' landing-page' %>
+
+  <%= replace :content_outer do %>
+    <section class="landing-page__content" role="main">
+      <h1><%= t(".landing_page.heading") %></h1>
+      <p><%= t(".landing_page.intro_copy") %></p>
+
+      <form action="<%= view.newsletter_form_action %>">
+        <fieldset>
+          <legend>
+            <%= t(".landing_page.signup_form.copy") %>
+          </legend>
+          <div class="field">
+            <input
+              type="email"
+              placeholder="<%= t(".landing_page.signup_form.field_placeholder") %>"
+              name="<%= view.newsletter_form_field_name %>"
+              id="<%= view.newsletter_form_field_id %>"
+            >
+          </div>
+          <div class="actions">
+            <button type="submit">
+              <%= t(".landing_page.signup_form.submit_button") %>
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </section>
+  <% end %>
+<% end %>

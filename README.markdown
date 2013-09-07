@@ -52,13 +52,29 @@ You can also run each individual test suite manually:
 
     $ rake quality
 
-### Mustache Style ERB
+### View Architecture
+
+We handle views slightly differently to the traditional Rails approach.
+
+#### Layouts != Views
+
+We use [Nestive](https://github.com/rwz/nestive) to try and make our views leaner by attempting to push complexity up into the inherited layout system wherever possible.
+
+This means that views should ideally be smaller and more concise, and should also mean that layouts are more reusable, and we have less repetition across the entirety of the View layer.
+
+The default layout in the application is `authenticated.html.erb` - which is the most common layout for views in the app.
+
+#### Views as Templates (Mustache Style ERB)
 
 In an effort to make our view code unit testable and sane, we have adopted the
 strategy of treating each .html.erb file as a template. Each template has its
 own view object, that contains the logic for the view.
 
 Our inspiration - [Mustache style ERB](http://warpspire.com/posts/mustache-style-erb/).
+
+#### i18n Strings
+
+Strings in views should always be i18n-ed. If the string is related only to a single view and is not reused anywhere else then the string should use a view-relative i18n path.
 
 ### Feature Flipping
 
@@ -95,5 +111,5 @@ will crash due to missing configuration.
 a branch that requires migrations to be run, you must run them once the build
 has been deployed.
 
-If you can think of a way to make this seemless, open a pull request.
+If you can think of a way to make this seamless, open a pull request.
 

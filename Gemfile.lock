@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/plasticine/nestive.git
+  revision: d741d0e130df7c23ee1fafd8e547a2231ad417dd
+  specs:
+    nestive (0.4.0)
+      rails (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -29,6 +36,9 @@ GEM
     atomic (1.1.9)
     awesome_print (1.1.0)
     bcrypt-ruby (3.0.1)
+    bourbon (3.1.8)
+      sass (>= 3.2.0)
+      thor
     builder (3.1.4)
     cane (2.6.0)
       parallel
@@ -89,6 +99,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.0)
     kgio (2.8.0)
+    kss (0.4.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -96,6 +107,9 @@ GEM
     mini_portile (0.5.0)
     minitest (4.7.5)
     multi_json (1.7.7)
+    neat (1.3.0)
+      bourbon (>= 2.1)
+      sass (>= 3.2)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     omniauth (1.1.4)
@@ -217,6 +231,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
+  bourbon
   cane
   coffee-rails (~> 4.0.0)
   consistency_fail
@@ -228,6 +243,9 @@ DEPENDENCIES
   foreman
   jbuilder (~> 1.2)
   jquery-rails
+  kss
+  neat
+  nestive!
   omniauth
   omniauth-identity
   pg
