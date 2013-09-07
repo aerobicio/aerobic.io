@@ -4,6 +4,7 @@ ruby "2.0.0"
 gem "bcrypt-ruby", "~> 3.0.0"
 gem "bourbon"
 gem "coffee-rails", "~> 4.0.0"
+gem "consistency_fail"
 gem "foreigner"
 gem "foreman"
 gem "jbuilder", "~> 1.2"
@@ -38,8 +39,9 @@ end
 group :test do
   gem "cucumber-rails", :require => false
   gem "database_cleaner"
-  gem "simplecov", :require => false
+  gem "rspec-nc"
   gem "shoulda-matchers"
+  gem "simplecov", :require => false
 end
 
 group :production do
