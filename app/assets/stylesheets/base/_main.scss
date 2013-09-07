@@ -3,6 +3,7 @@ body {
   @include prefixer(tap-highlight-color, rgba(0,0,0,0), webkit);
 
   height: 100%;
+  font-family: $font-family;
 }
 
 html{
