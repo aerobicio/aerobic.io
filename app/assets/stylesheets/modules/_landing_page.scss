@@ -1,8 +1,30 @@
 // TODO: document me
-.landing-page {}
+.landing-page {
+  &,
+  & .page {
+    height: 100%;
+    width: 100%;
+  }
+  & .page {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.landing-page__header {
+
+}
 
 .landing-page__content {
   @extend .padding-wide;
 
-  background-color: $landing-page-background-color;
+  padding-left: 25%;
+  padding-right: 25%;
+  flex: 1 100%;
+  background:
+    $landing-page-background-color
+    image-url('landing-page/contours.png')
+    no-repeat
+    center top
+  ;
 }

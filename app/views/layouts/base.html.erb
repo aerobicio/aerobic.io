@@ -1,11 +1,11 @@
 <%= extends :application do %>
   <% replace :main do %>
 
-    <div class="page">
+    <div class="<%= area :page_class, 'page' %>">
       <%= area :page do %>
 
         <%= area :header_outer do %>
-          <header class="header" role="header">
+          <header class="<%= area :header_class, 'header' %>" role="header">
             <%= area :header do %>
               <div class="header__inner">
                 <%= area :header_inner do %>
@@ -17,7 +17,7 @@
         <% end %>
 
         <%= area :content_outer do %>
-          <section class="content" role="main">
+          <section class="<%= area :content_class, 'content' %>" role="main">
             <%= area :content do %>
               <div class="content-inner">
                 <%= area :content_inner -%>

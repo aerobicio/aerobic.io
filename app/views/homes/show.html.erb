@@ -1,13 +1,17 @@
 <% view = HomesHelper::NewHomesHelper.new %>
 
 <%= extends :unauthenticated do %>
-  <%= replace :title, t(".title")  %>
-  <%= append :body_class, ' landing-page' %>
+  <% replace :title, t("homes.show.title")  %>
 
-  <%= replace :content_outer do %>
-    <section class="landing-page__content" role="main">
-      <h1><%= t(".landing_page.heading") %></h1>
-      <p><%= t(".landing_page.intro_copy") %></p>
+  <% append :body_class, ' landing-page' %>
+  <% replace :content_class, 'landing-page__content' %>
+  <% replace :header_class, 'landing-page__header' %>
+
+  <% replace :content_outer do %>
+    <section class="landing-page__content ta-center" role="main">
+
+      <h1><%= t("homes.show.landing_page.heading") %></h1>
+      <p><%= t("homes.show.landing_page.intro_copy") %></p>
 
       <form action="<%= view.newsletter_form_action %>">
         <fieldset>
