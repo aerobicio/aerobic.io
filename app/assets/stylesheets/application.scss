@@ -39,6 +39,9 @@
 // placeholders that we reuse in other modules are here
 @import "lib/placeholders";
 
+// new refactored BEM stuff lives here.
+@import "modules/__init__";
+
 // The shame! The shame!
 @import "shame";
 
