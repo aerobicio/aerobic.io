@@ -16,7 +16,7 @@ module Domain
     end
 
     def self.all_for(user_id)
-      ::Workout.find_all_by_user_id(user_id).map do |workout|
+      ::Workout.where(user_id: user_id).map do |workout|
         self.new(workout)
       end
     end

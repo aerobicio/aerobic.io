@@ -27,7 +27,7 @@ describe Domain::Workout do
 
     before do
       stub_const("Workout", workout_class)
-      workout_class.should_receive(:find_all_by_user_id) { workouts }
+      workout_class.should_receive(:where).with(user_id: user_id) { workouts }
     end
 
     it "should return an array of Domain::Workout objects" do
