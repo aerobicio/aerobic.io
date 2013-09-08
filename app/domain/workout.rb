@@ -1,5 +1,4 @@
 require "active_support/core_ext/object/try"
-require "active_support/json"
 
 module Domain
 
@@ -33,10 +32,28 @@ module Domain
 
       workout.save!
       @id = workout.id
-      $redis.set(redis_key, as_json)
+      persist_to_redis(workout.created_at.to_i)
     end
 
     private
+
+    def persist_to_redis(score)
+      $redis.set(redis_key, to_json)
+      User.all.each do |user|
+        $redis.zadd("user:#{user.id}:activity", score, redis_key)
+      end
+    end
+
+    def to_json
+      %!{"id":#{@id},
+         "user_id":#{@user_id},
+         "active_duration":#{@active_duration},
+         "distance":#{@distance},
+         "duration":#{@duration},
+         "end_time":#{@end_time.to_i},
+         "start_time":#{@start_time.to_i}
+        }!
+    end
 
     def workout_record
       ::Workout.new
