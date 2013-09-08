@@ -1,5 +1,5 @@
 AerobicIo::Application.routes.draw do
-  root "dashboards#show"
+  root "homes#show"
   get "sign_up", to: "identities#new"
   get "sign_in", to: "sessions#new"
   put "sign_out", to: "sessions#destroy"
@@ -9,6 +9,12 @@ AerobicIo::Application.routes.draw do
   resource :dashboard, only: [:show]
   resources :identities, only: [:new]
   resources :sessions, only: [:create, :new]
+
+  unless Rails.env.production?
+    resources :styleguide, only: [:show, :index], controller: "documentation/styleguide" do
+      get ':example_id' => 'documentation/styleguide#example', :as => :example, :constraints => {:example_id =>  /[^\/]+/}
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
