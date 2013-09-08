@@ -39,11 +39,7 @@ module Domain
     private
 
     def workout_record
-#      if @id
-#        ::Workout.find(@id)
-#      else
-        ::Workout.new
-#      end
+      ::Workout.new
     end
 
     def redis_key
