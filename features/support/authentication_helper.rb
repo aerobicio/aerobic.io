@@ -1,9 +1,12 @@
 def create_registered_account
+  $switch_board.activate_sign_up
   @password = 123456789
-  @identity = FactoryGirl.create(:identity,
+  @identity = FactoryGirl.build(:identity,
                                  password: @password,
                                  password_confirmation: @password)
   @name = @identity.name
+  sign_up(@name, @identity.email)
+  $switch_board.deactivate_sign_up
 end
 
 def sign_in(password = @password)

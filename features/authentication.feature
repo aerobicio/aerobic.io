@@ -14,6 +14,6 @@ Feature: Authentication
     Then I should not be signed in
   
   Scenario: Signing out
-    Given I am signed in
+    Given I am a member
     When I sign out
     Then I should not be signed in
