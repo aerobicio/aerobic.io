@@ -1,3 +1,5 @@
+require_relative "../domain/omni_auth_user"
+
 # SessionsController manages the user's session (sign_in and sign_out).
 #
 # When signing in we use the OmniAuthUser object to find or create a user
@@ -13,7 +15,7 @@ class SessionsController < ApplicationController
   def create
     reset_session
 
-    user = OmniAuthUser.user_from_auth_hash(auth_hash)
+    user = Domain::OmniAuthUser.user_from_auth_hash(auth_hash)
     session[:user_id] = user.id
 
     redirect_to :root

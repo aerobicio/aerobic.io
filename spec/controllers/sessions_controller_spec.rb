@@ -7,7 +7,8 @@ describe SessionsController do
     before do
       auth_hash = { provider: 'identity', uid: 1, info: { name: 'GT' }}
       @request.env['omniauth.auth'] = auth_hash
-      OmniAuthUser.should_receive(:user_from_auth_hash).with(auth_hash) { user }
+      Domain::OmniAuthUser.should_receive(:user_from_auth_hash)
+                          .with(auth_hash) { user }
       post :create
     end
 
