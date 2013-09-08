@@ -7,8 +7,15 @@ describe Domain::Workout do
     let(:data_object) { OpenStruct.new(id: 42) }
 
     it { should be_an_instance_of(Domain::Workout) }
-
     its(:id) { should == data_object.id }
+
+    context "from a json string" do
+      let(:data_object) { { id: 42, active_duration: 500 }.to_json }
+
+      it { should be_an_instance_of(Domain::Workout) }
+      its(:id) { should == 42 }
+      its(:active_duration) { should == 500 }
+    end
   end
 
   describe ".all_for(user_id)" do
