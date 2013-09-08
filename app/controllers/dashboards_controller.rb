@@ -5,6 +5,8 @@ require_relative "../domain/workout"
 class DashboardsController < ApplicationController
   def show
     @workouts = $redis.zrevrange("user:#{current_user.id}:activity", 0, -1)
-    @workouts = @workouts.map { |workout| Domain::Workout.new($redis.get(workout)) }
+    @workouts = @workouts.map do |workout|
+      Domain::Workout.new($redis.get(workout))
+    end
   end
 end
