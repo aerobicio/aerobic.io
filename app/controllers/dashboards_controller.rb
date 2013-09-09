@@ -1,12 +1,9 @@
-require_relative "../domain/workout"
+require_relative "../domain/activity_feed"
 
 # DashboardsController is used to display the users Dashboard.
 #
 class DashboardsController < ApplicationController
   def show
-    @workouts = $redis.zrevrange("user:#{current_user.id}:activity", 0, -1)
-    @workouts = @workouts.map do |workout|
-      Domain::Workout.new($redis.get(workout))
-    end
+    @workouts = Domain::ActivityFeed.workouts(current_user.id)
   end
 end

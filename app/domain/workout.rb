@@ -40,7 +40,7 @@ module Domain
     def persist_to_redis(score)
       $redis.set(redis_key, to_json)
       User.all.each do |user|
-        $redis.zadd("user:#{user.id}:activity", score, redis_key)
+        Domain::ActivityFeed.add_workout(user.id, score, redis_key)
       end
     end
 
