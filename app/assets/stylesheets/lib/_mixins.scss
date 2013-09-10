@@ -1,0 +1,56 @@
+// Text overflow is still a vendor-prefixed property for IE8
+// clip | ellipsis | string
+@mixin text-overflow($overflow) {
+  -webkit-text-overflow: $overflow;
+  -khtml-text-overflow:  $overflow;
+  -moz-text-overflow:    $overflow;
+  -o-text-overflow:      $overflow;
+  text-overflow:         $overflow;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@mixin font-size($font-size, $line_height: 1.5){
+  font-size:    $font-size * 10px;
+  font-size:    $font-size * 1rem;
+  line-height:  $line_height;
+}
+
+// Utility mixin for setting spacing (margin + padding). Useful for inside
+// mediaqueries where the standard spacing classes cannot be @extended
+//
+// returns [$method]: $size;
+// returns [$method]-$direction: size;
+@mixin spacing($method, $size, $direction: false) {
+  @if $direction {
+    #{$method}-#{$direction}: get_spacing($size);
+  } @else {
+    #{$method}: get_spacing($size);
+  }
+}
+
+@function strip_unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@function to_rem($value){
+  @return strip_unit($value) * 1rem;
+}
+
+@mixin hardware_accelerate() {
+  -webkit-transform: translateZ(0);
+  -webkit-perspective: 1000;
+  -webkit-backface-visibility: hidden;
+}
+
+// Makes items un-selectable. I.e. if you tap and hold on a button, it won't get selected.
+@mixin noselect {
+  @include prefixer(user-select, none, webkit moz o spec);
+
+  -webkit-touch-callout: none;
+}
+
+@mixin antialiased {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

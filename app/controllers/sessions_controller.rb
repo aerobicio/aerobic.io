@@ -7,6 +7,8 @@
 class SessionsController < ApplicationController
   skip_before_filter :login_required
 
+  layout "unauthenticated"
+
   def new
   end
 
@@ -16,7 +18,7 @@ class SessionsController < ApplicationController
     user = OmniAuthUser.user_from_auth_hash(auth_hash)
     session[:user_id] = user.id
 
-    redirect_to :root
+    redirect_to dashboard_path
   end
 
   def destroy

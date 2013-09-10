@@ -1,7 +1,5 @@
 <% view = SessionsHelper::NewSessionView.new %>
 
-<%= link_to(t("identities.new.submit"), sign_up_path) if view.sign_up_active? %>
-
 <%= form_tag sessions_path(provider: "identity") do %>
   <div class="field">
     <%= label_tag(:auth_key, t(".auth_key")) %><br>
@@ -13,4 +11,3 @@
   </div>
   <div class="actions"><%= submit_tag(t(".submit")) %></div>
 <% end %>
-

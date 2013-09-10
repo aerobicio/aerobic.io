@@ -1,0 +1,33 @@
+<%= extends :application do %>
+  <% replace :main do %>
+
+    <div class="page">
+      <%= area :page do %>
+
+        <%= area :header_outer do %>
+          <header class="header" role="header">
+            <%= area :header do %>
+              <div class="header__inner">
+                <%= area :header_inner do %>
+                  <%= area :header_masthead, render(partial: 'shared/header_masthead') %>
+                <% end %>
+              </div>
+            <% end %>
+          </header>
+        <% end %>
+
+        <%= area :content_outer do %>
+          <section class="content" role="main">
+            <%= area :content do %>
+              <div class="content-inner">
+                <%= area :content_inner -%>
+              </div>
+            <% end %>
+          </section>
+        <% end %>
+
+      <% end %>
+    </div>
+
+  <% end %>
+<% end %>
