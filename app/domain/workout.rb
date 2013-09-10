@@ -1,19 +1,13 @@
-require "active_support/core_ext/object/try"
+require_relative "shared/initialize_from_data_object"
 
 module Domain
-
   # Workouts are a high level summary of a processed FitFile.
   class Workout
+    include Domain::Shared::InitializeFromDataObject
+
     attr_reader :id
     attr_reader :user_id
     attr_accessor :active_duration, :distance, :duration, :end_time, :start_time
-
-    def initialize(data_object)
-      if data_object.is_a?(String)
-        data_object = OpenStruct.new(JSON.parse(data_object))
-      end
-      extract_attributes(data_object)
-    end
 
     def self.all_for(user_id)
       ::Workout.where(user_id: user_id).map do |workout|
@@ -61,16 +55,6 @@ module Domain
 
     def redis_key
       "user:#{@user_id}:workout:#{@id}"
-    end
-
-    def extract_attributes(data_object)
-      @id = data_object.try(:id)
-      @user_id = data_object.try(:user_id)
-
-      [:active_duration, :distance, :duration,
-        :end_time, :start_time].each do |attribute|
-        send("#{attribute.to_s}=", data_object.try(attribute))
-      end
     end
   end
 end

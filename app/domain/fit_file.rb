@@ -1,15 +1,11 @@
 require 'fit'
-require "active_support/core_ext/object/try"
+require_relative "shared/initialize_from_data_object"
 
 module Domain
 
   # FitFile parses FIT data files and persists them.
   class FitFile
-    def initialize(data_object)
-      @user_id = data_object.try(:user_id)
-      @name = data_object.try(:name)
-      @binary_data = data_object.try(:binary_data)
-    end
+    include Domain::Shared::InitializeFromDataObject
 
     def persist!
       ::FitFile.transaction do

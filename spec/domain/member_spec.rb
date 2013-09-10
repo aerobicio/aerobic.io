@@ -3,7 +3,7 @@ require_relative "../../app/domain/member"
 
 describe Domain::Member do
   let(:user_class) { double(:user_class) }
-  let(:user) { double(id: 42) }
+  let(:user) { OpenStruct.new(id: 42) }
 
   before do
     stub_const("User", user_class)
