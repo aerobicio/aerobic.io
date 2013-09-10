@@ -1,23 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-  <title>AerobicIo</title>
-  <style type="text/css" media="all">@import "communicator-api/garmin/device/style/communicator2.css";</style>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-  <% if current_user %>
-    <%= current_user.name %>
-    <%= link_to(t("upload"), upload_path) %>
-    <%= link_to(t("sign_out"), sign_out_path, method: :put) %>
+<%= extends :authenticated do %>
+  <%= append :head do %>
+    <style type="text/css" media="all">@import "communicator-api/garmin/device/style/communicator2.css";</style>
   <% end %>
-
-<%= yield %>
-
-  <%= javascript_include_tag "garmin", "data-turbolinks-track" => true %>
-  <script type="text/javascript" src="communicator-api/garmin/device/GarminDeviceDisplay.js">&#160;</script>
-  <%= yield :javascript %>
-</body>
-</html>
+  <%= append :js do %>
+    <%= javascript_include_tag "garmin", "data-turbolinks-track" => true %>
+    <script type="text/javascript" src="communicator-api/garmin/device/GarminDeviceDisplay.js">&#160;</script>
+  <% end %>
+<% end %>

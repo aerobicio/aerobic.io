@@ -8,8 +8,7 @@ When(/^I sign in with valid credentials$/) do
 end
 
 Then(/^I should be signed in$/) do
-  page.should have_content(@name)
-  current_path.should == root_path
+  page.should have_selector("body.authenticated")
 end
 
 When(/^I sign in with invalid credentials$/) do
@@ -17,8 +16,7 @@ When(/^I sign in with invalid credentials$/) do
 end
 
 Then(/^I should not be signed in$/) do
-  page.should have_no_content(@name)
-  current_path.should == sign_in_path
+  page.should have_selector("body.unauthenticated")
 end
 
 Given(/^I am a member$/) do

@@ -1,0 +1,31 @@
+// Join a list of strings together using a joining string, eg;
+//
+//    $a: top right bottom left;
+//    implode('-', $a) == "top-right-bottom-left"
+//
+@function implode($joiner, $vars...) {
+  $join: "";
+  $string: "";
+  @for $i from 1 through length($vars) {
+    $var: nth($vars, $i);
+    @if $var {
+      $string: "#{$string}#{$join}#{$var}";
+      @if $i == 1 { $join: $joiner; }
+    }
+  }
+  @return $string;
+}
+
+
+// Return a spacing size - used in the rare cases where we want to use
+// combinations of spacing sizes
+@function get_spacing($size) {
+  @if $size == tight  { @return $_spacing-tight; }
+  @if $size == medium { @return $_spacing-medium; }
+  @if $size == wide   { @return $_spacing-wide; }
+}
+
+// Interpolates $x between $a and $b
+@function interpolate($x, $a, $b) {
+  @return ($x * ($b - $a)) + $a;
+}

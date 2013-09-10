@@ -1,0 +1,19 @@
+html,
+body {
+  @include prefixer(tap-highlight-color, rgba(0,0,0,0), webkit);
+
+  height: 100%;
+}
+
+html{
+  // set root font-size to be 10px so that it is
+  // convenient for sizing things from in rem/em
+  font-size: 62.5%;
+  background-color: $background-color;
+}
+
+body {
+  // Set actual desired optical font-size
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+}

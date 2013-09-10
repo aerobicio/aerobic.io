@@ -9,7 +9,7 @@ When(/^another member adds a workout$/) do
   create_registered_account
   sign_in
   add_workout
-  visit root_path
+  visit dashboard_path
   click_link(I18n.t("sign_out"))
   @identity = @original_identity
   sign_in

@@ -1,0 +1,17 @@
+$_spacing_methods:    padding, margin;
+$_spacing_sizes:      tight, medium, wide;
+$_spacing_directions: false, top, right, bottom, left;
+
+@for $k from 1 through length($_spacing_methods) {
+  @for $j from 1 through length($_spacing_sizes) {
+    @for $i from 1 through length($_spacing_directions) {
+      $method:    nth($_spacing_methods,    $k);
+      $size:      nth($_spacing_sizes,      $j);
+      $direction: nth($_spacing_directions, $i);
+
+      .#{implode('-', $method, $size, $direction)} {
+        @include spacing($method, $size, $direction);
+      }
+    }
+  }
+}

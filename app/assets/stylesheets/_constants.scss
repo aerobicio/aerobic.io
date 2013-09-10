@@ -1,0 +1,81 @@
+$debug-mode:                false;
+
+// Root type sizing
+// ----------------------------------------
+$base-font-size:            1.1em;
+$base-font-size:            14px;
+$base-line-height:          1.6;
+$line-height-ratio:         1.5;
+
+// Spacing units and sizings
+// ----------------------------------------
+$_spacing-tight:            0.7rem;
+$_spacing-medium:           1.4rem;
+$_spacing-wide:             2.8rem;
+
+// Grid & layout structure
+// ----------------------------------------
+$_grid-prefix:              unquote("");
+$column:                    10rem;
+$gutter:                    2rem;
+$grid-columns:              12;
+$max-width:                 100%;
+
+
+// Media Queries and Breakpoints
+// ----------------------------------------
+$_palm-start:               320px;
+$_lap-start:                481px;
+$_desk-start:               980px;
+$_micro-palm-end:           $_palm-start - 1px;
+$_palm-end:                 $_lap-start  - 1px;
+$_lap-end:                  $_desk-start - 1px;
+
+// Helper breakpoints for orientation
+$portrait:                  new-breakpoint(orientation portrait);
+$landscape:                 new-breakpoint(orientation landscape);
+
+// this is the default, baseline layout mode. This breakpoint should almost
+// never be used as all CSS should be written for these dimensions by default.
+// $micro-palm:             [0px     ->    319px]
+$micro-palm:                new-breakpoint(max-width $_micro-palm-end 4);
+
+// things that fit in the palm of your hand or your pocket (like phones).
+// slightly larger format than very basic phone, most smart-phone like devices
+// will fall in this category.
+// $palm:                   [320px   ->    480px]
+$palm:                      new-breakpoint(min-width $_micro-palm-end max-width $_palm-end 4);
+
+// Everything from $palm and up
+// $palm-and-up:            [320px   ->    $max-width]
+$palm-and-up:               new-breakpoint(min-width $_micro-palm-end min-height 430px);
+
+// for devices that are not handheld, but are portable, like tablets/laptops.
+// $lap:                    [481px   ->    979px]
+$lap:                       new-breakpoint(min-width $_lap-start 12);
+
+// Everything from $lap and up
+// $lap-and-up:             [481px   ->    $max-width]
+$lap-and-up:                new-breakpoint(min-width $_lap-start min-height 650px 12);
+
+// TVs, Desktop computers, non-portable large format
+// $desk:                   [980px   ->    $max-width]
+$desk:                      new-breakpoint(min-width $_desk-start 12);
+
+// private major structural breakpoints
+$_breakpoints: (
+  'micro-palm'  $micro-palm,
+  'palm'        $palm,
+  'lap'         $lap,
+  'desk'        $desk
+);
+
+// Branding and Style
+// ----------------------------------------
+$background-color:            #edf0f3;
+
+$landing-page-background-color: #fcc15f;
+
+$header-navigation-color: #3f687a;
+
+$header-bar-background-color: transparent;

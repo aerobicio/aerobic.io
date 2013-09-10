@@ -3,13 +3,15 @@ ruby "2.0.0"
 
 gem "bcrypt-ruby", "~> 3.0.0"
 gem "bindata"
-gem "coffee-rails", "~> 4.0.0"
+gem "bourbon"
 gem "consistency_fail"
 gem "fit", git: "https://github.com/aerobicio/fit.git"
 gem "foreigner"
 gem "foreman"
 gem "jbuilder", "~> 1.2"
 gem "jquery-rails"
+gem "neat"
+gem "nestive", git: "https://github.com/plasticine/nestive.git"
 gem "omniauth"
 gem "omniauth-identity"
 gem "pg"
@@ -27,6 +29,7 @@ group :development, :test do
   gem "cane"
   gem "dotenv-rails"
   gem "factory_girl_rails"
+  gem "kss"
   gem "rails_best_practices"
   gem "rspec-rails", "~> 2.0"
 end
@@ -39,8 +42,10 @@ group :test do
   gem "cucumber-rails", :require => false
   gem "database_cleaner"
   gem "faker"
+  gem "rspec-nc"
   gem "simplecov", :require => false
   gem "shoulda-matchers"
+  gem "simplecov", :require => false
 end
 
 group :production do

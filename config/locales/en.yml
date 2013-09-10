@@ -1,6 +1,9 @@
 en:
-  sign_out: "Sign out"
-  upload: "Upload"
+  masthead:   "aerobic.io"
+  title:      "aerobic.io"
+  sign_in:    "Sign in"
+  sign_out:   "Sign out"
+  upload:     "Upload"
 
   valid_email:
     validations:

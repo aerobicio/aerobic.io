@@ -1,0 +1,39 @@
+@each $bp in $_breakpoints {
+  $_col_names:  "one", "two", "three",
+                "four", "five", "six",
+                "seven", "eight", "nine",
+                "ten", "eleven", "twelve";
+  $_name:       nth($bp, 1);
+  $_breakpoint: nth($bp, 2);
+
+  @include media($_breakpoint) {
+    // helper classes that can safely be used against markup and will be scoped
+    // to the media-query applicable to the current viewport
+    .one-whole                { @include fill-parent; clear: both; }
+    .one-half                 { @include span-columns($grid-columns / 2); }
+    .one-quarter              { @include span-columns($grid-columns / 4); }
+    .three-quarters           { @include span-columns(($grid-columns / 4) * 3); }
+
+    // shift to the right (+ive margin)
+    .push-one-half            { @include shift($grid-columns / 2); }
+    .push-one-quarter         { @include shift($grid-columns / 4); }
+    .push-three-quarters      { @include shift(($grid-columns / 4) * 3); }
+
+    // shift to the left (-ive margin)
+    .pull-one-half            { @include shift(-$grid-columns / 2); }
+    .pull-one-quarter         { @include shift(-$grid-columns / 4); }
+    .pull-three-quarters      { @include shift((-$grid-columns / 4) * 3); }
+  }
+
+  // results in a lot of class-noise, but is my favourite approach to date
+  // http://csswizardry.com/2013/02/responsive-grid-systems-a-solution
+  @for $col from 1 through $grid-columns {
+    .#{$_name}-span-#{nth($_col_names, $col)}-columns {
+      @include span-columns($col of $grid-columns);
+    }
+  }
+}
+
+.omega {
+  @include omega;
+}
