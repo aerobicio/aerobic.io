@@ -2,7 +2,6 @@
 
 FactoryGirl.define do
   factory :workout do
-    fit_file_id 1
     active_duration 1
     duration 1
     distance 1
