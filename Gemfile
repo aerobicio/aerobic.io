@@ -38,6 +38,7 @@ group :doc do
 end
 
 group :test do
+  gem "codeclimate-test-reporter", require: nil
   gem "cucumber-rails", :require => false
   gem "database_cleaner"
   gem "rspec-nc"
