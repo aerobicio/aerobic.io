@@ -32,9 +32,11 @@ module Domain
     private
 
     def persist_to_redis(score)
-      $redis.set(redis_key, to_json)
-      User.all.each do |user|
-        Domain::ActivityFeed.add_workout(user.id, score, redis_key)
+      $redis.pipelined do
+        $redis.set(redis_key, to_json)
+        User.all.each do |user|
+          Domain::ActivityFeed.add_workout(user.id, score, redis_key)
+        end
       end
     end
 
