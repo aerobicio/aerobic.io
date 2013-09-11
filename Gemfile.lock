@@ -100,6 +100,9 @@ GEM
     json (1.8.0)
     kgio (2.8.0)
     kss (0.4.0)
+    lograge (0.2.0)
+      actionpack
+      activesupport
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -244,6 +247,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   kss
+  lograge
   neat
   nestive!
   omniauth
