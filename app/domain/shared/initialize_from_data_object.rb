@@ -20,7 +20,7 @@ module Domain
         if !data_object.respond_to?(:permitted?) || data_object.permitted?
           set_instance_variables(data_object)
         else
-          raise ActiveModel::ForbiddenAttributes
+          raise ActiveModel::ForbiddenAttributesError
         end
       end
 
