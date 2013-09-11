@@ -1,6 +1,6 @@
 Given(/^I have a registered account$/) do
   create_registered_account
-  click_link(I18n.t("sign_out"))
+  sign_out
 end
 
 When(/^I sign in with valid credentials$/) do
@@ -25,5 +25,5 @@ Given(/^I am a member$/) do
 end
 
 When(/^I sign out$/) do
-  click_link(I18n.t("sign_out"))
+  sign_out
 end

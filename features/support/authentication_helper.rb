@@ -16,3 +16,7 @@ def sign_in(password = @password)
 
   click_button(I18n.t("sessions.new.submit"))
 end
+
+def sign_out
+  click_link(I18n.t("sign_out"))
+end
