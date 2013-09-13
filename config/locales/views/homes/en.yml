@@ -2,11 +2,11 @@ en:
   homes:
     show:
       title: "Welcome to aerobic.io — Coming Soon"
-      landing_page:
+      landing:
         heading: "Train Better"
         intro_copy: "Aerobic.io makes planning your training, tracking your progress, and organising sessions with your friends easier. Coming soon."
         signup_form:
-          copy: "Register below and we’ll let you know when we’re ready for testers."
+          copy: "Register below and we’ll send you an activation code when we’re ready for more testers."
           submit_button: "Sign Up"
           field_placeholder: "Your email here"
 

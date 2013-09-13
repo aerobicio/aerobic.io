@@ -1,13 +1,12 @@
 <%= extends :application do %>
   <% replace :main do %>
 
-    <div class="<%= area :page_class, 'page' %>">
+    <section class="<%= area :page_class, 'page' %>">
       <%= area :page do %>
-
         <%= area :header_outer do %>
-          <header class="<%= area :header_class, 'header' %>" role="header">
+          <header class="<%= area :header_class, 'header' %>" role="banner">
             <%= area :header do %>
-              <div class="header__inner">
+              <div class="header__inner grid-container">
                 <%= area :header_inner do %>
                   <%= area :header_masthead, render(partial: 'shared/header_masthead') %>
                 <% end %>
@@ -19,15 +18,20 @@
         <%= area :content_outer do %>
           <section class="<%= area :content_class, 'content' %>" role="main">
             <%= area :content do %>
-              <div class="content-inner">
+              <div class="content-inner grid-container">
                 <%= area :content_inner -%>
               </div>
             <% end %>
           </section>
         <% end %>
-
       <% end %>
-    </div>
 
+      <%= area :footer_outer do %>
+        <footer class="footer ta-center" role="contentinfo">
+          <%= area :footer, render(partial: 'shared/footer_content') %>
+        </footer>
+      <% end %>
+
+    </section>
   <% end %>
 <% end %>

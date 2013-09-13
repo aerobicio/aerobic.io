@@ -19,7 +19,7 @@ $_grid-prefix:              unquote("");
 $column:                    10rem;
 $gutter:                    2rem;
 $grid-columns:              12;
-$max-width:                 100%;
+$max-width:                 em(1200);
 
 
 // Media Queries and Breakpoints
@@ -74,6 +74,7 @@ $_breakpoints: (
 // ----------------------------------------
 $font-family: 'Proxima Nova Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $background-color: #edf0f3;
-$landing-page-background-color: #fcc364;
+$landing-hero-background-color: #243f55;
+$landing-cta-color: #7b949f;
 $header-navigation-color: #3f687a;
 $header-bar-background-color: transparent;

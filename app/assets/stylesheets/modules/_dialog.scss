@@ -1,0 +1,9 @@
+// TODO: document me
+.dialog {
+  @extend .padding-wide;
+
+  border-radius: 4px;
+  background-color: #fff;
+  width: 310px;
+  margin: 0 auto;
+}

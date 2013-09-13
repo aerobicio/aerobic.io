@@ -16,17 +16,24 @@
 }
 
 .header__navigation__item {
-  @extend .padding-tight-left;
-  @extend .padding-tight-right;
+  @extend .padding-medium-left;
+  @extend .padding-medium-right;
   @extend .margin-wide-left;
 
+  font-size: 1.1rem;
+  line-height: 2.2;
   float: left;
   border: 2px solid $header-navigation-color;
-  border-radius: 2px;
+  border-radius: 4px;
   color: $header-navigation-color;
   text-transform: uppercase;
 
   &:first-child {
     margin-left: 0;
+  }
+
+  &:hover {
+    border-color: lighten($header-navigation-color, 10%);
+    color: lighten($header-navigation-color, 10%)
   }
 }

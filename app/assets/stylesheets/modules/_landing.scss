@@ -1,0 +1,60 @@
+// TODO: document me
+.landing {}
+
+.landing__hero {
+  $landing-hero-image-url: 'landing/contour.png';
+
+  @include hidpi(2) { $landing-hero-image-url: 'landing/contour@2x.png'; }
+
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  height: 470px;
+  background: $landing-hero-background-color image-url($landing-hero-image-url) no-repeat center top;
+  background-size: auto 100%;
+
+  &:before {
+    @include box-shadow(0 -15px 20px rgba(#000, 0.25) inset);
+
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    bottom: 0;
+    left: -10%;
+    right: 0;
+    z-index: -1;
+  }
+}
+
+.landing__hero__header {
+  @extend .margin-tight-bottom;
+
+  font-size: 10rem;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.landing__hero__content {
+  padding-top: 50px;
+}
+
+.landing__signup {
+  @extend .padding-medium;
+  @extend .margin-wide-top;
+
+  border-radius: 4px;
+  display: inline-block;
+  line-height: 1;
+  border: 2px solid $landing-cta-color;
+  color: $landing-cta-color;
+}
+
+.landing__header {
+  background-color: transparent;
+}
+
+.landing__figure {
+  margin-left: -9%;
+  margin-top: -3%;
+}

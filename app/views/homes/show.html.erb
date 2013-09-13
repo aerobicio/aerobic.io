@@ -1,38 +1,26 @@
 <% view = HomesHelper::NewHomesHelper.new %>
 
 <%= extends :unauthenticated do %>
-  <% replace :title, t("homes.show.title")  %>
+  <% replace :title,          t("homes.show.title")  %>
+  <% append  :body_class,     ' landing' %>
+  <% replace :content_class,  'landing__content' %>
+  <% replace :header_class,   'landing__header' %>
 
-  <% append :body_class, ' landing-page' %>
-  <% replace :content_class, 'landing-page__content' %>
-  <% replace :header_class, 'landing-page__header' %>
+  <% prepend :page, '<div class="landing__hero">' %>
+  <% replace :content_inner do %>
+    <div class="landing__hero__content">
+      <article class="desk-span-five-columns">
+        <h1 class="landing__hero__header display-header">
+          <%= improve t("homes.show.landing.heading") %>
+        </h1>
+        <p><%= improve t("homes.show.landing.intro_copy") %></p>
+        <a href="#" class="landing__signup">Sign up for the Beta</a>
+      </article>
 
-  <% replace :content_outer do %>
-    <section class="landing-page__content ta-center" role="main">
-
-      <h1><%= t("homes.show.landing_page.heading") %></h1>
-      <p><%= t("homes.show.landing_page.intro_copy") %></p>
-
-      <form action="<%= view.newsletter_form_action %>">
-        <fieldset>
-          <legend>
-            <%= t(".landing_page.signup_form.copy") %>
-          </legend>
-          <div class="field">
-            <input
-              type="email"
-              placeholder="<%= t(".landing_page.signup_form.field_placeholder") %>"
-              name="<%= view.newsletter_form_field_name %>"
-              id="<%= view.newsletter_form_field_id %>"
-            >
-          </div>
-          <div class="actions">
-            <button type="submit">
-              <%= t(".landing_page.signup_form.submit_button") %>
-            </button>
-          </div>
-        </fieldset>
-      </form>
-    </section>
+      <figure class="landing__figure desk-span-five-columns">
+        <%= image_tag('landing/pulse@2x.png', height: '309', width: '633') %>
+      </figure>
+    </div>
   <% end %>
+  <% append :page, "</div>" %>
 <% end %>

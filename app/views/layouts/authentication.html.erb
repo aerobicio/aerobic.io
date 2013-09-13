@@ -1,0 +1,8 @@
+<%= extends :unauthenticated do %>
+  <% context = yield %>
+  <% replace :content do %>
+    <div class="dialog">
+      <%= area :dialog_content, context -%>
+    </div>
+  <% end %>
+<% end %>
