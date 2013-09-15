@@ -1,2 +1,4 @@
-require 'consistency_fail/enforcer'
-ConsistencyFail::Enforcer.enforce!
+unless Rails.env.production?
+  require 'consistency_fail/enforcer'
+  ConsistencyFail::Enforcer.enforce!
+end
