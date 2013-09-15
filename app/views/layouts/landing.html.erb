@@ -1,0 +1,6 @@
+<%= extends :unauthenticated do %>
+  <% append  :body_class, ' landing' %>
+  <% prepend :page, '<div class="landing__hero">' %>
+  <% prepend :content_outer, area(:landing_hero) %>
+  <% prepend :content_outer, '</div>' %>
+<% end %>

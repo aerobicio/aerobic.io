@@ -23,5 +23,14 @@ module HomesHelper
     def newsletter_form_field_id
       NEWSLETTER_FORM['field_id']
     end
+
+    def features
+      I18n.t('homes.show.landing.features').collect {|e|
+        {
+          title: e["title"],
+          content: e["content"]
+        }
+      }
+    end
   end
 end

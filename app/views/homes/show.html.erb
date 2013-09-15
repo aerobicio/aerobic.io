@@ -1,25 +1,28 @@
 <% view = HomesHelper::NewHomesHelper.new %>
 
-<%= extends :unauthenticated do %>
-  <% replace :title,          t("homes.show.title")  %>
+<%= extends :landing do %>
+  <% replace :title,          t(".title") %>
   <% append  :body_class,     ' landing' %>
-  <% replace :content_class,  'landing__content' %>
-  <% replace :header_class,   'landing__header' %>
 
-  <% prepend :page, '<div class="landing__hero">' %>
-  <% replace :content_inner do %>
-    <div class="landing__hero__content">
-      <article class="desk-span-five-columns">
+  <% replace :landing_hero do %>
+    <div class="landing__hero__content grid-container">
+      <article class="desk-span-five">
         <h1 class="landing__hero__header display-header">
-          <%= improve t("homes.show.landing.heading") %>
+          <%= improve t(".landing.heading") %>
         </h1>
-        <p><%= improve t("homes.show.landing.intro_copy") %></p>
-        <a href="#" class="landing__signup">Sign up for the Beta</a>
+        <p><%= improve t(".landing.intro_copy") %></p>
+        <%= link_to(t(".landing.call_to_action"), sign_up_path, class: "landing__signup", title: t(".landing.call_to_action")) %>
       </article>
 
-      <figure class="landing__figure desk-span-five-columns">
+      <figure class="landing__figure desk-span-five">
         <%= image_tag('landing/pulse@2x.png', height: '309', width: '633') %>
       </figure>
+    </div>
+  <% end %>
+
+  <% append :content_inner do %>
+    <div class="landing__features">
+      <%= render partial: 'feature', collection: view.features %>
     </div>
   <% end %>
   <% append :page, "</div>" %>

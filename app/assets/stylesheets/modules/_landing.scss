@@ -9,7 +9,7 @@
   overflow: hidden;
   position: relative;
   color: #fff;
-  height: 470px;
+  height: 430px;
   background: $landing-hero-background-color image-url($landing-hero-image-url) no-repeat center top;
   background-size: auto 100%;
 
@@ -57,4 +57,33 @@
 .landing__figure {
   margin-left: -9%;
   margin-top: -3%;
+}
+
+.landing__features {
+  @extend .margin-wide-top;
+  @extend .margin-wide-bottom;
+  @extend .padding-wide-top;
+  @extend .padding-wide-bottom;
+
+  clear: both;
+}
+
+.landing__features__feature {
+  @extend .margin-wide-bottom;
+  @extend .margin-wide-bottom;
+  @include clearfix;
+  @include prefixer(hyphens, auto, webkit moz ms spec);
+  @include prefixer(hyphenate-character, "\2010", webkit moz ms spec);
+  @include prefixer(hyphenate-limit-after, 1, webkit moz ms spec);
+  @include prefixer(hyphenate-limit-before, 3, webkit moz ms spec);
+  @include omega(3n);
+
+  text-align: center;
+  font-size: 12px;
+}
+
+.landing__features__heading {
+  margin-bottom: 1em;
+  text-transform: uppercase;
+  font-weight: bold;
 }

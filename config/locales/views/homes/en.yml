@@ -2,11 +2,33 @@ en:
   homes:
     show:
       title: "Welcome to aerobic.io — Coming Soon"
+
       landing:
         heading: "Train Better"
         intro_copy: "Aerobic.io makes planning your training, tracking your progress, and organising sessions with your friends easier. Coming soon."
+        call_to_action: "Sign up for the Beta"
+
         signup_form:
           copy: "Register below and we’ll send you an activation code when we’re ready for more testers."
           submit_button: "Sign Up"
           field_placeholder: "Your email here"
 
+        features:
+          -
+            title: Feature 1
+            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab mollitia at commodi obcaecati soluta nesciunt asperiores. Accusantium, consectetur, ipsam, odio, sint blanditiis iusto eos commodi tempora perspiciatis qui similique consequatur!"
+          -
+            title: Feature 2
+            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab mollitia at commodi obcaecati soluta nesciunt asperiores. Accusantium, consectetur, ipsam, odio, sint blanditiis iusto eos commodi tempora perspiciatis qui similique consequatur!"
+          -
+            title: Feature 3
+            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab mollitia at commodi obcaecati soluta nesciunt asperiores. Accusantium, consectetur, ipsam, odio, sint blanditiis iusto eos commodi tempora perspiciatis qui similique consequatur!"
+          -
+            title: Feature 4
+            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab mollitia at commodi obcaecati soluta nesciunt asperiores. Accusantium, consectetur, ipsam, odio, sint blanditiis iusto eos commodi tempora perspiciatis qui similique consequatur!"
+          -
+            title: Feature 5
+            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab mollitia at commodi obcaecati soluta nesciunt asperiores. Accusantium, consectetur, ipsam, odio, sint blanditiis iusto eos commodi tempora perspiciatis qui similique consequatur!"
+          -
+            title: Feature 6
+            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab mollitia at commodi obcaecati soluta nesciunt asperiores. Accusantium, consectetur, ipsam, odio, sint blanditiis iusto eos commodi tempora perspiciatis qui similique consequatur!"

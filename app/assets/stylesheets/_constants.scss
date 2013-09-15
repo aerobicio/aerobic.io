@@ -1,4 +1,4 @@
-$debug-mode:                false;
+$debug-mode:                true;
 
 // Root type sizing
 // ----------------------------------------
@@ -20,6 +20,7 @@ $column:                    10rem;
 $gutter:                    2rem;
 $grid-columns:              12;
 $max-width:                 em(1200);
+$visual-grid:               true;
 
 
 // Media Queries and Breakpoints
