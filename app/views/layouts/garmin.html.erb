@@ -1,0 +1,9 @@
+<%= extends :authenticated do %>
+  <%= append :head do %>
+    <style type="text/css" media="all">@import "communicator-api/garmin/device/style/communicator2.css";</style>
+  <% end %>
+  <%= append :js do %>
+    <%= javascript_include_tag "garmin", "data-turbolinks-track" => true %>
+    <script type="text/javascript" src="communicator-api/garmin/device/GarminDeviceDisplay.js">&#160;</script>
+  <% end %>
+<% end %>

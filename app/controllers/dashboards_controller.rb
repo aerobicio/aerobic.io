@@ -2,5 +2,6 @@
 #
 class DashboardsController < ApplicationController
   def show
+    @workouts = current_user.workouts.all
   end
 end
