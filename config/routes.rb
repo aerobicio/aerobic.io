@@ -9,6 +9,7 @@ AerobicIo::Application.routes.draw do
   resource :dashboard, only: [:show]
   resources :identities, only: [:new]
   resources :sessions, only: [:create, :new]
+  resource :upload, only: [ :show, :create ]
 
   unless Rails.env.production?
     resources :styleguide, only: [:show, :index], controller: "documentation/styleguide" do

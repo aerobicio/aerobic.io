@@ -1,5 +1,13 @@
 GIT
-  remote: git://github.com/plasticine/nestive.git
+  remote: https://github.com/aerobicio/fit.git
+  revision: e65ea01eb20dea137dd976e016a25b75609d3117
+  specs:
+    fit (0.0.2)
+      activesupport
+      bindata (~> 1.4)
+
+GIT
+  remote: https://github.com/plasticine/nestive.git
   revision: d741d0e130df7c23ee1fafd8e547a2231ad417dd
   specs:
     nestive (0.4.0)
@@ -36,6 +44,7 @@ GEM
     atomic (1.1.13)
     awesome_print (1.1.0)
     bcrypt-ruby (3.0.1)
+    bindata (1.5.0)
     bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
@@ -124,6 +133,8 @@ GEM
     parallel (0.8.0)
     pg (0.16.0)
     polyglot (0.3.3)
+    prototype-rails (3.2.0)
+      railties (>= 3.2.0.beta, < 5.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -234,14 +245,15 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
+  bindata
   bourbon
   cane
-  coffee-rails (~> 4.0.0)
   consistency_fail
   cucumber-rails
   database_cleaner
   dotenv-rails
   factory_girl_rails
+  fit!
   foreigner
   foreman
   jbuilder (~> 1.2)
@@ -253,6 +265,7 @@ DEPENDENCIES
   omniauth
   omniauth-identity
   pg
+  prototype-rails
   rails (= 4.0.0)
   rails_12factor
   rails_best_practices
