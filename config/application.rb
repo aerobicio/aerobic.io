@@ -19,7 +19,8 @@ module AerobicIo
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
-    # config.i18n.default_locale = :de
+
+    config.assets.precompile += ['garmin.js']
 
     config.lograge.enabled = true
     config.active_record.schema_format = :sql
