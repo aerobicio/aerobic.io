@@ -1,4 +1,4 @@
-if Rails.env.production?
+if Rails.env.production? && ENV['SENTRY_DSN']
   require 'raven'
 
   Raven.configure do |config|
