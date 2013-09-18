@@ -1,89 +1,130 @@
 // TODO: document me
-.landing {}
+.landing {
 
-.landing__hero {
-  $landing-hero-image-url: 'landing/contour.png';
+  .landing__hero {
+    $landing-hero-image-url: 'landing/contour.png';
 
-  @include hidpi(2) { $landing-hero-image-url: 'landing/contour@2x.png'; }
+    @include hidpi(2) { $landing-hero-image-url: 'landing/contour@2x.png'; }
 
-  overflow: hidden;
-  position: relative;
-  color: #fff;
-  height: 430px;
-  background: $landing-hero-background-color image-url($landing-hero-image-url) no-repeat center top;
-  background-size: auto 100%;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    height: 430px;
+    background: $landing-hero-background-color image-url($landing-hero-image-url) no-repeat center top;
+    background-size: auto 100%;
 
-  &:before {
-    @include box-shadow(0 -15px 20px rgba(#000, 0.25) inset);
+    &:before {
+      @include box-shadow(0 -15px 20px rgba(#000, 0.25) inset);
 
-    content: '';
-    position: absolute;
-    width: 120%;
-    height: 120%;
-    bottom: 0;
-    left: -10%;
-    right: 0;
-    z-index: -1;
+      content: '';
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      bottom: 0;
+      left: -10%;
+      right: 0;
+      z-index: -1;
+    }
   }
-}
 
-.landing__hero__header {
-  @extend .margin-tight-bottom;
+  .landing__hero__header {
+    @extend .margin-tight-bottom;
 
-  font-size: 10rem;
-  text-transform: uppercase;
-  line-height: 1;
-}
+    font-size: 10rem;
+    text-transform: uppercase;
+    line-height: 1;
 
-.landing__hero__content {
-  padding-top: 50px;
-}
+    & + p {
+      font-size: 1.6rem;
+      opacity: 0.8;
+    }
+  }
 
-.landing__signup {
-  @extend .padding-medium;
-  @extend .margin-wide-top;
+  .landing__hero__content {
+    padding-top: 20px;
+  }
 
-  border-radius: 4px;
-  display: inline-block;
-  line-height: 1;
-  border: 2px solid $landing-cta-color;
-  color: $landing-cta-color;
-}
+  %landing__row {
+    @include clearfix;
+    @include pad(9.6rem 0);
+  }
 
-.landing__header {
-  background-color: transparent;
-}
+  .landing__row__features,
+  .landing__row__signup {
+    @extend %landing__row;
+  }
 
-.landing__figure {
-  margin-left: -9%;
-  margin-top: -3%;
-}
+  .landing__row__signup {
+    margin: 0 auto;
+    background-color: #e8e6e1;
+  }
 
-.landing__features {
-  @extend .margin-wide-top;
-  @extend .margin-wide-bottom;
-  @extend .padding-wide-top;
-  @extend .padding-wide-bottom;
+  .landing__signup {
+    @extend .padding-medium;
+    @extend .margin-wide-top;
 
-  clear: both;
-}
+    border-radius: 4px;
+    border: 2px solid $landing-cta-color;
+    color: $landing-cta-color;
+    display: inline-block;
+    line-height: 1;
 
-.landing__features__feature {
-  @extend .margin-wide-bottom;
-  @extend .margin-wide-bottom;
-  @include clearfix;
-  @include prefixer(hyphens, auto, webkit moz ms spec);
-  @include prefixer(hyphenate-character, "\2010", webkit moz ms spec);
-  @include prefixer(hyphenate-limit-after, 1, webkit moz ms spec);
-  @include prefixer(hyphenate-limit-before, 3, webkit moz ms spec);
-  @include omega(3n);
+    &:hover,
+    &:focus {
+      border-color: lighten($landing-cta-color, 10%);
+      color: lighten($landing-cta-color, 10%)
+    }
+  }
 
-  text-align: center;
-  font-size: 12px;
-}
+  .landing__call-to-action {
+    @extend .padding-wide;
 
-.landing__features__heading {
-  margin-bottom: 1em;
-  text-transform: uppercase;
-  font-weight: bold;
+    text-align: center;
+    background-color: $feature-color;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    line-height: 1;
+    font-weight: 500;
+  }
+
+  .landing__header {
+    background-color: transparent;
+  }
+
+  .landing__figure {
+    @include animation(landing__pulse 1.2s $ease-in-out-quad);
+
+    margin-left: -8%;
+  }
+
+  .landing__features {
+    @extend .padding-superwide-top;
+    @extend .padding-superwide-bottom;
+    @include clearfix;
+
+    clear: both;
+  }
+
+  .landing__features__feature {
+    @include pad(0 1.25em 0 0);
+
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .landing__features__figure {
+    height: 42px;
+    width: 100%;
+    margin: 0 auto 1.5em auto;
+    text-align: center;
+    display: block;
+  }
+
+  .landing__features__heading {
+    margin-bottom: 1em;
+    font-weight: bold;
+  }
 }

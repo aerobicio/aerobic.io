@@ -20,10 +20,15 @@
     </div>
   <% end %>
 
-  <% append :content_inner do %>
-    <div class="landing__features">
+  <% append :landing_features do %>
+    <div class="grid-container">
       <%= render partial: 'feature', collection: view.features %>
     </div>
   <% end %>
-  <% append :page, "</div>" %>
+
+  <% append :landing_signup do %>
+    <div class="grid-container">
+      <%= link_to(t(".landing.call_to_action"), sign_up_path, class: "landing__call-to-action desk-span-four desk-shift-four", title: t(".landing.call_to_action")) %>
+    </div>
+  <% end %>
 <% end %>

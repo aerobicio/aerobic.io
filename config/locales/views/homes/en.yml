@@ -14,21 +14,11 @@ en:
           field_placeholder: "Your email here"
 
         features:
-          -
-            title: Feature 1
-            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab mollitia at commodi obcaecati soluta nesciunt asperiores. Accusantium, consectetur, ipsam, odio, sint blanditiis iusto eos commodi tempora perspiciatis qui similique consequatur!"
-          -
-            title: Feature 2
-            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab mollitia at commodi obcaecati soluta nesciunt asperiores. Accusantium, consectetur, ipsam, odio, sint blanditiis iusto eos commodi tempora perspiciatis qui similique consequatur!"
-          -
-            title: Feature 3
-            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab mollitia at commodi obcaecati soluta nesciunt asperiores. Accusantium, consectetur, ipsam, odio, sint blanditiis iusto eos commodi tempora perspiciatis qui similique consequatur!"
-          -
-            title: Feature 4
-            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab mollitia at commodi obcaecati soluta nesciunt asperiores. Accusantium, consectetur, ipsam, odio, sint blanditiis iusto eos commodi tempora perspiciatis qui similique consequatur!"
-          -
-            title: Feature 5
-            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab mollitia at commodi obcaecati soluta nesciunt asperiores. Accusantium, consectetur, ipsam, odio, sint blanditiis iusto eos commodi tempora perspiciatis qui similique consequatur!"
-          -
-            title: Feature 6
-            content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab mollitia at commodi obcaecati soluta nesciunt asperiores. Accusantium, consectetur, ipsam, odio, sint blanditiis iusto eos commodi tempora perspiciatis qui similique consequatur!"
+          - heading: "Plan your training"
+            content: "Wolf squid locavore pug aesthetic next level. Bitters single-origin coffee Carles, jean shorts tattooed brunch fixie cliche Neutra messenger bag readymade Terry Richardson."
+          - heading: "Track your progress"
+            content: "Wolf squid locavore pug aesthetic next level. Bitters single-origin coffee Carles, jean shorts tattooed brunch fixie cliche Neutra messenger bag readymade Terry Richardson."
+          - heading: "Train with your friends"
+            content: "Wolf squid locavore pug aesthetic next level. Bitters single-origin coffee Carles, jean shorts tattooed brunch fixie cliche Neutra messenger bag readymade Terry Richardson."
+          - heading: "Racing and Events"
+            content: "Wolf squid locavore pug aesthetic next level. Bitters single-origin coffee Carles, jean shorts tattooed brunch fixie cliche Neutra messenger bag readymade Terry Richardson."

@@ -1,8 +1,8 @@
 .page {
-  @include display-box;
-  @include box-align(stretch);
-  @include box-orient(vertical);
-  @include box-pack(start);
+  // @include display-box;
+  // @include box-align(stretch);
+  // @include box-orient(vertical);
+  // @include box-pack(start);
 
   height: 100%;
 }
@@ -10,7 +10,7 @@
 .header {}
 
 .content {
-  @include box-flex(1);
+  // @include box-flex(1);
 }
 
 .grid-container {

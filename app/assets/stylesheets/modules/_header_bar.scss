@@ -8,7 +8,14 @@
 }
 
 .header__masthead {
+  @include hide-text;
+
+  display: block;
   float: left;
+  background:transparent image-url('masthead@2x.png') left top no-repeat;
+  background-size: 100%;
+  width: 147px;
+  height: 22px;
 }
 
 .header__navigation {
@@ -20,19 +27,20 @@
   @extend .padding-medium-right;
   @extend .margin-wide-left;
 
+  border-radius: 4px;
+  border: 2px solid $header-navigation-color;
+  color: $header-navigation-color;
+  float: left;
   font-size: 1.1rem;
   line-height: 2.2;
-  float: left;
-  border: 2px solid $header-navigation-color;
-  border-radius: 4px;
-  color: $header-navigation-color;
   text-transform: uppercase;
 
   &:first-child {
     margin-left: 0;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     border-color: lighten($header-navigation-color, 10%);
     color: lighten($header-navigation-color, 10%)
   }

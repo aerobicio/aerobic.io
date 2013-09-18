@@ -1,3 +1,6 @@
 .footer {
-  font-size: 1.1rem;
+  @extend .padding-wide-top;
+  @extend .padding-wide-bottom;
+
+  color: $demphasise-color;
 }

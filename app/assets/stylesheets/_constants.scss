@@ -1,4 +1,4 @@
-$debug-mode:                true;
+$debug-mode:                false;
 
 // Root type sizing
 // ----------------------------------------
@@ -12,6 +12,7 @@ $line-height-ratio:         1.5;
 $_spacing-tight:            0.7rem;
 $_spacing-medium:           1.4rem;
 $_spacing-wide:             2.8rem;
+$_spacing-superwide:        3.6rem;
 
 // Grid & layout structure
 // ----------------------------------------
@@ -74,8 +75,11 @@ $_breakpoints: (
 // Branding and Style
 // ----------------------------------------
 $font-family: 'Proxima Nova Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-family: 'Proxima Nova Regular', Times;
 $background-color: #edf0f3;
-$landing-hero-background-color: #243f55;
-$landing-cta-color: #7b949f;
+$feature-color: #f05d5c;
+$landing-hero-background-color: #093950;
 $header-navigation-color: #3f687a;
+$landing-cta-color: $header-navigation-color;
 $header-bar-background-color: transparent;
+$demphasise-color: #aaa;

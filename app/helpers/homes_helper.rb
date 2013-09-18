@@ -25,10 +25,10 @@ module HomesHelper
     end
 
     def features
-      I18n.t('homes.show.landing.features').collect {|e|
+      I18n.t('homes.show.landing.features').collect {|feature|
         {
-          title: e["title"],
-          content: e["content"]
+          heading: feature["heading"],
+          content: feature["content"]
         }
       }
     end
