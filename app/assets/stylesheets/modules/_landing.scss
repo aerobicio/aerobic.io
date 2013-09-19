@@ -14,8 +14,7 @@
     background-size: auto 100%;
 
     &:before {
-      @include box-shadow(0 -15px 20px rgba(#000, 0.25) inset);
-
+      box-shadow: 0 -15px 20px rgba(#000, 0.25) inset;
       content: '';
       position: absolute;
       width: 120%;
