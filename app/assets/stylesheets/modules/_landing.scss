@@ -44,6 +44,22 @@
     padding-top: 20px;
   }
 
+  .landing__signup__link {
+    @extend .header__navigation__item;
+    @extend .margin-wide-top;
+    @extend .padding-tight;
+    @extend .padding-wide-left;
+    @extend .padding-wide-right;
+
+    display: inline-block;
+    border-radius: 4px;
+    border: 2px solid rgba(#fff, 0.35);
+    color: rgba(#fff, 0.35);
+    font-size: inherit;
+    text-transform: none;
+    margin-left: 0;
+  }
+
   %landing__row {
     @include clearfix;
     @include pad(9.6rem 0);
@@ -59,23 +75,6 @@
     background-color: #e8e6e1;
   }
 
-  .landing__signup {
-    @extend .padding-medium;
-    @extend .margin-wide-top;
-
-    border-radius: 4px;
-    border: 2px solid $landing-cta-color;
-    color: $landing-cta-color;
-    display: inline-block;
-    line-height: 1;
-
-    &:hover,
-    &:focus {
-      border-color: lighten($landing-cta-color, 10%);
-      color: lighten($landing-cta-color, 10%)
-    }
-  }
-
   .landing__call-to-action {
     @extend .padding-wide;
 
@@ -86,10 +85,6 @@
     display: block;
     line-height: 1;
     font-weight: 500;
-  }
-
-  .landing__header {
-    background-color: transparent;
   }
 
   .landing__figure {
@@ -116,15 +111,121 @@
   }
 
   .landing__features__figure {
+    display: block;
     height: 42px;
-    width: 100%;
     margin: 0 auto 1.5em auto;
     text-align: center;
-    display: block;
+    width: 100%;
   }
 
   .landing__features__heading {
     margin-bottom: 1em;
     font-weight: bold;
+  }
+
+  .landing__signup {
+    @include prefixer(perspective, 1000, webkit moz o spec);
+
+    text-align: center;
+  }
+
+  .landing__signup__message {
+    @extend .margin-wide-bottom;
+
+    opacity: 0.35;
+  }
+
+  .landing__signup__card {
+    @include transition(transition-property-names(transform, webkit) 350ms $ease-in-out-quad);
+    @include transform-style(preserve-3d);
+    @include font-size(1.8);
+
+    position: relative;
+    height: 100px;
+    width: 100%;
+
+    &:hover {
+      @include transform(rotateX(180deg));
+    }
+  }
+
+  .landing__signup__card__front,
+  .landing__signup__card__back {
+    @include prefixer(backface-visibility, hidden, webkit moz o spec);
+
+    border-radius: 4px;
+    border-width: 2px;
+    border-style: solid;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: table;
+    width: 100%;
+    overflow: hidden;
+    vertical-align: middle;
+  }
+
+  .landing__signup__card__front {
+    background-color: transparent;
+    border-color: $feature-color;
+  }
+
+  .landing__signup__card__back {
+    @include transform(rotateX(180deg));
+
+    border-color: #9BC948;
+    background-color: #9BC948;
+    color: #fff;
+  }
+
+  .landing__signup__card__cell {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .landing__signup__card__cell--input {
+    @extend .landing__signup__card__cell;
+
+    width: 100%;
+  }
+
+  .landing__signup__input,
+  .landing__signup__button {
+    @extend .padding-superwide;
+    @extend .padding-superwide-left;
+    @extend .padding-superwide-right;
+    @include font-size(1.8);
+
+    border: none;
+    height: 100%;
+  }
+
+  .landing__signup__input {
+    background-color: transparent;
+    border-right: none;
+    font-weight: 500;
+    width: 100%;
+    display: block;
+  }
+
+  .landing__signup__button {
+    display: block;
+    background-color: $feature-color;
+    border: none;
+    color: rgba(#fff, 0.35);
+    padding-left: get_spacing(superwide) * 2;
+    padding-right: get_spacing(superwide) * 2;
+    text-align: center;
+    white-space: nowrap;
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      cursor: pointer;
+    }
   }
 }

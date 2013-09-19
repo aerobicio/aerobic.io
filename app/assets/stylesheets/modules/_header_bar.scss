@@ -2,7 +2,8 @@
 .header {}
 
 .header__inner {
-  @extend .padding-wide;
+  @extend .padding-wide-top;
+  @extend .padding-wide-bottom;
 
   overflow: auto;
 }
@@ -23,6 +24,8 @@
 }
 
 .header__navigation__item {
+  @include transition(all 350ms $ease-in-out-quad);
+
   @extend .padding-medium-left;
   @extend .padding-medium-right;
   @extend .margin-wide-left;
@@ -41,7 +44,7 @@
 
   &:hover,
   &:focus {
-    border-color: lighten($header-navigation-color, 10%);
-    color: lighten($header-navigation-color, 10%)
+    border-color: lighten($header-navigation-color, 25%);
+    color: lighten($header-navigation-color, 25%)
   }
 }

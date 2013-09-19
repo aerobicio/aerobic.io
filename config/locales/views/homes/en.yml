@@ -9,16 +9,23 @@ en:
         call_to_action: "Sign up for the Beta"
 
         signup_form:
-          copy: "Register below and we’ll send you an activation code when we’re ready for more testers."
+          call_to_action: "Register below and we’ll send you an activation code when we’re ready for more testers."
           submit_button: "Sign Up"
           field_placeholder: "Your email here"
+          complete_heading: "Awesome, thanks for signing up!"
+          complete_subheading: "We’ll let you know when we need more testers"
 
         features:
-          - heading: "Plan your training"
-            content: "Wolf squid locavore pug aesthetic next level. Bitters single-origin coffee Carles, jean shorts tattooed brunch fixie cliche Neutra messenger bag readymade Terry Richardson."
+          # groups / teams / clubs
+          - heading: "Plan ahead"
+            content: "Aerobic keep you motivated by helping you plan your training, milestones and goals ahead of time."
+            image: ""
           - heading: "Track your progress"
-            content: "Wolf squid locavore pug aesthetic next level. Bitters single-origin coffee Carles, jean shorts tattooed brunch fixie cliche Neutra messenger bag readymade Terry Richardson."
+            content: "Get the most out of your training. Aerobic will tell you when you’re hitting your goals, and when you aren’t."
+            image: ""
           - heading: "Train with your friends"
-            content: "Wolf squid locavore pug aesthetic next level. Bitters single-origin coffee Carles, jean shorts tattooed brunch fixie cliche Neutra messenger bag readymade Terry Richardson."
+            content: "Plan workouts together. Know where you’re working out, when and who’s coming."
+            image: ""
           - heading: "Racing and Events"
-            content: "Wolf squid locavore pug aesthetic next level. Bitters single-origin coffee Carles, jean shorts tattooed brunch fixie cliche Neutra messenger bag readymade Terry Richardson."
+            content: "..."
+            image: ""

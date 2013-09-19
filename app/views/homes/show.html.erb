@@ -11,7 +11,7 @@
           <%= improve t(".landing.heading") %>
         </h1>
         <p><%= improve t(".landing.intro_copy") %></p>
-        <%= link_to(t(".landing.call_to_action"), sign_up_path, class: "landing__signup", title: t(".landing.call_to_action")) %>
+        <%= link_to(t(".landing.call_to_action"), '#landing-signup', class: "landing__signup__link", title: t(".landing.call_to_action")) %>
       </article>
 
       <figure class="landing__figure desk-span-five">
@@ -27,8 +27,28 @@
   <% end %>
 
   <% append :landing_signup do %>
-    <div class="grid-container">
-      <%= link_to(t(".landing.call_to_action"), sign_up_path, class: "landing__call-to-action desk-span-four desk-shift-four", title: t(".landing.call_to_action")) %>
+    <div class="grid-container" id="landing-signup">
+      <%= form_tag(view.newsletter_form_action, method: :post, class: 'landing__signup desk-span-eight desk-shift-two') do -%>
+        <p class="landing__signup__message"><%= improve t(".landing.signup_form.call_to_action") %></p>
+        <div class="landing__signup__card">
+          <div class="landing__signup__card__front">
+            <div class="landing__signup__fields">
+              <div class="landing__signup__card__cell--input">
+                <%= email_field_tag(view.newsletter_form_field_name, '', placeholder: t(".landing.signup_form.field_placeholder"), class: 'landing__signup__input') %>
+              </div>
+              <div class="landing__signup__card__cell">
+                <%= button_tag(t(".landing.signup_form.submit_button"), class: 'landing__signup__button') %>
+              </div>
+            </div>
+          </div>
+          <div class="landing__signup__card__back">
+            <div class="landing__signup__card__cell">
+              <h3><%=  t(".landing.signup_form.complete_heading") %></h3>
+              <h5><%=  t(".landing.signup_form.complete_subheading") %></h5>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   <% end %>
 <% end %>
