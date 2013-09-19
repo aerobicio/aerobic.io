@@ -20,18 +20,18 @@ $_grid-prefix:              unquote("");
 $column:                    10rem;
 $gutter:                    2rem;
 $grid-columns:              12;
-$max-width:                 em(1200);
+$max-width:                 130rem;
 $visual-grid:               true;
 
 
 // Media Queries and Breakpoints
 // ----------------------------------------
-$_palm-start:               320px;
-$_lap-start:                481px;
-$_desk-start:               980px;
-$_micro-palm-end:           $_palm-start - 1px;
-$_palm-end:                 $_lap-start  - 1px;
-$_lap-end:                  $_desk-start - 1px;
+$_palm-start:               32rem;
+$_lap-start:                48.1rem;
+$_desk-start:               98rem;
+$_micro-palm-end:           $_palm-start - 0.1rem;
+$_palm-end:                 $_lap-start  - 0.1rem;
+$_lap-end:                  $_desk-start - 0.1rem;
 
 // Helper breakpoints for orientation
 $portrait:                  new-breakpoint(orientation portrait);
