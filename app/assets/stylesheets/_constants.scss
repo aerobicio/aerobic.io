@@ -2,9 +2,7 @@ $debug-mode:                false;
 
 // Root type sizing
 // ----------------------------------------
-$base-font-size:            1.1em;
-$base-font-size:            14px;
-$base-line-height:          1.6;
+$base-font-size:            1.1;
 $line-height-ratio:         1.5;
 
 // Spacing units and sizings
@@ -75,10 +73,9 @@ $_breakpoints: (
 // Branding and Style
 // ----------------------------------------
 $font-family: 'Proxima Nova Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$font-family: 'Proxima Nova Regular', Times;
 $background-color: #edf0f3;
 $feature-color: #f05d5c;
-$landing-hero-background-color: #093950;
+$landing-hero-background-color: #093A51;
 $header-navigation-color: #3f687a;
 $landing-cta-color: $header-navigation-color;
 $header-bar-background-color: transparent;
