@@ -2,9 +2,11 @@
 .landing {
 
   .landing__hero {
-    $landing-hero-image-url: 'landing/contour@2x.png';
+    $landing-hero-image-url: 'landing/contour.png';
 
-    @include hidpi(2) { $landing-hero-image-url: 'landing/contour@2x.png'; }
+    @include hidpi(2) {
+      $landing-hero-image-url: 'landing/contour@2x.png';
+    }
 
     overflow: hidden;
     position: relative;
@@ -175,8 +177,8 @@
   .landing__signup__card__back {
     @include transform(rotateX(180deg));
 
-    border-color: #9ECA51;
-    background-color: #9ECA51;
+    border-color: $positive-color;
+    background-color: $positive-color;
     color: #fff;
   }
 
