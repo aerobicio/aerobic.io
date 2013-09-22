@@ -38,7 +38,7 @@ build:
             code: RAILS_ENV=test bundle exec consistency_fail
         - script:
             name: teaspoon
-            code: "bundle exec rake teaspoon"
+            code: bundle exec teaspoon
         - script:
             name: rspec
             code: bundle exec rspec --format=progress
