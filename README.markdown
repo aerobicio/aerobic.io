@@ -32,9 +32,10 @@ As part of the bootstrap process we install a few binstubs:
 
 We use three types of tests in the project:
 
-1. Unit Tests (both Ruby and Javascript)
+1. Unit Tests
 2. Acceptance Tests
-3. Static Analysis Tools
+3. Javascript Tests
+4. Static Analysis Tools
 
 To find out more about how we use each of these types of tests, please read
 the [testing strategy document](https://github.com/quamen/aerobic.io/blob/master/doc/testing_strategy.markdown).
