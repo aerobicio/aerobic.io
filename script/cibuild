@@ -19,6 +19,7 @@ rake db:migrate
 rake assets:precompile
 
 run_command "bin/consistency_fail"
+run_command "rake teaspoon"
 run_command "rake spec"
 run_command "rake cucumber"
 

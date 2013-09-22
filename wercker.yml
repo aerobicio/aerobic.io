@@ -26,14 +26,14 @@ build:
             name: consistency fail
             code: RAILS_ENV=test bundle exec consistency_fail
         - script:
+            name: teaspoon
+            code: "bundle exec rake teaspoon"
+        - script:
             name: rspec
             code: bundle exec rspec --format=progress
         - script:
             name: cucumber
             code: bundle exec cucumber
-        - script:
-            name: teaspoon
-            code: "teaspoon --coverage --coverage-reports text,html"
         - script:
             name: quality
             code: bundle exec rake quality
