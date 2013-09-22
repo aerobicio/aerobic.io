@@ -13,7 +13,6 @@ en:
           submit_button: "Sign Up"
           field_placeholder: "Your email here"
           complete_heading: "Awesome, thanks for signing up!"
-          complete_subheading: "We’ll let you know when we need more testers"
 
         features:
           # groups / teams / clubs
