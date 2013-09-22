@@ -1,5 +1,5 @@
 Given(/^the following feature is off$/) do
-  pending # express the regexp above with the code you wish you had
+  $switch_board.deactivate_following
 end
 
 Given(/^I am following another member$/) do
@@ -19,7 +19,7 @@ Then(/^I should not be able to follow them$/) do
 end
 
 Given(/^the following feature is on$/) do
-  pending # express the regexp above with the code you wish you had
+  $switch_board.activate_following
 end
 
 When(/^I follow another member$/) do
@@ -48,4 +48,4 @@ end
 
 Then(/^members who follow me should not see that fact in their activity feed$/) do
   pending # express the regexp above with the code you wish you had
-  endi
+end
