@@ -21,8 +21,10 @@ en:
         handle: "@plasticine"
         url: https://twitter.com/plasticine
     twitter:
-      label: Aerobic.io on Twitter
+      label: Twitter
+      title: Aerobic.io on Twitter
       url: https://twitter.com/aerobicio
     github:
-      label: Aerobic.io on Github
+      label: Github
+      title: Aerobic.io on Github
       url: https://github.com/aerobicio
