@@ -29,7 +29,7 @@ Teaspoon.setup do |config|
     # these files are serve-able from sprockets.
     #
     # Note: Can also be set to nil.
-    suite.matcher = "{spec/javascripts,app/assets}/**/*_spec.{js,js.coffee,coffee}"
+    suite.matcher = "spec/javascripts/specs.coffee"
 
     # Each suite can load a different helper, which can in turn require additional files. This file is loaded before
     # your specs are loaded, and can be used as a manifest.
@@ -42,7 +42,7 @@ Teaspoon.setup do |config|
     # Available frameworks: teaspoon-jasmine, teaspoon-mocha, teaspoon-qunit
     #
     # Note: To use the CoffeeScript source files use `"teaspoon/mocha"` etc.
-    suite.javascripts = ["teaspoon-mocha"]
+    suite.javascripts = ["teaspoon/mocha", "support/chai", "support/sinon"]
 
     # If you want to change how Teaspoon looks, or include your own stylesheets you can do that here. The default is the
     # stylesheet for the HTML reporter.
