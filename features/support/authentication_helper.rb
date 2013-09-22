@@ -9,6 +9,13 @@ def create_registered_account
   $switch_board.deactivate_sign_up
 end
 
+def register_another_member
+  sign_out
+  @original_identity = @identity
+  create_registered_account
+  sign_in
+end
+
 def sign_in(password = @password)
   visit sign_in_path
   fill_in(I18n.t("sessions.new.auth_key"), with: @identity.email)

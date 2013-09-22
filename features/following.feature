@@ -5,6 +5,7 @@ Feature: Following
 
   Background:
     Given I am a member
+    And another member follows me
 
   @flip @following @off
   Scenario: A member cannot unfollow another member when the feature is off

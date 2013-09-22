@@ -11,7 +11,11 @@ AerobicIo::Application.routes.draw do
   resources :sessions, only: [:create, :new]
   resource :upload, only: [ :show, :create ]
 
-  resources :members, only: [:index]
+  resources :members, only: [:index] do
+    member do
+      post "follow"
+    end
+  end
 
   unless Rails.env.production?
     resources :styleguide, only: [:show, :index], controller: "documentation/styleguide" do

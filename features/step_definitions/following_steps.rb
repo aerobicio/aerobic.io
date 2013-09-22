@@ -1,20 +1,28 @@
+Given(/^another member follows me$/) do
+  register_another_member
+  $switch_board.activate_following
+  visit members_path
+  click_button "Follow"
+  @another_member_who_follows_me = @identity
+  $switch_board.deactivate_following
+end
+
 Given(/^the following feature is off$/) do
   $switch_board.deactivate_following
 end
 
 Given(/^I am following another member$/) do
-  pending # express the regexp above with the code you wish you had
+  # This step is kinda pointless but left in for later usage and feature
+  # completeness.
 end
 
 Then(/^I should not be able to unfollow them$/) do
-  pending # express the regexp above with the code you wish you had
+  visit members_path
+  page.should have_content("The page you were looking for doesn't exist")
 end
 
 Given(/^I am not following another member$/) do
-  sign_out
-  @original_identity = @identity
-  create_registered_account
-  sign_in
+  register_another_member
   sign_out
   @identity = @original_identity
   sign_in
@@ -30,7 +38,8 @@ Given(/^the following feature is on$/) do
 end
 
 When(/^I follow another member$/) do
-  pending # express the regexp above with the code you wish you had
+  visit members_path
+  click_button "Follow"
 end
 
 Then(/^I should see that fact in my activity feed$/) do

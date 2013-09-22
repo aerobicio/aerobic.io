@@ -16,5 +16,9 @@ module Domain
     def self.all
       User.all.map { |user| self.new(user) }
     end
+
+    def follow(member)
+      true
+    end
   end
 end
