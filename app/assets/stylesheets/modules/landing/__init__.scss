@@ -11,6 +11,10 @@
   padding-bottom: 8rem;
 
   @include media($lap-and-up) {
+    @include pad(10rem 0);
+  }
+
+  @include media($desk) {
     @include pad(16rem 0);
   }
 }

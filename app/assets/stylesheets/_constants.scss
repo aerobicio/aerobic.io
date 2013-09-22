@@ -65,7 +65,7 @@ $lap-and-up:                new-breakpoint(min-width $_lap-start 12);
 
 // TVs, Desktop computers, non-portable large format
 // $desk:                   [980px   ->    $max-width]
-$desk:                      new-breakpoint(min-width $_desk-start max-width 1200px 12);
+$desk:                      new-breakpoint(min-width $_desk-start 12);
 
 // private major structural breakpoints
 $_breakpoints: (

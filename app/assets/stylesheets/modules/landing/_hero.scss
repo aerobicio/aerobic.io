@@ -25,8 +25,13 @@
 
 .landing__hero__article {
   @include media($lap-and-up) {
-    @include span-columns(4);
+    @include span-columns(8);
     @include shift(2);
+  }
+
+  @include media($desk) {
+    @include span-columns(5);
+    @include shift(1);
   }
 }
 
@@ -38,6 +43,10 @@
   text-align: center;
 
   @include media($lap-and-up) {
+    @include font-size(8, 1);
+  }
+
+  @include media($desk) {
     @include font-size(10, 1);
 
     text-align: left;
@@ -51,10 +60,13 @@
     text-align: center;
 
     @include media($lap-and-up) {
-      @include font-size(1.6);
+      @include font-size(1.5);
 
-      text-align: left;
       padding: 0;
+    }
+
+    @include media($desk) {
+      @include font-size(1.6);
     }
   }
 }
@@ -78,24 +90,32 @@
   float: none;
 
   @include media($lap-and-up) {
+    @include font-size(1.2, 2);
+  }
+
+  @include media($desk) {
+    @include font-size(1.6);
+
     display: inline-block;
     margin-left: 0;
   }
 }
 
 .landing__hero__content {
+  padding-top: 2rem;
+
   @include media($lap-and-up) {
     @include span-columns(12);
   }
-
-  padding-top: 2rem;
 }
 
 .landing__hero__figure {
   display: none;
 
-  @include media($lap-and-up) {
-    @include span-columns(5);
+  @include media($desk) {
+    @include span-columns(7);
     @include animation(landing__pulse 1.2s $ease-in-out-quad);
+
+    display: block;
   }
 }
