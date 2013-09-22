@@ -45,7 +45,6 @@
 .landing__signup__card {
   @include transition(transition-property-names(transform, webkit) 350ms $ease-in-out-quad);
   @include transform-style(preserve-3d);
-  @include font-size(1.8);
 
   position: relative;
   height: 5rem;
@@ -54,8 +53,8 @@
     @include transform(rotateX(180deg));
   }
 
-  @include media($lap-and-up) {
-    height: 10rem;
+  @include media($desk) {
+    height: 8rem;
   }
 }
 
@@ -68,8 +67,6 @@
   border-style: solid;
   position: absolute;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
   width: 100%;
   overflow: hidden;
