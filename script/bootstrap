@@ -21,7 +21,7 @@ bundle binstubs rspec-core --force
 bundle binstubs cucumber --force
 bundle binstubs rails_best_practices --force
 bundle binstubs consistency_fail --force
-bundle binstubs teaspooon --force
+bundle binstubs teaspoon --force
 npm install
 bower install
 
