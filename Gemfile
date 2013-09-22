@@ -35,6 +35,7 @@ group :development, :test do
   gem "kss"
   gem "rails_best_practices"
   gem "rspec-rails", "~> 2.0"
+  gem "teaspoon"
 end
 
 group :doc do
