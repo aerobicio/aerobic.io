@@ -25,3 +25,4 @@
 *.sublime-*
 
 /public/assets
+/node_modules
