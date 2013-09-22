@@ -22,6 +22,9 @@ module AerobicIo
 
     config.assets.precompile += ['garmin.js']
 
+    config.assets.paths << "vendor/assets/components"
+
+
     config.lograge.enabled = true
     config.active_record.schema_format = :sql
   end
