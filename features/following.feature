@@ -3,6 +3,9 @@ Feature: Following
   As a member
   I want to be able to follow other members
 
+  Background:
+    Given I am a member
+
   @flip @following @off
   Scenario: A member cannot unfollow another member when the feature is off
     Given the following feature is off

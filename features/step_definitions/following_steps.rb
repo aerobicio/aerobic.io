@@ -11,11 +11,18 @@ Then(/^I should not be able to unfollow them$/) do
 end
 
 Given(/^I am not following another member$/) do
-  pending # express the regexp above with the code you wish you had
+  sign_out
+  @original_identity = @identity
+  create_registered_account
+  sign_in
+  sign_out
+  @identity = @original_identity
+  sign_in
 end
 
 Then(/^I should not be able to follow them$/) do
-  pending # express the regexp above with the code you wish you had
+  visit members_path
+  page.should have_content("The page you were looking for doesn't exist")
 end
 
 Given(/^the following feature is on$/) do
