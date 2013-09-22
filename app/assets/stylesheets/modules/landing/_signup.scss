@@ -50,7 +50,7 @@
   position: relative;
   height: 5rem;
 
-  &:hover, & {
+  &:hover {
     @include transform(rotateX(180deg));
   }
 
