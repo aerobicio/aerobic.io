@@ -27,12 +27,26 @@ module HomesHelper
     end
 
     def features
-      I18n.t('homes.show.landing.features').collect {|feature|
-        {
-          heading: feature["heading"],
-          content: feature["content"]
-        }
-      }
+      I18n.t('homes.show.landing.features').collect do |feature|
+        Feature.new(feature["heading"], feature["content"], feature["image"])
+      end
+    end
+
+    # Features are rendered onto the landing page. The sole purpose of this
+    # object is to make rendering in views simpler.
+    #
+    class Feature
+      attr_reader :heading, :content, :image
+
+      def initialize(heading, content, image)
+        @heading = heading
+        @content = content
+        @image = image
+      end
+
+      def to_partial_path
+        "feature"
+      end
     end
   end
 end
