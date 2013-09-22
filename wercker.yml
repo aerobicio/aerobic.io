@@ -6,7 +6,7 @@ build:
     # The steps that will be executed on build
     steps:
         # A step that will ensure that phantomjs is available
-        - install-phantomjs
+        - aussiegeek/install-phantomjs@0.0.3
         # A step that executes `npm install`
         - npm-install
         # A step that executes `bower install`
