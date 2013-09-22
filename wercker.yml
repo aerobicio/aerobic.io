@@ -5,16 +5,16 @@ services:
 build:
     # The steps that will be executed on build
     steps:
+        # A step that executes `bundle install` command
+        - bundle-install
+        # A step that prepares the database.yml with settings from the database you defined in services
+        - rails-database-yml
         # A step that will ensure that phantomjs is available
         - aussiegeek/install-phantomjs@0.0.3
         # A step that executes `npm install`
         - npm-install
         # A step that executes `bower install`
         - plasticine/bower-install@0.0.1
-        # A step that executes `bundle install` command
-        - bundle-install
-        # A step that prepares the database.yml with settings from the database you defined in services
-        - rails-database-yml
         # A custom script step, name value is used in the UI
         # and the code value contains the command that get executed
         - script:
