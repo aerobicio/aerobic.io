@@ -20,19 +20,8 @@ Feature: Following
     Given the following feature is on
     When I follow another member
     Then I should see that fact in my activity feed
+    And the member I followed should see that fact in their activity feed
     And members who follow me should see that fact in their activity feed
-
-  @flip @following @on
-  Scenario: A member can be followed by another member when the feature is on
-    Given the following feature is on
-    When another member follows me
-    Then I should see that fact in my activity feed
-
-  @flip @following @on
-  Scenario: A member can unfollow another member when the feature is on
-    Given the following feature is on
-    When another member unfollows me
-    Then I should not see that fact in my activity feed
 
   @flip @following @on
   Scenario: A member can unfollow another member when the feature is on
@@ -40,4 +29,5 @@ Feature: Following
     And I am following another member
     When I unfollow another member
     Then I should see that fact in my activity feed
+    And the member I unfollowed should not see that fact in their activity feed
     And members who follow me should not see that fact in their activity feed
