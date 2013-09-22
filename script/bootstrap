@@ -13,6 +13,7 @@ check_version "ruby -v"
 check_version "gem -v"
 check_version "bundle -v"
 check_version "psql --version"
+check_version "phantomjs --version"
 
 bundle
 bundle binstubs rspec-core --force
