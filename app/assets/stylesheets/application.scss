@@ -1,15 +1,10 @@
 @charset "utf-8";
 
-// External Mixins
+// External Mixins and Constants
 // ----------------------------------------
 @import "bourbon";
-@import "neat";
-@import "neat-helpers";
-
-
-// Constants
-// ----------------------------------------
 @import "constants";
+@import "neat";
 
 
 // Fonts

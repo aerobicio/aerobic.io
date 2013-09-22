@@ -2,8 +2,7 @@
 .header {}
 
 .header__inner {
-  @extend .padding-wide-top;
-  @extend .padding-wide-bottom;
+  @extend .padding-medium;
 
   overflow: auto;
 }

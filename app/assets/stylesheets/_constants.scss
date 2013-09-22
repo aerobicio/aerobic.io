@@ -1,3 +1,5 @@
+@import "neat-helpers";
+
 $debug-mode:                false;
 
 // Root type sizing
@@ -17,19 +19,22 @@ $_spacing-superwide:        3.6rem;
 $_grid-prefix:              unquote("");
 $column:                    10rem;
 $gutter:                    2rem;
-$grid-columns:              12;
-$max-width:                 130rem;
-$visual-grid:               true;
+$grid-columns:              6;
+$max-width:                 140rem;
+$visual-grid:               false;
+$visual-grid-index:         front;
+$visual-grid-color:         #C75D48;
+$visual-grid-opacity:       0.05;
 
 
 // Media Queries and Breakpoints
 // ----------------------------------------
-$_palm-start:               32rem;
-$_lap-start:                48.1rem;
-$_desk-start:               98rem;
-$_micro-palm-end:           $_palm-start - 0.1rem;
-$_palm-end:                 $_lap-start  - 0.1rem;
-$_lap-end:                  $_desk-start - 0.1rem;
+$_palm-start:               320px;
+$_lap-start:                481px;
+$_desk-start:               980px;
+$_micro-palm-end:           $_palm-start - 1px;
+$_palm-end:                 $_lap-start  - 1px;
+$_lap-end:                  $_desk-start - 1px;
 
 // Helper breakpoints for orientation
 $portrait:                  new-breakpoint(orientation portrait);
@@ -48,7 +53,7 @@ $palm:                      new-breakpoint(min-width $_micro-palm-end max-width 
 
 // Everything from $palm and up
 // $palm-and-up:            [320px   ->    $max-width]
-$palm-and-up:               new-breakpoint(min-width $_micro-palm-end min-height 430px);
+$palm-and-up:               new-breakpoint(min-width $_micro-palm-end 6);
 
 // for devices that are not handheld, but are portable, like tablets/laptops.
 // $lap:                    [481px   ->    979px]
@@ -56,11 +61,11 @@ $lap:                       new-breakpoint(min-width $_lap-start 12);
 
 // Everything from $lap and up
 // $lap-and-up:             [481px   ->    $max-width]
-$lap-and-up:                new-breakpoint(min-width $_lap-start min-height 650px 12);
+$lap-and-up:                new-breakpoint(min-width $_lap-start 12);
 
 // TVs, Desktop computers, non-portable large format
 // $desk:                   [980px   ->    $max-width]
-$desk:                      new-breakpoint(min-width $_desk-start 12);
+$desk:                      new-breakpoint(min-width $_desk-start max-width 1200px 12);
 
 // private major structural breakpoints
 $_breakpoints: (

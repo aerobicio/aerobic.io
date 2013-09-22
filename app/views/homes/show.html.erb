@@ -2,21 +2,22 @@
 
 <%= extends :landing do %>
   <% replace :title,          t(".title") %>
-  <% append  :body_class,     ' landing' %>
 
   <% replace :landing_hero do %>
-    <div class="landing__hero__content grid-container">
-      <article class="desk-span-five">
-        <h1 class="landing__hero__header display-header">
-          <%= improve t(".landing.heading") %>
-        </h1>
-        <p><%= improve t(".landing.intro_copy") %></p>
-        <%= link_to(t(".landing.call_to_action"), '#landing-signup', class: "landing__signup__link", title: t(".landing.call_to_action")) %>
-      </article>
+    <div class="grid-container">
+      <div class="landing__hero__content">
+        <article class="landing__hero__article">
+          <h1 class="landing__hero__header display-header">
+            <%= improve t(".landing.heading") %>
+          </h1>
+          <p><%= improve t(".landing.intro_copy") %></p>
+          <%= link_to(t(".landing.call_to_action"), '#landing-signup', class: "landing__hero__signup", title: t(".landing.call_to_action")) %>
+        </article>
 
-      <figure class="landing__figure desk-span-five">
-        <%= image_tag('landing/pulse@2x.png', height: '309', width: '633') %>
-      </figure>
+        <figure class="landing__hero__figure">
+          <%= image_tag('landing/pulse@2x.png', height: '309', width: '633') %>
+        </figure>
+      </div>
     </div>
   <% end %>
 
@@ -28,7 +29,7 @@
 
   <% append :landing_signup do %>
     <div class="grid-container" id="landing-signup">
-      <%= form_tag(view.newsletter_form_action, method: :post, class: 'landing__signup desk-span-eight desk-shift-two') do -%>
+      <%= form_tag(view.newsletter_form_action, method: :post, class: 'landing__signup') do -%>
         <p class="landing__signup__message"><%= improve t(".landing.signup_form.call_to_action") %></p>
         <div class="landing__signup__card">
           <div class="landing__signup__card__front">

@@ -1,0 +1,16 @@
+@import "hero";
+@import "signup";
+@import "features";
+
+%landing__row {
+  @extend .padding-wide-left;
+  @extend .padding-wide-right;
+  @include clearfix;
+
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+
+  @include media($lap-and-up) {
+    @include pad(16rem 0);
+  }
+}

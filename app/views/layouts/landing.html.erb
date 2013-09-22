@@ -6,13 +6,11 @@
   <% end %>
 
   <% replace :content do %>
-    <section class="<%= area :content_class, 'content' %>" role="main">
-      <section class="landing__row__features">
-        <%= area :landing_features %>
-      </section>
-      <section class="landing__row__signup">
-        <%= area :landing_signup %>
-      </section>
+    <section class="landing__row__features">
+      <%= area :landing_features %>
+    </section>
+    <section class="landing__row__signup">
+      <%= area :landing_signup %>
     </section>
   <% end %>
 <% end %>
