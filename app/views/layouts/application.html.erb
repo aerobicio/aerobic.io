@@ -8,8 +8,9 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <%= area :head %>
 </head>
-<body class="<%= area :body_class %>">
+<body class="<%= area :body_class %>" <%= area :body_data_attributes %>>
   <%= area :main, yield %>
   <%= area :js %>
 </body>
