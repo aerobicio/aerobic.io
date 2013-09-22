@@ -27,13 +27,16 @@
   @include media($lap-and-up) {
     @include span-columns(6);
     @include pad(0 flex-gutter()*2);
-    @include omega(2n);
   }
+
+  // @include media($lap) {
+  //   @include omega(2n);
+  // }
 
   @include media($desk) {
     @include span-columns(3);
-    @include pad(0 flex-gutter()*2);
-    @include omega(3n);
+    @include pad(0 flex-gutter());
+    @include omega(4n);
   }
 }
 

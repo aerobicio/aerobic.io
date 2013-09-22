@@ -15,6 +15,6 @@
   }
 
   @include media($desk) {
-    @include pad(16rem 0);
+    @include pad(12rem 0);
   }
 }
