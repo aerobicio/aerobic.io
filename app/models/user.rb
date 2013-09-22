@@ -3,6 +3,7 @@
 #
 class User < ActiveRecord::Base
   has_many :authentications
+  has_many :workouts
 
   validates :name, presence: true
 end

@@ -2,6 +2,8 @@
 
 ## README
 
+Aerobic.io is a Fitness Tracking service by @quamen and @plasticine.
+
 ### Dependencies
 
 * Git
