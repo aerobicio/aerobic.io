@@ -134,7 +134,7 @@
   }
 
   @include media($desk) {
-    @include padding(wide, left);
-    @include padding(wide, right);
+    @include padding(superwide, left);
+    @include padding(superwide, right);
   }
 }

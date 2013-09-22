@@ -36,12 +36,11 @@ module HomesHelper
     # object is to make rendering in views simpler.
     #
     class Feature
-      attr_reader :heading, :content, :image
+          attr_reader :heading, :content, :image
 
       def initialize(heading, content, image)
         @heading = heading
         @content = content
-        @image = image
       end
 
       def to_partial_path

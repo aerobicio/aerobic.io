@@ -12,11 +12,10 @@
           </h1>
           <p><%= improve t(".landing.intro_copy") %></p>
           <%= link_to(t(".landing.call_to_action"), '#landing-signup', class: "landing__hero__signup", title: t(".landing.call_to_action")) %>
+          <figure class="landing__hero__figure">
+            <%= image_tag('landing/pulse@2x.png', height: '309', width: '633') %>
+          </figure>
         </article>
-
-        <figure class="landing__hero__figure">
-          <%= image_tag('landing/pulse@2x.png', height: '309', width: '633') %>
-        </figure>
       </div>
     </div>
   <% end %>
@@ -30,7 +29,9 @@
   <% append :landing_signup do %>
     <div class="grid-container" id="landing-signup">
       <%= form_tag(view.newsletter_form_action, method: :post, class: 'landing__signup') do -%>
-        <p class="landing__signup__message"><%= improve t(".landing.signup_form.call_to_action") %></p>
+        <h4 class="landing__signup__message">
+          <%= improve t(".landing.signup_form.call_to_action") %>
+        </h4>
         <div class="landing__signup__card">
           <div class="landing__signup__card__front">
             <div class="landing__signup__fields">

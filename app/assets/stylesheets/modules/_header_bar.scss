@@ -5,6 +5,10 @@
   @extend .padding-medium;
 
   overflow: auto;
+
+  @include media($desk) {
+    @include padding(wide);
+  }
 }
 
 .header__masthead {
