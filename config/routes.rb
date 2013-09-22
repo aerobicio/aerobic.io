@@ -11,6 +11,8 @@ AerobicIo::Application.routes.draw do
   resources :sessions, only: [:create, :new]
   resource :upload, only: [ :show, :create ]
 
+  resources :members, only: [:index]
+
   unless Rails.env.production?
     resources :styleguide, only: [:show, :index], controller: "documentation/styleguide" do
       get ':example_id' => 'documentation/styleguide#example', :as => :example, :constraints => {:example_id =>  /[^\/]+/}
