@@ -44,6 +44,7 @@ group :test do
   gem "cucumber-rails", :require => false
   gem "database_cleaner"
   gem "rspec-nc"
+  gem "cucumber-nc"
   gem "shoulda-matchers"
   gem "simplecov", :require => false
 end
