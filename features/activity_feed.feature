@@ -12,3 +12,16 @@ Feature: Activity Feed
     Given I am a member
     When another member adds a workout
     Then I should see the workout in my activity feed
+
+  @following @activity @wip
+  Scenario: A member should not see activies of other members they do not follow
+    Given I am not following another member
+    When they add a workout
+    Then I should not see it in my activity feed
+
+  @following @activity @wip
+  Scenario: A member should see activities of other members they follow
+    Given I am following another member
+    When they add a workout
+    Then I should see it in my activity feed
+

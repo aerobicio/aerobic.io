@@ -1,0 +1,6 @@
+<h1>Members</h1>
+<ul>
+  <% @members.each do |member| %>
+    <li><%= member.name %> - <%= button_to("Follow", follow_member_path(member.id)) %></li>
+  <% end %>
+</ul>

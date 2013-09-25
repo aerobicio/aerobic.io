@@ -4,10 +4,7 @@ Then(/^I should see the workout in my activity feed$/) do
 end
 
 When(/^another member adds a workout$/) do
-  sign_out
-  @original_identity = @identity
-  create_registered_account
-  sign_in
+  register_another_member
   add_workout
   visit dashboard_path
   sign_out
