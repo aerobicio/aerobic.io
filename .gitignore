@@ -14,6 +14,8 @@
 /bin/rails_best_practices
 /bin/cucumber
 /bin/consistency_fail
+/bin/teabag
+/bin/teaspoon
 
 /config/database.yml
 /coverage
