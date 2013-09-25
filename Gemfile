@@ -41,6 +41,7 @@ group :doc do
 end
 
 group :test do
+  gem "cucumber-nc"
   gem "cucumber-rails", :require => false
   gem "database_cleaner"
   gem "faker"
