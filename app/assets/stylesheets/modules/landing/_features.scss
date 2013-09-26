@@ -2,6 +2,9 @@
   @extend %landing__row;
 }
 
+// A row of features
+//
+// Styleguide Landing.Features
 .landing__features {
   @extend .padding-superwide-top;
   @extend .padding-superwide-bottom;

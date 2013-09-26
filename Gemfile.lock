@@ -13,6 +13,14 @@ GIT
     nestive (0.4.0)
       rails (>= 3.0.0)
 
+PATH
+  remote: /Users/justin/src/personal/kayessess
+  specs:
+    kayessess (0.1.0)
+      bourbon
+      kss (>= 0.5.0)
+      rails (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -282,7 +290,7 @@ DEPENDENCIES
   foreman
   jbuilder (~> 1.2)
   jquery-rails
-  kss
+  kayessess!
   lograge
   neat
   nestive!

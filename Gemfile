@@ -32,7 +32,7 @@ group :development, :test do
   gem "cane"
   gem "dotenv-rails"
   gem "factory_girl_rails"
-  gem "kss"
+  gem "kayessess", path: "/Users/justin/src/personal/kayessess"
   gem "rails_best_practices"
   gem "rspec-rails", "~> 2.0"
   gem "teaspoon"
