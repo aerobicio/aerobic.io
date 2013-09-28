@@ -86,6 +86,16 @@ for more information on how it works.
 
 A list of active feature flips can be found in [SwitchBoard::FEATURE_FLIPS](https://github.com/quamen/aerobic.io/blob/master/lib/switch_board.rb#L16).
 
+### Domain Objects
+app/domain is reserved for objects that represent the applications domain. These objects should be used in Controllers. They are designed to be instantiated with data objects (ActiveRecord object, OpenStruct object), regardless of where it is persisted.
+
+Domain objects are allowed to reference Model objects in order to persist themselves or load data into themselves.
+
+### Model Objects
+app/models is reserved for objects that inherit from ActiveRecord. These objects are purely about persistence and should contain no logic.
+
+These objects should not be referenced directly in Controllers.
+
 ### CI
 
 [Wercker](http://wercker.com) is used to run a build on every branch pushed

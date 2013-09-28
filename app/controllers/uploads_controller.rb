@@ -1,4 +1,7 @@
-require 'fit'
+require "fit"
+require "ostruct"
+
+require_relative "../domain/fit_file"
 
 # UploadsController manages the process of uploading files directly from a
 # Garmin device using the Communicator API.
@@ -28,8 +31,12 @@ class UploadsController < ApplicationController
     fit = strip_casing(fit)
     fit = Base64.decode64(fit)
 
-    fit_file = FitFile.new(name: name, binary_data: fit)
-    fit_file.save_workout!(current_user)
+    fit_file = Domain::FitFile.new(fit_file_data_object(name, fit))
+    fit_file.persist!
+  end
+
+  def fit_file_data_object(name, fit)
+    OpenStruct.new(user_id: current_user.id, name: name, binary_data: fit)
   end
 
   def strip_casing(fit)

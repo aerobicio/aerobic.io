@@ -16,7 +16,7 @@ Feature: Authentication
     And I should be on the "sign_in_path" route
 
   Scenario: Signing out
-    Given I am signed in
+    Given I am a member
     When I sign out
     Then I should not be signed in
     And I should be on the "root_path" route

@@ -4,6 +4,6 @@ Feature: Upload From Garmin
   I want to be able to upload files from my Garmin
 
   Scenario: Uploading a FIT file from a device
-    Given I am signed in
-    When I upload a FIT file from a device
-    Then I should see workout information on my dashboard
+    Given I am a member
+    When I add a workout
+    Then I should see the workout in my activity feed
