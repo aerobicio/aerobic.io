@@ -26,6 +26,7 @@ body {
 
 form {
   margin:0;
+  width: 100%;
 }
 
 fieldset {
@@ -34,6 +35,19 @@ fieldset {
   border:0;
 }
 
+// This removes the up down buttons from Chrome and Safari with type="number" input fields.
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+// Remove the ugly tap indicator UI hinting from inputs
+#{$all-text-inputs},
+textarea,
+select {
+  @include prefixer(tap-highlight-color, rgba(0,0,0,0), webkit);
+}
 
 // 1. Corrects font size not being inherited in all browsers
 // 2. Addresses margins set differently in IE6/7, F3/4, S5, Chrome

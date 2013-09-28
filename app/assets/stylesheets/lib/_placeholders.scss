@@ -1,6 +1,6 @@
 %plane {
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 4px;
   background-color: #fff;
   box-shadow: 0 1px 0 #fff;
 }
@@ -9,4 +9,75 @@
   @extend %plane;
 
   box-shadow: 0 1px 0 #fff, 0 3px 0 #F7F7F7 inset;
+}
+
+%button {
+  $grey: #eaeaea;
+
+  @extend .padding-tight;
+  @extend .margin-medium-bottom;
+  @include linear-gradient(lighten($grey, 10%), darken($grey, 0%), $fallback: #fbfbfb);
+  @include appearance(none);
+  @include noselect;
+  @include font-size(1.1, 1.2);
+
+  display: inline-block;
+  border-radius: 4px;
+  cursor: pointer;
+  color: darken($grey, 70%);
+  border: 1px solid darken($grey, 10%);
+
+  &:hover {
+    @include linear-gradient(lighten($grey, 10%), lighten($grey, 2%), $fallback: #fff);
+
+    color: darken($grey, 100%);
+    border: 1px solid darken($grey, 10%);
+  }
+
+  &:active {
+    @include linear-gradient(darken($grey, 0%), lighten($grey, 10%), $fallback: #fff);
+
+    box-shadow: 0 1px 0 rgba(0,0,0,0.07) inset;
+    color: darken($grey, 100%);
+    border: 1px solid darken($grey, 10%);
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+  }
+
+  &:disabled,
+  &.disabled,
+  &:disabled:hover,
+  &:disabled:active,
+  &.disabled:hover,
+  &.disabled:active {
+    @include linear-gradient(lighten($grey, 10%), darken($grey, 0%), $fallback: #fbfbfb);
+
+    color: darken($grey, 10%);
+    border: 1px solid darken($grey, 10%);
+    box-shadow: none;
+    text-shadow: none;
+    cursor: not-allowed;
+  }
+}
+
+%input {
+  @extend %plane;
+  @extend .margin-medium-bottom;
+  @extend .padding-tight;
+  @include appearance(none);
+  @include fill-parent();
+
+  display: block;
+
+  &:focus {
+    border: 1px solid #4F90DA;
+  }
+
+  &:disabled {
+    box-shadow: none;
+    background: $background-color;
+  }
+
+  &.error {
+    border: 1px solid red;
+  }
 }

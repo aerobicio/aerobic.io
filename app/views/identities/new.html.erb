@@ -4,7 +4,7 @@
   <%= replace :content_inner do %>
     <%= form_tag registration_path do %>
       <% if view.errors? %>
-        <div class="error_messages">
+        <div class="errors">
           <h2><%= t(".error_count", count: view.error_count) %></h2>
           <ul>
             <% view.full_messages.each do |msg| %>
@@ -13,23 +13,15 @@
           </ul>
         </div>
       <% end %>
-      <div class="field">
-        <%= label_tag :name %><br>
-        <%= text_field_tag :name, view.name %>
-      </div>
-      <div class="field">
-        <%= label_tag :email %><br>
-        <%= text_field_tag :email, view.email %>
-      </div>
-      <div class="field">
-        <%= label_tag :password %><br>
-        <%= password_field_tag :password %>
-      </div>
-      <div class="field">
-        <%= label_tag :password_confirmation %><br>
-        <%= password_field_tag :password_confirmation %>
-      </div>
-      <div class="actions"><%= submit_tag(t(".submit")) %></div>
+      <%= label_tag :name %>
+      <%= text_field_tag :name, view.name %>
+      <%= label_tag :email %>
+      <%= text_field_tag :email, view.email %>
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+      <%= label_tag :password_confirmation %>
+      <%= password_field_tag :password_confirmation %>
+      <%= submit_tag(t(".submit")) %>
     <% end %>
   <% end %>
 <% end %>
