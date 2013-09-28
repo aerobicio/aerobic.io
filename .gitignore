@@ -24,8 +24,6 @@
 /log/*.log
 /tmp
 
-*.sublime-*
-
 /public/assets
 /node_modules
 /vendor/assets/components
