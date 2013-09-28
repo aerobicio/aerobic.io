@@ -13,12 +13,17 @@ check_version "ruby -v"
 check_version "gem -v"
 check_version "bundle -v"
 check_version "psql --version"
+check_version "phantomjs --version"
+check_version "npm -v"
 
 bundle
 bundle binstubs rspec-core --force
 bundle binstubs cucumber --force
 bundle binstubs rails_best_practices --force
 bundle binstubs consistency_fail --force
+bundle binstubs teaspoon --force
+npm install
+bower install
 
 cp -n .env.example .env
 cp -n config/database.yml.example config/database.yml

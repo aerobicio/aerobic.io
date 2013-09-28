@@ -1,0 +1,11 @@
+{
+  "name": "aerobic.io",
+  "version": "0.0.0",
+  "homepage": "https://github.com/quamen/aerobic.io",
+  "license": "All rights reserved",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "underscore": "~1.5.2"
+  }
+}

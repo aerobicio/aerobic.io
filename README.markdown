@@ -11,6 +11,8 @@ Aerobic.io is a Fitness Tracking service by @quamen and @plasticine.
 * Rubygems
 * Bundler
 * Postgresql
+* Phantomjs
+* npm
 
 ### Getting Started
 
@@ -24,6 +26,7 @@ As part of the bootstrap process we install a few binstubs:
     bin/autospec
     bin/rspec
     bin/cucumber
+    bin/teaspoon
 
 ### Testing
 
@@ -31,7 +34,8 @@ We use three types of tests in the project:
 
 1. Unit Tests
 2. Acceptance Tests
-3. Static Analysis Tools
+3. Javascript Tests
+4. Static Analysis Tools
 
 To find out more about how we use each of these types of tests, please read
 the [testing strategy document](https://github.com/quamen/aerobic.io/blob/master/doc/testing_strategy.markdown).
@@ -49,6 +53,10 @@ You can also run each individual test suite manually:
 #### Acceptance Tests
 
     $ bin/cucumber
+
+#### Javascript Tests
+
+    $ bin/teaspoon
 
 #### Static Analysis Tools
 
