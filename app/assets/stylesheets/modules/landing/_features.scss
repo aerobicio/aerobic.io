@@ -45,41 +45,52 @@
   }
 }
 
-.landing__features__figure {
-  $height: 7rem;
-  $width: $height;
-
+%landing__features__figure {
   @extend .margin-medium-bottom;
 
-  border: 1px solid #ccc;
-  border-radius: 4px;
   display: block;
-  height: $height;
-  width: $width;
+  height: 7rem;
+  // width: 7rem;
   text-align: center;
   position: relative;
   margin-left: auto;
   margin-right: auto;
+  background-position: center;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
 
-  &:before,
-  &:after {
-    @include transform(rotate(45deg));
+.landing__features__figure--plan {
+  @extend %landing__features__figure;
 
-    content: '';
-    position: absolute;
-    width: 80%;
-    height: 1px;
-    border-top: 1px solid #ccc;
-    left: 10%;
-    top: 50%;
-  }
-  &:after {
-    @include transform(rotate(-45deg));
-  }
+  background-image: image-url("landing/plan.svg");
+}
+
+.landing__features__figure--track {
+  @extend %landing__features__figure;
+
+  background-image: image-url("landing/track.svg");
+}
+
+.landing__features__figure--social {
+  @extend %landing__features__figure;
+
+  background-image: image-url("landing/social.svg");
+}
+
+.landing__features__figure--race {
+  @extend %landing__features__figure;
+
+  background-image: image-url("landing/race.svg");
 }
 
 .landing__features__heading {
   @include font-size(1.6, 1.6);
 
   font-weight: bold;
+}
+
+.landing__features__heading + p {
+  opacity: 0.8;
 }

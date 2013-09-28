@@ -41,6 +41,7 @@ module HomesHelper
       def initialize(heading, content, image)
         @heading = heading
         @content = content
+        @image   = image
       end
 
       def to_partial_path
