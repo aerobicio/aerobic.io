@@ -13,13 +13,13 @@
 
   display: block;
   float: left;
-  background:transparent image-url('masthead@2x.png') left top no-repeat;
+  background:transparent image-url('masthead.svg') left top no-repeat;
   background-size: 100%;
   width: 147px;
   height: 22px;
 
   .landing__hero & {
-    background-image: image-url('masthead_landing@2x.png')
+    background-image: image-url('masthead_landing.svg')
   }
 }
 
