@@ -41,10 +41,12 @@ group :doc do
 end
 
 group :test do
+  gem "cucumber-nc"
   gem "cucumber-rails", :require => false
   gem "database_cleaner"
+  gem "faker"
   gem "rspec-nc"
-  gem "cucumber-nc"
+  gem "simplecov", :require => false
   gem "shoulda-matchers"
   gem "simplecov", :require => false
 end

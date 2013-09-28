@@ -1,5 +1,6 @@
 Given(/^I have a registered account$/) do
   create_registered_account
+  sign_out
 end
 
 When(/^I sign in with valid credentials$/) do
@@ -18,11 +19,11 @@ Then(/^I should not be signed in$/) do
   page.should have_selector("body.unauthenticated")
 end
 
-Given(/^I am signed in$/) do
+Given(/^I am a member$/) do
   create_registered_account
   sign_in
 end
 
 When(/^I sign out$/) do
-  click_link(I18n.t("sign_out"))
+  sign_out
 end
