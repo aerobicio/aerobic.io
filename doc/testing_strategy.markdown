@@ -57,8 +57,8 @@ When writing acceptance tests, the following rules should be adheared to:
 Javascript Tests are written in Coffeescript and should test one unit of code.
 It also should assert that any DOM manipulation behaves as intented.
 
-Coffeescript tests use Mocha BDD style, Chai for assertions, and Sinon as
-for stubbing and mocking.
+Coffeescript tests use Mocha BDD style, Chai for assertions, and Sinon.js for
+stubbing and mocking.
 
 When writing javascript tests, the following rules should be adheared to:
 
