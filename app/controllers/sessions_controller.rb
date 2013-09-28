@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
   layout "unauthenticated"
 
   def new
+    render :layout => "authentication"
   end
 
   def create

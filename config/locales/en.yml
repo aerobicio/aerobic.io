@@ -9,3 +9,22 @@ en:
     validations:
       email:
         invalid: "is not a valid email"
+
+  footer:
+    awesome:
+      quamen:
+        title: "@quamen on Twitter"
+        handle: "@quamen"
+        url: https://twitter.com/quamen
+      plasticine:
+        title: "@plasticine on Twitter"
+        handle: "@plasticine"
+        url: https://twitter.com/plasticine
+    twitter:
+      label: Twitter
+      title: Aerobic.io on Twitter
+      url: https://twitter.com/aerobicio
+    github:
+      label: Github
+      title: Aerobic.io on Github
+      url: https://github.com/aerobicio

@@ -1,0 +1,8 @@
+<%= extends :unauthenticated do %>
+  <% context = yield %>
+  <% replace :content do %>
+    <div class="dialog desk-span-four desk-shift-four">
+      <%= area :dialog_content, context -%>
+    </div>
+  <% end %>
+<% end %>
