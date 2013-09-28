@@ -1,3 +1,6 @@
+require_relative "fit_file"
+require_relative "user"
+
 class Workout < ActiveRecord::Base
   has_one :fit_file
   belongs_to :user

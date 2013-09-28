@@ -1,8 +1,8 @@
-require_relative '../../app/models/omni_auth_user'
+require_relative '../../app/domain/omni_auth_user'
 
-describe OmniAuthUser do
+describe Domain::OmniAuthUser do
   describe '#user_from_auth_hash' do
-    subject { OmniAuthUser.user_from_auth_hash(auth_hash) }
+    subject { described_class.user_from_auth_hash(auth_hash) }
 
     let(:authentication_const) { stub_const("Authentication", Class.new) }
     let(:user_const) { stub_const("User", Class.new) }

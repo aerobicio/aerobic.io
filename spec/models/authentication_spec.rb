@@ -1,4 +1,5 @@
-require 'spec_helper'
+require "active_record_helper"
+require_relative "../../app/models/authentication"
 
 describe Authentication do
   it { should validate_presence_of(:provider) }
