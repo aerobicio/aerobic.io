@@ -1,4 +1,5 @@
-require 'spec_helper'
+require "active_record_helper"
+require_relative "../../app/models/user"
 
 describe User do
   it { should have_many(:authentications) }

@@ -1,4 +1,6 @@
-require 'spec_helper'
+require "active_record_helper"
+require_relative "../../app/models/fit_file"
+require_relative "../../app/models/user"
 
 describe FitFile do
   before do

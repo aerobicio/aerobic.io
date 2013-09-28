@@ -1,3 +1,5 @@
+require_relative "workout"
+
 # FitFile represents an uploaded FIT file. It has a name and a stores the
 # binary data blob uploaded by the user.
 class FitFile < ActiveRecord::Base
