@@ -2,6 +2,8 @@
   "name": "aerobic.io",
   "description": "",
   "version": "0.0.1",
+  "author": "",
+  "license": "All rights reserved",
   "main": "app/assets/application.js",
   "directories": {
     "doc": "doc",
@@ -19,8 +21,6 @@
     "type": "git",
     "url": "git://github.com/quamen/aerobic.io.git"
   },
-  "author": "",
-  "license": "BSD",
   "bugs": {
     "url": "https://github.com/quamen/aerobic.io/issues"
   }
