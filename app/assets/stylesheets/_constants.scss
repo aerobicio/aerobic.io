@@ -1,10 +1,10 @@
+@import "neat-helpers";
+
 $debug-mode:                false;
 
 // Root type sizing
 // ----------------------------------------
-$base-font-size:            1.1em;
-$base-font-size:            14px;
-$base-line-height:          1.6;
+$base-font-size:            1.1;
 $line-height-ratio:         1.5;
 
 // Spacing units and sizings
@@ -12,14 +12,19 @@ $line-height-ratio:         1.5;
 $_spacing-tight:            0.7rem;
 $_spacing-medium:           1.4rem;
 $_spacing-wide:             2.8rem;
+$_spacing-superwide:        3.6rem;
 
 // Grid & layout structure
 // ----------------------------------------
 $_grid-prefix:              unquote("");
 $column:                    10rem;
 $gutter:                    2rem;
-$grid-columns:              12;
-$max-width:                 100%;
+$grid-columns:              6;
+$max-width:                 140rem;
+$visual-grid:               false;
+$visual-grid-index:         front;
+$visual-grid-color:         #C75D48;
+$visual-grid-opacity:       0.05;
 
 
 // Media Queries and Breakpoints
@@ -48,7 +53,7 @@ $palm:                      new-breakpoint(min-width $_micro-palm-end max-width 
 
 // Everything from $palm and up
 // $palm-and-up:            [320px   ->    $max-width]
-$palm-and-up:               new-breakpoint(min-width $_micro-palm-end min-height 430px);
+$palm-and-up:               new-breakpoint(min-width $_micro-palm-end 6);
 
 // for devices that are not handheld, but are portable, like tablets/laptops.
 // $lap:                    [481px   ->    979px]
@@ -56,7 +61,7 @@ $lap:                       new-breakpoint(min-width $_lap-start 12);
 
 // Everything from $lap and up
 // $lap-and-up:             [481px   ->    $max-width]
-$lap-and-up:                new-breakpoint(min-width $_lap-start min-height 650px 12);
+$lap-and-up:                new-breakpoint(min-width $_lap-start 12);
 
 // TVs, Desktop computers, non-portable large format
 // $desk:                   [980px   ->    $max-width]
@@ -72,10 +77,12 @@ $_breakpoints: (
 
 // Branding and Style
 // ----------------------------------------
-$background-color:            #edf0f3;
-
-$landing-page-background-color: #fcc15f;
-
+$font-family: 'Proxima Nova Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$background-color: #edf0f3;
+$feature-color: #f05d5c;
+$positive-color: #9ECA51;
+$landing-hero-background-color: #093A51;
 $header-navigation-color: #3f687a;
-
+$landing-cta-color: $header-navigation-color;
 $header-bar-background-color: transparent;
+$demphasise-color: #aaa;

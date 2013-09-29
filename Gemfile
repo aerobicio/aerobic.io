@@ -23,6 +23,7 @@ gem "rollout"
 gem "sass-rails", "~> 4.0.0"
 gem "sentry-raven"
 gem "turbolinks"
+gem "typogruby"
 gem "uglifier", ">= 1.3.0"
 gem "unicorn"
 gem "valid_email", :require => "valid_email/email_validator"
@@ -34,6 +35,7 @@ group :development, :test do
   gem "kss"
   gem "rails_best_practices"
   gem "rspec-rails", "~> 2.0"
+  gem "teaspoon"
 end
 
 group :doc do

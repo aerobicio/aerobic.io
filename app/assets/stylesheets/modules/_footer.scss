@@ -1,0 +1,6 @@
+.footer {
+  @extend .padding-wide-top;
+  @extend .padding-wide-bottom;
+
+  color: $demphasise-color;
+}
