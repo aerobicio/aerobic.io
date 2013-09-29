@@ -27,6 +27,7 @@ gem "typogruby"
 gem "uglifier", ">= 1.3.0"
 gem "unicorn"
 gem "valid_email", :require => "valid_email/email_validator"
+gem "yui-compressor"
 
 group :development, :test do
   gem "cane"
