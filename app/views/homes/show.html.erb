@@ -3,6 +3,12 @@
 <%= extends :landing do %>
   <% replace :title, t(".title") %>
 
+  <% append :js do %>
+    <%= javascript_tag do %>
+      new NewsletterController({el: 'form.landing__signup'})
+    <% end %>
+  <% end %>
+
   <% replace :landing_hero do %>
     <div class="grid-container">
       <div class="landing__hero__content">
@@ -28,7 +34,7 @@
 
   <% append :landing_signup do %>
     <div class="grid-container" id="landing-signup">
-      <%= form_tag(view.newsletter_form_action, method: :post, class: 'landing__signup') do -%>
+      <%= form_tag(view.newsletter_form_action, method: :post, class: 'landing__signup', novalidate: true) do -%>
         <h4 class="landing__signup__message">
           <%= improve t(".landing.signup_form.call_to_action") %>
         </h4>

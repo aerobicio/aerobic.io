@@ -51,7 +51,7 @@
   position: relative;
   height: 5rem;
 
-  &:hover {
+  .landing__signup.is-signed-up & {
     @include transform(rotateX(180deg));
   }
 
