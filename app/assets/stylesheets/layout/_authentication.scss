@@ -5,7 +5,7 @@
     @include box-orient(vertical);
     @include box-pack(start);
 
-    height: 100%;
+    min-height: 100%
   }
 
   .header {
@@ -13,6 +13,7 @@
   }
 
   .content {
+    @extend .padding-medium;
     @include box-flex(1);
     @include display-box;
     @include box-align(center);
@@ -20,7 +21,7 @@
   }
 
   .content__dialog {
-    @include span-columns(5);
+    width: 100%;
 
     @include media($lap-and-up) {
       @include span-columns(6);
