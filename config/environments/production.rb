@@ -19,14 +19,16 @@ AerobicIo::Application.configure do
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
   # config.action_dispatch.rack_cache = true
 
-  # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
-
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
-  config.static_cache_control = "public, max-age=3600"
+  # Serve assets from rails. Heroku will force this behaviour anyway
+  # and we can at lease set some sensible headers...
+  #
+  # ref: http://bindle.me/blog/index.php/395/caches-cdns-and-heroku-cedar
+  config.serve_static_assets = true
+  config.static_cache_control = "public, max-age=#{1.year.to_i}"
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
