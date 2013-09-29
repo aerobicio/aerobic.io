@@ -2,26 +2,50 @@
 # homes/view.
 #
 module HomesHelper
-
-  NEWSLETTER_FORM = {
-    action:       "http://aerobicio.createsend.com/t/t/s/itoy/",
-    field_name:   "cm-itoy-itoy",
-    field_id:     "itoy-itoy"
-  }
-
   # NewHomesHelper is the view class used in views/homes/show
   #
   class NewHomesHelper
+    include ActionView::Helpers::FormTagHelper
+
+    NEWSLETTER_FORM = {
+      action:       "http://aerobicio.createsend.com/t/t/s/itoy/",
+      field_name:   "cm-itoy-itoy"
+    }
+
+    def email_signup_field
+      options = {
+        placeholder: I18n.t("homes.show.landing.signup_form.field_placeholder"),
+        class: 'landing__signup__input',
+        required: true
+      }
+      email_field_tag(NEWSLETTER_FORM[:field_name], '', options)
+    end
+
     def newsletter_form_action
-      NEWSLETTER_FORM['action']
+      NEWSLETTER_FORM[:action]
     end
 
-    def newsletter_form_field_name
-      NEWSLETTER_FORM['field_name']
+    def features
+      I18n.t('homes.show.landing.features').collect do |feature|
+        Feature.new(feature["heading"], feature["content"], feature["image"])
+      end
     end
 
-    def newsletter_form_field_id
-      NEWSLETTER_FORM['field_id']
+    # Features are rendered onto the landing page. The sole purpose of this
+    # object is to make rendering in views simpler.
+    #
+    class Feature
+          attr_reader :heading, :content, :image
+
+      def initialize(heading, content, image)
+        @heading = heading
+        @content = content
+        @image   = image
+      end
+
+      def to_partial_path
+        "feature"
+      end
     end
   end
 end

@@ -1,0 +1,9 @@
+<%= extends :unauthenticated do %>
+  <% append :body_class, ' la-authentication' %>
+  <% context = yield %>
+  <% replace :content do %>
+    <section class="content__dialog">
+      <%= area :dialog_content, context -%>
+    </section>
+  <% end %>
+<% end %>

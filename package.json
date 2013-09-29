@@ -1,0 +1,27 @@
+{
+  "name": "aerobic.io",
+  "description": "",
+  "version": "0.0.1",
+  "author": "",
+  "license": "All rights reserved",
+  "main": "app/assets/application.js",
+  "directories": {
+    "doc": "doc",
+    "test": "test"
+  },
+  "dependencies": {
+    "bower": "~1.2.6",
+    "istanbul": "~0.1.44"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "bin/teaspoon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/quamen/aerobic.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/quamen/aerobic.io/issues"
+  }
+}

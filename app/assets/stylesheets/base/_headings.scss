@@ -36,3 +36,9 @@ h6,
 .h6{
   @include font-size(1.1, 1.2);
 }
+
+.display-header {
+  font-family: 'Tungsten A', 'Tungsten B';
+  font-weight: 700;
+  font-style: normal;
+}

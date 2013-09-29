@@ -1,0 +1,16 @@
+<%= extends :unauthenticated do %>
+  <% append  :body_class, ' landing' %>
+  <% replace :header_class, 'landing__hero' %>
+  <% append :header do %>
+    <%= area :landing_hero %>
+  <% end %>
+
+  <% replace :content do %>
+    <section class="landing__row__features">
+      <%= area :landing_features %>
+    </section>
+    <section class="landing__row__signup">
+      <%= area :landing_signup %>
+    </section>
+  <% end %>
+<% end %>

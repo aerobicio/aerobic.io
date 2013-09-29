@@ -1,1 +1,19 @@
-// keyframes go here
+@include keyframes(landing__pulse) {
+  0% {
+    @include transform(translate3d(-25px, 0, 0));
+
+    opacity: 0;
+  }
+  60% { opacity: 1; }
+  100% {
+    @include transform(translate3d(0, 0, 0));
+
+    opacity: 1;
+  }
+}
+
+@include keyframes(error__shake) {
+  0%, 100% { @include transform(translate3d(0, 0, 0)); }
+  20%, 60% { @include transform(translate3d(-0.8rem, 0, 0)); }
+  40%, 80% { @include transform(translate3d(0.8rem, 0, 0)); }
+}
