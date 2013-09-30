@@ -10,6 +10,7 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <%= area :head %>
+  <%= render partial: "layouts/google_analytics" %>
 </head>
 <body class="<%= area :body_class %>" <%= area :body_data_attributes %>>
   <%= area :main, yield %>
