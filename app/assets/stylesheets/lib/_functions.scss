@@ -20,9 +20,10 @@
 // Return a spacing size - used in the rare cases where we want to use
 // combinations of spacing sizes
 @function get_spacing($size) {
-  @if $size == tight  { @return $_spacing-tight; }
-  @if $size == medium { @return $_spacing-medium; }
-  @if $size == wide   { @return $_spacing-wide; }
+  @if $size == tight     { @return $_spacing-tight; }
+  @if $size == medium    { @return $_spacing-medium; }
+  @if $size == wide      { @return $_spacing-wide; }
+  @if $size == superwide { @return $_spacing-superwide; }
 }
 
 // Interpolates $x between $a and $b

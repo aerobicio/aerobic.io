@@ -28,8 +28,22 @@
   // results in a lot of class-noise, but is my favourite approach to date
   // http://csswizardry.com/2013/02/responsive-grid-systems-a-solution
   @for $col from 1 through $grid-columns {
-    .#{$_name}-span-#{nth($_col_names, $col)}-columns {
+    // sizing classes and placeholders
+    %#{$_name}-span-#{nth($_col_names, $col)},
+    .#{$_name}-span-#{nth($_col_names, $col)} {
       @include span-columns($col of $grid-columns);
+    }
+
+    // shift classes and placeholders
+    %#{$_name}-shift-#{nth($_col_names, $col)},
+    .#{$_name}-shift-#{nth($_col_names, $col)} {
+      @include shift($col);
+    }
+
+    // shift classes and placeholders
+    %#{$_name}-unshift-#{nth($_col_names, $col)},
+    .#{$_name}-unshift-#{nth($_col_names, $col)} {
+      @include shift(-$col);
     }
   }
 }

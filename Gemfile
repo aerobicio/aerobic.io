@@ -13,6 +13,7 @@ gem "jquery-rails"
 gem "lograge"
 gem "neat"
 gem "nestive", git: "https://github.com/plasticine/nestive.git"
+gem "newrelic_rpm"
 gem "omniauth"
 gem "omniauth-identity"
 gem "pg"
@@ -23,9 +24,11 @@ gem "rollout"
 gem "sass-rails", "~> 4.0.0"
 gem "sentry-raven"
 gem "turbolinks"
+gem "typogruby"
 gem "uglifier", ">= 1.3.0"
 gem "unicorn"
 gem "valid_email", :require => "valid_email/email_validator"
+gem "yui-compressor"
 
 group :development, :test do
   gem "cane"
@@ -34,6 +37,7 @@ group :development, :test do
   gem "kss"
   gem "rails_best_practices"
   gem "rspec-rails", "~> 2.0"
+  gem "teaspoon"
 end
 
 group :doc do

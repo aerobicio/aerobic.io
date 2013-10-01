@@ -15,6 +15,10 @@ module Domain
       end
     end
 
+    def to_partial_path
+      "workouts/workout"
+    end
+
     def persist!
       workout = workout_record
       workout.active_duration = @active_duration

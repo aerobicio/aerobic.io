@@ -1,0 +1,17 @@
+.button {
+  @extend %button;
+  @extend .margin-wide-top;
+
+  display: block;
+  text-align: center;
+  margin-bottom: 0;
+  clear: both;
+}
+
+// button and input tags need a little extra help to be 100% width...
+button.button,
+input[type='submit'].button {
+  @extend .button;
+
+  width: 100%;
+}

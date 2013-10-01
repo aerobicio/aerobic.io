@@ -29,6 +29,14 @@
   }
 }
 
+@mixin margin($size, $direction: false) {
+  @include spacing(margin, $size, $direction);
+}
+
+@mixin padding($size, $direction: false) {
+  @include spacing(padding, $size, $direction);
+}
+
 @function strip_unit($value) {
   @return $value / ($value * 0 + 1);
 }
