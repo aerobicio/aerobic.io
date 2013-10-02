@@ -147,6 +147,36 @@ CREATE TABLE users (
 
 
 --
+-- Name: users_followings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE users_followings (
+    id integer NOT NULL,
+    user_id integer,
+    following_id integer
+);
+
+
+--
+-- Name: users_followings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE users_followings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: users_followings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE users_followings_id_seq OWNED BY users_followings.id;
+
+
+--
 -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -233,6 +263,13 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY users_followings ALTER COLUMN id SET DEFAULT nextval('users_followings_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY workouts ALTER COLUMN id SET DEFAULT nextval('workouts_id_seq'::regclass);
 
 
@@ -258,6 +295,14 @@ ALTER TABLE ONLY fit_files
 
 ALTER TABLE ONLY identities
     ADD CONSTRAINT identities_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_followings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY users_followings
+    ADD CONSTRAINT users_followings_pkey PRIMARY KEY (id);
 
 
 --
@@ -305,6 +350,20 @@ CREATE UNIQUE INDEX index_identities_on_email ON identities USING btree (email);
 
 
 --
+-- Name: index_users_followings_on_following_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_users_followings_on_following_id ON users_followings USING btree (following_id);
+
+
+--
+-- Name: index_users_followings_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_users_followings_on_user_id ON users_followings USING btree (user_id);
+
+
+--
 -- Name: index_workouts_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -335,6 +394,22 @@ ALTER TABLE ONLY fit_files
 
 
 --
+-- Name: users_followings_following_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY users_followings
+    ADD CONSTRAINT users_followings_following_id_fk FOREIGN KEY (following_id) REFERENCES users(id);
+
+
+--
+-- Name: users_followings_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY users_followings
+    ADD CONSTRAINT users_followings_user_id_fk FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
 -- Name: workouts_user_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -361,3 +436,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130719044245');
 INSERT INTO schema_migrations (version) VALUES ('20130719044915');
 
 INSERT INTO schema_migrations (version) VALUES ('20130721071632');
+
+INSERT INTO schema_migrations (version) VALUES ('20131002105909');
