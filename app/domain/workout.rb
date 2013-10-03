@@ -8,11 +8,16 @@ module Domain
     attr_reader :id
     attr_reader :user_id
     attr_accessor :active_duration, :distance, :duration, :end_time, :start_time
+    attr_accessor :updated_at
 
     def self.all_for(user_id)
       ::Workout.where(user_id: user_id).map do |workout|
         self.new(workout)
       end
+    end
+
+    def cache_key
+      "domain:workout:#{id}:#{updated_at}"
     end
 
     def to_partial_path
@@ -24,6 +29,7 @@ module Domain
 
       workout.save!
       @id = workout.id
+      @updated_at = workout.updated_at
       persist_to_redis(workout.created_at.to_i)
     end
 
@@ -45,7 +51,8 @@ module Domain
          "distance":#{@distance},
          "duration":#{@duration},
          "end_time":#{@end_time.to_i},
-         "start_time":#{@start_time.to_i}
+         "start_time":#{@start_time.to_i},
+         "updated_at":#{@updated_at.to_i}
         }!
     end
 
