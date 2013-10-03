@@ -21,12 +21,6 @@ module Domain
 
     def persist!
       workout = workout_record
-      workout.active_duration = @active_duration
-      workout.distance = @distance
-      workout.duration = @duration
-      workout.end_time = @end_time
-      workout.start_time = @start_time
-      workout.user_id = @user_id
 
       workout.save!
       @id = workout.id
@@ -56,7 +50,14 @@ module Domain
     end
 
     def workout_record
-      ::Workout.new
+      workout = ::Workout.new
+      workout.active_duration = @active_duration
+      workout.distance = @distance
+      workout.duration = @duration
+      workout.end_time = @end_time
+      workout.start_time = @start_time
+      workout.user_id = @user_id
+      workout
     end
 
     def redis_key
