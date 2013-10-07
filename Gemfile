@@ -5,6 +5,7 @@ gem "bcrypt-ruby", "~> 3.0.0"
 gem "bindata"
 gem "bourbon"
 gem "consistency_fail"
+gem "dalli"
 gem "fit", git: "https://github.com/aerobicio/fit.git"
 gem "foreigner"
 gem "foreman"
@@ -45,6 +46,7 @@ group :doc do
 end
 
 group :test do
+  gem "codeclimate-test-reporter", require: nil
   gem "cucumber-nc"
   gem "cucumber-rails", :require => false
   gem "database_cleaner"

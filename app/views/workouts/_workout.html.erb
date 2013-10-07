@@ -1,4 +1,4 @@
-<% cache do workout %>
+<% cache workout.cache_key do %>
   <li>
     Duration: <%= (workout.active_duration / 1000 / 60.0).round(2) %> minutes
     Distance: <%= (workout.distance / 100000.0).round(2) %>km
