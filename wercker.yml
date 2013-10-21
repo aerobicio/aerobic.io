@@ -52,6 +52,10 @@ build:
             name: best practices
             code: bundle exec rails_best_practices .
     after-steps:
+        - plasticine/librato-build-metrics@0.0.15:
+            user: $LIBRATO_USER
+            token: $LIBRATO_TOKEN
+            namespace: aerobicio
         - wercker/campfire-notify@0.1.1:
             token: $CAMPFIRE_TOKEN
             room-id: 541059
