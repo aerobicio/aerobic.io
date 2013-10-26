@@ -1,4 +1,5 @@
 [![Code Climate](https://codeclimate.com/repos/51ca61cc56b1023b06009574/badges/664073e19f2501b1fb61/gpa.png)](https://codeclimate.com/repos/51ca61cc56b1023b06009574/feed)
+[![Code Climate](https://codeclimate.com/repos/525c792a56b1024dd3007ae6/badges/49c6375d1b227a95c24c/gpa.png)](https://codeclimate.com/repos/525c792a56b1024dd3007ae6/feed)
 
 ## README
 
