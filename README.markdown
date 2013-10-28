@@ -1,4 +1,5 @@
 [![Code Climate](https://codeclimate.com/repos/51ca61cc56b1023b06009574/badges/664073e19f2501b1fb61/gpa.png)](https://codeclimate.com/repos/51ca61cc56b1023b06009574/feed)
+[![Code Climate](https://codeclimate.com/repos/525c792a56b1024dd3007ae6/badges/49c6375d1b227a95c24c/gpa.png)](https://codeclimate.com/repos/525c792a56b1024dd3007ae6/feed)
 
 ## README
 
@@ -93,6 +94,16 @@ user interface. Read the [Rollout](https://github.com/bitlove/rollout) docs
 for more information on how it works.
 
 A list of active feature flips can be found in [SwitchBoard::FEATURE_FLIPS](https://github.com/quamen/aerobic.io/blob/master/lib/switch_board.rb#L16).
+
+### Domain Objects
+app/domain is reserved for objects that represent the applications domain. These objects should be used in Controllers. They are designed to be instantiated with data objects (ActiveRecord object, OpenStruct object), regardless of where it is persisted.
+
+Domain objects are allowed to reference Model objects in order to persist themselves or load data into themselves.
+
+### Model Objects
+app/models is reserved for objects that inherit from ActiveRecord. These objects are purely about persistence and should contain no logic.
+
+These objects should not be referenced directly in Controllers.
 
 ### CI
 

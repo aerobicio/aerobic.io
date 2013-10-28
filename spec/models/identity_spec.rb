@@ -1,4 +1,5 @@
-require 'spec_helper'
+require "active_record_helper"
+require_relative "../../app/models/identity"
 
 describe Identity do
   subject { Identity.create(name: "Gareth Townsend",

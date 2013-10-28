@@ -27,11 +27,12 @@ When writing unit tests, the following rules should be adheared to:
 1. Stub any class or module not under test.
 2. Do not require spec helper unless you have to. Exception are granted for:
     * Controller tests.
-    * Models that inherit from ActiveRecord.
 3. Do no write to the database, disk, or make network calls. The only exception
    is for testing Models that inherit from ActiveRecord that have uniquness
    constraints on them.
 4. Factories should never be used in unit Tests.
+5. Unit tests for ActiveRecord models should require the active record helper,
+   and not spec helper.
 
 By following these rules we should have a very fast unit test suite that
 proves that each unit of code works as intended. It makes no promises about
@@ -57,8 +58,8 @@ When writing acceptance tests, the following rules should be adheared to:
 Javascript Tests are written in Coffeescript and should test one unit of code.
 It also should assert that any DOM manipulation behaves as intented.
 
-Coffeescript tests use Mocha BDD style, Chai for assertions, and Sinon as
-for stubbing and mocking.
+Coffeescript tests use Mocha BDD style, Chai for assertions, and Sinon.js for
+stubbing and mocking.
 
 When writing javascript tests, the following rules should be adheared to:
 

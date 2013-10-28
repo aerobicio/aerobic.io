@@ -1,0 +1,42 @@
+label {
+  @extend .padding-tight-left;
+  @extend .padding-tight-top;
+  @extend .padding-tight-bottom;
+  @include font-size(0.9);
+
+  text-transform: uppercase;
+  font-weight: bold;
+  display: block;
+
+  &:first-child {
+    padding-top: 0;
+  }
+}
+
+// Base style for input[type=text]
+//
+// :hover        - hover state
+// :active       - active state
+// :focus        - focus state
+// :disabled     - can't touch this
+// .error        - bad validation
+//
+// Styleguide 3.0
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="password"] {
+  @extend %input;
+}
+
+// Base style for textarea
+//
+// :hover        - hover state
+// :active       - active state
+// :focus        - focus state
+// :disabled     - can't touch this
+//
+// Styleguide 3.2
+textarea {
+  @extend %input;
+}

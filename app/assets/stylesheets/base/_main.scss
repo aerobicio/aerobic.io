@@ -21,3 +21,8 @@ body {
   // Set actual desired optical font-size
   @include font-size($base-font-size, $line-height-ratio);
 }
+
+.grid-container {
+  max-width: 1600px;
+  margin: 0 auto;
+}

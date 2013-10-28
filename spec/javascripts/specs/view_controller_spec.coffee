@@ -2,14 +2,14 @@
 
 describe "ViewController", ->
   beforeEach ->
-    @container  = $("""<div id="my-view"></div>""").appendTo "body"
-    @spy        = sinon.stub(ViewController.prototype, "bindEvents")
+    @fixture    = $("""<div id="my-view"></div>""").appendTo "body"
+    @spy        = sinon.stub(ViewController.prototype, "_bindEvents")
     @controller = new ViewController el: "#my-view"
 
   afterEach ->
     @controller = null
     @spy.restore()
-    @container.remove()
+    @fixture.remove()
 
   it "should call the bindEvents method", ->
     chai.expect(@spy.calledOnce).to.be.true

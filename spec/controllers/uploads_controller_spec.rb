@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe UploadsController do
-  let(:user) { double(User) }
+  let(:user) { Domain::Member.new(double(User, id: 42)) }
 
   before do
     session[:user_id] = 1
-    User.stub(:find).and_return(user)
+    Domain::Member.stub(:find).and_return(user)
   end
 
   describe "#show" do

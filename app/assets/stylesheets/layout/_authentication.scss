@@ -1,0 +1,38 @@
+.la-authentication {
+  .page {
+    @include display-box;
+    @include box-align(stretch);
+    @include box-orient(vertical);
+    @include box-pack(start);
+
+    min-height: 100%
+  }
+
+  .header {
+    @include box-flex(0);
+  }
+
+  .content {
+    @extend .padding-medium;
+    @include box-flex(1);
+    @include display-box;
+    @include box-align(center);
+    @include box-pack(center);
+  }
+
+  .content__dialog {
+    width: 100%;
+
+    @include media($lap-and-up) {
+      @include span-columns(6);
+    }
+
+    @include media($desk) {
+      @include span-columns(5);
+    }
+  }
+
+  .footer {
+    @extend .padding-medium;
+  }
+}

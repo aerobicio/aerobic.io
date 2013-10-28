@@ -18,10 +18,19 @@
 
   display: block;
   float: left;
-  background:transparent image-url('masthead@2x.png') left top no-repeat;
-  background-size: 100%;
-  width: 147px;
+  background:transparent image-url('masthead.svg') left top no-repeat;
+  background-size: 100% 100%;
+  width: 90px;
   height: 22px;
+  margin-top: 3px;
+
+  .landing__hero & {
+    background-image: image-url('landing/masthead.svg')
+  }
+
+  @include media($desk) {
+    width: 150px;
+  }
 }
 
 .header__navigation {

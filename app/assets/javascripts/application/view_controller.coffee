@@ -3,15 +3,16 @@
 window.ViewController = class ViewController
   constructor: (options) ->
     @$el = $(options?.el)
-    @el = @$el[0]
+    @el  = @$el[0]
+
     @initialize options
-    @bindEvents()
+    @_bindEvents()
 
   initialize: -> # Abstract method.
-
-  bindEvents: -> # Abstract method.
 
   hide: -> @$el.hide()
   show: -> @$el.show()
 
   toggle: (value) -> @$el.toggle(value)
+
+  _bindEvents: -> # Abstract method.
