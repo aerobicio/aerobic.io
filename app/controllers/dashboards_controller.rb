@@ -4,6 +4,6 @@ require_relative "../domain/activity_feed"
 #
 class DashboardsController < ApplicationController
   def show
-    @workouts = Domain::ActivityFeed.workouts(current_user.id)
+    @activities = Domain::ActivityFeed.activities(current_user.id)
   end
 end

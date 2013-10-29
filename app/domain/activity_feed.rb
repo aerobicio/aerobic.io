@@ -1,4 +1,5 @@
 require_relative "workout"
+require_relative "following"
 
 module Domain
 
@@ -7,17 +8,28 @@ module Domain
   module ActivityFeed
     module_function
 
-    def add_workout(user_id, score, workout_key)
-      $redis.zadd(redis_key(user_id), score, workout_key)
+    def add_activity(user_id, score, activity_key)
+      $redis.zadd(redis_key(user_id), score, activity_key)
     end
 
-    def workouts(user_id)
-      workouts = $redis.zrevrange(redis_key(user_id), 0, -1)
-      workouts.map { |workout| Domain::Workout.new($redis.get(workout)) }
+    def activities(user_id)
+      activities = $redis.zrevrange(redis_key(user_id), 0, -1)
+      activities.map { |activity| instantiate_activity_model($redis.get(activity)) }
     end
 
     def redis_key(user_id)
       "user:#{user_id}:activity"
+    end
+
+    def instantiate_activity_model(activity)
+      activity = OpenStruct.new(JSON.parse(activity))
+
+      case activity.type
+      when "following"
+        Domain::Following.new(activity)
+      else
+        Domain::Workout.new(activity)
+      end
     end
   end
 end

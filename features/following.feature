@@ -5,33 +5,33 @@ Feature: Following
 
   Background:
     Given I am a member
-    And another member follows me
+    And "Justin" is following me
 
   @flip @following @off
   Scenario: A member cannot unfollow another member when the feature is off
-    Given the following feature is off
-    And I am following another member
-    Then I should not be able to unfollow them
+    Given I am following "Justin"
+    And the following feature is off
+    Then I should not be able to unfollow "Justin"
 
   @flip @following @off
   Scenario: A member cannot follow another member when the feature is off
-    Given the following feature is off
-    And I am not following another member
-    Then I should not be able to follow them
+    Given I am not following "Justin"
+    And the following feature is off
+    Then I should not be able to follow "Justin"
 
   @flip @following @on
   Scenario: A member can follow another member when the feature is on
     Given the following feature is on
-    When I follow another member
+    When I follow "Gus"
     Then I should see that fact in my activity feed
-    And the member I followed should see that fact in their activity feed
-    And members who follow me should see that fact in their activity feed
+    And "Gus" should see that I followed them in their activity feed
+    And "Justin" should see that I followed "Gus" in their activity feed
 
-  @flip @following @on
+  @flip @following @on @wip
   Scenario: A member can unfollow another member when the feature is on
     Given the following feature is on
-    And I am following another member
-    When I unfollow another member
-    Then I should see that fact in my activity feed
-    And the member I unfollowed should not see that fact in their activity feed
-    And members who follow me should not see that fact in their activity feed
+    And I follow "Gus" 
+    When I unfollow "Gus"
+    Then I should see that I unfollowed "Gus" in my activity feed
+    And "Gus" should not see that fact in their activity feed
+    And "Justin" should not see that fact in their activity feed

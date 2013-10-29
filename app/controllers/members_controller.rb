@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
   def index
     if $switch_board.following_active?
-      @members = Domain::Member.all
+      @members = Domain::Member.all.delete_if { |member| member.id == current_user.id }
 
       render :index
     else
@@ -14,6 +14,16 @@ class MembersController < ApplicationController
       member = Domain::Member.find(params[:id])
       current_user.follow(member)
       redirect_to members_path, notice: "Now following #{member.name}"
+    else
+      redirect_to dashboard_path
+    end
+  end
+
+  def unfollow
+    if $switch_board.following_active?
+      member = Domain::Member.find(params[:id])
+      current_user.unfollow(member)
+      redirect_to members_path, notice: "No longer following #{member.name}"
     else
       redirect_to dashboard_path
     end

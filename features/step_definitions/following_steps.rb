@@ -1,34 +1,28 @@
-Given(/^another member follows me$/) do
-  register_another_member
-  $switch_board.activate_following
-  visit members_path
-  click_button "Follow"
-  @another_member_who_follows_me = @identity
-  $switch_board.deactivate_following
+Given(/^"(.*?)" is following me$/) do |name|
+  Capybara.session_name = name
+  create_registered_account(name)
+  follow(@my_name)
+  Capybara.session_name = "mine"
+end
+
+Given(/^I am following "(.*?)"$/) do |name|
+  follow(name)
 end
 
 Given(/^the following feature is off$/) do
   $switch_board.deactivate_following
 end
 
-Given(/^I am following another member$/) do
-  # This step is kinda pointless but left in for later usage and feature
-  # completeness.
-end
-
-Then(/^I should not be able to unfollow them$/) do
+Then(/^I should not be able to unfollow "(.*?)"$/) do |name|
   visit members_path
   page.should have_content("The page you were looking for doesn't exist")
 end
 
-Given(/^I am not following another member$/) do
-  register_another_member
-  sign_out
-  @identity = @original_identity
-  sign_in
+Given(/^I am not following "(.*?)"$/) do |name|
+  # This is the default state
 end
 
-Then(/^I should not be able to follow them$/) do
+Then(/^I should not be able to follow "(.*?)"$/) do |name|
   visit members_path
   page.should have_content("The page you were looking for doesn't exist")
 end
@@ -37,31 +31,55 @@ Given(/^the following feature is on$/) do
   $switch_board.activate_following
 end
 
-When(/^I follow another member$/) do
-  visit members_path
-  click_button "Follow"
+When(/^I follow "(.*?)"$/) do |name|
+  Capybara.session_name = name
+  create_registered_account(name)
+  Capybara.session_name = "mine"
+
+  follow(name)
 end
 
 Then(/^I should see that fact in my activity feed$/) do
-  pending # express the regexp above with the code you wish you had
+  visit dashboard_path
+  page.should have_content "You followed #{@name}"
 end
 
-Then(/^the member I followed should see that fact in their activity feed$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^"(.*?)" should see that I followed them in their activity feed$/) do |name|
+  Capybara.session_name = name
+  visit dashboard_path
+  page.should have_content "#{@my_name} followed you"
 end
 
-Then(/^members who follow me should see that fact in their activity feed$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^"(.*?)" should see that I followed "(.*?)" in their activity feed$/) do |name, followed_name|
+  Capybara.session_name = name
+  visit dashboard_path
+  page.should have_content "#{@my_name} followed #{followed_name}"
 end
 
-When(/^I unfollow another member$/) do
-  pending # express the regexp above with the code you wish you had
+When(/^I unfollow "(.*?)"$/) do |name|
+  @name = name
+  $switch_board.activate_following
+  visit members_path
+  click_button "Unfollow #{name}"
+  $switch_board.deactivate_following
 end
 
-Then(/^the member I unfollowed should not see that fact in their activity feed$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^I should see that I unfollowed "(.*?)" in my activity feed$/) do |name|
+  visit dashboard_path
+  page.should have_content "No longer following #{@name}"
 end
 
-Then(/^members who follow me should not see that fact in their activity feed$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^"(.*?)" should not see that fact in their activity feed$/) do |name|
+  Capybara.session_name = name
+  visit dashboard_path
+  page.should have_no_content "#{@my_name} is no longer following you"
 end
+
+def follow(name)
+  @name = name
+  $switch_board.activate_following
+  visit members_path
+  click_button "Follow #{name}"
+  $switch_board.deactivate_following
+end
+

@@ -1,4 +1,5 @@
 require_relative "shared/initialize_from_data_object"
+require_relative "following"
 
 module Domain
 
@@ -18,7 +19,16 @@ module Domain
     end
 
     def follow(member)
-      true
+      following = Domain::Following.new(user_id: id, following_id: member.id)
+      following.persist
+    end
+
+    def unfollow(member)
+      following = User.find(@id).followings.where(:following_id, member.id)
+    end
+
+    def follows?(member)
+      User.find(@id).followings.map(&:id).include?(member.id)
     end
   end
 end

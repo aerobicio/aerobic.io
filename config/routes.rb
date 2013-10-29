@@ -14,6 +14,7 @@ AerobicIo::Application.routes.draw do
   resources :members, only: [:index] do
     member do
       post "follow"
+      post "unfollow"
     end
   end
 
