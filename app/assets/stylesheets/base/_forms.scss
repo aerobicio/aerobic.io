@@ -21,7 +21,7 @@ label {
 // :disabled     - can't touch this
 // .error        - bad validation
 //
-// Styleguide 3.0
+// TODO
 input[type="text"],
 input[type="number"],
 input[type="tel"],
@@ -36,7 +36,7 @@ input[type="password"] {
 // :focus        - focus state
 // :disabled     - can't touch this
 //
-// Styleguide 3.2
+// TODO
 textarea {
   @extend %input;
 }
