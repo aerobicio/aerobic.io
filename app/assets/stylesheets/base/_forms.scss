@@ -1,3 +1,12 @@
+// Base style for `<label>` form elements.
+//
+// The `:first-child` has its top-padding removed.
+//
+// -
+//
+// :first-child
+//
+// Styleguide Forms.Label
 label {
   @extend .padding-tight-left;
   @extend .padding-tight-top;
@@ -13,7 +22,7 @@ label {
   }
 }
 
-// Base style for input[type=text]
+// Base style for `input[type=text]` form inputs.
 //
 // :hover        - hover state
 // :active       - active state
@@ -21,7 +30,7 @@ label {
 // :disabled     - can't touch this
 // .error        - bad validation
 //
-// TODO
+// Styleguide Forms.Input
 input[type="text"],
 input[type="number"],
 input[type="tel"],
@@ -29,14 +38,15 @@ input[type="password"] {
   @extend %input;
 }
 
-// Base style for textarea
+// Base style for `textarea` form inputs.
 //
 // :hover        - hover state
 // :active       - active state
 // :focus        - focus state
 // :disabled     - can't touch this
+// .error        - bad validation
 //
-// TODO
+// Styleguide Forms.Textarea
 textarea {
   @extend %input;
 }
