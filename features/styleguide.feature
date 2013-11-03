@@ -5,4 +5,4 @@ Feature: Styleguide
 
   Scenario: "Viewing the styleguide"
     Given I have documented my CSS
-    Then I should be able to view an example for each component
+    Then I should be able to view each component
