@@ -318,7 +318,7 @@ DEPENDENCIES
   foreman
   jbuilder (~> 1.2)
   jquery-rails
-  kayessess (~> 0.1.0)
+  kayessess (~> 0.1.3)
   lograge
   neat
   nestive!
