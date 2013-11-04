@@ -1,9 +1,10 @@
 <% if current_user %>
-  <div class="header-account">
-    <p class="header-account__welcome"><%= current_user.name %></p>
-    <nav class="header-account__navigation">
-      <%= link_to(t("upload"), upload_path, "data-no-turbolink" => true) %>
+  <nav class="navigation">
+    <%= link_to(t("upload"), upload_path, class: "navigation__item", "data-no-turbolink" => true) %>
+
+    <div class="navigation__account">
+      <p><%= current_user.name %></p>
       <%= link_to(t("sign_out"), sign_out_path, method: :put, class: "header-account__navigation__item") %>
-    </nav>
-  </div>
+    </div>
+  </nav>
 <% end %>

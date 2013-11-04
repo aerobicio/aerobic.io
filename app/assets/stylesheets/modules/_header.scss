@@ -37,39 +37,3 @@
     width: 150px;
   }
 }
-
-// The navigation in the top right-hand side of both authenticated and
-// unauthenticated pages.
-//
-// -
-//
-// Styleguide Components.Header.Navigation
-.header__navigation {
-  float: right;
-}
-
-.header__navigation__item {
-  @include transition(all 350ms $ease-in-out-quad);
-
-  @extend .padding-medium-left;
-  @extend .padding-medium-right;
-  @extend .margin-wide-left;
-
-  border-radius: 4px;
-  border: 2px solid $header-navigation-color;
-  color: $header-navigation-color;
-  float: left;
-  font-size: 1.1rem;
-  line-height: 2.2;
-  text-transform: uppercase;
-
-  &:first-child {
-    margin-left: 0;
-  }
-
-  &:hover,
-  &:focus {
-    border-color: lighten($header-navigation-color, 25%);
-    color: lighten($header-navigation-color, 25%)
-  }
-}

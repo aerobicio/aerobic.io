@@ -1,0 +1,9 @@
+.la-app {
+  .content {
+    @extend .padding-medium;
+
+    @include media($desk) {
+      @include padding(wide);
+    }
+  }
+}
