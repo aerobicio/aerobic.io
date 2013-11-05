@@ -40,7 +40,7 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
-    arel (4.0.0)
+    arel (4.0.1)
     atomic (1.1.14)
     awesome_print (1.1.0)
     bcrypt-ruby (3.0.1)
@@ -61,6 +61,7 @@ GEM
       sexp_processor
     codeclimate-test-reporter (0.0.7)
       simplecov (>= 0.7.1, < 1.0.0)
+    coderay (1.0.9)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -121,18 +122,27 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.0)
+    kayessess (0.1.3)
+      bourbon
+      kss (>= 0.5.0)
+      pry
+      pygments.rb (>= 0.5.2)
+      rails (>= 3.0.0)
+      redcarpet
+      to_slug (>= 1.0.8)
     kgio (2.8.0)
-    kss (0.4.0)
+    kss (0.5.0)
     lograge (0.2.0)
       actionpack
       activesupport
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_source (0.8.2)
     mime-types (1.25)
     mini_portile (0.5.1)
     minitest (4.7.5)
-    multi_json (1.8.0)
+    multi_json (1.8.2)
     multipart-post (1.2.0)
     neat (1.4.0)
       bourbon (>= 2.1)
@@ -155,8 +165,16 @@ GEM
       faye-websocket (>= 0.4.4, < 0.5.0)
       http_parser.rb (~> 0.5.3)
     polyglot (0.3.3)
+    posix-spawn (0.3.6)
     prototype-rails (3.2.0)
       railties (>= 3.2.0.beta, < 5.0)
+    pry (0.9.12.2)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    pygments.rb (0.5.2)
+      posix-spawn (~> 0.3.6)
+      yajl-ruby (~> 1.1.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -191,6 +209,7 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    redcarpet (3.0.0)
     redis (3.0.4)
     require_all (1.3.0)
     rollout (2.0.0)
@@ -215,7 +234,7 @@ GEM
       rspec-mocks (~> 2.14.0)
     ruby-progressbar (1.2.0)
     rubypants (0.2.0)
-    sass (3.2.10)
+    sass (3.2.12)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
@@ -234,12 +253,13 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
+    slop (3.4.6)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.0.0)
+    sprockets-rails (2.0.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
@@ -251,6 +271,7 @@ GEM
     thread_safe (0.1.3)
       atomic
     tilt (1.4.1)
+    to_slug (1.0.8)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -258,7 +279,7 @@ GEM
       coffee-rails
     typogruby (1.0.16)
       rubypants
-    tzinfo (0.3.37)
+    tzinfo (0.3.38)
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
@@ -272,6 +293,7 @@ GEM
       mail
     xpath (2.0.0)
       nokogiri (~> 1.3)
+    yajl-ruby (1.1.0)
     yui-compressor (0.11.0)
 
 PLATFORMS
@@ -296,7 +318,7 @@ DEPENDENCIES
   foreman
   jbuilder (~> 1.2)
   jquery-rails
-  kss
+  kayessess (~> 0.1.3)
   lograge
   neat
   nestive!

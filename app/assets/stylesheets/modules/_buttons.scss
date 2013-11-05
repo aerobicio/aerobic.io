@@ -1,3 +1,11 @@
+// The default button style.
+//
+// :hover    - Hover state
+// :active   - Active state
+// :focus    - Focus state
+// :disabled - Disabled state
+//
+// Styleguide Controls.Buttons.Default Button
 .button {
   @extend %button;
   @extend .margin-wide-top;

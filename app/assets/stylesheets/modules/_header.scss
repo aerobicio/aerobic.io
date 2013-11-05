@@ -1,3 +1,13 @@
+// The main application header.
+//
+// This header is used app-wide for both authenticated and unauthenticated
+// sessions. Authenticated users get a different navigation swapped in/out.
+//
+// -
+//
+// Styleguide Components.Header
+.header {}
+
 .header__inner {
   @extend .padding-medium;
 
@@ -28,6 +38,12 @@
   }
 }
 
+// The navigation in the top right-hand side of both authenticated and
+// unauthenticated pages.
+//
+// -
+//
+// Styleguide Components.Header.Navigation
 .header__navigation {
   float: right;
 }

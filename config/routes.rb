@@ -18,11 +18,7 @@ AerobicIo::Application.routes.draw do
     end
   end
 
-  unless Rails.env.production?
-    resources :styleguide, only: [:show, :index], controller: "documentation/styleguide" do
-      get ':example_id' => 'documentation/styleguide#example', :as => :example, :constraints => {:example_id =>  /[^\/]+/}
-    end
-  end
+  mount Kayessess::Engine => "/styleguide", :as => 'kayessess' unless Rails.env.production?
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
