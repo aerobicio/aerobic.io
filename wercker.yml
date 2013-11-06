@@ -15,6 +15,8 @@ build:
         - desmondmorris/selenium-install@0.0.2
         # A step that executes `npm install`
         - npm-install
+        # Install python development tools
+        - pip-install
         # A step that executes `bower install`
         - plasticine/bower-install
         # A custom script step, name value is used in the UI
@@ -47,6 +49,9 @@ build:
         - script:
             name: cucumber
             code: bundle exec cucumber
+        - script:
+            name: huxley
+            code: huxley --playback-only --save-diff -f ./spec/ui
         - script:
             name: quality
             code: bundle exec rake quality
