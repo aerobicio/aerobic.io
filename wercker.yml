@@ -24,8 +24,6 @@ build:
         - script:
             name: echo ruby information
             code: |
-                ls -al
-                pwd
                 echo "ruby version $(ruby --version) running"
                 echo "from location $(which ruby)"
                 echo -p "gem list: $(gem list)"
@@ -36,6 +34,9 @@ build:
             code: |
               echo "node version $(node -v) running"
               echo "npm version $(npm -v) running"
+        - script:
+            name: echo python information
+            code: echo "python --version"
         - script:
             name: db setup
             code: RAILS_ENV=test bundle exec rake db:structure:load
@@ -53,7 +54,7 @@ build:
             code: bundle exec cucumber
         - script:
             name: huxley
-            code: script/huxley_playback
+            code: script/huxley_test
         - script:
             name: quality
             code: bundle exec rake quality
