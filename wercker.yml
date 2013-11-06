@@ -54,7 +54,9 @@ build:
             code: bundle exec cucumber
         - script:
             name: huxley
-            code: DISPLAY=:0 script/huxley_test
+            code: |
+                Xvfb :1 -screen 0 1024x768x24 2>&1 >/dev/null &
+                DISPLAY=:1 script/huxley_test
         - script:
             name: quality
             code: bundle exec rake quality
