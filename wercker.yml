@@ -24,6 +24,8 @@ build:
         - script:
             name: echo ruby information
             code: |
+                ls -al
+                pwd
                 echo "ruby version $(ruby --version) running"
                 echo "from location $(which ruby)"
                 echo -p "gem list: $(gem list)"
@@ -51,7 +53,7 @@ build:
             code: bundle exec cucumber
         - script:
             name: huxley
-            code: ./script/huxley_playback
+            code: script/huxley_playback
         - script:
             name: quality
             code: bundle exec rake quality
