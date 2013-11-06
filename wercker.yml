@@ -52,7 +52,7 @@ build:
         - script:
             name: huxley
             code: |
-                nohup RAILS_ENV=test bundle exec rails server -p 3000 & while ! nc -vz localhost 3000; do sleep 1; done
+                nohup bundle exec rails server -p 3000 & while ! nc -vz localhost 3000; do sleep 1; done
                 huxley --playback-only --save-diff -f ./spec/ui/Huxleyfile
         - script:
             name: quality
