@@ -23,6 +23,8 @@ run_command "bin/teaspoon"
 run_command "rake spec"
 run_command "rake cucumber"
 
+run_command "huxley --playback-only --save-diff -f ./spec/ui"
+
 run_command "rake quality"
 run_command "bin/rails_best_practices ."
 
