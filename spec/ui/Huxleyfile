@@ -1,0 +1,19 @@
+[default-button]
+url: http://localhost:3000/styleguide/controls/buttons/default-button/example
+screensize: 1024x768
+sleepfactor: 0.1
+
+[panel.desk]
+url: http://localhost:3000/styleguide/panels/panel/example
+screensize: 1024x768
+sleepfactor: 0.1
+
+[tablet.palm]
+url: http://localhost:3000/styleguide/panels/panel/example
+screensize: 481x768
+sleepfactor: 0.1
+
+[panel.handheld]
+url: http://localhost:3000/styleguide/panels/panel/example
+screensize: 320x768
+sleepfactor: 0.1
