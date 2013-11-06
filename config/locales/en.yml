@@ -3,7 +3,7 @@ en:
   title:      "aerobic.io"
   sign_in:    "Sign in"
   sign_out:   "Sign out"
-  upload:     "Upload"
+  upload:     "New Workout"
 
   valid_email:
     validations:
