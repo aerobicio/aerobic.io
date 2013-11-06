@@ -27,7 +27,13 @@ module Domain
       Activity::UnfollowedUser.create(user_id: @id,
                                       activity_user_id: @id,
                                       activity_followed_user_id: member.id)
-      sql = "Delete from users_followings where user_id = #{@id} and following_id = #{member.id}"
+
+      sql = <<-SQL
+        delete from users_followings
+        where user_id = #{@id}
+        and following_id = #{member.id}
+      SQL
+
       ActiveRecord::Base.connection.execute(sql)
     end
 

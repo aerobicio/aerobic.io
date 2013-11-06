@@ -1,7 +1,10 @@
+# MembersController provides a restful interface onto the Member resource.
+#
 class MembersController < ApplicationController
   def index
     if $switch_board.following_active?
-      @members = Domain::Member.all.delete_if { |member| member.id == current_user.id }
+      @members = Domain::Member.all
+      @member = @members.delete_if { |member| member.id == current_user.id }
 
       render :index
     else

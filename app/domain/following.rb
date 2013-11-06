@@ -1,6 +1,10 @@
 require_relative "shared/initialize_from_data_object"
 
 module Domain
+
+  # Followings are a domain object to represent the current state of a user
+  # following another user.
+  #
   class Following
     include Domain::Shared::InitializeFromDataObject
 
@@ -10,36 +14,25 @@ module Domain
     attr_accessor :updated_at
 
     def persist
-      user = User.find(user_id)
       user.followings << User.find(following_id)
       user.save
 
-      following = user.followings.last
-      @id = following.id
+      set_id_from_last_following
 
-      persist_to_redis(following.created_at.to_i)
-    end
-
-    def following
-      @following ||= User.find(@following_id)
+      persist_to_activity_feeds
     end
 
     def user
       @user ||= User.find(@user_id)
     end
 
-    def cache_key
-      "domain:following:#{id}:#{updated_at}"
-    end
-
-    def to_partial_path
-      "followings/following"
-    end
-
     private
 
-    def persist_to_redis(score)
-      # $redis.set(redis_key, to_json)
+    def set_id_from_last_following
+      @id = @user.followings.last.id
+    end
+
+    def persist_to_activity_feeds
       Activity::FollowedUser.create(user_id: @user_id,
                                     activity_user_id: @user_id,
                                     activity_followed_user_id: @following_id)
@@ -54,19 +47,6 @@ module Domain
                                       activity_user_id: @user_id,
                                       activity_followed_user_id: @following_id)
       end
-    end
-
-    def to_json
-      %!{"type":"following",
-         "id":#{@id},
-         "user_id":#{@user_id},
-         "following_id":#{@following_id},
-         "updated_at":#{@updated_at.to_i}
-        }!
-    end
-
-    def redis_key
-      "user:#{@user_id}:following:#{@id}"
     end
   end
 end
