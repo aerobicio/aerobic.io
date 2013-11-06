@@ -1,7 +1,7 @@
 <li>
-  <% if @current_user.id == followed_user.activity_user_id %>
+  <% if current_user.id == followed_user.activity_user_id %>
     You followed <%= followed_user.activity_followed_user.name %>
-  <% elsif @current_user.id == followed_user.activity_followed_user_id %>
+  <% elsif current_user.id == followed_user.activity_followed_user_id %>
     <%= followed_user.activity_user.name %> followed you
   <% else %>
     <%= followed_user.activity_user.name %> followed <%= followed_user.activity_followed_user.name %>
