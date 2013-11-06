@@ -27,7 +27,7 @@ Feature: Following
     And "Gus" should see that I followed them in their activity feed
     And "Justin" should see that I followed "Gus" in their activity feed
 
-  @flip @following @on @wip
+  @flip @following @on
   Scenario: A member can unfollow another member when the feature is on
     Given the following feature is on
     And I follow "Gus" 

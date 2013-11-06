@@ -1,5 +1,4 @@
 require_relative "shared/initialize_from_data_object"
-require_relative "activity_feed"
 
 module Domain
   class Following
@@ -40,12 +39,20 @@ module Domain
     private
 
     def persist_to_redis(score)
-      $redis.set(redis_key, to_json)
-      Domain::ActivityFeed.add_activity(@user_id, score, redis_key)
-      Domain::ActivityFeed.add_activity(@following_id, score, redis_key)
+      # $redis.set(redis_key, to_json)
+      Activity::FollowedUser.create(user_id: @user_id,
+                                    activity_user_id: @user_id,
+                                    activity_followed_user_id: @following_id)
+
+      Activity::FollowedUser.create(user_id: @following_id,
+                                    activity_user_id: @user_id,
+                                    activity_followed_user_id: @following_id)
+
 
       user.followers.each do |user|
-        Domain::ActivityFeed.add_activity(user.id, score, redis_key)
+        Activity::FollowedUser.create(user_id: user.id,
+                                      activity_user_id: @user_id,
+                                      activity_followed_user_id: @following_id)
       end
     end
 

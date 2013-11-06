@@ -24,7 +24,11 @@ module Domain
     end
 
     def unfollow(member)
-      following = User.find(@id).followings.where(:following_id, member.id)
+      Activity::UnfollowedUser.create(user_id: @id,
+                                      activity_user_id: @id,
+                                      activity_followed_user_id: member.id)
+      sql = "Delete from users_followings where user_id = #{@id} and following_id = #{member.id}"
+      ActiveRecord::Base.connection.execute(sql)
     end
 
     def follows?(member)

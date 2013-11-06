@@ -42,7 +42,23 @@ describe Domain::Member do
 
     let(:member) { Domain::Member.new(user) }
     let(:member_2) { Domain::Member.new(user_2) }
+    let(:following) { double(:following) }
 
-    it { should be_true }
+    before do
+      Domain::Following.should_receive(:new) { following }
+      following.should_receive(:persist) { persist }
+    end
+
+    context "successfully" do
+      let(:persist) { true }
+
+      it { should be_true }
+    end
+
+    context "unsuccessfully" do
+      let(:persist) { false }
+
+      it { should be_false }
+    end
   end
 end
