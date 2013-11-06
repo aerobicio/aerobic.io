@@ -16,7 +16,7 @@ build:
         # A step that executes `npm install`
         - npm-install
         # Install python development tools
-        - pip-install
+        - flenter/pip-install-cached@0.0.23
         # A step that executes `bower install`
         - plasticine/bower-install
         # A custom script step, name value is used in the UI
@@ -54,7 +54,7 @@ build:
             code: bundle exec cucumber
         - script:
             name: huxley
-            code: script/huxley_test
+            code: DISPLAY=:0 script/huxley_test
         - script:
             name: quality
             code: bundle exec rake quality
