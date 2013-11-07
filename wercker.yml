@@ -52,7 +52,7 @@ build:
             code: bundle exec cucumber
         - script:
             name: huxley
-            code: script/huxley_test
+            code: script/huxley test
         - script:
             name: quality
             code: bundle exec rake quality
