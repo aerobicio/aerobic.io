@@ -14,30 +14,16 @@ function start_app_server {
   while ! nc -vw 1 localhost $HUXLEY_SERVER_PORT; do sleep 1; done
 }
 
-function start_phantomjs_webdriver {
-  export HUXLEY_WEBDRIVER_REMOTE=http://127.0.0.1:8910
-  nohup phantomjs -w > $LOG_DIR/phantomjs.log 2> $LOG_DIR/phantomjs_err.log < /dev/null &
-  echo $! > $HUXLEY_PHANTOMJS_PID_PATH
-  while ! nc -vw 1 localhost 8910; do sleep 1; done
-}
-
 function teardown {
   # Clean up dead unicorns.
   if [[ -f $HUXLEY_SERVER_PID_PATH ]]; then
     kill -QUIT `cat $HUXLEY_SERVER_PID_PATH`
     rm $HUXLEY_SERVER_PID_PATH
   fi
-
-  # Kill any phantomjs processes.
-  if [[ -f $HUXLEY_SERVER_PID_PATH ]]; then
-    kill `cat $HUXLEY_PHANTOMJS_PID_PATH`
-    rm $HUXLEY_PHANTOMJS_PID_PATH
-  fi
 }
 
 function huxley_test {
   start_app_server
-  # start_phantomjs_webdriver
   huxley --playback-only --save-diff -f ./spec/ui/**Huxleyfile
   HUXLEY_EXIT_CODE=$?
   teardown
@@ -49,9 +35,6 @@ function huxley_record {
   # browser (firefox)
   start_app_server
   huxley -f ./spec/ui/**Huxleyfile
-
-  start_phantomjs_webdriver
-  huxley --record -f ./spec/ui/**Huxleyfile
   HUXLEY_EXIT_CODE=$?
   teardown
   exit $HUXLEY_EXIT_CODE

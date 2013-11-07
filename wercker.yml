@@ -5,12 +5,19 @@ services:
 build:
     # The steps that will be executed on build
     steps:
+        - script:
+            name: set environment variables
+            code: |
+                export DISPLAY=:99.0
+                which xvfb
+                which Xvfb
         # A step that executes `bundle install` command
         - bundle-install
         # A step that prepares the database.yml with settings from the database you defined in services
         - rails-database-yml
         # A step that will ensure that phantomjs is available
         - aussiegeek/install-phantomjs@0.0.3
+        # Ensure that selenium-server is available and running
         - desmondmorris/selenium-install@0.0.2
         # A step that executes `npm install`
         - npm-install
