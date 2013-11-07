@@ -2,13 +2,12 @@
 
 HUXLEY_SERVER_PORT=8899
 HUXLEY_SERVER_PID_PATH=tmp/pids/unicorn.pid
-HUXLEY_PHANTOMJS_PID_PATH=tmp/pids/phantomjs.pid
-HUXLEY_SELENIUM_PID_PATH=tmp/pids/selenium.pid
 HUXLEY_EXIT_CODE=0
 LOG_DIR=log
 
 function start_app_server {
   # Start unicorns via nohup and hold onto unicorn master pid.
+  touch $HUXLEY_SERVER_PID_PATH
   nohup bundle exec unicorn -p $HUXLEY_SERVER_PORT &
   echo $! > $HUXLEY_SERVER_PID_PATH
   while ! nc -vw 1 localhost $HUXLEY_SERVER_PORT; do sleep 1; done
@@ -24,7 +23,7 @@ function teardown {
 
 function huxley_test {
   start_app_server
-  huxley --playback-only --save-diff -f ./spec/ui/**Huxleyfile
+  xvfb-run huxley --playback-only --save-diff -f ./spec/ui/**Huxleyfile
   HUXLEY_EXIT_CODE=$?
   teardown
   exit $HUXLEY_EXIT_CODE
@@ -34,7 +33,7 @@ function huxley_record {
   # first run through is used to record interactions and steps using a visual
   # browser (firefox)
   start_app_server
-  huxley -f ./spec/ui/**Huxleyfile
+  xvfb-run huxley -f ./spec/ui/**Huxleyfile
   HUXLEY_EXIT_CODE=$?
   teardown
   exit $HUXLEY_EXIT_CODE
