@@ -26,7 +26,7 @@ bundle binstubs consistency_fail --force
 bundle binstubs teaspoon --force
 npm install
 bower install
-pip install -qr .pip
+pip install -r requirements.txt --download-cache .pip
 
 cp -n .env.example .env
 cp -n config/database.yml.example config/database.yml
