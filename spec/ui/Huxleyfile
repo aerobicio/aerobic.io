@@ -15,10 +15,10 @@ url=http://localhost:8899/styleguide/panels/panel/example
 screensize=1024x768
 sleepfactor=0.5
 
-# [panel.tablet]
-# url=http://localhost:8899/styleguide/panels/panel/example
-# screensize=481x768
-# sleepfactor=0.5
+[panel.tablet]
+url=http://localhost:8899/styleguide/panels/panel/example
+screensize=481x768
+sleepfactor=0.5
 
 [panel.handheld]
 url=http://localhost:8899/styleguide/panels/panel/example
