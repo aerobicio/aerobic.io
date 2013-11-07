@@ -17,7 +17,7 @@ describe MembersController do
         get :index
       end
 
-      it { should respond_with(:not_found) }
+      it { should redirect_to(dashboard_path) }
     end
 
     @following
