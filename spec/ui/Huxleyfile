@@ -1,19 +1,26 @@
-[default-button]
-url: http://localhost:8080/styleguide/controls/buttons/default-button/example
+[default-button.desk]
+url: http://localhost:8899/styleguide/controls/buttons/default-button/example
 screensize: 1024x768
-sleepfactor: 0.1
+
+[default-button.palm]
+url: http://localhost:8899/styleguide/controls/buttons/default-button/example
+screensize: 481x768
+
+[default-button.handheld]
+url: http://localhost:8899/styleguide/controls/buttons/default-button/example
+screensize: 320x768
 
 [panel.desk]
-url: http://localhost:8080/styleguide/panels/panel/example
+url: http://localhost:8899/styleguide/panels/panel/example
 screensize: 1024x768
-sleepfactor: 0.1
+sleepfactor: 0.5
 
 [tablet.palm]
-url: http://localhost:8080/styleguide/panels/panel/example
+url: http://localhost:8899/styleguide/panels/panel/example
 screensize: 481x768
-sleepfactor: 0.1
+sleepfactor: 0.5
 
 [panel.handheld]
-url: http://localhost:8080/styleguide/panels/panel/example
+url: http://localhost:8899/styleguide/panels/panel/example
 screensize: 320x768
-sleepfactor: 0.1
+sleepfactor: 0.5
