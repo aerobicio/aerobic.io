@@ -16,10 +16,10 @@ function setup {
 
 function teardown {
   # Clean up dead unicorns.
-  kill -SIGTERM `cat $HUXLEY_SERVER_PID_PATH`
+  kill -QUIT `cat $HUXLEY_SERVER_PID_PATH`
   rm $HUXLEY_SERVER_PID_PATH
   # Kill phantomjs
-  kill -SIGTERM `cat $HUXLEY_PHANTOMJS_PID_PATH`
+  kill -QUIT `cat $HUXLEY_PHANTOMJS_PID_PATH`
   rm $HUXLEY_PHANTOMJS_PID_PATH
 }
 

@@ -22,7 +22,7 @@ run_command "bin/consistency_fail"
 run_command "bin/teaspoon"
 run_command "rake spec"
 run_command "rake cucumber"
-run_command "script/huxley_test"
+run_command "script/huxley test"
 run_command "rake quality"
 run_command "bin/rails_best_practices ."
 
