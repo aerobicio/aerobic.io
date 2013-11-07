@@ -8,6 +8,7 @@ build:
         - script:
             name: configure framebuffer
             code: |
+                apt-get install x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic x11-apps
                 Xvfb :1 -screen 0 1024x768x24 2>&1 >/dev/null &
                 export DISPLAY=:1
         # A step that executes `bundle install` command
