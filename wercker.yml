@@ -9,7 +9,6 @@ build:
             name: set environment variables
             code: |
                 export DISPLAY=:99.0
-                which xvfb
                 which Xvfb
         # A step that executes `bundle install` command
         - bundle-install
