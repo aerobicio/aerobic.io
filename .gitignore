@@ -8,6 +8,8 @@
 /.bundle
 .env
 .DS_Store
+nohup.*
+.pip
 
 /bin/autospec
 /bin/rspec
