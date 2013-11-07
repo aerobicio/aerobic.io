@@ -11,8 +11,6 @@ build:
         - rails-database-yml
         # A step that will ensure that phantomjs is available
         - aussiegeek/install-phantomjs@0.0.3
-        # Ensure that selenium standalone server is available and running
-        - desmondmorris/selenium-install@0.0.2
         # A step that executes `npm install`
         - npm-install
         # Install python development tools
@@ -54,9 +52,7 @@ build:
             code: bundle exec cucumber
         - script:
             name: huxley
-            code: |
-                Xvfb :1 -screen 0 1024x768x24 2>&1 >/dev/null &
-                DISPLAY=:1 script/huxley_test
+            code: script/huxley_test
         - script:
             name: quality
             code: bundle exec rake quality
