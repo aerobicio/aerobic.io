@@ -1,0 +1,54 @@
+#!/bin/bash +xe
+
+export HUXLEY_WEBDRIVER_REMOTE=http://127.0.0.1:8910
+HUXLEY_SERVER_PORT=8899
+HUXLEY_SERVER_PID_PATH=tmp/pids/unicorn.pid
+HUXLEY_PHANTOMJS_PID_PATH=tmp/pids/phantomjs.pid
+HUXLEY_EXIT_CODE=0
+
+function setup {
+  # Start unicorns via nohup and hold onto unicorn master pid.
+  nohup bundle exec unicorn -p $HUXLEY_SERVER_PORT & while ! nc -vw 1 localhost $HUXLEY_SERVER_PORT; do sleep 1; done
+  echo $! > $HUXLEY_SERVER_PID_PATH
+  nohup phantomjs -w & while ! nc -vw 1 localhost 8910; do sleep 1; done
+  echo $! > $HUXLEY_PHANTOMJS_PID_PATH
+}
+
+function teardown {
+  # Clean up dead unicorns.
+  kill -SIGTERM `cat $HUXLEY_SERVER_PID_PATH`
+  rm $HUXLEY_SERVER_PID_PATH
+  # Kill phantomjs
+  kill -SIGTERM `cat $HUXLEY_PHANTOMJS_PID_PATH`
+  rm $HUXLEY_PHANTOMJS_PID_PATH
+}
+
+function huxley_test {
+  setup
+  huxley --playback-only --save-diff -f ./spec/ui/**Huxleyfile
+  HUXLEY_EXIT_CODE=$?
+  teardown
+  exit $HUXLEY_EXIT_CODE
+}
+
+function huxley_record {
+  setup
+  HUXLEY_WEBDRIVER_REMOTE=http://127.0.0.1:8910 huxley --record -f ./spec/ui/**Huxleyfile
+  HUXLEY_EXIT_CODE=$?
+  teardown
+  exit $HUXLEY_EXIT_CODE
+}
+
+case "$1" in
+  test)
+    echo -n "Running Huxley tests"
+    huxley_test
+    ;;
+  record)
+    echo -n "Recording Huxley tests"
+    huxley_record
+    ;;
+  *)
+  echo "Usage: huxley {test|record}"
+  exit 1
+esac

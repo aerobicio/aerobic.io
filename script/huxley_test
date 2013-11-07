@@ -1,4 +1,0 @@
-#!/bin/sh
-
-nohup bundle exec unicorn & while ! nc -vw 1 localhost 8080; do sleep 1; done
-huxley --playback-only --save-diff -f ./spec/ui/Huxleyfile
