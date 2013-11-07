@@ -1,26 +1,23 @@
-# [default-button.desk]
-# url=http://localhost:8899/styleguide/controls/buttons/default-button/example
-# screensize=1024x768
+[default-button.desk]
+url=http://localhost:8899/styleguide/controls/buttons/default-button/example
+screensize=1024x768
 
-# [default-button.palm]
-# url=http://localhost:8899/styleguide/controls/buttons/default-button/example
-# screensize=481x768
+[default-button.palm]
+url=http://localhost:8899/styleguide/controls/buttons/default-button/example
+screensize=481x768
 
-# [default-button.handheld]
-# url=http://localhost:8899/styleguide/controls/buttons/default-button/example
-# screensize=320x768
+[default-button.handheld]
+url=http://localhost:8899/styleguide/controls/buttons/default-button/example
+screensize=320x768
 
 [panel.desk]
 url=http://localhost:8899/styleguide/panels/panel/example
 screensize=1024x768
-sleepfactor=0.5
 
 [panel.tablet]
 url=http://localhost:8899/styleguide/panels/panel/example
 screensize=481x768
-sleepfactor=0.5
 
 [panel.handheld]
 url=http://localhost:8899/styleguide/panels/panel/example
 screensize=320x768
-sleepfactor=0.5
