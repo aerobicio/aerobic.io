@@ -1,3 +1,5 @@
-<li>
-  No longer following <%= unfollowed_user.activity_followed_user.name %>
-</li>
+<% cache unfollowed_user do %>
+  <li>
+    No longer following <%= unfollowed_user.activity_followed_user.name %>
+  </li>
+<% end %>

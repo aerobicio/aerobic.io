@@ -18,6 +18,14 @@ module Domain
       User.all.map { |user| self.new(user) }
     end
 
+    def cache_key
+      user.cache_key
+    end
+
+    def user
+      @user ||= User.find(@id)
+    end
+
     def follow(member)
       following = Domain::Following.new(user_id: id, following_id: member.id)
       following.persist
