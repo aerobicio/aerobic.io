@@ -6,10 +6,10 @@ build:
     # The steps that will be executed on build
     steps:
         - script:
-            name: set environment variables
+            name: configure framebuffer
             code: |
-                export DISPLAY=:99.0
-                which Xvfb
+                Xvfb :1 -screen 0 1024x768x24 2>&1 >/dev/null &
+                export DISPLAY=:1
         # A step that executes `bundle install` command
         - bundle-install
         # A step that prepares the database.yml with settings from the database you defined in services
