@@ -61,3 +61,10 @@ build:
             room-id: 541059
             subdomain: aerobicio
             on: failed
+
+deploy:
+    steps:
+        - heroku-deploy
+        - script:
+            name: Migrate Database
+            code: heroku run rake db:migrate --app $TARGET_NAME
