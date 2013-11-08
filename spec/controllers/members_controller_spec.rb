@@ -17,7 +17,7 @@ describe MembersController do
         get :index
       end
 
-      it { should redirect_to(dashboard_path) }
+      it { should respond_with(:not_found) }
     end
 
     @following
@@ -41,7 +41,7 @@ describe MembersController do
         post :follow, id: 22
       end
 
-      it { should redirect_to(dashboard_path) }
+      it { should respond_with(:not_found) }
     end
 
     @following
@@ -68,7 +68,7 @@ describe MembersController do
         post :unfollow, id: 22
       end
 
-      it { should redirect_to(dashboard_path) }
+      it { should respond_with(:not_found) }
     end
 
     @following

@@ -22,7 +22,13 @@ class MembersController < ApplicationController
   private
 
   def ensure_following_is_active
-    redirect_to dashboard_path and return unless $switch_board.following_active?
+    unless $switch_board.following_active?
+       render_404 and return
+    end
+  end
+
+  def render_404
+    render file: "#{Rails.root}/public/404.html", status: :not_found
   end
 
   def find_member
