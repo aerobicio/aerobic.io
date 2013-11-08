@@ -16,44 +16,29 @@ module Domain
       end
     end
 
-    def cache_key
-      "domain:workout:#{id}:#{updated_at}"
-    end
-
-    def to_partial_path
-      "workouts/workout"
-    end
-
     def persist!
       workout = workout_record
 
       workout.save!
       @id = workout.id
       @updated_at = workout.updated_at
-      persist_to_redis(workout.created_at.to_i)
+      persist_to_activity_feeds
     end
 
     private
 
-    def persist_to_redis(score)
-      $redis.pipelined do
-        $redis.set(redis_key, to_json)
-        User.all.each do |user|
-          Domain::ActivityFeed.add_workout(user.id, score, redis_key)
-        end
-      end
-    end
+    def persist_to_activity_feeds
+      user = User.find(@user_id)
+      Activity::AddedWorkout.create(user_id: @user_id,
+                                    activity_user_id: @user_id,
+                                    activity_workout_id: @id)
 
-    def to_json
-      %!{"id":#{@id},
-         "user_id":#{@user_id},
-         "active_duration":#{@active_duration},
-         "distance":#{@distance},
-         "duration":#{@duration},
-         "end_time":#{@end_time.to_i},
-         "start_time":#{@start_time.to_i},
-         "updated_at":#{@updated_at.to_i}
-        }!
+
+      user.followers.each do |follower|
+      Activity::AddedWorkout.create(user_id: follower.id,
+                                    activity_user_id: @user_id,
+                                    activity_workout_id: @id)
+      end
     end
 
     def workout_record
@@ -65,10 +50,6 @@ module Domain
       workout.start_time = @start_time
       workout.user_id = @user_id
       workout
-    end
-
-    def redis_key
-      "user:#{@user_id}:workout:#{@id}"
     end
   end
 end
