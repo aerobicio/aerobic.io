@@ -1,8 +1,5 @@
 <% cache "#{added_workout.cache_key}:#{added_workout.activity_workout.cache_key}" do %>
   <article class="panel">
-    <header class="panel__header">
-      <%= added_workout.start_time %>
-    </header>
     <ul class="panel__content">
       <li><strong>Duration:</strong> <%= (added_workout.active_duration / 1000 / 60.0).round(2) %> minutes</li>
       <li><strong>Distance:</strong> <%= (added_workout.distance / 100000.0).round(2) %>km</li>
