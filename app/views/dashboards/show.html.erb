@@ -1,12 +1,14 @@
-<% if @activities.any? %>
-  <section class="grouped-list">
-    <div class="grouped-list__group">
-      <h6 class="grouped-list__group__heading">Group Heading #1</h6>
-      <div class="grouped-list__group__items">
-        <%= render @activities %>
+<div class="grid-container">
+  <% if @activities.any? %>
+    <section class="grouped-list">
+      <div class="grouped-list__group">
+        <h6 class="grouped-list__group__heading">Group Heading #1</h6>
+        <div class="grouped-list__group__items">
+          <%= render @activities %>
+        </div>
       </div>
-    </div>
-  </section>
-<% else %>
-  You have no activity!
-<% end %>
+    </section>
+  <% else %>
+    You have no activity!
+  <% end %>
+</div>
