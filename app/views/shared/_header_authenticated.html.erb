@@ -1,5 +1,6 @@
 <% if current_user %>
   <nav class="navigation">
+    <%= link_to(t("dashboard"), dashboard_path, class: "navigation__item") %>
     <%= link_to(t("upload"), upload_path, class: "navigation__item", "data-no-turbolink" => true) %>
 
     <div class="navigation__account">
