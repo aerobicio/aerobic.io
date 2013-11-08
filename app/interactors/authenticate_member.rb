@@ -9,21 +9,28 @@ class AuthenticateMember
   include Interactor
 
   def perform
-    user = Authentication.find_by_provider_and_uid(context[:provider],
-                                                   context[:uid]).try(:user)
-    user ||= create_user_from_context
-    context[:user_id] = user.id
+    find_existing_user_from_context || create_user_from_context
+
+    if @user
+      context[:user_id] = @user.id
+    else
+      context.fail!
+    end
   end
 
   private
 
+  def find_existing_user_from_context
+    @user = Authentication.find_by_provider_and_uid(context[:provider],
+                                                    context[:uid]).try(:user)
+  end
+
   def create_user_from_context
-    user = User.new(name: context[:info][:name])
+    @user = User.new(name: context[:info][:name])
 
-    user.authentications.build({ provider: context[:provider],
-                                 uid: context[:uid] })
+    @user.authentications.build({ provider: context[:provider],
+                                  uid: context[:uid] })
 
-    user.save!
-    user
+    @user = nil unless @user.save
   end
 end
