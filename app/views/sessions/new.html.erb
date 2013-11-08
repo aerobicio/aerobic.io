@@ -1,12 +1,13 @@
 <% view = SessionsHelper::NewSessionView.new %>
 
-<div class="dialog">
+<div class="dialog panel">
   <%= form_tag sessions_path(provider: "identity") do %>
-    <%= label_tag(:auth_key, t(".auth_key")) %>
-    <%= text_field_tag(:auth_key, "", placeholder: "your_email@example.com") %>
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-    <hr class="dialog__divider">
-    <%= button_tag(t(".submit"), class: "button") %>
+    <div class="panel__content">
+      <%= label_tag(:auth_key, t(".auth_key")) %>
+      <%= text_field_tag(:auth_key, "", placeholder: "your_email@example.com") %>
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+      <%= button_tag(t(".submit"), class: "button") %>
+    </div>
   <% end %>
 </div>
