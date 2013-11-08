@@ -56,6 +56,13 @@ describe TestDomainObject do
     its(:active_duration) { should == "lol" }
   end
 
+  context "when given a JSON string" do
+    let(:data_object) { %!{ "id": 42, "active_duration": "lol" }! }
+
+    its(:id) { should == 42 }
+    its(:active_duration) { should == "lol" }
+  end
+
   context "when given a params hash" do
     let(:data_object) { FakeParamsHash.new(id: 42, active_duration: "lol") }
 

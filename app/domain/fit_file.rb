@@ -1,5 +1,6 @@
 require 'fit'
 require_relative "shared/initialize_from_data_object"
+require_relative "workout"
 
 module Domain
 

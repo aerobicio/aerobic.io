@@ -20,7 +20,9 @@ Then(/^I should not be signed in$/) do
 end
 
 Given(/^I am a member$/) do
+  Capybara.session_name = "mine"
   create_registered_account
+  @my_name = @name
   sign_in
 end
 

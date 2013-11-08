@@ -1,0 +1,11 @@
+<% cache "#{current_user.cache_key}:#{followed_user.cache_key}" do %>
+  <li>
+    <% if current_user.id == followed_user.activity_user_id %>
+      You followed <%= followed_user.activity_followed_user.name %>
+    <% elsif current_user.id == followed_user.activity_followed_user_id %>
+      <%= followed_user.activity_user.name %> followed you
+    <% else %>
+      <%= followed_user.activity_user.name %> followed <%= followed_user.activity_followed_user.name %>
+    <% end %>
+  </li>
+<% end %>
