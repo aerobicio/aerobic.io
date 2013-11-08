@@ -6,9 +6,11 @@
 
     <div class="account__navigation">
       <%= render :partial => "shared/avatar", locals: {image_path: "https://s3.amazonaws.com/uifaces/faces/twitter/mutlu82/128.jpg", css_class: "account__navigation__avatar"} %>
-      <%= current_user.name %>
-      <br>
-      <%= link_to("Account", "#") %> &bull; <%= link_to(t("sign_out"), sign_out_path, method: :put) %>
+      <div class="account__navigation__content">
+        <%= current_user.name %>
+        <br>
+        <%= link_to("Account", "#") %> &bull; <%= link_to(t("sign_out"), sign_out_path, method: :put) %>
+      </div>
     </div>
   </nav>
 <% end %>

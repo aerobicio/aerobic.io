@@ -76,14 +76,19 @@
   border-left: 2px solid #e3e4e7;
   clear: none;
   margin-bottom: 0;
-  min-width: 250px;
-  text-align: right;
   color: #a1a1a1;
 
   @include media($desk) {
-    padding-left: get_spacing(wide);
+    padding-left: get_spacing(wide) * 2;
     margin-left: get_spacing(wide) * 2;
   }
+}
+
+.account__navigation__content {
+  @extend .media__content;
+
+  text-align: right;
+  white-space: nowrap;
 }
 
 .account__navigation__avatar {
