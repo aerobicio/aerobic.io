@@ -7,8 +7,6 @@ class MembersController < ApplicationController
   def index
     @members = Domain::Member.all
     @member = @members.delete_if { |member| member.id == current_user.id }
-
-    render :index
   end
 
   def follow
