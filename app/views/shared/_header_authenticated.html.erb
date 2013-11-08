@@ -1,11 +1,14 @@
 <% if current_user %>
   <nav class="navigation">
     <%= link_to(t("dashboard"), dashboard_path, class: "navigation__item") %>
-    <%= link_to(t("upload"), upload_path, class: "navigation__item", "data-no-turbolink" => true) %>
+    <%= link_to(t("profile"), "#", class: "navigation__item") %>
+    <%= link_to(t("upload"), upload_path, class: "navigation__item is-cta", "data-no-turbolink" => true) %>
 
-    <div class="navigation__account">
-      <p><%= current_user.name %></p>
-      <%= link_to(t("sign_out"), sign_out_path, method: :put, class: "header-account__navigation__item") %>
+    <div class="account__navigation">
+      <%= render :partial => "shared/avatar", locals: {image_path: "https://s3.amazonaws.com/uifaces/faces/twitter/mutlu82/128.jpg", css_class: "account__navigation__avatar"} %>
+      <%= current_user.name %>
+      <br>
+      <%= link_to("Account", "#") %> &bull; <%= link_to(t("sign_out"), sign_out_path, method: :put) %>
     </div>
   </nav>
 <% end %>
