@@ -9,6 +9,7 @@
   clear: none;
   margin-bottom: 0;
   color: #a1a1a1;
+  line-height: 1.5;
 
   @include media($desk) {
     padding-left: get_spacing(wide) * 2;
