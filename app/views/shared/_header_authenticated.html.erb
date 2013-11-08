@@ -4,12 +4,14 @@
     <%= link_to(t("profile"), "#", class: "navigation__item") %>
     <%= link_to(t("upload"), upload_path, class: "navigation__item is-cta", "data-no-turbolink" => true) %>
 
-    <div class="account__navigation">
-      <%= render :partial => "shared/avatar", locals: {image_path: "https://s3.amazonaws.com/uifaces/faces/twitter/mutlu82/128.jpg", css_class: "account__navigation__avatar"} %>
-      <div class="account__navigation__content">
+    <div class="account_info">
+      <%= render :partial => "shared/avatar", locals: {image_path: "https://s3.amazonaws.com/uifaces/faces/twitter/mutlu82/128.jpg", css_class: "account_info__avatar"} %>
+      <div class="account_info__content">
         <%= current_user.name %>
         <br>
-        <%= link_to("Account", "#") %> &bull; <%= link_to(t("sign_out"), sign_out_path, method: :put) %>
+        <%= link_to("Account", "#") %>
+        <span class="account_info__content__divider">&bull;</span>
+        <%= link_to(t("sign_out"), sign_out_path, method: :put) %>
       </div>
     </div>
   </nav>
