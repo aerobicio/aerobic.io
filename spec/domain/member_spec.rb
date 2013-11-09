@@ -36,29 +36,4 @@ describe Domain::Member do
       all.last.should be_an_instance_of(Domain::Member)
     end
   end
-
-  describe "#follow(member)" do
-    subject(:follow) { member.follow(member_2) }
-
-    let(:member) { Domain::Member.new(user) }
-    let(:member_2) { Domain::Member.new(user_2) }
-    let(:following) { double(:following) }
-
-    before do
-      Domain::Following.should_receive(:new) { following }
-      following.should_receive(:persist) { persist }
-    end
-
-    context "successfully" do
-      let(:persist) { true }
-
-      it { should be_true }
-    end
-
-    context "unsuccessfully" do
-      let(:persist) { false }
-
-      it { should be_false }
-    end
-  end
 end

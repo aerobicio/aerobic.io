@@ -1,5 +1,4 @@
 require_relative "shared/initialize_from_data_object"
-require_relative "following"
 
 module Domain
 
@@ -26,27 +25,8 @@ module Domain
       @user ||= User.find(@id)
     end
 
-    def follow(member)
-      following = Domain::Following.new(user_id: id, following_id: member.id)
-      following.persist
-    end
-
-    def unfollow(member)
-      Activity::UnfollowedUser.create(user_id: @id,
-                                      activity_user_id: @id,
-                                      activity_followed_user_id: member.id)
-
-      sql = <<-SQL
-        delete from users_followings
-        where user_id = #{@id}
-        and following_id = #{member.id}
-      SQL
-
-      ActiveRecord::Base.connection.execute(sql)
-    end
-
     def follows?(member)
-      User.find(@id).followings.map(&:id).include?(member.id)
+      user.followings.map(&:id).include?(member.id)
     end
   end
 end

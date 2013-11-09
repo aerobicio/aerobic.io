@@ -2,7 +2,7 @@
 #
 class MembersController < ApplicationController
   before_filter :ensure_following_is_active
-  before_filter :find_member, only: [:follow, :unfollow]
+  before_filter :find_member, only: [:unfollow]
 
   def index
     @members = Domain::Member.all
@@ -10,13 +10,27 @@ class MembersController < ApplicationController
   end
 
   def follow
-    current_user.follow(@member)
-    redirect_to members_path, notice: "Now following #{@member.name}"
+    result = FollowMember.perform(member_id: current_user.id,
+                                  followed_id: params[:id])
+
+    if result.success?
+      redirect_to members_path, notice: "Now following #{result.member.name}"
+    else
+      redirect_to members_path, notice: "Could not follow #{result.member.name}"
+    end
   end
 
   def unfollow
-    current_user.unfollow(@member)
-    redirect_to members_path, notice: "No longer following #{@member.name}"
+    result = UnFollowMember.perform(member_id: current_user.id,
+                                    unfollowed_id: params[:id])
+
+    if result.success?
+      redirect_to members_path,
+        notice: "No longer following #{result.member.name}"
+    else
+      redirect_to members_path,
+        notice: "Could not unfollow #{result.member.name}"
+    end
   end
 
   private
