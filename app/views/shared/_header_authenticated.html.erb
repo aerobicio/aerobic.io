@@ -1,7 +1,6 @@
 <% if current_user %>
   <nav class="navigation">
     <%= link_to(t("dashboard"), dashboard_path, class: "navigation__item") %>
-    <%= link_to(t("profile"), "#", class: "navigation__item") %>
     <%= link_to(t("upload"), upload_path, class: "navigation__item is-cta", "data-no-turbolink" => true) %>
 
     <div class="account_info">
