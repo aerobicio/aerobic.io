@@ -1,12 +1,16 @@
 # MembersController provides a restful interface onto the Member resource.
 #
 class MembersController < ApplicationController
-  before_filter :ensure_following_is_active
-  before_filter :find_member, only: [:follow, :unfollow]
+  before_filter :ensure_following_is_active, only: [:follow, :unfollow]
+  before_filter :find_member, only: [:show, :follow, :unfollow]
 
   def index
     @members = Domain::Member.all
     @member = @members.delete_if { |member| member.id == current_user.id }
+  end
+
+  def show
+    @activities = Activity.all.where(user_id: current_user.id)
   end
 
   def follow
