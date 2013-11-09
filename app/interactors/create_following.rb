@@ -7,8 +7,8 @@ class CreateFollowing
   include Interactor
 
   def perform
-    member = User.find(context[:member_id])
-    followed_member = User.find(context[:followed_id])
+    member = User.find(member_id)
+    followed_member = User.find(followed_id)
 
     member.followings << followed_member
 

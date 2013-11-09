@@ -9,22 +9,20 @@ class CreateWorkoutFromFitFile
   include Interactor
 
   def perform
-    @fit_file = context[:fit_file]
-
     workout = create_workout
-    @fit_file.workout_id = workout.id
-    @fit_file.save
+    fitfile.workout_id = workout.id
+    fitfile.save
     context[:workout] = workout
   end
 
   private
 
   def create_workout
-    Workout.create( active_duration: @fit_file.active_duration,
-                    distance: @fit_file.distance,
-                    duration: @fit_file.duration,
-                    end_time: @fit_file.end_time,
-                    start_time: @fit_file.start_time,
+    Workout.create( active_duration: fitfile.active_duration,
+                    distance: fitfile.distance,
+                    duration: fitfile.duration,
+                    end_time: fitfile.end_time,
+                    start_time: fitfile.start_time,
                     user_id: context[:member_id]
                   )
   end

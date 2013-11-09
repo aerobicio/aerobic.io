@@ -26,7 +26,7 @@ describe ProcessUploadedFitFile do
     end
 
     it "should add fit_file to the context" do
-      result.fit_file.should == fit_file
+      result.fitfile.should == fit_file
     end
   end
 end

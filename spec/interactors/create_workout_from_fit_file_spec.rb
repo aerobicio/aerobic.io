@@ -3,7 +3,7 @@ require_relative "../../app/interactors/create_workout_from_fit_file"
 describe CreateWorkoutFromFitFile do
   let(:context) do
     {
-      fit_file: fit_file,
+      fitfile: fit_file,
     }
   end
 

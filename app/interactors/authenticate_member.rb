@@ -21,15 +21,14 @@ class AuthenticateMember
   private
 
   def find_existing_user_from_context
-    @user = Authentication.find_by_provider_and_uid(context[:provider],
-                                                    context[:uid]).try(:user)
+    @user = Authentication.find_by_provider_and_uid(provider, uid).try(:user)
   end
 
   def create_user_from_context
-    @user = User.new(name: context[:info][:name])
+    @user = User.new(name: info[:name])
 
-    @user.authentications.build({ provider: context[:provider],
-                                  uid: context[:uid] })
+    @user.authentications.build({ provider: provider,
+                                  uid: uid })
 
     @user = nil unless @user.save
   end

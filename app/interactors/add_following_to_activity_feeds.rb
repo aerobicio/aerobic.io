@@ -10,10 +10,6 @@ class AddFollowingToActivityFeeds
   include Interactor
 
   def perform
-    member = context[:member]
-    member_id = context[:member_id]
-    followed_id = context[:followed_id]
-
     Activity::FollowedUser.create(user_id: member_id,
                                   activity_user_id: member_id,
                                   activity_followed_user_id: followed_id)
