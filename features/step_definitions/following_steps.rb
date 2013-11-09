@@ -15,7 +15,7 @@ end
 
 Then(/^I should not be able to unfollow "(.*?)"$/) do |name|
   visit members_path
-  page.should have_content("The page you were looking for doesn't exist")
+  page.should_not have_content("Unfollow")
 end
 
 Given(/^I am not following "(.*?)"$/) do |name|
@@ -24,7 +24,7 @@ end
 
 Then(/^I should not be able to follow "(.*?)"$/) do |name|
   visit members_path
-  page.should have_content("The page you were looking for doesn't exist")
+  page.should_not have_content("Follow")
 end
 
 Given(/^the following feature is on$/) do

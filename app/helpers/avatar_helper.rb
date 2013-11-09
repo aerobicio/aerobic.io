@@ -1,3 +1,6 @@
+# AvatarHelper is responsible for presenting various size gravatars based on
+# Member email addresses
+#
 module AvatarHelper
   GRAVATAR_URL = "http://gravatar.com/avatar/"
   GRAVATAR_DIMENSIONS = {

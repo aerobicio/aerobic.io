@@ -1,6 +1,7 @@
+# FollowingHelper provides helper methods for presenting following related
+# content
+#
 module FollowingHelper
-  include ActionView::Helpers::UrlHelper
-
   def following_link_for_member(member)
     return unless $switch_board.following_active?
 
