@@ -8,6 +8,8 @@ describe DeleteFollowing do
     }
   end
 
+  let(:unfollowed_member) { double(:unfollowed_member, name: "Gus") }
+
   let(:connection) { double(:connection) }
   let(:sql) do
     <<-SQL
@@ -19,12 +21,16 @@ describe DeleteFollowing do
 
   before do
     stub_const("ActiveRecord::Base", Class.new)
+    stub_const("User", Class.new)
   end
 
   describe "#perform" do
     subject(:result) { described_class.perform(context) }
 
     before do
+      User.should_receive(:find).
+        with(context[:unfollowed_id]) { unfollowed_member }
+
       ActiveRecord::Base.should_receive(:connection) { connection }
       connection.should_receive(:execute).with(sql)
     end
@@ -32,6 +38,10 @@ describe DeleteFollowing do
     context "when successfull" do
       it "should be marked as successfull" do
         result.success?.should be_true
+      end
+
+      it "should add the notice to the context" do
+        result.notice.should == "No longer following #{unfollowed_member.name}"
       end
     end
   end

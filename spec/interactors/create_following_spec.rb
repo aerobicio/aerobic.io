@@ -10,7 +10,7 @@ describe CreateFollowing do
   end
 
   let(:member) { double(:member, followings: followings) }
-  let(:followed_member) { double(:followed_member) }
+  let(:followed_member) { double(:followed_member, name: "Gus") }
 
   let(:followings) { double(:followings) }
 
@@ -39,8 +39,8 @@ describe CreateFollowing do
         result.member.should == member
       end
 
-      it "should add the followed member to the context" do
-        result.followed_member.should == followed_member
+      it "should add the notice to the context" do
+        result.notice.should == "Now following #{followed_member.name}"
       end
     end
 
@@ -55,8 +55,8 @@ describe CreateFollowing do
         result.member.should == member
       end
 
-      it "should not add the followed member to the context" do
-        result.try(:followed_member).should == nil
+      it "should add the notice to the context" do
+        result.notice.should == "Could not follow #{followed_member.name}"
       end
     end
   end

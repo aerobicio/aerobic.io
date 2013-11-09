@@ -12,26 +12,14 @@ class MembersController < ApplicationController
     result = FollowMember.perform(member_id: current_user.id,
                                   followed_id: params[:id])
 
-    if result.success?
-      notice = "Now following #{result.member.name}"
-    else
-      notice = "Could not follow #{result.member.name}"
-    end
-
-    redirect_to members_path, notice: notice
+    redirect_to members_path, notice: result.notice
   end
 
   def unfollow
     result = UnFollowMember.perform(member_id: current_user.id,
                                     unfollowed_id: params[:id])
 
-    if result.success?
-      notice = "No longer following #{result.member.name}"
-    else
-      notice = "Could not unfollow #{result.member.name}"
-    end
-
-    redirect_to members_path, notice: notice
+    redirect_to members_path, notice: result.notice
   end
 
   private

@@ -14,9 +14,10 @@ class CreateFollowing
 
     if member.save
       context[:member] = member
-      context[:followed_member] = followed_member
+      context[:notice] = "Now following #{followed_member.name}"
     else
       context[:member] = member
+      context[:notice] = "Could not follow #{followed_member.name}"
       context.fail!
     end
   end

@@ -10,7 +10,10 @@ class DeleteFollowing
     @member_id = context[:member_id]
     @unfollowed_id = context[:unfollowed_id]
 
+    followed_member = User.find(@unfollowed_id)
+
     ActiveRecord::Base.connection.execute(delete_user_followings_sql)
+    context[:notice] = "No longer following #{followed_member.name}"
   end
 
   private
