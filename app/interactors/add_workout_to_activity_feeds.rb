@@ -1,3 +1,5 @@
+require "interactor"
+
 # Takes a workout from the context, and writes an Activity::AddedWorkout
 # object into:
 #
