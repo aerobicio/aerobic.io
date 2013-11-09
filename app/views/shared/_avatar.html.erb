@@ -1,4 +1,3 @@
-<% image_path ||= nil %>
-<figure class="avatar <%= css_class ||= "" %>">
-  <%= image_tag(image_path, class: "avatar__image") if image_path %>
-</figure>
+<% cache "#{@member.cache_key}" do %>
+  <%= gravatar_for_member(@member) %>
+<% end %>
