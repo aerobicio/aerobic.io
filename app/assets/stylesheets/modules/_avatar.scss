@@ -11,6 +11,14 @@
   overflow: hidden;
 }
 
+.avatar--large {
+  @extend .avatar;
+
+  height: 8.2rem;
+  width: 8.2rem;
+  border-radius: 8.2rem;
+}
+
 .avatar__image {
   position: absolute;
   top: 0;
