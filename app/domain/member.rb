@@ -26,6 +26,11 @@ module Domain
       @user ||= User.find(@id)
     end
 
+    def email
+      # TODO this is OFC quite a derp.
+      "justin@pixelbloom.com"
+    end
+
     def follow(member)
       following = Domain::Following.new(user_id: id, following_id: member.id)
       following.persist
