@@ -1,4 +1,6 @@
 require "interactor"
+require "base64"
+
 # Handles fit files as they are uploaded via the Garmin Communicator Plugin
 # and converts them to FitFile object, then stores them.
 #

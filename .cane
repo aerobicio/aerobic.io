@@ -1,3 +1,4 @@
 --abc-max 10
 --gte coverage/covered_percent,100
 --color
+--style-exclude spec/support/uploaded_activity.rb
