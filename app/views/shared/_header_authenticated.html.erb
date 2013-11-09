@@ -5,7 +5,7 @@
     <%= link_to(t("upload"), upload_path, class: "navigation__item is-cta", "data-no-turbolink" => true) %>
 
     <div class="account_info">
-      <%= render :partial => "shared/avatar", locals: {image_path: "https://s3.amazonaws.com/uifaces/faces/twitter/mutlu82/128.jpg", css_class: "account_info__avatar"} %>
+      <%= render :partial => "shared/avatar", locals: {css_class: "account_info__avatar"} %>
       <div class="account_info__content">
         <%= current_user.name %>
         <br>
