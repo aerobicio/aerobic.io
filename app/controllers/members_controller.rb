@@ -4,7 +4,7 @@ class MembersController < ApplicationController
   before_filter :ensure_following_is_active
 
   def index
-    @members = Domain::Member.all
+    @members = User.all
     @member = @members.delete_if { |member| member.id == current_user.id }
   end
 

@@ -21,4 +21,8 @@ class User < ActiveRecord::Base
                           join_table: 'users_followings'
 
   validates :name, presence: true
+
+  def follows?(user)
+    followings.map(&:id).include?(user.id)
+  end
 end

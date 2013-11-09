@@ -1,11 +1,11 @@
 require "spec_helper"
 
 describe MembersController do
-  let(:user) { Domain::Member.new(double(User, id: 42)) }
+  let(:user) { double(User, id: 42) }
 
   before do
     session[:user_id] = 42
-    Domain::Member.stub(:find).and_return(user)
+    User.stub(:find).and_return(user)
   end
 
   describe "#index" do
@@ -24,7 +24,7 @@ describe MembersController do
     context "when following is turned on" do
       before do
         $switch_board.activate_following
-        Domain::Member.should_receive(:all) { [] }
+        User.should_receive(:all) { [] }
         get :index
       end
 
