@@ -36,7 +36,8 @@
 @import "lib/placeholders";
 
 // new refactored BEM stuff lives here.
-@import "modules/__init__";
+@import "modules/*";
+@import "modules/landing/*";
 
 // The shame! The shame!
 @import "shame";

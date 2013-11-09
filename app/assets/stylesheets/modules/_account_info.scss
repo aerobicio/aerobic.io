@@ -1,0 +1,37 @@
+// Styleguide Components.Header.Account Info
+.account_info {
+  @extend .media;
+  @extend .margin-medium-left;
+  @extend .padding-medium-left;
+
+  float: right;
+  border-left: 2px solid #e3e4e7;
+  clear: none;
+  margin-bottom: 0;
+  color: #a1a1a1;
+  line-height: 1.5;
+
+  @include media($desk) {
+    padding-left: get_spacing(wide) * 2;
+    margin-left: get_spacing(wide) * 2;
+  }
+}
+
+.account_info__content {
+  @extend .media__content;
+
+  text-align: right;
+  white-space: nowrap;
+}
+
+.account_info__content__divider {
+  display: inline-block;
+  padding: 0 0.25em;
+}
+
+.account_info__avatar {
+  @extend .media__figure--right;
+
+  display: block;
+  margin-right: 0;
+}

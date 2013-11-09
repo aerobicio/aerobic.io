@@ -1,0 +1,8 @@
+<% view = SessionsHelper::NewSessionView.new %>
+
+<%= styleguide_example_for(section) do -%>
+  <nav class="landing-navigation">
+    <%= link_to(t("identities.new.submit"), "#", class: "landing-navigation__item", title: t("identities.new.submit")) if view.sign_up_active? %>
+    <%= link_to(t("sessions.new.submit"), "#", class: "landing-navigation__item", title: t("sessions.new.submit")) %>
+  </nav>
+<% end %>
