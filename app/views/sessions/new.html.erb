@@ -1,6 +1,6 @@
 <% view = SessionsHelper::NewSessionView.new %>
 
-<div class="dialog panel">
+<div class="la-dialog panel">
   <div class="panel__content">
     <%= form_tag sessions_path(provider: "identity") do %>
       <%= label_tag(:auth_key, t(".auth_key")) %>

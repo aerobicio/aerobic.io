@@ -1,12 +1,11 @@
-// TODO: move me to layout as `.la-dialog`
-.dialog {
+.la-dialog {
   @extend .panel;
 
   position: relative;
   float: none;
   margin-top: -30%;
 
-  &.error {
+  &.has-error {
     @include animation(error__shake 0.7s);
   }
 }
