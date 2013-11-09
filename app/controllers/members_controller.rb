@@ -13,10 +13,12 @@ class MembersController < ApplicationController
                                   followed_id: params[:id])
 
     if result.success?
-      redirect_to members_path, notice: "Now following #{result.member.name}"
+      notice = "Now following #{result.member.name}"
     else
-      redirect_to members_path, notice: "Could not follow #{result.member.name}"
+      notice = "Could not follow #{result.member.name}"
     end
+
+    redirect_to members_path, notice: notice
   end
 
   def unfollow
@@ -24,12 +26,12 @@ class MembersController < ApplicationController
                                     unfollowed_id: params[:id])
 
     if result.success?
-      redirect_to members_path,
-        notice: "No longer following #{result.member.name}"
+      notice = "No longer following #{result.member.name}"
     else
-      redirect_to members_path,
-        notice: "Could not unfollow #{result.member.name}"
+      notice = "Could not unfollow #{result.member.name}"
     end
+
+    redirect_to members_path, notice: notice
   end
 
   private
