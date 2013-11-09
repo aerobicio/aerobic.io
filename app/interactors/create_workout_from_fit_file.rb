@@ -13,7 +13,7 @@ class CreateWorkoutFromFitFile
 
     workout = create_workout
     @fit_file.workout_id = workout.id
-    @fit_file.save!
+    @fit_file.save
     context[:workout] = workout
   end
 
