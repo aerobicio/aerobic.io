@@ -1,0 +1,49 @@
+// Grouped lists are a parallel for Apple’s iOS [Grouped tables](https://developer.apple.com/library/ios/documentation/userexperience/conceptual/mobilehig/ContentViews.html#//apple_ref/doc/uid/TP40006556-CH13-SW3).
+//
+// Grouped lists are used for displaying groups of panels under a common heading
+// per group. Group headings have a left aligned heading, but can also have a
+// left aligned sub-heading or informational text if required — useful for grouping
+// things by date or category.
+//
+// -
+//
+// Styleguide Lists.Grouped List
+.grouped-list {
+  @include clearfix;
+
+  clear: both;
+}
+
+.grouped-list__group {
+  @extend .margin-medium-bottom;
+}
+
+.grouped-list__group__heading {
+  @extend .h6; // should always be sized off a h6 even if we need to mark it up differently
+  @extend .margin-tight-bottom;
+  @extend .padding-tight-top;
+  @extend .padding-medium-left;
+  @extend .padding-medium-right;
+  @include clearfix;
+
+  color: #959ea8;
+  font-weight: bold;
+  position: relative;
+  text-shadow: 0 1px 0 #fff;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  .grouped-list__group__subheading {
+    @extend .padding-medium-right;
+
+    color: lighten(#959ea8, 20%);
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    text-align: right;
+  }
+}
+
+.grouped-list__group__items {
+  @include clearfix;
+}

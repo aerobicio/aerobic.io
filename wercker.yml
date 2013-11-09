@@ -52,7 +52,7 @@ build:
             name: best practices
             code: bundle exec rails_best_practices .
     after-steps:
-        - plasticine/librato-build-metrics@0.0.15:
+        - plasticine/librato-build-metrics@0.0.18:
             user: $LIBRATO_USER
             token: $LIBRATO_TOKEN
             namespace: aerobicio

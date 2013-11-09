@@ -1,9 +1,15 @@
 <% if current_user %>
-  <div class="header-account">
-    <p class="header-account__welcome"><%= current_user.name %></p>
-    <nav class="header-account__navigation">
-      <%= link_to(t("upload"), upload_path, "data-no-turbolink" => true) %>
-      <%= link_to(t("sign_out"), sign_out_path, method: :put, class: "header-account__navigation__item") %>
-    </nav>
-  </div>
+  <nav class="navigation">
+    <%= link_to(t("dashboard"), dashboard_path, class: "navigation__item") %>
+    <%= link_to(t("upload"), upload_path, class: "navigation__item is-cta", "data-no-turbolink" => true) %>
+
+    <div class="account_info">
+      <%= render :partial => "shared/avatar", locals: {css_class: "account_info__avatar"} %>
+      <div class="account_info__content">
+        <%= current_user.name %>
+        <br>
+        <%= link_to(t("sign_out"), sign_out_path, method: :put) %>
+      </div>
+    </div>
+  </nav>
 <% end %>

@@ -1,5 +1,7 @@
 <% cache unfollowed_user do %>
-  <li>
-    No longer following <%= unfollowed_user.activity_followed_user.name %>
-  </li>
+  <article class="panel">
+    <div class="panel__content">
+      No longer following <%= unfollowed_user.activity_followed_user.name %>
+    </div>
+  </article>
 <% end %>

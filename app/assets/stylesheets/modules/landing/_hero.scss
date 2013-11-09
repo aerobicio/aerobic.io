@@ -106,7 +106,7 @@
 }
 
 .landing__hero__signup {
-  @extend .header__navigation__item;
+  @extend .navigation__item;
   @extend .margin-wide-top;
   @extend .margin-superwide-left;
   @extend .margin-superwide-right;
