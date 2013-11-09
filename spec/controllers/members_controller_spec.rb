@@ -9,28 +9,12 @@ describe MembersController do
   end
 
   describe "#index" do
-
-    @following
-    context "when following is turned off" do
-      before do
-        $switch_board.deactivate_following
-        get :index
-      end
-
-      it { should respond_with(:not_found) }
+    before do
+      get :index
     end
 
-    @following
-    context "when following is turned on" do
-      before do
-        $switch_board.activate_following
-        Domain::Member.should_receive(:all) { [] }
-        get :index
-      end
-
-      it { should respond_with(:success) }
-      it { should render_template(:index) }
-    end
+    it { should respond_with(:success) }
+    it { should render_template(:index) }
   end
 
   describe "follow" do
