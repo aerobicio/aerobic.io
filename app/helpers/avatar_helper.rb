@@ -10,13 +10,29 @@ module AvatarHelper
 
   def gravatar_for_member(member, options = {})
     options = {size: :normal, extra_classes: ''}.merge(options)
+    classes = classes_for_avatar(options[:size], options[:extra_classes])
 
-    content_tag :figure, class: "avatar #{options[:extra_classes]}" do
+    content_tag :figure, class: classes do
       image_tag(gravatar_url(member, options[:size]), class: "avatar__image")
     end
   end
 
   private
+
+  def classes_for_avatar(size, extra_classes)
+    classes = []
+    classes << "#{avatar_class_for_size(size)}"
+    classes << "#{extra_classes}"
+    classes.map(&:strip).reject(&:empty?).join(" ")
+  end
+
+  def avatar_class_for_size(size)
+    if size == :normal
+      "avatar"
+    elsif size == :large
+      "avatar--large"
+    end
+  end
 
   def dimension_for_size(size)
     GRAVATAR_DIMENSIONS[size]
