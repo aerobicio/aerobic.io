@@ -2,7 +2,6 @@
 #
 class MembersController < ApplicationController
   before_filter :ensure_following_is_active
-  before_filter :find_member, only: [:unfollow]
 
   def index
     @members = Domain::Member.all
@@ -43,9 +42,5 @@ class MembersController < ApplicationController
 
   def render_404
     render file: "#{Rails.root}/public/404.html", status: :not_found
-  end
-
-  def find_member
-    @member = Domain::Member.find(params[:id])
   end
 end
