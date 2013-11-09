@@ -2,15 +2,15 @@
 # content
 #
 module FollowingHelper
-  def following_link_for_member(member)
+  def following_link_for_members(member, other_member)
     return unless $switch_board.following_active?
 
     # TODO i18n these strings
-    unless current_user == member
-      if current_user.follows?(member)
-        link_to("Unfollow", unfollow_path(member.id))
+    unless member == other_member
+      if member.follows?(other_member)
+        link_to("Unfollow", unfollow_member_path(other_member.id))
       else
-        link_to("Follow", unfollow_member_path(member.id))
+        link_to("Follow", follow_member_path(other_member.id))
       end
     end
   end
