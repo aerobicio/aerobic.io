@@ -11,7 +11,7 @@ class UploadsController < ApplicationController
   end
 
   def create
-    ProcessUploadedFitFile.perform(upload_params)
+    CreateWorkoutFromUploadedFitFile.perform(upload_params)
 
     respond_to do |format|
       format.json { render json: "OK" }
