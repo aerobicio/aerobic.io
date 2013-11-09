@@ -4,15 +4,6 @@
     <%= link_to(t("profile"), member_path(current_user.id), class: "navigation__item") %>
     <%= link_to(t("upload"), upload_path, class: "navigation__item is-cta", "data-no-turbolink" => true) %>
 
-    <div class="account_info">
-      <%= gravatar_for_member(current_user, extra_classes: "account_info__avatar") %>
-      <div class="account_info__content">
-        <%= current_user.name %>
-        <br>
-        <%= link_to("Account", "#") %>
-        <span class="account_info__content__divider">&bull;</span>
-        <%= link_to(t("sign_out"), sign_out_path, method: :put) %>
-      </div>
-    </div>
+    <%= render :partial => "shared/account_info" %>
   </nav>
 <% end %>

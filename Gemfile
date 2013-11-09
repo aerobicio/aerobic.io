@@ -35,7 +35,7 @@ group :development, :test do
   gem "cane"
   gem "dotenv-rails"
   gem "factory_girl_rails"
-  gem "kayessess", "~> 0.1.4"
+  gem "kayessess", "~> 0.1.6"
   gem "rails_best_practices"
   gem "rspec-rails", "~> 2.0"
   gem "teaspoon"
