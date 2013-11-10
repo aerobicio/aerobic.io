@@ -9,7 +9,7 @@ module AvatarHelper
   }
 
   def gravatar_for_member(member, options = {})
-    options = {size: :normal, extra_classes: ''}.merge(options)
+    options = { size: :normal, extra_classes: '' }.merge(options)
     classes = classes_for_avatar(options[:size], options[:extra_classes])
 
     content_tag :figure, class: classes do
