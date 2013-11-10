@@ -49,8 +49,11 @@ describe AddFollowingToActivityFeeds do
     context "when successfull" do
       before do
         Activity::FollowedUser.should_receive(:create).with(member_feed)
-        Activity::FollowedUser.should_receive(:create).with(followed_member_feed)
-        Activity::FollowedUser.should_receive(:create).with(follower_member_feed)
+        Activity::FollowedUser.should_receive(:create).
+          with(followed_member_feed)
+
+        Activity::FollowedUser.should_receive(:create).
+          with(follower_member_feed)
 
         Activity::FollowedUser.stub(:create) { true }
       end
