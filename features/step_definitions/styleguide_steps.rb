@@ -1,15 +1,23 @@
 Given(/^I have documented my CSS$/) do
-  visit "/styleguide"
+  visit kayessess.root_path
 
-  @styleguide_sections = page.all('.kayessess__node').reject{|anchor|
+  anchors = page.all('.kayessess__node').reject{|anchor|
     anchor[:href] == "/styleguide/styleguide"
   }
+
+  @section_anchors = Hash[anchors.map{|anchor| [anchor.text, anchor]}]
 end
 
 Then(/^I should be able to view each component$/) do
-  @styleguide_sections.each do |anchor|
-    anchor.click
-    page.should have_content anchor.text
-    visit "/styleguide"
+  @section_anchors.each do |ancor_label, anchor|
+    puts "- #{ancor_label}"
+    step %Q{I view the "#{ancor_label}" styleguide section}
+    visit kayessess.root_path
   end
+end
+
+And(/I view the "(.*)" styleguide section/) do |section|
+  section = @section_anchors[section]
+  section.click
+  page.should have_content section.text
 end
