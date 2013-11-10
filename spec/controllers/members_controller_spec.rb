@@ -17,6 +17,15 @@ describe MembersController do
     it { should render_template(:index) }
   end
 
+  describe "#show" do
+    before do
+      get :show
+    end
+
+    it { should respond_with(:success) }
+    it { should render_template(:show) }
+  end
+
   describe "follow" do
     @following
     context "when following is turned off" do
