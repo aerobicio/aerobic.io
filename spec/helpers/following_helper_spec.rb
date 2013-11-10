@@ -34,9 +34,10 @@ describe FollowingHelper do
         end
 
         it {
-          should == "<form action=\"/members/1/unfollow\" class=\"button_to\" "\
-                    "method=\"post\"><div><input type=\"submit\" "\
-                    "value=\"Unfollow Justin Morris\" /></div></form>"
+          should == "<form action=\"/members/2/unfollow\" class=\"button_to\" "\
+                    "method=\"post\"><div><input class=\"button--follow\" "\
+                    "type=\"submit\" value=\"Unfollow Gus Gollings\" "\
+                    "/></div></form>"
         }
       end
 
@@ -46,9 +47,10 @@ describe FollowingHelper do
         end
 
         it {
-          should == "<form action=\"/members/1/follow\" class=\"button_to\" "\
-                    "method=\"post\"><div><input type=\"submit\" "\
-                    "value=\"Follow Justin Morris\" /></div></form>"
+          should == "<form action=\"/members/2/follow\" class=\"button_to\" "\
+                    "method=\"post\"><div><input class=\"button--follow\" "\
+                    "type=\"submit\" value=\"Follow Gus Gollings\" "\
+                    "/></div></form>"
         }
       end
     end

@@ -8,7 +8,7 @@
           <h4><%= member.name %></h4>
           <% if current_user %>
             <%= member_relationship_status_for_members(member, current_user) %>
-            <%= following_link_for_members(member, current_user) %>
+            <%= following_link_for_members(current_user, member) %>
           <% end %>
         </div>
       </li>
