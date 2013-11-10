@@ -6,7 +6,7 @@ When(/I visit my profile page/) do
 end
 
 Then(/^I should see my own activity$/) do
-  page.should have_content "Distance: 41.32km"
+  page_has_workout
 end
 
 When(/^I visit "(.*?)"’s profile$/) do |name|
