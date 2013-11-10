@@ -17,7 +17,7 @@ class MembersController < ApplicationController
 
   def unfollow
     result = UnFollowMember.perform(member_id: current_user.id,
-                                    unfollowed_id: params[:id])
+                                    followed_id: params[:id])
 
     redirect_to members_path, notice: result.notice
   end

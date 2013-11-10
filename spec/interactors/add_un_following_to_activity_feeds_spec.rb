@@ -4,7 +4,8 @@ describe AddUnFollowingToActivityFeeds do
   let(:context) do
     {
       member_id: 1,
-      unfollowed_id: 2,
+      followed_id: 2,
+      unfollowed_member: unfollowed_member,
     }
   end
 
@@ -12,11 +13,12 @@ describe AddUnFollowingToActivityFeeds do
     {
       user_id: context[:member_id],
       activity_user_id: context[:member_id],
-      activity_followed_user_id: context[:unfollowed_id],
+      activity_followed_user_id: context[:followed_id],
     }
   end
 
   let(:member) { double(:member) }
+  let(:unfollowed_member) { double(:unfollowed_member, name: "Gus") }
 
   before do
     stub_const("Activity::UnfollowedUser", Class.new)
@@ -27,22 +29,29 @@ describe AddUnFollowingToActivityFeeds do
     subject(:result) { described_class.perform(context) }
 
     before do
-      Activity::UnfollowedUser.should_receive(:create).with(member_feed)
-      User.should_receive(:find).with(context[:member_id]) { member }
+      Activity::UnfollowedUser.should_receive(:create).with(member_feed) do
+        success
+      end
     end
 
     context "when successfull" do
+      let(:success) { true }
+
       it "should be marked as successfull" do
         result.success?.should be_true
-      end
-
-      it "should add the member to the context" do
-        result.member.should == member
       end
     end
 
     context "when unsuccessfull" do
-      pending("Implementation of rollback strategy")
+      let(:success) { false }
+
+      it "should not be marked as successfull" do
+        result.success?.should be_false
+      end
+
+      it "should add the unsuccessful notice to the context" do
+        result.notice.should == "Could not unfollow Gus"
+      end
     end
   end
 end
