@@ -27,7 +27,7 @@ module Domain
     end
 
     def email
-      "justin@pixelbloom.com"
+      Identity.find(user.authentications.first.uid).email
     end
 
     def follow(member)
