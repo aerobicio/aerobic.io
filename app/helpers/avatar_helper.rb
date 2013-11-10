@@ -2,7 +2,7 @@
 # Member email addresses
 #
 module AvatarHelper
-  GRAVATAR_URL = "http://gravatar.com/avatar/"
+  GRAVATAR_URL = "//gravatar.com/avatar/"
   GRAVATAR_DIMENSIONS = {
     normal: 64,
     large:  164

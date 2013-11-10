@@ -12,7 +12,7 @@ describe AvatarHelper do
     it {
       should == "<figure class=\"avatar\">"\
                 "<img alt=\"4914f38406ec528bebfc1f8248e1cf17\" "\
-                "class=\"avatar__image\" src=\"http://gravatar.com"\
+                "class=\"avatar__image\" src=\"//gravatar.com"\
                 "/avatar/4914f38406ec528bebfc1f8248e1cf17.png?s=64\" />"\
                 "</figure>" }
 
@@ -22,7 +22,7 @@ describe AvatarHelper do
         it {
           should == "<figure class=\"avatar velociraptors-are-awesome\">"\
                     "<img alt=\"4914f38406ec528bebfc1f8248e1cf17\" "\
-                    "class=\"avatar__image\" src=\"http://gravatar.com"\
+                    "class=\"avatar__image\" src=\"//gravatar.com"\
                     "/avatar/4914f38406ec528bebfc1f8248e1cf17.png?s=64\" />"\
                     "</figure>" }
       end
@@ -31,7 +31,7 @@ describe AvatarHelper do
         let(:options) { {size: :large} }
         it { should == "<figure class=\"avatar--large\">"\
                        "<img alt=\"4914f38406ec528bebfc1f8248e1cf17\" "\
-                       "class=\"avatar__image\" src=\"http://gravatar.com"\
+                       "class=\"avatar__image\" src=\"//gravatar.com"\
                        "/avatar/4914f38406ec528bebfc1f8248e1cf17.png?s=164\""\
                        " /></figure>" }
       end
