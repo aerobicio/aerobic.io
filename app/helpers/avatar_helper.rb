@@ -26,7 +26,7 @@ module AvatarHelper
     classes.map(&:strip).reject(&:empty?).join(" ")
   end
 
-  def avatar_class_for_size(size)
+  def avatar_class_for_size(size = :normal)
     if size == :normal
       "avatar"
     elsif size == :large
