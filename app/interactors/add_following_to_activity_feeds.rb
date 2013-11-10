@@ -10,19 +10,46 @@ class AddFollowingToActivityFeeds
   include Interactor
 
   def perform
+    unless all_feeds_updated?
+      context[:notice] = "Could not follow #{followed_member.name}"
+      context.fail!
+    end
+  end
+
+  private
+
+  def all_feeds_updated?
+    add_to_members_activity_feed &&
+    add_to_followed_members_activity_feed &&
+    add_to_members_followers_activity_feed
+  end
+
+  def add_to_members_activity_feed
     Activity::FollowedUser.create(user_id: member_id,
                                   activity_user_id: member_id,
                                   activity_followed_user_id: followed_id)
+  end
 
+  def add_to_followed_members_activity_feed
     Activity::FollowedUser.create(user_id: followed_id,
                                   activity_user_id: member_id,
                                   activity_followed_user_id: followed_id)
+  end
 
-
-    member.followers.each do |user|
-      Activity::FollowedUser.create(user_id: user.id,
-                                    activity_user_id: member_id,
-                                    activity_followed_user_id: followed_id)
+  def add_to_members_followers_activity_feed
+    member.followers.inject(true) do |success, follower|
+      add_to_followers_feed(follower) && success
     end
+#    success = true
+#    member.followers.each do |user|
+#      success = add_to_followers_feed(user) && success
+#    end
+#    success
+  end
+
+  def add_to_followers_feed(follower)
+    Activity::FollowedUser.create(user_id: follower.id,
+                                  activity_user_id: member_id,
+                                  activity_followed_user_id: followed_id)
   end
 end

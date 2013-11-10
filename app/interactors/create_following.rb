@@ -7,18 +7,22 @@ class CreateFollowing
   include Interactor
 
   def perform
-    member = User.find(member_id)
-    followed_member = User.find(followed_id)
-
-    member.followings << followed_member
+    follow_member
 
     if member.save
-      context[:member] = member
       context[:notice] = "Now following #{followed_member.name}"
     else
-      context[:member] = member
       context[:notice] = "Could not follow #{followed_member.name}"
       context.fail!
     end
+  end
+
+  private
+
+  def follow_member
+    context[:member] = User.find(member_id)
+    context[:followed_member] = User.find(followed_id)
+
+    member.followings << followed_member
   end
 end
