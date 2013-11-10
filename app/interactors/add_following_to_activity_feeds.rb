@@ -40,11 +40,6 @@ class AddFollowingToActivityFeeds
     member.followers.inject(true) do |success, follower|
       add_to_followers_feed(follower) && success
     end
-#    success = true
-#    member.followers.each do |user|
-#      success = add_to_followers_feed(user) && success
-#    end
-#    success
   end
 
   def add_to_followers_feed(follower)
