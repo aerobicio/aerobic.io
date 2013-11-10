@@ -37,6 +37,12 @@ describe Domain::Member do
     end
   end
 
+  describe "#email" do
+    subject { email }
+    pending("Pending until we have the relations set up to fetch a Users’s "\
+            "Identity.")
+  end
+
   describe "#follow(member)" do
     subject(:follow) { member.follow(member_2) }
 

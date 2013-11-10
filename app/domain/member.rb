@@ -27,7 +27,6 @@ module Domain
     end
 
     def email
-      # TODO this is OFC quite a derp.
       "justin@pixelbloom.com"
     end
 
