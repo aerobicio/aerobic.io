@@ -7,6 +7,7 @@ describe AddFollowingToActivityFeeds do
       member_id: 1,
       followed_id: 2,
       member: member,
+      followed_member: followed_member,
     }
   end
 
@@ -35,6 +36,7 @@ describe AddFollowingToActivityFeeds do
   end
 
   let(:member) { double(:member, followers: followers) }
+  let(:followed_member) { double(:followed_member, name: "Gus") }
   let(:followers) { [double(:follower, id: 3)] }
 
   before do
@@ -44,20 +46,28 @@ describe AddFollowingToActivityFeeds do
   describe "#perform" do
     subject(:result) { described_class.perform(context) }
 
-    before do
-      Activity::FollowedUser.should_receive(:create).with(member_feed)
-      Activity::FollowedUser.should_receive(:create).with(followed_member_feed)
-      Activity::FollowedUser.should_receive(:create).with(follower_member_feed)
-    end
-
     context "when successfull" do
+      before do
+        Activity::FollowedUser.should_receive(:create).with(member_feed)
+        Activity::FollowedUser.should_receive(:create).with(followed_member_feed)
+        Activity::FollowedUser.should_receive(:create).with(follower_member_feed)
+
+        Activity::FollowedUser.stub(:create) { true }
+      end
+
       it "should be marked as successfull" do
         result.success?.should be_true
       end
     end
 
     context "when unsuccessfull" do
-      pending("Implementation of rollback strategy")
+      before do
+        Activity::FollowedUser.stub(:create) { false }
+      end
+
+      it "should not be marked as successfull" do
+        result.success?.should be_false
+      end
     end
   end
 end
