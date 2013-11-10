@@ -39,13 +39,13 @@ module AvatarHelper
   end
 
   def gravatar_url(member, size)
-    gravatar_id   = gravatar_id(member)
+    gravatar_id   = gravatar_id(member.email)
     gravatar_size = dimension_for_size(size)
 
     "#{GRAVATAR_URL}#{gravatar_id}.png?s=#{gravatar_size}"
   end
 
-  def gravatar_id(member)
-    Digest::MD5.hexdigest(member.email.downcase)
+  def gravatar_id(email)
+    Digest::MD5.hexdigest(email.downcase)
   end
 end
