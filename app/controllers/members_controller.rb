@@ -10,7 +10,7 @@ class MembersController < ApplicationController
   end
 
   def show
-    @activities = Activity.all.where(user_id: current_user.id)
+    @activities = Activity.all.where(activity_user_id: current_user.id)
   end
 
   def follow

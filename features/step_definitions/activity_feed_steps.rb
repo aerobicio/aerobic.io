@@ -4,6 +4,10 @@ Given(/^"(.*?)" is a member$/) do |name|
   Capybara.session_name = "mine"
 end
 
+Given(/^I have some activity$/) do
+  step "I add a workout"
+end
+
 Then(/^I should see the workout in my activity feed$/) do
   visit dashboard_path
   page.should have_content "Distance: 41.32km"

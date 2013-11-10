@@ -6,8 +6,8 @@ include FollowingHelper
 describe FollowingHelper do
   describe "#following_link_for_members" do
     subject { following_link_for_members(member, other_member) }
-    let(:member) { double(Domain::Member, id: 1) }
-    let(:other_member) { double(Domain::Member, id: 2) }
+    let(:member) { double(Domain::Member, id: 1, name: "Justin Morris") }
+    let(:other_member) { double(Domain::Member, id: 2, name: "Gus Gollings") }
 
     context "when following is inactive" do
       before do
@@ -33,7 +33,11 @@ describe FollowingHelper do
           member.stub(:follows?).with(other_member) { true }
         end
 
-        it { should == "<a href=\"/members/2/unfollow\">Unfollow</a>" }
+        it {
+          should == "<form action=\"/members/1/unfollow\" class=\"button_to\" "\
+                    "method=\"post\"><div><input type=\"submit\" "\
+                    "value=\"Unfollow Justin Morris\" /></div></form>"
+        }
       end
 
       describe "when the member does not follow the other member" do
@@ -41,7 +45,47 @@ describe FollowingHelper do
           member.stub(:follows?).with(other_member) { false }
         end
 
-        it { should == "<a href=\"/members/2/follow\">Follow</a>" }
+        it {
+          should == "<form action=\"/members/1/follow\" class=\"button_to\" "\
+                    "method=\"post\"><div><input type=\"submit\" "\
+                    "value=\"Follow Justin Morris\" /></div></form>"
+        }
+      end
+    end
+  end
+
+  describe "#member_relationship_status_for_members" do
+    subject { member_relationship_status_for_members(member, other_member) }
+    let(:member) { double(Domain::Member, id: 1, name: "Justin Morris") }
+    let(:other_member) { double(Domain::Member, id: 2, name: "Gus Gollings") }
+
+    context "when following is inactive" do
+      before do
+        $switch_board.stub(:following_active?) { false }
+      end
+
+      it { should be_nil }
+    end
+
+    context "when following is active" do
+      before do
+        $switch_board.stub(:following_active?) { true }
+      end
+
+      describe "when the member already follows the other member" do
+        before do
+          member.stub(:follows?).with(other_member) { true }
+        end
+
+        it { should == "Justin Morris follows you" }
+      end
+
+      describe "when the member does not follow the other member" do
+        before do
+          member.stub(:follows?).with(other_member) { false }
+        end
+
+        it { should == "Justin Morris doesn’t follow you" }
       end
     end
   end

@@ -1,8 +1,8 @@
 <% if current_user %>
   <nav class="navigation">
-    <%= link_to(t("dashboard"), dashboard_path, class: "navigation__item") %>
-    <%= link_to(t("profile"), member_path(current_user.id), class: "navigation__item") %>
-    <%= link_to(t("upload"), upload_path, class: "navigation__item is-cta", "data-no-turbolink" => true) %>
+    <%= link_to(t("navigation.dashboard"), dashboard_path, class: "navigation__item") %>
+    <%= link_to(t("navigation.profile"), member_path(current_user.id), class: "navigation__item") %>
+    <%= link_to(t("navigation.upload"), upload_path, class: "navigation__item is-cta", "data-no-turbolink" => true) %>
     <%= render :partial => "shared/account_info" %>
   </nav>
 <% end %>

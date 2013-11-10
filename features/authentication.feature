@@ -1,6 +1,6 @@
 Feature: Authentication
   In order to use my account
-  As a registered user
+  As a registered member
   I want to be able to sign in and out
 
   Scenario: Signing in using an email/password
