@@ -5,7 +5,6 @@ module FollowingHelper
   def following_link_for_members(member, other_member)
     return unless $switch_board.following_active?
 
-    # TODO i18n these strings
     unless member == other_member
       if member.follows?(other_member)
         unfollow_button_for(member)
