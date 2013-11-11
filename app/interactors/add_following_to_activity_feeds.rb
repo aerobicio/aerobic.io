@@ -25,26 +25,27 @@ class AddFollowingToActivityFeeds
   end
 
   def add_to_members_activity_feed
-    Activity::FollowedUser.create(user_id: member_id,
-                                  activity_user_id: member_id,
-                                  activity_followed_user_id: followed_id)
+    add_to_activity_feed(member_id)
   end
 
   def add_to_followed_members_activity_feed
-    Activity::FollowedUser.create(user_id: followed_id,
-                                  activity_user_id: member_id,
-                                  activity_followed_user_id: followed_id)
+    add_to_activity_feed(followed_id)
   end
 
   def add_to_members_followers_activity_feed
     member.followers.inject(true) do |success, follower|
-      add_to_followers_feed(follower) && success
+      add_to_activity_feed(follower.id) && success
     end
   end
 
-  def add_to_followers_feed(follower)
-    Activity::FollowedUser.create(user_id: follower.id,
-                                  activity_user_id: member_id,
-                                  activity_followed_user_id: followed_id)
+  def add_to_activity_feed(user_id)
+    followed_params = {
+      user_id: user_id,
+      activity_user_id: member_id,
+      activity_followed_user_id: followed_id,
+    }
+
+    activity = Activity::FollowedUser.create(followed_params)
+    activity.save
   end
 end

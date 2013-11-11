@@ -39,6 +39,8 @@ describe AddFollowingToActivityFeeds do
   let(:followed_member) { double(:followed_member, name: "Gus") }
   let(:followers) { [double(:follower, id: 3)] }
 
+  let(:activity) { double(:activity, save: activity_persisted) }
+
   before do
     stub_const("Activity::FollowedUser", Class.new)
   end
@@ -46,16 +48,21 @@ describe AddFollowingToActivityFeeds do
   describe "#perform" do
     subject(:result) { described_class.perform(context) }
 
+    before do
+      Activity::FollowedUser.should_receive(:create).with(member_feed) do
+        activity
+      end
+    end
+
     context "when successfull" do
+      let(:activity_persisted) { true }
+
       before do
-        Activity::FollowedUser.should_receive(:create).with(member_feed)
         Activity::FollowedUser.should_receive(:create).
-          with(followed_member_feed)
+          with(followed_member_feed) { activity }
 
         Activity::FollowedUser.should_receive(:create).
-          with(follower_member_feed)
-
-        Activity::FollowedUser.stub(:create) { true }
+          with(follower_member_feed) { activity }
       end
 
       it "should be marked as successfull" do
@@ -64,9 +71,7 @@ describe AddFollowingToActivityFeeds do
     end
 
     context "when unsuccessfull" do
-      before do
-        Activity::FollowedUser.stub(:create) { false }
-      end
+      let(:activity_persisted) { false }
 
       it "should not be marked as successfull" do
         result.success?.should be_false

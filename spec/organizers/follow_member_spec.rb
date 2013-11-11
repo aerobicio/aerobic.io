@@ -21,6 +21,8 @@ describe FollowMember do
 
   let(:followed_member) { double(:followed_member, name: "Gus") }
 
+  let(:activity) { double(:activity, save: activity_persisted) }
+
   before do
     User.should_receive(:find).with(context[:member_id]) { member }
     User.should_receive(:find).with(context[:followed_id]) { followed_member }
@@ -32,8 +34,10 @@ describe FollowMember do
     end
 
     context "and when AddFollowingToActivityFeeds is successful" do
+      let(:activity_persisted) { true }
+
       before do
-        Activity::FollowedUser.stub(:create) { true }
+        Activity::FollowedUser.stub(:create) { activity }
       end
 
       it "should be marked as successful" do
@@ -54,8 +58,10 @@ describe FollowMember do
     end
 
     context "when when AddFollowingToActivityFeeds is unsuccessful" do
+      let(:activity_persisted) { false }
+
       before do
-        Activity::FollowedUser.stub(:create) { false }
+        Activity::FollowedUser.stub(:create) { activity }
       end
 
       it "should not be marked as successful" do
