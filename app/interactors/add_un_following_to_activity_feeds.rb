@@ -7,7 +7,7 @@ class AddUnFollowingToActivityFeeds
   include Interactor
 
   def perform
-    unless add_unfollod_member_to_activity_feed
+    unless add_unfollowed_member_to_activity_feed
       context[:notice] = "Could not unfollow #{unfollowed_member.name}"
       context.fail!
     end
@@ -15,7 +15,7 @@ class AddUnFollowingToActivityFeeds
 
   private
 
-  def add_unfollod_member_to_activity_feed
+  def add_unfollowed_member_to_activity_feed
     Activity::UnfollowedUser.create(user_id: member_id,
                                     activity_user_id: member_id,
                                     activity_followed_user_id: followed_id)
