@@ -10,22 +10,25 @@ class AddWorkoutToActivityFeeds
   include Interactor
 
   def perform
-    @member = User.find(member_id)
-
-    Activity::AddedWorkout.create(user_id: member_id,
-                                  activity_user_id: member_id,
-                                  activity_workout_id: workout.id)
-
-    add_workout_to_followers_feeds
+    unless add_to_activity_feed(member_id) && add_to_followers_feeds
+      context.fail!
+    end
   end
 
   private
 
-  def add_workout_to_followers_feeds
-    @member.followers.each do |follower|
-      Activity::AddedWorkout.create(user_id: follower.id,
-                                    activity_user_id: member_id,
-                                    activity_workout_id: workout.id)
+  def add_to_activity_feed(user_id)
+    activity = Activity::AddedWorkout.new(user_id: user_id,
+                                          activity_user_id: member_id,
+                                          activity_workout_id: workout.id)
+    activity.save
+  end
+
+  def add_to_followers_feeds
+    context[:member] = User.find(member_id)
+
+    member.followers.inject(true) do |success, follower|
+      add_to_activity_feed(follower.id)
     end
   end
 end

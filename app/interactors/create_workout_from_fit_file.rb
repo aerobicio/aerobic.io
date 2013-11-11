@@ -11,8 +11,12 @@ class CreateWorkoutFromFitFile
   def perform
     workout = create_workout
     fitfile.workout_id = workout.id
-    fitfile.save
-    context[:workout] = workout
+
+    if workout.persisted? && fitfile.save
+      context[:workout] = workout
+    else
+      context.fail!
+    end
   end
 
   private

@@ -8,12 +8,17 @@ class ProcessUploadedFitFile
   include Interactor
 
   def perform
-    name = activity.lines.first
+    if context[:activity]
+      name = activity.lines.first
 
-    strip_casing_and_decode
+      strip_casing_and_decode
 
-    context[:fitfile] = FitFile.new(name: name,
-                                     binary_data: @fit_file)
+      context[:fitfile] = FitFile.new(name: name,
+                                       binary_data: @fit_file)
+    else
+      context[:notice] = "No Fit File found"
+      context.fail!
+    end
   end
 
   private
