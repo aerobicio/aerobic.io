@@ -36,16 +36,34 @@ describe AddWorkoutToActivityFeeds do
 
   describe "#perform" do
     subject(:result) { described_class.perform(context) }
+    let(:activity) { double(:activity, save: activity_persisted) }
 
     before do
-      User.should_receive(:find).with(context[:member_id]) { member }
-      Activity::AddedWorkout.should_receive(:create).with(member_params)
-      Activity::AddedWorkout.should_receive(:create).with(follower_params)
+      Activity::AddedWorkout.should_receive(:new).with(member_params) do
+        activity
+      end
     end
 
     context "when successfull" do
+      let(:activity_persisted) { true }
+
+      before do
+        User.should_receive(:find).with(context[:member_id]) { member }
+        Activity::AddedWorkout.should_receive(:new).with(follower_params) do
+          activity
+        end
+      end
+
       it "should be marked as successfull" do
         result.success?.should be_true
+      end
+    end
+
+    context "when unsuccessfull" do
+      let(:activity_persisted) { false }
+
+      it "should be marked as successfull" do
+        result.success?.should be_false
       end
     end
   end
