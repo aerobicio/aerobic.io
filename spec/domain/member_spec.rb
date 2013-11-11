@@ -3,11 +3,13 @@ require_relative "../../app/domain/member"
 
 describe Domain::Member do
   let(:user_class) { double(:user_class) }
-  let(:user) { OpenStruct.new(id: 42) }
+  let(:user) { OpenStruct.new(id: 42, authentications: [double(uid: uid)]) }
+  let(:uid) { 4 }
   let(:user_2) { OpenStruct.new(id: 22) }
 
   before do
     stub_const("User", user_class)
+    stub_const("Identity", Class.new)
   end
 
   describe ".find(id)" do
@@ -34,6 +36,22 @@ describe Domain::Member do
     it "should contain Domain::Member objects" do
       all.first.should be_an_instance_of(Domain::Member)
       all.last.should be_an_instance_of(Domain::Member)
+    end
+  end
+
+  describe "#email" do
+    subject(:email) { member.email }
+
+    let(:member) { Domain::Member.new(user) }
+    let(:identity) { double(:identity, email: "lol@exmaple.com") }
+
+    before do
+      User.should_receive(:find).with(user.id) { user }
+      Identity.should_receive(:find).with(uid) { identity }
+    end
+
+    it "should be the email on the identity of the member" do
+      email.should == identity.email
     end
   end
 

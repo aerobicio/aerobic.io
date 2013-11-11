@@ -1,13 +1,4 @@
+<% current_user = OpenStruct.new(id: 1, email: "justin@pixelbloom.com") %>
 <%= styleguide_example_for(section) do -%>
-  <div class="account_info">
-    <%= render :partial => "shared/avatar", locals: {image_path: "https://s3.amazonaws.com/uifaces/faces/twitter/mutlu82/128.jpg", css_class: "account_info__avatar"} %>
-
-    <div class="account_info__content">
-      Justin Morris
-      <br>
-      <%= link_to("Account", "#") %>
-      <span class="account_info__content__divider">&bull;</span>
-      <%= link_to(t("sign_out"), "#", method: :put) %>
-    </div>
-  </div>
+  <%= render :partial => "shared/account_info", locals: {current_user: current_user} %>
 <% end %>

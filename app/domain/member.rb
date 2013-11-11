@@ -26,6 +26,10 @@ module Domain
       @user ||= User.find(@id)
     end
 
+    def email
+      Identity.find(user.authentications.first.uid).email
+    end
+
     def follow(member)
       following = Domain::Following.new(user_id: id, following_id: member.id)
       following.persist
