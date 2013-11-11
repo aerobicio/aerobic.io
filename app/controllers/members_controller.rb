@@ -9,17 +9,30 @@ class MembersController < ApplicationController
   end
 
   def follow
-    result = FollowMember.perform(member_id: current_user.id,
-                                  followed_id: params[:id])
+    notice = nil
 
-    redirect_to members_path, notice: result.notice
+    ActiveRecord::Base.transaction do
+      result = FollowMember.perform(member_id: current_user.id,
+                                    followed_id: params[:id])
+      notice = result.notice
+      raise ActiveRecord::Rollback unless result.success?
+    end
+
+    redirect_to members_path, notice: notice
   end
 
   def unfollow
-    result = UnFollowMember.perform(member_id: current_user.id,
-                                    followed_id: params[:id])
+    notice = nil
 
-    redirect_to members_path, notice: result.notice
+    ActiveRecord::Base.transaction do
+      result = UnFollowMember.perform(member_id: current_user.id,
+                                      followed_id: params[:id])
+
+      notice = result.notice
+      raise ActiveRecord::Rollback unless result.success?
+    end
+
+    redirect_to members_path, notice: notice
   end
 
   private
