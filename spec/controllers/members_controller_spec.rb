@@ -19,7 +19,7 @@ describe MembersController do
 
   describe "#show" do
     before do
-      get :show
+      get :show, id: 1
     end
 
     it { should respond_with(:success) }
