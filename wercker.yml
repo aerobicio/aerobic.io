@@ -12,6 +12,7 @@ build:
                 export DISPLAY=${DISPLAY:-":2.0"}
                 echo $DISPLAY
                 nohup Xvfb -ac -screen scrn 1400x900x24 "$DISPLAY" &
+                which Xvfb
         - script:
             name: selenium server
             code: |
