@@ -43,7 +43,7 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     awesome_print (1.1.0)
-    bcrypt-ruby (3.0.1)
+    bcrypt-ruby (3.1.2)
     bindata (1.5.0)
     bourbon (3.1.8)
       sass (>= 3.2.0)
@@ -300,7 +300,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt-ruby (~> 3.0.0)
+  bcrypt-ruby (~> 3.1.2)
   bindata
   bourbon
   cane
