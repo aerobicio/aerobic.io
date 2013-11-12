@@ -1,2 +1,0 @@
-# Python development and testing tools
-Huxley==0.4
