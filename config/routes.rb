@@ -11,6 +11,13 @@ AerobicIo::Application.routes.draw do
   resources :sessions, only: [:create, :new]
   resource :upload, only: [ :show, :create ]
 
+  resources :members, only: [:index] do
+    member do
+      post "follow"
+      post "unfollow"
+    end
+  end
+
   mount Kayessess::Engine => "/styleguide", :as => 'kayessess' unless Rails.env.production?
 
   # The priority is based upon order of creation: first created -> highest priority.

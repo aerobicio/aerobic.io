@@ -1,0 +1,20 @@
+// Styleguide Components.Avatar
+.avatar {
+  @include hide-text;
+
+  height: 3.2rem;
+  width: 3.2rem;
+  border-radius: 3.2rem;
+  display: inline-block;
+  background-color: #ccc;
+  position: relative;
+  overflow: hidden;
+}
+
+.avatar__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}

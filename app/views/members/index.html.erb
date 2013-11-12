@@ -1,0 +1,6 @@
+<h1>Members</h1>
+<ul>
+  <% @members.each do |member| %>
+    <li><%= member.name %> - <%= @current_user.follows?(member) ? button_to("Unfollow #{member.name}", unfollow_member_path(member.id)) : button_to("Follow #{member.name}", follow_member_path(member.id)) %></li>
+  <% end %>
+</ul>

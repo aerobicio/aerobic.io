@@ -1,7 +1,7 @@
 <% view = IdentitiesHelper::NewIdentityView.new(@identity) %>
 
-<%= extends :unauthenticated do %>
-  <%= replace :content_inner do %>
+<div class="layout-dialog panel">
+  <div class="panel__content">
     <%= form_tag registration_path do %>
       <% if view.errors? %>
         <div class="errors">
@@ -16,12 +16,12 @@
       <%= label_tag :name %>
       <%= text_field_tag :name, view.name %>
       <%= label_tag :email %>
-      <%= text_field_tag :email, view.email %>
+      <%= text_field_tag :email, view.email, placeholder: "your_email@example.com" %>
       <%= label_tag :password %>
       <%= password_field_tag :password %>
       <%= label_tag :password_confirmation %>
       <%= password_field_tag :password_confirmation %>
-      <%= submit_tag(t(".submit")) %>
+      <%= submit_tag(t(".submit"), class: "button") %>
     <% end %>
-  <% end %>
-<% end %>
+  </div>
+</div>
