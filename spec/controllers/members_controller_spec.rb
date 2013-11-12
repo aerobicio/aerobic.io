@@ -1,11 +1,11 @@
 require "spec_helper"
 
 describe MembersController do
-  let(:user) { Domain::Member.new(double(User, id: 42)) }
+  let(:user) { double(User, id: 42) }
 
   before do
     session[:user_id] = 42
-    Domain::Member.stub(:find).and_return(user)
+    User.stub(:find).with(42).and_return(user)
   end
 
   describe "#index" do
@@ -18,7 +18,10 @@ describe MembersController do
   end
 
   describe "#show" do
+    let(:member) { double(:member, activities: []) }
+
     before do
+      User.should_receive(:find).with("1") { member }
       get :show, id: 1
     end
 
@@ -39,16 +42,18 @@ describe MembersController do
 
     @following
     context "when following is turned on" do
-      let(:user_2) { Domain::Member.new(double(User, id: 22, name: "Justin")) }
-
       before do
         $switch_board.activate_following
-        Domain::Member.should_receive(:find).with("22") { user_2 }
-        user.should_receive(:follow).with(user_2) { true }
+        FollowMember.should_receive(:perform) { result }
         post :follow, id: 22
       end
 
-      it { should set_the_flash[:notice].to("Now following #{user_2.name}") }
+      let(:result) do
+        double(:result, success?: true,
+                        notice: "My Notice")
+      end
+
+      it { should set_the_flash[:notice].to("My Notice") }
       it { should redirect_to(members_path) }
     end
   end
@@ -66,18 +71,18 @@ describe MembersController do
 
     @following
     context "when following is turned on" do
-      let(:user_2) { Domain::Member.new(double(User, id: 22, name: "Justin")) }
-
       before do
         $switch_board.activate_following
-        Domain::Member.should_receive(:find).with("22") { user_2 }
-        user.should_receive(:unfollow).with(user_2) { true }
+        UnFollowMember.should_receive(:perform) { result }
         post :unfollow, id: 22
       end
 
-      it "should set the flash message" do
-        should set_the_flash[:notice].to("No longer following #{user_2.name}")
+      let(:result) do
+        double(:result, success?: true,
+                        notice: "My Notice")
       end
+
+      it { should set_the_flash[:notice].to("My Notice") }
 
       it { should redirect_to(members_path) }
     end

@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe DashboardsController do
-  let(:user) { Domain::Member.new(double(User, id: 42)) }
+  let(:user) { double(User, id: 42, activities: []) }
 
   before do
     session[:user_id] = 1
-    Domain::Member.stub(:find).and_return(user)
+    User.stub(:find).and_return(user)
   end
 
   describe "#show" do

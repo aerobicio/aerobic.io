@@ -1,13 +1,12 @@
-require_relative "../../app/helpers/following_helper"
-require_relative "../../app/domain/member"
+require "spec_helper"
 
 include FollowingHelper
 
 describe FollowingHelper do
   describe "#following_link_for_members" do
     subject { following_link_for_members(member, other_member) }
-    let(:member) { double(Domain::Member, id: 1, name: "Justin Morris") }
-    let(:other_member) { double(Domain::Member, id: 2, name: "Gus Gollings") }
+    let(:member) { double(:member, id: 1, name: "Justin Morris") }
+    let(:other_member) { double(:other_member, id: 2, name: "Gus Gollings") }
 
     context "when following is inactive" do
       before do
@@ -58,8 +57,8 @@ describe FollowingHelper do
 
   describe "#member_relationship_status_for_members" do
     subject { member_relationship_status_for_members(member, other_member) }
-    let(:member) { double(Domain::Member, id: 1, name: "Justin Morris") }
-    let(:other_member) { double(Domain::Member, id: 2, name: "Gus Gollings") }
+    let(:member) { double(:member, id: 1, name: "Justin Morris") }
+    let(:other_member) { double(:other_member, id: 2, name: "Gus Gollings") }
 
     context "when following is inactive" do
       before do
