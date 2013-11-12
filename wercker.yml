@@ -5,10 +5,6 @@ services:
 build:
     # The steps that will be executed on build
     steps:
-        - script:
-            name: environment
-            code: |
-                export BUNDLE_JOBS=8
         # A step that executes `bundle install` command
         - bundle-install
         # A step that prepares the database.yml with settings from the database you defined in services
