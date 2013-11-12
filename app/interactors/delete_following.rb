@@ -7,11 +7,10 @@ class DeleteFollowing
   include Interactor
 
   def perform
-    context[:member] = User.find(member_id)
-    context[:unfollowed_member] = User.find(followed_id)
+    find_members
 
     if member.follows?(unfollowed_member)
-      ActiveRecord::Base.connection.execute(delete_user_followings_sql)
+      delete_member_followings
       context[:notice] = "No longer following #{unfollowed_member.name}"
     else
       context[:notice] = "Could not unfollow #{unfollowed_member.name}"
@@ -20,6 +19,15 @@ class DeleteFollowing
   end
 
   private
+
+  def find_members
+    context[:member] = User.find(member_id)
+    context[:unfollowed_member] = User.find(followed_id)
+  end
+
+  def delete_member_followings
+    ActiveRecord::Base.connection.execute(delete_user_followings_sql)
+  end
 
   def delete_user_followings_sql
     sql = <<-SQL
