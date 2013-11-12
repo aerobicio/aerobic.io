@@ -14,24 +14,16 @@ class MembersController < ApplicationController
   end
 
   def follow
-    notice = nil
-
-    ActiveRecord::Base.transaction do
-      result = FollowMember.perform(follow_params)
-      notice = result.notice
-      raise ActiveRecord::Rollback unless result.success?
+    notice = perform_in_transaction do
+      FollowMember.perform(follow_params)
     end
 
     redirect_to members_path, notice: notice
   end
 
   def unfollow
-    notice = nil
-
-    ActiveRecord::Base.transaction do
-      result = UnFollowMember.perform(follow_params)
-      notice = result.notice
-      raise ActiveRecord::Rollback unless result.success?
+    notice = perform_in_transaction do
+      UnFollowMember.perform(follow_params)
     end
 
     redirect_to members_path, notice: notice
@@ -44,6 +36,16 @@ class MembersController < ApplicationController
       member_id: current_user.id,
       followed_id: params[:id],
     }
+  end
+
+  def perform_in_transaction(&block)
+    notice = nil
+    ActiveRecord::Base.transaction do
+      result = block.call
+      notice = result.notice
+      raise ActiveRecord::Rollback unless result.success?
+    end
+    notice
   end
 
   def ensure_following_is_active
