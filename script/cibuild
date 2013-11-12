@@ -16,8 +16,10 @@ function run_command {
 script/bootstrap
 
 # start xvfb if required
-export DISPLAY=${DISPLAY:-":2.0"}
-ps x | grep -v grep | grep Xvfb || nohup Xvfb -ac -screen scrn 1400x900x24 "$DISPLAY" &
+# export DISPLAY=${DISPLAY:-":2.0"}
+# ps x | grep -v grep | grep Xvfb || nohup Xvfb -ac -screen scrn 1400x900x24 "$DISPLAY" &
+
+run_command "rm -rf coverage/*"
 
 rake db:migrate
 rake assets:precompile

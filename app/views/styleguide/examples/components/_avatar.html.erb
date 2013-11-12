@@ -1,13 +1,9 @@
-<%
-  image1 = "https://s3.amazonaws.com/uifaces/faces/twitter/joshaustin/128.jpg"
-  image2 = "https://s3.amazonaws.com/uifaces/faces/twitter/uxpiper/128.jpg"
-  image3 = "https://s3.amazonaws.com/uifaces/faces/twitter/ManikRathee/128.jpg"
-  image4 = "https://s3.amazonaws.com/uifaces/faces/twitter/mutlu82/128.jpg"
-%>
-
+<% member = OpenStruct.new(email: "justin@pixelbloom.com") %>
 <%= styleguide_example_for(section) do -%>
-  <%= render :partial => "shared/avatar", locals: {image_path: image1} %>
-  <%= render :partial => "shared/avatar", locals: {image_path: image2} %>
-  <%= render :partial => "shared/avatar", locals: {image_path: image3} %>
-  <%= render :partial => "shared/avatar", locals: {image_path: image4} %>
+  <div>
+    <%= gravatar_for_member(member, size: :large, extra_classes: "$modifier_class") %>
+  </div>
+  <div>
+    <%= gravatar_for_member(member, size: :large, extra_classes: "avatar--large $modifier_class") %>
+  </div>
 <% end %>

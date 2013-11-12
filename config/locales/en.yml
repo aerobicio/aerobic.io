@@ -3,12 +3,16 @@ en:
   title:      "aerobic.io"
   sign_in:    "Sign in"
   sign_out:   "Sign out"
-  upload:     "New Workout"
 
   valid_email:
     validations:
       email:
         invalid: "is not a valid email"
+
+  navigation:
+    dashboard: "Dashboard"
+    profile: "Profile"
+    upload: "New Workout"
 
   footer:
     awesome:

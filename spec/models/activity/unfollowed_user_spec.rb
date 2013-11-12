@@ -1,6 +1,6 @@
 require "active_record_helper"
+require_relative "../../support/shared/activity"
 require_relative "../../../app/models/activity/unfollowed_user"
-require_relative "../../support/shared/activity_spec"
 
 describe Activity::UnfollowedUser do
   it_should_behave_like "an activity model"
