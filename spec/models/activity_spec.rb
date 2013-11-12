@@ -1,5 +1,5 @@
 require "active_record_helper"
-require_relative "../support/shared/activity_spec"
+require_relative "../support/shared/activity"
 require_relative "../../app/models/activity"
 
 describe Activity do
