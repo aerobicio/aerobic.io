@@ -130,7 +130,7 @@ GEM
       rails (>= 3.0.0)
       redcarpet
       to_slug (>= 1.0.8)
-    kgio (2.8.0)
+    kgio (2.8.1)
     kss (0.5.0)
     lograge (0.2.2)
       actionpack (>= 3)
@@ -284,7 +284,7 @@ GEM
     uglifier (2.3.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unicorn (4.6.3)
+    unicorn (4.7.0)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
