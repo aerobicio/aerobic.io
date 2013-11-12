@@ -8,6 +8,7 @@ build:
         - script:
             name: configure Xvfb
             code: |
+                which Xvfb
                 export DISPLAY=${DISPLAY:-":2.0"}
                 nohup Xvfb -ac -screen scrn 1400x900x24 "$DISPLAY" &
         # A step that executes `bundle install` command
