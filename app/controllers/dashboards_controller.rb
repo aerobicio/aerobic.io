@@ -2,6 +2,6 @@
 #
 class DashboardsController < ApplicationController
   def show
-    @activities = Activity.all.where(user_id: current_user.id)
+    @activities = current_user.activities
   end
 end

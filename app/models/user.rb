@@ -7,6 +7,7 @@ require_relative "workout"
 class User < ActiveRecord::Base
   has_many :authentications
   has_many :workouts
+  has_many :activities
 
   has_and_belongs_to_many :followings,
                           association_foreign_key: 'following_id',
@@ -21,6 +22,10 @@ class User < ActiveRecord::Base
                           join_table: 'users_followings'
 
   validates :name, presence: true
+
+  def email
+    Identity.find(authentications.first.uid).email
+  end
 
   def follows?(user)
     followings.map(&:id).include?(user.id)

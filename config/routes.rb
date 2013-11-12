@@ -11,7 +11,7 @@ AerobicIo::Application.routes.draw do
   resources :sessions, only: [:create, :new]
   resource :upload, only: [ :show, :create ]
 
-  resources :members, only: [:index] do
+  resources :members, only: [:show, :index] do
     member do
       post "follow"
       post "unfollow"

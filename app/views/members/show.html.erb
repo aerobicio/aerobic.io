@@ -1,0 +1,13 @@
+<div class="grid-container">
+  <header class="media">
+  <%= gravatar_for_member(@member, size: :large, extra_classes: "media__figure avatar--large") %>
+    <div class="media__content">
+      <h1><%= @member.name %></h1>
+      <div class="member-following">
+        <%= following_link_for_members(@member, current_user) %>
+      </div>
+    </div>
+  </header>
+
+  <%= render :partial => "shared/activities_list", locals: {activities: @activities} %>
+</div>

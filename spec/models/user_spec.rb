@@ -1,7 +1,9 @@
 require "active_record_helper"
 require_relative "../../app/models/user"
+require_relative "../../app/models/activity"
 
 describe User do
+  it { should have_many(:activities) }
   it { should have_many(:authentications) }
   it { should have_many(:workouts) }
 

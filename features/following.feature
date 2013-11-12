@@ -30,8 +30,22 @@ Feature: Following
   @flip @following @on
   Scenario: A member can unfollow another member when the feature is on
     Given the following feature is on
-    And I follow "Gus" 
+    And I follow "Gus"
     When I unfollow "Gus"
     Then I should see that I unfollowed "Gus" in my activity feed
     And "Gus" should not see that fact in their activity feed
     And "Justin" should not see that fact in their activity feed
+
+  @flip @following @off
+  Scenario: A member cannot unfollow another member from the profile page when the feature is off
+    Given I am following "Justin"
+    And the following feature is off
+    When I visit "Justin"’s profile
+    Then I should not be able to unfollow "Justin"
+
+  @flip @following @off
+  Scenario: A member cannot follow another member from the profile page when the feature is off
+    Given I am not following "Justin"
+    And the following feature is off
+    When I visit "Justin"’s profile
+    Then I should not be able to follow "Justin"
