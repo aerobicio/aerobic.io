@@ -49,7 +49,7 @@ GEM
       sass (>= 3.2.0)
       thor
     builder (3.1.4)
-    cane (2.6.0)
+    cane (2.6.1)
       parallel
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -157,7 +157,7 @@ GEM
     omniauth-identity (1.1.1)
       bcrypt-ruby (~> 3.0)
       omniauth (~> 1.0)
-    parallel (0.8.0)
+    parallel (0.9.0)
     pg (0.17.0)
     phantomjs (1.8.1.1)
       poltergeist
