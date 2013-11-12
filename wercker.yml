@@ -6,10 +6,10 @@ build:
     # The steps that will be executed on build
     steps:
         - script:
-            name: configure framebuffer
+            name: configure Xvfb
             code: |
                 export DISPLAY=${DISPLAY:-":2.0"}
-                ps x | grep -v grep | grep Xvfb || nohup Xvfb -ac -screen scrn 1400x900x24 "$DISPLAY" &
+                nohup Xvfb -ac -screen scrn 1400x900x24 "$DISPLAY" &
         # A step that executes `bundle install` command
         - bundle-install
         # A step that prepares the database.yml with settings from the database you defined in services
