@@ -8,17 +8,34 @@ build:
         - script:
             name: configure Xvfb
             code: |
+                ls ${WERCKER_CACHE_DIR}/wercker/selenium-server
                 export DISPLAY=${DISPLAY:-":2.0"}
                 echo $DISPLAY
                 nohup Xvfb -ac -screen scrn 1400x900x24 "$DISPLAY" &
+        - script:
+            name: selenium server
+            code: |
+                VERSION=2.37.0
+                JAR_FILE=selenium-server-standalone-$VERSION.jar
+                CACHE_DIR="${WERCKER_CACHE_DIR}/wercker/selenium-server"
+
+                [ ! -d $CACHE_DIR ] && mkdir -p $CACHE_DIR
+
+                cd $CACHE_DIR
+
+                if [[ ! -f $CACHE_DIR/$JAR_FILE ]]; then
+                  # Download Selenium Standalone Server
+                  curl -O http://selenium.googlecode.com/files/$JAR_FILE
+                fi
+
+                # Start Selenium and wait for port 4444 to become available
+                nohup java -jar $JAR_FILE & while ! nc -vz localhost 4444; do sleep 1; done
         # A step that executes `bundle install` command
         - bundle-install
         # A step that prepares the database.yml with settings from the database you defined in services
         - rails-database-yml
         # A step that will ensure that phantomjs is available
         - aussiegeek/install-phantomjs@0.0.3
-        # Ensure that selenium-server is available and running
-        - desmondmorris/selenium-install@0.0.2
         # A step that executes `npm install`
         - npm-install
         # Install python development tools
