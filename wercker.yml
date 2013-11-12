@@ -8,9 +8,8 @@ build:
         - script:
             name: configure framebuffer
             code: |
-                sudo apt-get install x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic x11-apps
-                Xvfb :1 -screen 0 1024x768x24 2>&1 >/dev/null &
-                export DISPLAY=:1
+                export DISPLAY=${DISPLAY:-":2.0"}
+                ps x | grep -v grep | grep Xvfb || nohup Xvfb -ac -screen scrn 1400x900x24 "$DISPLAY" &
         # A step that executes `bundle install` command
         - bundle-install
         # A step that prepares the database.yml with settings from the database you defined in services
