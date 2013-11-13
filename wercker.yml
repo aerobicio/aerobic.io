@@ -1,4 +1,4 @@
-box: aussiegeek/ubuntu12.04-ruby2.0-nodejs0.10@0.0.1
+box: plasticine/aerobic.io@0.0.4
 services:
     - wercker/postgresql
     - wercker/redis
@@ -9,8 +9,6 @@ build:
         - bundle-install
         # A step that prepares the database.yml with settings from the database you defined in services
         - rails-database-yml
-        # A step that will ensure that phantomjs is available
-        - aussiegeek/install-phantomjs@0.0.3
         # A step that executes `npm install`
         - npm-install
         # A step that executes `bower install`
