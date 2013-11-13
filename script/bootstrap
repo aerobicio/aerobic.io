@@ -23,7 +23,6 @@ bundle binstubs rails_best_practices --force
 bundle binstubs consistency_fail --force
 bundle binstubs teaspoon --force
 npm install
-bower install
 
 cp -n .env.example .env
 cp -n config/database.yml.example config/database.yml
