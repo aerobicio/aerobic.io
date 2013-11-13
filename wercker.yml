@@ -22,8 +22,9 @@ build:
             requirements_file: ".pip"
         # A step that executes `bower install`
         - plasticine/bower-install
-        # ensure that selenium server is available and running (move this to a service?)
+        # Ensure that selenium server is available and running (move this to a service?)
         - desmondmorris/selenium-install@0.0.2
+        # ...and run the build!
         - script:
             name: db setup
             code: RAILS_ENV=test bundle exec rake db:structure:load
