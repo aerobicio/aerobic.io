@@ -25,4 +25,5 @@
 /tmp
 
 /public/assets
+/vendor/components
 /node_modules
