@@ -16,16 +16,24 @@ class SwitchBoard
   FEATURE_FLIPS = [:sign_up, :following]
 
   FEATURE_FLIPS.each do |flip_name|
-    define_method "activate_#{flip_name}" do
-      @rollout.activate(flip_name)
+    define_method "activate_#{flip_name}" do |group = :all|
+      if group == :all
+        @rollout.activate(flip_name)
+      else
+        @rollout.activate_group(flip_name, group)
+      end
     end
 
-    define_method "deactivate_#{flip_name}" do
-      @rollout.deactivate(flip_name)
+    define_method "deactivate_#{flip_name}" do |group = :all|
+      if group == :all
+        @rollout.deactivate(flip_name)
+      else
+        @rollout.deactivate_group(flip_name, group)
+      end
     end
 
-    define_method "#{flip_name}_active?" do
-      @rollout.active?(flip_name)
+    define_method "#{flip_name}_active?" do |user = nil|
+      @rollout.active?(flip_name, user)
     end
   end
 end
