@@ -25,5 +25,5 @@
 /tmp
 
 /public/assets
-/vendor/components
+/vendor/assets/components/*/*
 /node_modules
