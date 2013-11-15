@@ -60,9 +60,6 @@ describe AddFollowingToActivityFeeds do
       before do
         Activity::FollowedUser.should_receive(:create).
           with(followed_member_feed) { activity }
-
-        Activity::FollowedUser.should_receive(:create).
-          with(follower_member_feed) { activity }
       end
 
       it "should be marked as successfull" do
