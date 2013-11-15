@@ -25,5 +25,7 @@
 /tmp
 
 /public/assets
-/vendor/components
+vendor/assets/components/cookie-monster/
+vendor/assets/components/jquery/
+vendor/assets/components/underscore/
 /node_modules
