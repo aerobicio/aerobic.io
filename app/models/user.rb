@@ -7,7 +7,7 @@ require_relative "workout"
 class User < ActiveRecord::Base
   has_many :authentications
   has_many :workouts
-  has_many :activities
+  has_many :activities, foreign_key: 'user_id'
 
   has_and_belongs_to_many :followings,
                           association_foreign_key: 'following_id',
