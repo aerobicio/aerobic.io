@@ -16,7 +16,7 @@ describe FollowMember do
           )
   end
 
-  let(:followings) { double(:followings).as_null_object }
+  let(:followings) { double(:followings, include?: false).as_null_object }
   let(:followers) { double(:followers).as_null_object }
 
   let(:followed_member) { double(:followed_member, name: "Gus") }
@@ -30,7 +30,7 @@ describe FollowMember do
 
   context "when CreateFollowing is successful" do
     before do
-      member.should_receive(:save) { true }
+      followings.should_receive(:<<).with(followed_member)
     end
 
     context "and when AddFollowingToActivityFeeds is successful" do
@@ -84,7 +84,10 @@ describe FollowMember do
 
   context "when CreateFollowing is unsuccessful" do
     before do
-      member.should_receive(:save) { false }
+      followings.should_receive(:<<).with(followed_member) do
+        raise ActiveRecord::ActiveRecordError.new("lol")
+      end
+
       Activity::FollowedUser.should_not_receive(:create)
     end
 
