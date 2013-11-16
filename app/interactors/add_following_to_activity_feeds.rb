@@ -34,8 +34,7 @@ class AddFollowingToActivityFeeds
 
   def add_to_members_followers_activity_feed
     member.followers.inject(true) do |success, follower|
-      # TODO: Filter our followed and member.
-      if followed_member?(follower.id)
+      if member_or_followed_member?(follower.id)
         success
       else
         add_to_activity_feed(follower.id) && success
@@ -43,8 +42,8 @@ class AddFollowingToActivityFeeds
     end
   end
 
-  def followed_member?(follower_id)
-    followed_id == followed_id.to_i
+  def member_or_followed_member?(follower_id)
+    [member_id, followed_id].include?(follower_id)
   end
 
   def add_to_activity_feed(user_id)
