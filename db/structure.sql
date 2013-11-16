@@ -443,6 +443,13 @@ CREATE INDEX index_users_followings_on_user_id ON users_followings USING btree (
 
 
 --
+-- Name: index_users_followings_on_user_id_and_following_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_followings_on_user_id_and_following_id ON users_followings USING btree (user_id, following_id);
+
+
+--
 -- Name: index_workouts_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -551,3 +558,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130721071632');
 INSERT INTO schema_migrations (version) VALUES ('20131002105909');
 
 INSERT INTO schema_migrations (version) VALUES ('20131105002928');
+
+INSERT INTO schema_migrations (version) VALUES ('20131116015612');
