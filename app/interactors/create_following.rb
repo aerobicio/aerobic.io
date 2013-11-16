@@ -7,9 +7,7 @@ class CreateFollowing
   include Interactor
 
   def perform
-    follow_member
-
-    if member.save
+    if follow_member
       context[:notice] = "Now following #{followed_member.name}"
     else
       context[:notice] = "Could not follow #{followed_member.name}"
@@ -20,11 +18,20 @@ class CreateFollowing
   private
 
   def follow_member
-    # TODO: Make it so that you cannot follow yourself.
-    # TODO: Make it so that you cannot follow someone you are already following.
     context[:member] = User.find(member_id)
     context[:followed_member] = User.find(followed_id)
 
+    return false if trying_to_follow_yourself?
+    return false if already_following_member?
+
     member.followings << followed_member
+  end
+
+  def trying_to_follow_yourself?
+    member == followed_member
+  end
+
+  def already_following_member?
+    member.followings.include?(followed_member)
   end
 end
