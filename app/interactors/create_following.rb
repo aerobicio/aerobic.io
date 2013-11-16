@@ -20,6 +20,8 @@ class CreateFollowing
   private
 
   def follow_member
+    # TODO: Make it so that you cannot follow yourself.
+    # TODO: Make it so that you cannot follow someone you are already following.
     context[:member] = User.find(member_id)
     context[:followed_member] = User.find(followed_id)
 
