@@ -55,7 +55,6 @@ group :test do
   gem "rspec-nc"
   gem "simplecov", :require => false
   gem "shoulda-matchers"
-  gem "simplecov", :require => false
 end
 
 group :production do
