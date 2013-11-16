@@ -24,7 +24,12 @@ class CreateFollowing
     return false if trying_to_follow_yourself?
     return false if already_following_member?
 
-    member.followings << followed_member
+    begin
+      member.followings << followed_member
+      true
+    rescue ActiveRecord::ActiveRecordError => e
+      false
+    end
   end
 
   def trying_to_follow_yourself?
