@@ -1,7 +1,9 @@
-<% cache unfollowed_user do %>
-  <article class="panel">
-    <div class="panel__content">
-      No longer following <%= unfollowed_user.activity_followed_user.name %>
-    </div>
-  </article>
+<% cache "#{$switch_board.following_active?(current_user)}:#{unfollowed_user.cache_key}" do %>
+  <% if $switch_board.following_active?(current_user) %>
+    <article class="panel">
+      <div class="panel__content">
+        No longer following <%= unfollowed_user.activity_followed_user.name %>
+      </div>
+    </article>
+  <% end %>
 <% end %>
