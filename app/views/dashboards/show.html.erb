@@ -1,3 +1,5 @@
-<div class="grid-container">
-  <%= render :partial => "shared/activities_list", locals: {activities: @activities} %>
-</div>
+<% cache @view.cache_key do %>
+  <div class="grid-container">
+    <%= @view.render_activities %>
+  </div>
+<% end %>
