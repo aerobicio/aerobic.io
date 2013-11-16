@@ -11,4 +11,6 @@ class Activity < ActiveRecord::Base
   belongs_to :activity_followed_user, class_name: "User"
 
   validates_presence_of :user
+
+  default_scope { order(created_at: :desc) }
 end
