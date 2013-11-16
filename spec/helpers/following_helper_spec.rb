@@ -75,18 +75,18 @@ describe FollowingHelper do
 
       describe "when the member already follows the other member" do
         before do
-          member.stub(:follows?).with(other_member) { true }
+          other_member.stub(:follows?).with(member) { true }
         end
 
-        it { should == "Justin Morris follows you" }
+        it { should == "Gus Gollings follows you" }
       end
 
       describe "when the member does not follow the other member" do
         before do
-          member.stub(:follows?).with(other_member) { false }
+          other_member.stub(:follows?).with(member) { false }
         end
 
-        it { should == "Justin Morris doesn’t follow you" }
+        it { should == "Gus Gollings doesn’t follow you" }
       end
     end
   end
