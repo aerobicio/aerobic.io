@@ -40,33 +40,41 @@ When(/^I follow "(.*?)"$/) do |name|
 end
 
 Then(/^I should see that fact in my activity feed$/) do
+  $switch_board.activate_following
   visit dashboard_path
   page.should have_content "You followed #{@name}"
+  $switch_board.deactivate_following
 end
 
 Then(/^"(.*?)" should see that I followed them in their activity feed$/) do |name|
+  $switch_board.activate_following
   Capybara.session_name = name
   visit dashboard_path
   page.should have_content "#{@my_name} followed you"
+  $switch_board.deactivate_following
 end
 
 Then(/^"(.*?)" should see that I followed "(.*?)" in their activity feed$/) do |name, followed_name|
+  $switch_board.activate_following
   Capybara.session_name = name
   visit dashboard_path
   page.should have_content "#{@my_name} followed #{followed_name}"
+  $switch_board.deactivate_following
 end
 
 When(/^I unfollow "(.*?)"$/) do |name|
-  @name = name
   $switch_board.activate_following
+  @name = name
   visit members_path
   click_button "Unfollow #{name}"
   $switch_board.deactivate_following
 end
 
 Then(/^I should see that I unfollowed "(.*?)" in my activity feed$/) do |name|
+  $switch_board.activate_following
   visit dashboard_path
   page.should have_content "No longer following #{@name}"
+  $switch_board.deactivate_following
 end
 
 Then(/^"(.*?)" should not see that fact in their activity feed$/) do |name|
