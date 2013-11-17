@@ -7,9 +7,6 @@ class HomesController < ApplicationController
   skip_before_filter :login_required
   before_filter :redirect_members_to_dashboard
 
-  def new
-  end
-
   private
 
   def redirect_members_to_dashboard
