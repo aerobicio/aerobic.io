@@ -1,0 +1,8 @@
+<div class="errors">
+  <h2><%= t("identities.new.error_count", count: view.error_count) %></h2>
+  <ul>
+    <% view.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>

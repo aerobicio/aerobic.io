@@ -8,7 +8,7 @@ class IdentitiesController < ApplicationController
   layout "unauthenticated"
 
   def new
-    @identity = env["omniauth.identity"]
+    @view = Identities::New.new(self, env["omniauth.identity"])
     render :layout => "authentication"
   end
 end
