@@ -58,5 +58,6 @@ group :test do
 end
 
 group :production do
+  gem "memcachier"
   gem "rails_12factor"
 end
