@@ -8,8 +8,7 @@ class MembersController < ApplicationController
   end
 
   def show
-    @member = User.find(params[:id])
-    @activities = @member.activities
+    @view = Members::Show.new(self, current_user, params[:id])
   end
 
   def follow
