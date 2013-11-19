@@ -13,4 +13,8 @@ class Activity < ActiveRecord::Base
   validates_presence_of :user
 
   default_scope { order(created_at: :desc) }
+
+  def date
+    created_at.try(:to_date)
+  end
 end

@@ -15,8 +15,8 @@ describe Members::Show do
   end
 
   let(:member_activities) { [activity_1, activity_2] }
-  let(:activity_1) { double(:activity_1, cache_key: "a1") }
-  let(:activity_2) { double(:activity_2, cache_key: "a2") }
+  let(:activity_1) { double(:activity_1, cache_key: "a1", date: Date.today) }
+  let(:activity_2) { double(:activity_2, cache_key: "a2", date: Date.today) }
 
   before do
     stub_const("User", Class.new)
@@ -36,9 +36,15 @@ describe Members::Show do
 
     context "when the member has activities" do
       let(:member_activities) { [activity_1, activity_2] }
+      let(:render_params) do
+        {
+          partial: "activity/grouped",
+          object: { Date.today =>  member_activities },
+        }
+      end
 
       before do
-        controller.should_receive(:render).with(member_activities) do
+        controller.should_receive(:render).with(render_params) do
           ["render"]
         end
       end

@@ -21,7 +21,9 @@ module Members
 
     def render_activities
       if activities.any?
-        @controller.render(activities).first
+        @controller.render(partial: "activity/grouped",
+                           object: activities.group_by(&:date)
+                          ).first
       else
         "You have no activity!"
       end
