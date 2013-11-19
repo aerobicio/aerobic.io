@@ -29,6 +29,10 @@ As part of the bootstrap process we install a few binstubs:
     bin/cucumber
     bin/teaspoon
 
+You can also pull down a mirror of the production database to develop against by running:
+
+    $ script/heroku-clone
+
 ### Testing
 
 We use three types of tests in the project:
