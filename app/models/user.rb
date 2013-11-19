@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
+  def to_partial_path
+    "members/member"
+  end
+
   def email
     Identity.find(authentications.first.uid).email
   end

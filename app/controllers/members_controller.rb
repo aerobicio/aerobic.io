@@ -4,13 +4,11 @@ class MembersController < ApplicationController
   before_filter :ensure_following_is_active, only: [:follow, :unfollow]
 
   def index
-    @members = User.all
-    @member = @members.delete_if { |member| member.id == current_user.id }
+    @view = Members::Index.new(self, current_user)
   end
 
   def show
-    @member = User.find(params[:id])
-    @activities = @member.activities
+    @view = Members::Show.new(self, current_user, params[:id])
   end
 
   def follow

@@ -2,6 +2,6 @@
 #
 class DashboardsController < ApplicationController
   def show
-    @activities = current_user.activities
+    @view = Dashboards::Show.new(self, current_user)
   end
 end

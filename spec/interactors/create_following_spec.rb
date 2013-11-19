@@ -31,16 +31,44 @@ describe CreateFollowing do
         followings.should_receive(:<<).with(followed_member)
       end
 
-      it "should be marked as successfull" do
-        result.success?.should be_true
+      context "and followed mebers updated_at is modified" do
+        before do
+          followed_member.should_receive(:touch) { true }
+        end
+
+        it "should be marked as successfull" do
+          result.success?.should be_true
+        end
+
+        it "should add the member to the context" do
+          result.member.should == member
+        end
+
+        it "should add the notice to the context" do
+          result.notice.should == "Now following #{followed_member.name}"
+        end
       end
 
-      it "should add the member to the context" do
-        result.member.should == member
-      end
+      context "and followed mebers updated_at is not modified" do
+        before do
+          followed_member.should_receive(:touch) { false }
+        end
 
-      it "should add the notice to the context" do
-        result.notice.should == "Now following #{followed_member.name}"
+        it "should be marked as unsuccessfull" do
+          result.success?.should be_false
+        end
+
+        it "should add the member to the context" do
+          result.member.should == member
+        end
+
+        it "should add the followed_member to the context" do
+          result.followed_member.should == followed_member
+        end
+
+        it "should add the notice to the context" do
+          result.notice.should == "Could not follow #{followed_member.name}"
+        end
       end
     end
 

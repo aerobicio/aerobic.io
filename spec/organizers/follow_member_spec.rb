@@ -19,7 +19,7 @@ describe FollowMember do
   let(:followings) { double(:followings, include?: false).as_null_object }
   let(:followers) { double(:followers).as_null_object }
 
-  let(:followed_member) { double(:followed_member, name: "Gus") }
+  let(:followed_member) { double(:followed_member, name: "Gus", touch: true) }
 
   let(:activity) { double(:activity, save: activity_persisted) }
 

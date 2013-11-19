@@ -14,6 +14,12 @@ describe User do
 
   it { should validate_presence_of(:name) }
 
+  describe "#to_partial_path" do
+    subject(:to_partial_path) { user.to_partial_path }
+
+    it { should == "members/member" }
+  end
+
   describe "#email" do
     subject(:email) { user.email }
 

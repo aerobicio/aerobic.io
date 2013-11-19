@@ -1,27 +1,20 @@
-<% view = IdentitiesHelper::NewIdentityView.new(@identity) %>
+<% cache @view.cache_key do %>
+  <div class="layout-dialog panel">
+    <div class="panel__content">
+      <%= form_tag registration_path do %>
 
-<div class="layout-dialog panel">
-  <div class="panel__content">
-    <%= form_tag registration_path do %>
-      <% if view.errors? %>
-        <div class="errors">
-          <h2><%= t(".error_count", count: view.error_count) %></h2>
-          <ul>
-            <% view.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
+        <%= @view.render_errors %>
+
+        <%= label_tag :name %>
+        <%= text_field_tag :name, @view.name %>
+        <%= label_tag :email %>
+        <%= text_field_tag :email, @view.email, placeholder: "your_email@example.com" %>
+        <%= label_tag :password %>
+        <%= password_field_tag :password %>
+        <%= label_tag :password_confirmation %>
+        <%= password_field_tag :password_confirmation %>
+        <%= submit_tag(t(".submit"), class: "button") %>
       <% end %>
-      <%= label_tag :name %>
-      <%= text_field_tag :name, view.name %>
-      <%= label_tag :email %>
-      <%= text_field_tag :email, view.email, placeholder: "your_email@example.com" %>
-      <%= label_tag :password %>
-      <%= password_field_tag :password %>
-      <%= label_tag :password_confirmation %>
-      <%= password_field_tag :password_confirmation %>
-      <%= submit_tag(t(".submit"), class: "button") %>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>
