@@ -10,23 +10,23 @@ class FitFile < ActiveRecord::Base
   validates :workout_id, uniqueness: true
 
   def active_duration
-    totals.raw_total_timer_time
+    session_value_for(:raw_total_timer_time)
   end
 
   def distance
-    totals.raw_total_distance
+    session_value_for(:raw_total_distance)
   end
 
   def duration
-    totals.raw_total_elapsed_time
+    session_value_for(:raw_total_elapsed_time)
   end
 
   def end_time
-    Time.zone.at(epoch + totals.raw_timestamp)
+    Time.zone.at(epoch + session_records.last.try(:raw_timestamp))
   end
 
   def start_time
-   Time.zone.at(epoch + totals.raw_start_time)
+   Time.zone.at(epoch + session_records.first.try(:raw_start_time))
   end
 
   # FIT global message numbers
@@ -77,6 +77,10 @@ class FitFile < ActiveRecord::Base
   end
 
   private
+
+  def session_value_for(method)
+    session_records.inject(0) { |sum, record| sum + record.send(method) }
+  end
 
   def epoch
     Time.use_zone("UTC") do
