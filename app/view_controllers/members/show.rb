@@ -21,7 +21,9 @@ module Members
 
     def render_activities
       if activities.any?
-        @controller.render(activities).first
+        @controller.render(partial: "activity/grouped",
+                           object: activities.group_by(&:date)
+                          ).first
       else
         "You have no activity!"
       end
@@ -30,7 +32,15 @@ module Members
     private
 
     def activities
-      @activities ||= @member.activities
+      @activities ||= member_activities
+    end
+
+    def member_activities
+      if $switch_board.following_active?(@member)
+        @member.activities
+      else
+        @member.activities.exclude_following
+      end
     end
   end
 end
