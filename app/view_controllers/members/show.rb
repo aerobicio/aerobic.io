@@ -32,7 +32,15 @@ module Members
     private
 
     def activities
-      @activities ||= @member.activities
+      @activities ||= member_activities
+    end
+
+    def member_activities
+      if $switch_board.following_active?(@member)
+        @member.activities
+      else
+        @member.activities.exclude_following
+      end
     end
   end
 end
