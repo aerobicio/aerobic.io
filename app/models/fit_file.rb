@@ -89,7 +89,9 @@ class FitFile < ActiveRecord::Base
   end
 
   def local_message_type(global_message_number)
-    headers = records.select do |m|
+    headers = records.reject { |m| m.content == nil }
+
+    headers.select! do |m|
       m.content["global_message_number"] == global_message_number
     end
 
@@ -104,11 +106,13 @@ class FitFile < ActiveRecord::Base
   end
 
   def local_records(local_message_type)
-    local = records.select do |m|
+    locals = records.select do |m|
       m.header["local_message_type"] == local_message_type
     end
 
-    local[1..-1].map(&:content)
+    locals.reject! { |m| m.content == nil || m.content["global_message_number"] != nil }
+
+    locals.map(&:content)
   end
 
   def records
