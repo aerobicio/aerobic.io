@@ -1,4 +1,4 @@
-box: plasticine/aerobic.io@0.0.6
+box: aerobicio/box-aerobicio@0.0.6
 services:
     - wercker/postgresql
     - wercker/redis
