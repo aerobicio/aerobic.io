@@ -7,6 +7,7 @@
   "dependencies": {
     "jquery": "~2.0.3",
     "underscore": "~1.5.2",
-    "cookie-monster": "~0.2.0"
+    "cookie-monster": "~0.2.0",
+    "garmin-communicator": "https://github.com/plasticine/garmin-communicator.git"
   }
 }
