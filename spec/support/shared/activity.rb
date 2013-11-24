@@ -18,7 +18,7 @@ shared_examples "an activity models public API" do
     end
 
     context "when created_at is set" do
-      let(:time) { Time.now }
+      let(:time) { Time.zone.now }
 
       before do
         activity.created_at = time
