@@ -96,12 +96,10 @@ class FitFile < ActiveRecord::Base
     end
 
     case headers.count
-    when 0
-      nil
     when 1
       headers.first.header["local_message_type"]
     else
-      raise "more than one header definition"
+      nil
     end
   end
 
