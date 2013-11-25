@@ -10,26 +10,77 @@ class FitFile < ActiveRecord::Base
   validates :workout_id, uniqueness: true
 
   def active_duration
-    totals.raw_total_timer_time
+    session_value_for(:raw_total_timer_time)
   end
 
   def distance
-    totals.raw_total_distance
+    session_value_for(:raw_total_distance)
   end
 
   def duration
-    totals.raw_total_elapsed_time
+    session_value_for(:raw_total_elapsed_time)
   end
 
   def end_time
-    Time.zone.at(epoch + totals.raw_timestamp)
+    Time.zone.at(epoch + session_records.last.try(:raw_timestamp))
   end
 
   def start_time
-   Time.zone.at(epoch + totals.raw_start_time)
+   Time.zone.at(epoch + session_records.first.try(:raw_start_time))
+  end
+
+  # FIT global message numbers
+  GLOBAL_MESSAGE_NUMBERS = {
+    :file_id => 0,
+    :file_creator => 49,
+    :software => 35,
+    :file_capabilities => 37,
+    :mesg_capabilities => 38,
+    :field_capabilities => 39,
+    :device_settings => 2,
+    :user_profile => 3,
+    :hrm_profile => 4,
+    :sdm_profile => 5,
+    :bike_profile => 6,
+    :zones_target => 7,
+    :sport => 12,
+    :hr_zone => 8,
+    :power_zone => 9,
+    :met_zone => 10,
+    :goal => 15,
+    :activity => 34,
+    :session => 18,
+    :lap => 19,
+    :record => 20,
+    :event => 21,
+    :device_info => 23,
+    :course => 31,
+    :course_point => 32,
+    :workout => 26,
+    :workout_step => 27,
+    :totals => 33,
+    :weight_scale => 30,
+    :blood_pressure => 51,
+  }
+
+
+  GLOBAL_MESSAGE_NUMBERS.each do |name, global_message_number|
+    define_method "#{name}_records" do
+      local = local_message_type(global_message_number)
+
+      if local
+        local_records(local)
+      else
+        []
+      end
+    end
   end
 
   private
+
+  def session_value_for(method)
+    session_records.inject(0) { |sum, record| sum + record.send(method) }
+  end
 
   def epoch
     Time.use_zone("UTC") do
@@ -37,27 +88,35 @@ class FitFile < ActiveRecord::Base
     end
   end
 
-  # {"raw_timestamp"=>742862941, "raw_start_time"=>742852839,
-  # "raw_start_position_lat"=>-450940140,
-  # "raw_start_position_long"=>1729641408,
-  # "raw_end_position_lat"=>-450940219, "raw_end_position_long"=>1729638741,
-  # "raw_total_elapsed_time"=>10102350, "raw_total_timer_time"=>5483130,
-  # "raw_total_distance"=>4132004, "raw_total_strides"=>4294967295,
-  # "raw_field_27"=>2147483647, "raw_field_28"=>2147483647,
-  # "raw_field_29"=>2147483647, "raw_field_30"=>2147483647,
-  # "raw_message_index"=>0, "raw_total_calories"=>1100,
-  # "raw_total_fat_calories"=>65535, "raw_avg_speed"=>7536,
-  # "raw_max_speed"=>16121, "raw_avg_power"=>193, "raw_max_power"=>906,
-  # "raw_total_ascent"=>423, "raw_total_descent"=>450, "raw_event"=>9,
-  # "raw_event_type"=>1, "raw_avg_heart_rate"=>155, "raw_max_heart_rate"=>200,
-  # "raw_avg_running_cadence"=>85, "raw_max_running_cadence"=>120,
-  # "raw_intensity"=>0, "raw_lap_trigger"=>0, "raw_sport"=>2}
-  def totals
-    @total ||= to_fit.records
-                     .select { |m| m.header[:message_type] == 0 }
-                     .select { |m| m.header[:local_message_type] == 6 }
-                     .first
-                     .content
+  def local_message_type(global_message_number)
+    headers = records.reject { |m| m.content == nil }
+
+    headers.select! do |m|
+      m.content["global_message_number"] == global_message_number
+    end
+
+    case headers.count
+    when 1
+      headers.first.header["local_message_type"]
+    else
+      nil
+    end
+  end
+
+  def local_records(local_message_type)
+    locals = records.select do |m|
+      m.header["local_message_type"] == local_message_type
+    end
+
+    locals.reject! do |m|
+      m.content == nil || m.content["global_message_number"] != nil
+    end
+
+    locals.map(&:content)
+  end
+
+  def records
+    to_fit.records
   end
 
   def to_fit
