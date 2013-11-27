@@ -1,4 +1,8 @@
 class Activity
+
+  # View Controller for managing the logic around rendering
+  # /activity/added_workout/_added_workout
+  #
   class AddedWorkoutView
     def initialize(current_member, added_workout)
       @current_member = current_member
