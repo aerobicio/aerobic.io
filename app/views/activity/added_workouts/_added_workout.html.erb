@@ -1,15 +1,11 @@
-<% cache "#{added_workout.cache_key}:#{added_workout.activity_workout.cache_key}" do %>
+<% view = Activity::AddedWorkoutView.new(current_user, added_workout) %>
+
+<% cache view.cache_key do %>
   <article class="panel">
     <div class="panel__content">
-      <p>
-        <% if current_user == added_workout.user %>
-          You did a workout:
-        <% else %>
-          <%= added_workout.user.name %> did a workout:
-        <% end %>
-      </p>
-      <li><strong>Duration:</strong> <%= (added_workout.activity_workout.active_duration / 1000 / 60.0).round(2) %> minutes</li>
-      <li><strong>Distance:</strong> <%= (added_workout.activity_workout.distance / 100000.0).round(2) %>km</li>
+      <p><%= view.title %></p>
+      <li><strong>Duration:</strong> <%= view.duration %></li>
+      <li><strong>Distance:</strong> <%= view.distance %></li>
     </div>
   </article>
 <% end %>
