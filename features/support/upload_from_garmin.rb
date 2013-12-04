@@ -4,7 +4,10 @@ def add_workout
   # This is a hack that hits the upload controller directly as I have no idea
   # how to do this from the user interface without having a Garmin permentantly
   # connected to the computer.
-  page.driver.post upload_path, activity: fit_file, format: :json
+  page.driver.post upload_path,
+                   activity: fit_file,
+                   activity_type: "fit",
+                   format: :json
 end
 
 def fit_file

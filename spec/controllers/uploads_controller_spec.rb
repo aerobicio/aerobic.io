@@ -16,4 +16,44 @@ describe UploadsController do
     it { should respond_with(:success) }
     it { should render_template(:show) }
   end
+
+  describe "#create" do
+    context "when given a fit file" do
+      before do
+        CreateWorkoutFromUploadedFitFile.should_receive(:perform) { result }
+        post :create, { activity_type: "fit", format: :json }
+      end
+
+      context "and the context returns successfully" do
+        let(:result) { double(:result, success?: true ) }
+
+        it { should respond_with(:success) }
+      end
+
+      context "and the context returns unsuccessfully" do
+        let(:result) { double(:result, success?: false ) }
+
+        it { should respond_with(:success) }
+      end
+    end
+
+    context "when given a tcx file" do
+      before do
+        ProcessUploadedTcxFile.should_receive(:perform) { result }
+        post :create, { activity_type: "tcx", format: :json }
+      end
+
+      context "and the context returns successfully" do
+        let(:result) { double(:result, success?: true ) }
+
+        it { should respond_with(:success) }
+      end
+
+      context "and the context returns unsuccessfully" do
+        let(:result) { double(:result, success?: false ) }
+
+        it { should respond_with(:success) }
+      end
+    end
+  end
 end

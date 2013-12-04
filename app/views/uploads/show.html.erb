@@ -28,7 +28,7 @@
           postActivityHandler: function(activityXml, display) {
             new Ajax.Request('/upload',
                 {
-                parameters: { activity: activityXml },
+                parameters: { activity: activityXml, activity_type: "fit" },
                 onSuccess: function(transport){
                   window.location = '<%= dashboard_path %>'
                 },
