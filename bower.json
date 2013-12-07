@@ -8,7 +8,7 @@
     "jquery": "~2.0.3",
     "underscore": "~1.5.2",
     "cookie-monster": "~0.2.0",
-    "garmin-communicator": "https://github.com/plasticine/garmin-communicator.git#0.1.1",
+    "garmin-communicator": "https://github.com/plasticine/garmin-communicator.git#0.1.2",
     "backbone": "~1.1.0",
     "rivets": "~0.6.5"
   }
