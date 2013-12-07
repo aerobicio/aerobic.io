@@ -10,6 +10,7 @@
     "cookie-monster": "~0.2.0",
     "garmin-communicator": "https://github.com/plasticine/garmin-communicator.git#0.1.2",
     "backbone": "~1.1.0",
-    "rivets": "~0.6.5"
+    "rivets": "~0.6.5",
+    "spin.js": "~1.3.2"
   }
 }
