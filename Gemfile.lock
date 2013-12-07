@@ -165,8 +165,6 @@ GEM
     phantomjs (1.9.2.0)
     polyglot (0.3.3)
     posix-spawn (0.3.6)
-    prototype-rails (3.2.0)
-      railties (>= 3.2.0.beta, < 5.0)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -329,7 +327,6 @@ DEPENDENCIES
   omniauth
   omniauth-identity
   pg
-  prototype-rails
   rails (= 4.0.1)
   rails_12factor
   rails_best_practices
