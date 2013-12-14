@@ -4,5 +4,11 @@
 #
 #= require jquery/jquery
 #= require underscore/underscore
+#= require backbone/backbone
+#= require rivets/dist/rivets
+#= require q/q
 #= require jquery_ujs
 #= require turbolinks
+#= require spin.js/dist/spin
+#= require garmin-communicator/dist/garmin
+#= require jquery.ajax.queue

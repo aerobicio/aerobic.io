@@ -1,8 +1,7 @@
-#= require application/view_controller
 #= require cookie-monster/dist/cookie-monster
 #
 # The NewsletterController is responsible for taking email signups
-window.NewsletterController = class NewsletterController extends ViewController
+window.NewsletterController = class NewsletterController extends app.controllers.ViewController
   initialize: (options) ->
     @options = _(options).defaults
       cookieName:     "aerobicUserHasSignedUp"

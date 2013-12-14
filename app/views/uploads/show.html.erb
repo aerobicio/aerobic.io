@@ -1,60 +1,39 @@
-<%= extends :garmin do %>
-  <%= append :js do %>
-    <script type="text/javascript">
-      function load() {
-          var display = new Garmin.DeviceDisplay("garminDisplay", {
-          pathKeyPairsArray: ["<%= ENV['GARMIN_PATH'] %>","<%= ENV['GARMIN_API_KEY'] %>"],
-          showReadDataElement: true,
-          showProgressBar: true,
-          showFindDevicesElement: true,
-          showFindDevicesButton: false,
-          showDeviceButtonsOnLoad: false,
-          showDeviceButtonsOnFound: false,
-          autoFindDevices: true,
-          showDeviceSelectOnLoad: true,
-          autoHideUnusedElements: true,
-          showReadDataTypesSelect: false,
-          readDataTypes: [ Garmin.DeviceControl.FILE_TYPES.fitDir, Garmin.DeviceControl.FILE_TYPES.tcxDir],
-          deviceSelectLabel: "Choose Device <br/>",
-          readDataButtonText:			"List Activities",
-          showCancelReadDataButton:		false,
-          lookingForDevices: 'Searching for Device <br/><br/> <img src="communicator-api/garmin/device/style/ajax-loader.gif"/>',
-          uploadsFinished: "Transfer Complete",
-          uploadSelectedActivities: true,
-          uploadCompressedData: false,    // Turn on data compression by setting to true.
-          uploadMaximum: 1,
-          dataFound: "#{tracks} activities found on device",
-          showReadDataElementOnDeviceFound: true,
-          postActivityHandler: function(activityXml, display) {
-            new Ajax.Request('/upload',
-                {
-                parameters: { activity: activityXml },
-                onSuccess: function(transport){
-                  window.location = '<%= dashboard_path %>'
-                },
-                onFailure: function(){ alert('Something went wrong...') }
-              })
-          }
-        });
-      }
-      load();
-    </script>
-  <% end %>
+<%= form_tag(upload_path, id: "GarminUploadController", class: "uploader") do %>
+  <section id="DevicesView" class="uploader__devices">
+    <figure class="uploader__devices__spinner"></figure>
+    <nav class="uploader__devices__list">
+      <a href="#" rv-each-device="devices.models" rv-on-click="view.onClick" rv-class-is-selected="device:selected" class="uploader__devices__list__device">
+        <strong>{{ device.name }}</strong>
+        <span class="uploader__devices__list__device__deselect"></span>
+      </a>
+    </nav>
+  </section>
 
-  <% replace :content_inner do %>
-    <h2>Upload Selected Fitness Activities</h2>
+  <section id="UploadWorkoutListView" class="uploader__workouts">
+    <header class="uploader__workouts__header">
+      Loading workouts: {{ progress:percent }} %
+      <h5 class="h5">Workouts</h5>
+      <button rv-on-click="view.onClick">Upload Workouts</button>
+    </header>
 
-    <table border="0" cellpadding="4" cellspacing="0" width="100%">
-      <tr>
-        <td>
-          <div id="garminDisplay"></div>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div id="activity"></div>
-        </td>
-      </tr>
-    </table>
+    <ol class="workout-list__list">
+      <li
+        rv-each-workout="workouts.models"
+        rv-on-click="view.onCheck"
+        class="uploader__workouts__list__item"
+      >
+        <input type="checkbox" rv-value="workout.id" rv-checked="workout:checked">
+        {{ workout:date }} - {{ workout:status }}
+      </li>
+    </ol>
+  </section>
+<% end %>
+
+<% append :js do %>
+  <%= javascript_tag do %>
+    new app.controllers.GarminUploadController({
+      uploadPath: "<%= upload_path %>",
+      existingMemberWorkouts: <%= @member_workouts.to_json.html_safe %>
+    });
   <% end %>
 <% end %>

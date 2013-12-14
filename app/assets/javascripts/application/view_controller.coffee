@@ -1,11 +1,12 @@
 # The view controller is the base class for binding to an element and adding
 # logic.
-window.ViewController = class ViewController
+@app.controllers.ViewController = class ViewController extends Backbone.View
   constructor: (options) ->
-    @$el = $(options?.el)
-    @el  = @$el[0]
+    @$el = $(@el or options?.el)
+    @el = @$el[0]
 
-    @initialize options
+    @initialize(options)
+
     @_bindEvents()
 
   initialize: -> # Abstract method.

@@ -20,7 +20,7 @@ module AerobicIo
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
 
-    config.assets.precompile += ['garmin.js']
+    config.assets.precompile += ['upload.js']
 
     config.assets.paths << "vendor/assets/components"
 
