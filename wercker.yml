@@ -52,6 +52,10 @@ build:
             user: $LIBRATO_USER
             token: $LIBRATO_TOKEN
             namespace: aerobicio
+        - hipchat-notify:
+            token: $HIPCHAT_TOKEN
+            room-id: $HIPCHAT_ROOM_ID
+            from-name: Wercker
         - wercker/campfire-notify@0.1.1:
             token: $CAMPFIRE_TOKEN
             room-id: 541059
