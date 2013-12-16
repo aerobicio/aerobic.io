@@ -5,7 +5,7 @@ Given(/^"(.*?)" is a member$/) do |name|
 end
 
 Given(/^I have some activity$/) do
-  add_workout
+  add_workout_using_fit_file
 end
 
 Then(/^I should see the workout in my activity feed$/) do
