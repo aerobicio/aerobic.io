@@ -2,13 +2,13 @@
 # on all pages. It is required by the main application.js file, and also in
 # the teaspoon spec_helper
 #
+#= require turbolinks
+#= require jquery_ujs
 #= require jquery/jquery
 #= require underscore/underscore
 #= require backbone/backbone
-#= require rivets/dist/rivets
+#= require react/react
 #= require q/q
-#= require jquery_ujs
-#= require turbolinks
 #= require spin.js/dist/spin
 #= require garmin-communicator/dist/garmin
 #= require jquery.ajax.queue

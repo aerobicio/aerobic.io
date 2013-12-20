@@ -6,5 +6,6 @@
 #= require application/bound_view_controller
 #= require_tree ./application/models
 #= require_tree ./application/collections
+#= require_tree ./application/components
 #= require_tree ./application/views
 #= require_tree ./application
