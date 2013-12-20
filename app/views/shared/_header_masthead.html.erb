@@ -1,5 +1,5 @@
 <% if current_user %>
   <%= link_to(t("masthead"), root_path, class: "header__masthead", title: t("masthead")) %>
 <% else %>
-  <%= link_to(t("masthead"), ENV["STATIC_SITE_URL"], class: "header__masthead", title: t("masthead")) %>
+  <%= link_to(t("masthead"), home_page_path, class: "header__masthead", title: t("masthead")) %>
 <% end %>
