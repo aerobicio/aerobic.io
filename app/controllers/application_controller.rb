@@ -23,4 +23,8 @@ class ApplicationController < ActionController::Base
   def login_required
     redirect_to(sign_in_path) unless current_user
   end
+
+  def home_page_path
+    ENV["STATIC_SITE_URL"]
+  end
 end
