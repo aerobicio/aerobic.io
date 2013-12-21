@@ -19,4 +19,4 @@ Feature: Authentication
     Given I am a member
     When I sign out
     Then I should not be signed in
-    And I should be on the "root_path" route
+    And I should be on the "sign_in_path" route

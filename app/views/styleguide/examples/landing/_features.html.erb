@@ -1,7 +1,0 @@
-<% view = HomesHelper::NewHomesHelper.new %>
-
-<%= styleguide_example_for(section) do -%>
-  <section class="landing__row__features">
-    <%= render :partial => "homes/feature", :collection => view.features %>
-  </section>
-<% end %>
