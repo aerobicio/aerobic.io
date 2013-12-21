@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "bower": "~1.2.6",
-    "istanbul": "~0.1.44"
+    "istanbul": "~0.1.44",
+    "react-tools": "~0.8.0"
   },
   "devDependencies": {},
   "scripts": {
