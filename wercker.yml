@@ -1,10 +1,13 @@
-box: plasticine/aerobic.io@0.0.4
+box: plasticine/aerobic.io@0.0.6
 services:
     - wercker/postgresql
     - wercker/redis
 build:
     # The steps that will be executed on build
     steps:
+        - script:
+            name: set dotenv environment file
+            code: cp -n .env.example .env
         # A step that executes `bundle install` command
         - bundle-install
         # A step that prepares the database.yml with settings from the database you defined in services
@@ -52,6 +55,10 @@ build:
             user: $LIBRATO_USER
             token: $LIBRATO_TOKEN
             namespace: aerobicio
+        - hipchat-notify:
+            token: $HIPCHAT_TOKEN
+            room-id: $HIPCHAT_ROOM_ID
+            from-name: Wercker
         - wercker/campfire-notify@0.1.1:
             token: $CAMPFIRE_TOKEN
             room-id: 541059
@@ -63,4 +70,4 @@ deploy:
         - heroku-deploy
         - script:
             name: Migrate Database
-            code: heroku run rake db:migrate --app $TARGET_NAME
+            code: heroku run rake db:migrate --app $HEROKU_APP_NAME

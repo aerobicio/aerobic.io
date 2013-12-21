@@ -96,12 +96,10 @@ class FitFile < ActiveRecord::Base
     end
 
     case headers.count
-    when 0
-      nil
     when 1
       headers.first.header["local_message_type"]
     else
-      raise "more than one header definition"
+      nil
     end
   end
 
@@ -110,7 +108,9 @@ class FitFile < ActiveRecord::Base
       m.header["local_message_type"] == local_message_type
     end
 
-    locals.reject! { |m| m.content == nil || m.content["global_message_number"] != nil }
+    locals.reject! do |m|
+      m.content == nil || m.content["global_message_number"] != nil
+    end
 
     locals.map(&:content)
   end
