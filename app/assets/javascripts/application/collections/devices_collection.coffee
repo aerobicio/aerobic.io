@@ -3,8 +3,11 @@
 
   initialize: (@models, @options) ->
     @garminDelegate = @options.garminDelegate
-    @fetch()
 
   fetch: ->
     promise = @garminDelegate.devices()
     promise.then (devices) => @reset(devices)
+
+  selectDevice: (cid) ->
+    @findWhere(selected: true)?.set(selected: false)
+    @get(cid).set(selected: true)

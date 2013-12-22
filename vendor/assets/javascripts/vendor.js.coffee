@@ -3,11 +3,11 @@
 # the teaspoon spec_helper
 #
 #= require turbolinks
-#= require jquery_ujs
 #= require jquery/jquery
+#= require jquery_ujs
 #= require underscore/underscore
 #= require backbone/backbone
-#= require react/react
+#= require react/react-with-addons
 #= require q/q
 #= require spin.js/dist/spin
 #= require garmin-communicator/dist/garmin

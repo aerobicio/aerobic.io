@@ -1,13 +1,12 @@
-@app.views.DevicesView = class DevicesView extends app.controllers.BoundViewController
+@app.views.DevicesView = class DevicesView extends app.controllers.ViewController
   el: "#DevicesView"
   spinnerEl: ".device-selector__spinner"
 
   initialize: (options) ->
     @getWorkoutsDelegate = options.getWorkoutsDelegate
+    @devicesCollection = options.devicesCollection
 
-  _showSpinner: ->
-    @spinner = new Spinner(app.config.spinner.small).spin()
-    @$el.find(@spinnerEl)[0].appendChild(@spinner.el)
+    React.renderComponent(app.components.ExampleComponent(), @el)
 
   onClick: (event, context) =>
     event.preventDefault()

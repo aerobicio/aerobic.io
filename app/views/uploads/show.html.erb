@@ -1,32 +1,10 @@
 <%= form_tag(upload_path, id: "GarminUploadController", class: "uploader") do %>
-  <section id="DevicesView" class="uploader__devices">
-    <figure class="uploader__devices__spinner"></figure>
-    <nav class="uploader__devices__list">
-      <a href="#" rv-each-device="devices.models" rv-on-click="view.onClick" rv-class-is-selected="device:selected" class="uploader__devices__list__device">
-        <strong>{{ device.name }}</strong>
-        <span class="uploader__devices__list__device__deselect"></span>
-      </a>
-    </nav>
-  </section>
 
-  <section id="UploadWorkoutListView" class="uploader__workouts">
-    <header class="uploader__workouts__header">
-      Loading workouts: {{ progress:percent }} %
-      <h5 class="h5">Workouts</h5>
-      <button rv-on-click="view.onClick">Upload Workouts</button>
-    </header>
+  <section id="DevicesList" class="uploader__devices"></section>
 
-    <ol class="workout-list__list">
-      <li
-        rv-each-workout="workouts.models"
-        rv-on-click="view.onCheck"
-        class="uploader__workouts__list__item"
-      >
-        <input type="checkbox" rv-value="workout.id" rv-checked="workout:checked">
-        {{ workout:date }} - {{ workout:status }}
-      </li>
-    </ol>
-  </section>
+  <hr>
+
+  <section id="Workouts"></section>
 <% end %>
 
 <% append :js do %>

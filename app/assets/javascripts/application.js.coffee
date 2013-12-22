@@ -1,5 +1,6 @@
 #= require vendor
 #= require app
+#= require_tree ./lib
 #= require_tree ./config
 #= require application/view_controller
 #= require_tree ./application/models

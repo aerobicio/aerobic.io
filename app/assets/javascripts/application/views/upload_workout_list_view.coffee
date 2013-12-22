@@ -1,4 +1,4 @@
-@app.views.UploadWorkoutListView = class UploadWorkoutListView extends app.controllers.BoundViewController
+@app.views.UploadWorkoutListView = class UploadWorkoutListView extends app.controllers.ViewController
   el: "#UploadWorkoutListView"
 
   initialize: (options) ->

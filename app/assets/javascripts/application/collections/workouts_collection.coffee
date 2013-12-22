@@ -10,6 +10,13 @@
     promise.progress(@updateProgressDelegate)
     promise.then (workouts) => @reset(workouts)
 
+  selectAll: ->
+    @map (model) ->
+      model.set(checked: true)
+
   selectedWorkouts: ->
     @where(checked: true)
+
+  getSelectedWorkoutsCount: ->
+    @selectedWorkouts()?.length || 0
 
