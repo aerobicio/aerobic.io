@@ -6,12 +6,19 @@
   classes: ->
     selected = @props.model.get('selected')
     React.addons.classSet(
-      "uploader__devices__list__device": true
+      "panel": true
+      "devices-list__device": true
       "is-selected": selected
       "is-not-selected": !selected
     )
 
   render: ->
-    `<a key={this.props.model.cid} onClick={this.props.onClick} className={this.classes()}>
-      {this.props.model.get('name')}
-    </a>`
+    ProgressBarComponent = app.components.ProgressBarComponent
+
+    `<div key={this.props.model.cid} onClick={this.props.selectDeviceHandler} className={this.classes()}>
+      <a className="devices-list__device__unselect" onClick={this.props.unselectDeviceHandler}>
+        Unselect
+      </a>
+      <h6 className="h6">{this.props.model.get('name')}</h6>
+      <ProgressBarComponent model={this.props.progressModel} />
+    </div>`

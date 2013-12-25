@@ -1,14 +1,19 @@
 @app.collections.WorkoutsCollection = class WorkoutsCollection extends Backbone.Collection
-  model: app.models.WorkoutModel
+  sort_order: 'asc'
+  comparator: (workout) ->
+    - workout.date()
 
-  initialize: (@models, @options) ->
-    @updateProgressDelegate = @options?.updateProgressDelegate
+  model: (attrs, options) ->
+    if attrs.created_at?
+      new app.models.ExistingWorkoutModel(attrs, options)
+    else
+      new app.models.WorkoutModel(attrs, options)
 
   fetch: (device) ->
     @reset()
     promise = device.getActivities()
-    promise.progress(@updateProgressDelegate)
     promise.then (workouts) => @reset(workouts)
+    promise
 
   selectAll: ->
     @map (model) ->
@@ -20,3 +25,5 @@
   getSelectedWorkoutsCount: ->
     @selectedWorkouts()?.length || 0
 
+  getWorkoutsForDeviceId: (deviceId) ->
+    @where(device_id: deviceId)

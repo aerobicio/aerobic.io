@@ -7,7 +7,11 @@
   fetch: ->
     promise = @garminDelegate.devices()
     promise.then (devices) => @reset(devices)
+    promise
 
   selectDevice: (cid) ->
-    @findWhere(selected: true)?.set(selected: false)
+    @unselectAllDevices()
     @get(cid).set(selected: true)
+
+  unselectAllDevices: ->
+    @findWhere(selected: true)?.set(selected: false)

@@ -5,10 +5,10 @@
 #= require turbolinks
 #= require jquery/jquery
 #= require jquery_ujs
+#= require spin.js/dist/spin
 #= require underscore/underscore
 #= require backbone/backbone
 #= require react/react-with-addons
 #= require q/q
-#= require spin.js/dist/spin
 #= require garmin-communicator/dist/garmin
 #= require jquery.ajax.queue

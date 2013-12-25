@@ -3,13 +3,16 @@
 @app.components.ProgressBarComponent = React.createClass
   mixins: [@lib.BackboneMixin]
 
+  getInitialState: ->
+    isLoading: false
+    isComplete: false
+
   classes: ->
     React.addons.classSet
-      "is-completed": @getPercentage() is 100
+      "progress": true
+      "is-completed": @props.model.get('percent') is 100
+      "is-loading": @props.model.get('percent') < 100
 
   render: ->
-    percentage = @getPercentage()
-    `<progress className={this.classes()} max="100" value={percentage}></progress>`
-
-  getPercentage: ->
-    @props.model.get('percent')
+    percentComplete = @props.model.get('percent')
+    `<progress className={this.classes()} max="100" value={percentComplete}></progress>`

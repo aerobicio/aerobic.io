@@ -4,29 +4,52 @@
   mixins: [@lib.BackboneMixin]
 
   getInitialState: ->
+    isLoading: true
     hasDeviceSelected: false
 
   componentDidMount: ->
-    @props.collection.fetch()
+    promise = @props.collection.fetch()
+    promise.then(@devicesDidFinishLoading)
 
   classes: ->
     React.addons.classSet
-      "uploader__devices__list": true
+      "devices-list": true
       "has-device-selected": @state.hasDeviceSelected
 
   render: ->
+    TransitionGroup = React.addons.TransitionGroup
+    SpinnerComponent = app.components.SpinnerComponent
     deviceNodes = @deviceNodesForDevices(@props.collection)
+
     `<nav className={this.classes()}>
+      <SpinnerComponent preset={app.config.spinner.small} isVisible={this.state.isLoading} />
       {deviceNodes}
     </nav>`
 
-  onClick: (device, event) ->
+  onSelectDevice: (device, event) ->
+    event.preventDefault()
+    event.stopPropagation()
     @props.collection.selectDevice(device)
     @setState(hasDeviceSelected: true)
-    @props.getWorkoutsDelegate(device)
+    @props.deviceSelectedDelegate(device)
+
+  onUnselectDevice: (event) ->
+    event.preventDefault()
+    event.stopPropagation()
+    @setState(hasDeviceSelected: false)
+    @props.collection.unselectAllDevices()
+    @props.deviceUnselectedDelegate()
+
+  devicesDidFinishLoading: ->
+    @setState(isLoading: false)
 
   deviceNodesForDevices: (devicesCollection) ->
     deviceComponent = app.components.DeviceComponent
     devicesCollection.map (device, index) =>
-      onClickHandler = @onClick.bind(@, device)
-      `<deviceComponent onClick={onClickHandler} model={device} />`
+      onSelectDeviceHandler = @onSelectDevice.bind(@, device)
+      onUnselectDeviceHandler = @onUnselectDevice
+      progressModel = @props.progressModel
+      `<deviceComponent model={device}
+                        progressModel={progressModel}
+                        selectDeviceHandler={onSelectDeviceHandler}
+                        unselectDeviceHandler={onUnselectDeviceHandler} />`
