@@ -32,6 +32,7 @@ class UploadsController < ApplicationController
   def upload_params
     {
       activity: params[:activity],
+      device_id: params[:device_id],
       device_workout_id: params[:device_workout_id],
       member_id: current_user.id
     }
