@@ -22,7 +22,8 @@ class CreateWorkoutFromFitFile
   private
 
   def create_workout
-    Workout.create( device_workout_id: context[:device_workout_id],
+    Workout.create( device_id: context[:device_id],
+                    device_workout_id: context[:device_workout_id],
                     active_duration: fitfile.active_duration,
                     distance: fitfile.distance,
                     duration: fitfile.duration,
