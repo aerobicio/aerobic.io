@@ -258,7 +258,8 @@ CREATE TABLE workouts (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     user_id integer NOT NULL,
-    device_workout_id character varying(255)
+    device_workout_id character varying(255),
+    device_id character varying(255)
 );
 
 
@@ -443,6 +444,13 @@ CREATE UNIQUE INDEX index_identities_on_email ON identities USING btree (email);
 
 
 --
+-- Name: index_user_device_id_device_workout_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_user_device_id_device_workout_id ON workouts USING btree (user_id, device_id, device_workout_id);
+
+
+--
 -- Name: index_users_followings_on_following_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -461,6 +469,13 @@ CREATE INDEX index_users_followings_on_user_id ON users_followings USING btree (
 --
 
 CREATE UNIQUE INDEX index_users_followings_on_user_id_and_following_id ON users_followings USING btree (user_id, following_id);
+
+
+--
+-- Name: index_workouts_on_device_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_workouts_on_device_id ON workouts USING btree (device_id);
 
 
 --
@@ -583,3 +598,7 @@ INSERT INTO schema_migrations (version) VALUES ('20131105002928');
 INSERT INTO schema_migrations (version) VALUES ('20131116015612');
 
 INSERT INTO schema_migrations (version) VALUES ('20131209080642');
+
+INSERT INTO schema_migrations (version) VALUES ('20131222225330');
+
+INSERT INTO schema_migrations (version) VALUES ('20131222225612');
