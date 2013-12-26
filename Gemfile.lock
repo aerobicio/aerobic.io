@@ -330,6 +330,7 @@ DEPENDENCIES
   omniauth-identity
   pg
   prototype-rails
+  pry
   rails (= 4.0.2)
   rails_12factor
   rails_best_practices
