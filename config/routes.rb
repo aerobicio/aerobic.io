@@ -17,6 +17,8 @@ AerobicIo::Application.routes.draw do
       post "follow"
       post "unfollow"
     end
+
+    resources :workouts, only: [:show]
   end
 
   mount Kayessess::Engine => "/styleguide", :as => 'kayessess' unless Rails.env.production?

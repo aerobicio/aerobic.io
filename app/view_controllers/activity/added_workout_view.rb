@@ -4,6 +4,8 @@ class Activity
   # /activity/added_workout/_added_workout
   #
   class AddedWorkoutView
+    include Rails.application.routes.url_helpers
+
     def initialize(current_member, added_workout)
       @current_member = current_member
       @added_workout = added_workout
@@ -30,6 +32,10 @@ class Activity
 
     def distance
       "#{(workout.distance / 100000.0).round(2)}km"
+    end
+
+    def workout_path
+      member_workout_path(member_id: member.id, id: workout.id)
     end
 
     private
