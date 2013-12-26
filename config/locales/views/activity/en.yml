@@ -1,0 +1,7 @@
+en:
+  activity:
+
+    workout:
+      title:
+        first_person: "You did a workout"
+        third_person: "%{name} did a workout"
