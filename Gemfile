@@ -39,7 +39,7 @@ group :development, :test do
   gem "kayessess", "~> 0.2.0"
   gem "rails_best_practices"
   gem "rspec-rails", "~> 2.0"
-  gem "teaspoon"
+  gem "teaspoon", "~> 0.7.8"
 end
 
 group :doc do
