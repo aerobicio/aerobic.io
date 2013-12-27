@@ -9,7 +9,14 @@ module Workouts
     def initialize(controller, current_member, workout_id)
       @controller = controller
       @current_member = current_member
-      @workout = Workout.find_by(user_id: current_member.id, id: workout_id)
+      @workout = Workout.find_by!(user_id: current_member.id, id: workout_id)
+    end
+
+    def cache_key
+      [
+        @current_member.cache_key,
+        @workout.cache_key,
+      ].flatten.join(":")
     end
 
     def duration
