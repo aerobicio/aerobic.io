@@ -1,5 +1,3 @@
-#= require application/i18n_controller
-
 describe "I18nController", ->
   beforeEach ->
     @controller = new I18nController
