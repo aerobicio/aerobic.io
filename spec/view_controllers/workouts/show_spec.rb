@@ -18,7 +18,10 @@ describe Workouts::Show do
 
   before do
     stub_const("Workout", Class.new)
-    Workout.should_receive(:find_by!).with(user_id: current_member.id, id: workout_id) { workout }
+    Workout.should_receive(:find_by!).with(
+      user_id: current_member.id,
+      id: workout_id,
+    ) { workout }
   end
 
   describe "#cache_key" do

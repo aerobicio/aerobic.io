@@ -14,7 +14,10 @@ describe WorkoutsController do
 
     before do
       User.should_receive(:find).with(user.id) { member }
-      Workout.should_receive(:find_by!).with(user_id: member.id, id: workout.id) { workout }
+      Workout.should_receive(:find_by!).with(
+        user_id: member.id,
+        id: workout.id,
+      ) { workout }
       get :show, member_id: 1, id: 101
     end
 
