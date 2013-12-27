@@ -2,10 +2,20 @@
 # common formatting for presentation to users
 module UnitsHelper
   def format_duration(duration_ms)
-    I18n.t("units.duration", duration: (duration_ms / 1000 / 60))
+    I18n.t("units.duration", duration: milliseconds_to_minutes(duration_ms))
   end
 
   def format_distance(distance_cm)
-    I18n.t("units.distance", distance: (distance_cm / 100000.0).round(2))
+    I18n.t("units.distance", distance: centimeters_to_meters(distance_cm))
+  end
+
+  private
+
+  def milliseconds_to_minutes(ms)
+    ms / 1000 / 60
+  end
+
+  def centimeters_to_meters(cm)
+    (cm / 100000.0).round(2)
   end
 end
