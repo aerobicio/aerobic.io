@@ -13,17 +13,6 @@ GIT
     nestive (0.4.0)
       rails (>= 3.0.0)
 
-PATH
-  remote: /Users/justin/src/personal/kayessess
-  specs:
-    kayessess (0.2.7)
-      bourbon
-      kss (>= 0.5.0)
-      pygments.rb (>= 0.5.2)
-      rails (>= 3.0.0)
-      redcarpet
-      to_slug (>= 1.0.8)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -72,6 +61,7 @@ GEM
       sexp_processor
     codeclimate-test-reporter (0.1.1)
       simplecov (>= 0.7.1, < 1.0.0)
+    coderay (1.0.9)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -121,7 +111,7 @@ GEM
       multi_json (~> 1.3)
     hashie (2.0.5)
     hike (1.2.3)
-    i18n (0.6.8)
+    i18n (0.6.9)
     interactor (2.1.0)
     interactor-rails (1.0.1)
       interactor (< 3)
@@ -133,6 +123,14 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.0)
+    kayessess (0.2.0)
+      bourbon
+      kss (>= 0.5.0)
+      pry
+      pygments.rb (>= 0.5.2)
+      rails (>= 3.0.0)
+      redcarpet
+      to_slug (>= 1.0.8)
     kgio (2.8.1)
     kss (0.5.0)
     lockfile (2.1.0)
@@ -144,6 +142,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     memcachier (0.0.2)
+    method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.5.2)
     minitest (4.7.5)
@@ -163,9 +162,13 @@ GEM
       omniauth (~> 1.0)
     parallel (0.9.0)
     pg (0.17.0)
-    phantomjs (1.9.2.0)
+    phantomjs (1.9.2.1)
     polyglot (0.3.3)
-    posix-spawn (0.3.8)
+    posix-spawn (0.3.6)
+    pry (0.9.12.2)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
     pygments.rb (0.5.4)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)
@@ -200,7 +203,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.12.0)
-    rake (10.1.0)
+    rake (10.1.1)
     rdoc (3.12.2)
       json (~> 1.4)
     react-rails (0.8.0.0)
@@ -254,6 +257,7 @@ GEM
       multi_json
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
+    slop (3.4.6)
     sprockets (2.10.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -263,7 +267,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    teaspoon (0.7.7)
+    teaspoon (0.7.8)
       phantomjs (>= 1.8.1.1)
       railties (>= 3.2.5, < 5)
     terminal-notifier (1.4.2)
@@ -319,7 +323,7 @@ DEPENDENCIES
   interactor-rails (~> 1.0)
   jbuilder (~> 1.2)
   jquery-rails
-  kayessess!
+  kayessess (~> 0.2.0)
   lograge
   memcachier
   neat
@@ -328,6 +332,7 @@ DEPENDENCIES
   omniauth
   omniauth-identity
   pg
+  pry
   rails (= 4.0.2)
   rails_12factor
   rails_best_practices
@@ -341,7 +346,7 @@ DEPENDENCIES
   sentry-raven
   shoulda-matchers
   simplecov
-  teaspoon
+  teaspoon (~> 0.7.8)
   turbolinks
   typogruby
   uglifier (>= 1.3.0)
