@@ -1,10 +1,8 @@
-#= require application/view_controller
-
 describe "ViewController", ->
   beforeEach ->
     @fixture    = $("""<div id="my-view"></div>""").appendTo "body"
-    @spy        = sinon.stub(ViewController.prototype, "_bindEvents")
-    @controller = new ViewController el: "#my-view"
+    @spy        = sinon.stub(app.controllers.ViewController.prototype, "_bindEvents")
+    @controller = new app.controllers.ViewController el: "#my-view"
 
   afterEach ->
     @controller = null
