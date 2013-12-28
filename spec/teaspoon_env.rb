@@ -32,8 +32,8 @@ Teaspoon.setup do |config|
   # Coverage (requires istanbul -- https://github.com/gotwarlost/istanbul)
   config.coverage         = true
   config.coverage_reports = "text,html"
-  config.statements_coverage_threshold = 100
+  config.statements_coverage_threshold = 97.63
+  config.branches_coverage_threshold   = 70.37
   config.functions_coverage_threshold  = 94
-  config.branches_coverage_threshold   = 83
-  config.lines_coverage_threshold      = 100
+  config.lines_coverage_threshold      = 97.81
 end

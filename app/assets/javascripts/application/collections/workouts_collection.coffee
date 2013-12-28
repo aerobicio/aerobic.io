@@ -1,5 +1,6 @@
 @app.collections.WorkoutsCollection = class WorkoutsCollection extends Backbone.Collection
   sort_order: 'asc'
+
   comparator: (workout) ->
     - workout.date()
 
@@ -10,7 +11,7 @@
       new app.models.WorkoutModel(attrs, options)
 
   fetch: (device) ->
-    @reset()
+    @reset([])
     promise = device.getActivities()
     promise.then (workouts) => @reset(workouts)
     promise
