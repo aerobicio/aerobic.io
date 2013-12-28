@@ -5,8 +5,8 @@
   "license": "All rights reserved",
   "private": true,
   "dependencies": {
+    "cookie-monster": "~0.2.0",
     "jquery": "~2.0.3",
-    "underscore": "~1.5.2",
-    "cookie-monster": "~0.2.0"
+    "underscore": "~1.5.2"
   }
 }
