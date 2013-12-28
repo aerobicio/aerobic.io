@@ -48,6 +48,5 @@
 
   updateProgress: (progress) =>
     unless progress.percent is @_lastProgressPercentage
-      console.log 'updated progress'
       @progressModel.set(progress)
       @_lastProgressPercentage = progress.percent
