@@ -3,12 +3,12 @@
 
   initialize: (options) ->
     @options = options
+    @garmin = new Garmin
     @progressModel = new app.models.ProgressModel
-    @devicesCollection = new app.collections.DevicesCollection [], garminDelegate: new Garmin
+    @devicesCollection = new app.collections.DevicesCollection [], garminDelegate: @garmin
     @workoutsCollection = new app.collections.WorkoutsCollection []
     @exitstingWorkoutsCollection = new app.collections.WorkoutsCollection []
     @exitstingWorkoutsCollection.reset(@options.existingMemberWorkouts)
-
     @initializeUI()
 
   initializeUI: ->

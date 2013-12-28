@@ -1,6 +1,6 @@
-describe "I18nController", ->
+describe "app.controllers.I18nController", ->
   beforeEach ->
-    @controller = new I18nController
+    @controller = new app.controllers.I18nController
       root:
         simple: "Hello World"
         replace: "My name is %{first_name} Bluth"

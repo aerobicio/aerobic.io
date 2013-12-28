@@ -5,11 +5,11 @@
 
   classes: ->
     React.addons.classSet
-      "workouts__list__item": true
       "panel": true
+      "workouts__list__item": true
 
   render: ->
-    `<li key={this.props.model.cid} className={this.classes()} onClick={this.toggleChecked}>
+    `<li key={this.props.model.cid} className={this.classes()}>
       <div className="panel__content">
         <input type="checkbox" checked disabled />
         {this.props.model.date().toString()} - {this.props.model.get('status')}

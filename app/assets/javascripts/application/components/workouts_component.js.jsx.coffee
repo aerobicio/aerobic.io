@@ -4,6 +4,7 @@
   mixins: [@lib.BackboneMixin]
 
   getInitialState: ->
+    queueUploadRequests: true
     hasDeviceSelected: false
 
   render: ->
@@ -22,23 +23,39 @@
       "has-device-selected": @state.hasDeviceSelected
 
   onClick: (event) ->
+    event.preventDefault()
     @uploadSelectedWorkouts()
 
+  selectedWorkouts: ->
+    @props.collection.selectedWorkouts()
+
   uploadSelectedWorkouts: ->
-    @props.collection.selectedWorkouts().map (workout) =>
+    @selectedWorkouts().map (workout) =>
       workout.data().then (data) =>
-        workout.set(status: 'uploading')
-        request = @uploadWorkout(workout, data)
-        request.done -> workout.set(status: 'uploaded')
-        request.fail -> workout.set(status: 'failed')
+        @uploadWorkout(workout, data)
 
   uploadWorkout: (workout, data) ->
-    jQuery.ajax
+    @_uploadStarted(workout)
+    request = jQuery.ajax
       type: "POST"
       url: @props.uploadPath
-      data:
-        activity: data
-        device_id: workout.get('device').id
-        device_workout_id: workout.get('id')
+      data: @workoutData(workout, data)
       dataType: 'json'
-      queue: true
+      queue: @state.queueUploadRequests
+    request.done (data) => @_uploadDone(workout)
+    request.fail (data) => @_uploadFail(workout)
+    request
+
+  workoutData: (workout, data) ->
+    activity: data
+    device_id: workout.get('device').id
+    device_workout_id: workout.get('id')
+
+  _uploadStarted: (workout) ->
+    workout.set(status: 'uploading')
+
+  _uploadDone: (workout) ->
+    workout.set(status: 'uploaded')
+
+  _uploadFail: (workout) ->
+    workout.set(status: 'failed')

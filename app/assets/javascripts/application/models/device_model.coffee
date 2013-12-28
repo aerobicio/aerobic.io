@@ -2,11 +2,5 @@
   defaults:
     selected: false
 
-  name: ->
-    @get('name')
-
-  software_version: ->
-    @get('software_version')
-
   getActivities: ->
     @attributes.activities()

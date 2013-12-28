@@ -10,10 +10,19 @@
     </ol>`
 
   workoutNodesForDevice: (workoutCollection) ->
-    WorkoutComponent = app.components.WorkoutComponent
-    ExistingWorkoutComponent = app.components.ExistingWorkoutComponent
     workoutCollection.map (workout) =>
-      if workout instanceof app.models.ExistingWorkoutModel
-        `<ExistingWorkoutComponent model={workout} />`
-      else
-        `<WorkoutComponent model={workout} />`
+      @workoutNodeForWorkout(workout)
+
+  workoutNodeForWorkout: (model) ->
+    if model instanceof app.models.ExistingWorkoutModel
+      @existingWorkoutNode(model)
+    else
+      @workoutNode(model)
+
+  existingWorkoutNode: (model) ->
+    ExistingWorkoutComponent = app.components.ExistingWorkoutComponent
+    `<ExistingWorkoutComponent model={model} />`
+
+  workoutNode: (model) ->
+    WorkoutComponent = app.components.WorkoutComponent
+    `<WorkoutComponent model={model} />`

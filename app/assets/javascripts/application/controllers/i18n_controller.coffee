@@ -1,5 +1,5 @@
 # The I18nController provides an API for translating strings.
-window.I18nController = class I18nController
+@app.controllers.I18nController = class I18nController
   # Returns a new I18nController for the given translations.
   constructor: (translations) ->
     @translations = translations

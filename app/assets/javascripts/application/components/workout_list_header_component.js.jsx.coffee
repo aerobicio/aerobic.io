@@ -18,9 +18,12 @@
     event.preventDefault()
     @props.onClick(event)
 
+  getSelectedWorkoutsCount: ->
+    @props.collection.getSelectedWorkoutsCount()
+
   getSelectedWorkouts: ->
-    count = @props.collection.getSelectedWorkoutsCount()
+    count = @getSelectedWorkoutsCount()
     if count is 0 then "" else "(#{count})"
 
   getUploadButtonDisabled: ->
-    if @getSelectedWorkouts() < 1 then true else false
+    if @getSelectedWorkoutsCount() < 1 then true else false

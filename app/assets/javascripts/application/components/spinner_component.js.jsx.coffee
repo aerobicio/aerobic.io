@@ -2,8 +2,8 @@
 
 @app.components.SpinnerComponent = React.createClass
   getInitialState: ->
-    preset: @props.preset || app.config.spinner.tiny
-    visible: @props.isVisible || true
+    preset: @props.preset ? app.config.spinner.tiny
+    visible: @props.isVisible ? true
 
   classes: ->
     React.addons.classSet

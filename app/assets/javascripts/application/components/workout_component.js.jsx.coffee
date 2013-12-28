@@ -8,13 +8,14 @@
 
   toggleChecked: (event) ->
     event.preventDefault()
-    @setState(checked: !@state.checked)
-    @props.model.set(checked: !@state.checked)
+    newState = !@state.checked
+    @setState(checked: newState)
+    @props.model.set(checked: newState)
 
   classes: ->
     React.addons.classSet
-      "workouts__list__item": true
       "panel": true
+      "workouts__list__item": true
       "is-checked": @state.checked
 
   render: ->

@@ -10,6 +10,7 @@
   componentDidMount: ->
     promise = @props.collection.fetch()
     promise.then(@devicesDidFinishLoading)
+    promise
 
   classes: ->
     React.addons.classSet
@@ -17,7 +18,6 @@
       "has-device-selected": @state.hasDeviceSelected
 
   render: ->
-    TransitionGroup = React.addons.TransitionGroup
     SpinnerComponent = app.components.SpinnerComponent
     deviceNodes = @deviceNodesForDevices(@props.collection)
 
@@ -44,12 +44,13 @@
     @setState(isLoading: false)
 
   deviceNodesForDevices: (devicesCollection) ->
-    deviceComponent = app.components.DeviceComponent
-    devicesCollection.map (device, index) =>
+    devicesCollection.map (device) =>
       onSelectDeviceHandler = @onSelectDevice.bind(@, device)
-      onUnselectDeviceHandler = @onUnselectDevice
-      progressModel = @props.progressModel
-      `<deviceComponent model={device}
-                        progressModel={progressModel}
-                        selectDeviceHandler={onSelectDeviceHandler}
-                        unselectDeviceHandler={onUnselectDeviceHandler} />`
+      @deviceNode(device, @props.progressModel, onSelectDeviceHandler, @onUnselectDevice)
+
+  deviceNode: (model, progressModel, selectDeviceHandler, unselectDeviceHandler) ->
+    deviceComponent = app.components.DeviceComponent
+    `<deviceComponent model={model}
+                      progressModel={progressModel}
+                      selectDeviceHandler={selectDeviceHandler}
+                      unselectDeviceHandler={unselectDeviceHandler} />`
