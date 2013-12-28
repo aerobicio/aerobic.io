@@ -11,19 +11,22 @@ class UploadsController < ApplicationController
   end
 
   def create
-    puts upload_params
     ActiveRecord::Base.transaction do
       result = CreateWorkoutFromUploadedFitFile.perform(upload_params)
 
       raise ActiveRecord::Rollback unless result.success?
 
       respond_to do |format|
-        format.json { render json: {status: result.success?}.to_json }
+        format.json { render_json_response(result) }
       end
     end
   end
 
   private
+
+  def render_json_response(result)
+    render json: {status: result.success?}.to_json
+  end
 
   def member_workouts
     @member_workouts ||= current_user.workouts.all
