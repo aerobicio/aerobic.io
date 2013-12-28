@@ -5,6 +5,8 @@ services:
 build:
     # The steps that will be executed on build
     steps:
+         - add-ssh-key:
+            keyname: GARMIN_COMMUNICATOR_KEY
         - script:
             name: set dotenv environment file
             code: cp -n .env.example .env
