@@ -9,7 +9,7 @@
 #= require backbone/backbone
 #= require react/react-with-addons
 #= require q/q
-#= require garmin-communicator/dist/garmin
+#= require garmin-communicator/garmin
 #= require jquery.ajax.queue
 #= require nprogress
 #= require turbolinks
