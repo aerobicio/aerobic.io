@@ -1,5 +1,6 @@
 AerobicIo::Application.routes.draw do
-  root "homes#show"
+  root "dashboards#show"
+
   get "sign_up", to: "identities#new"
   get "sign_in", to: "sessions#new"
   put "sign_out", to: "sessions#destroy"
@@ -18,7 +19,9 @@ AerobicIo::Application.routes.draw do
     end
   end
 
-  mount Kayessess::Engine => "/styleguide", :as => 'kayessess' unless Rails.env.production?
+  if defined?(Kayessess)
+    mount Kayessess::Engine => "/styleguide", :as => 'kayessess'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

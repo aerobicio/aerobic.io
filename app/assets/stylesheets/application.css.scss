@@ -5,6 +5,7 @@
 @import "bourbon";
 @import "constants";
 @import "neat";
+@import "nprogress/nprogress";
 
 
 // Fonts
@@ -35,9 +36,8 @@
 // placeholders that we reuse in other modules are here
 @import "lib/placeholders";
 
-// new refactored BEM stuff lives here.
+// BEM style modules live here.
 @import "modules/*";
-@import "modules/landing/*";
 
 // The shame! The shame!
 @import "shame";
