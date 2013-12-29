@@ -5,4 +5,5 @@
 #= require jquery/jquery
 #= require underscore/underscore
 #= require jquery_ujs
+#= require nprogress
 #= require turbolinks
