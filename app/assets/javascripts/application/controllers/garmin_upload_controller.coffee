@@ -3,7 +3,7 @@
 
   initialize: (options) ->
     @options = options
-    @garmin = new Garmin unlockCodes: @options.garmin.unlockCodes
+    @garmin = new Garmin unlockCodes: @options.garmin?.unlockCodes
     @progressModel = new app.models.ProgressModel
     @devicesCollection = new app.collections.DevicesCollection [], garminDelegate: @garmin
     @workoutsCollection = new app.collections.WorkoutsCollection []
