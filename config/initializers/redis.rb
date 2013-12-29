@@ -10,6 +10,9 @@ if ENV["REDISCLOUD_URL"]
 elsif ENV["WERCKER_REDIS_HOST"] && ENV["WERCKER_REDIS_PORT"]
   $redis = Redis.new(:host => ENV["WERCKER_REDIS_HOST"],
                      :port => ENV["WERCKER_REDIS_PORT"])
+elsif ENV["BOXEN_REDIS_URL"] && ENV["BOXEN_REDIS_PORT"]
+  $redis = Redis.new(:host => ENV["BOXEN_REDIS_HOST"],
+                     :port => ENV["BOXEN_REDIS_PORT"])
 else
   $redis = Redis.new
 end

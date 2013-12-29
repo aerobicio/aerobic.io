@@ -2,7 +2,6 @@
 # on all pages. It is required by the main application.js file, and also in
 # the teaspoon spec_helper
 #
-#= require turbolinks
 #= require jquery/jquery
 #= require jquery_ujs
 #= require spin.js/spin
@@ -12,3 +11,5 @@
 #= require q/q
 #= require garmin-communicator/dist/garmin
 #= require jquery.ajax.queue
+#= require nprogress
+#= require turbolinks
