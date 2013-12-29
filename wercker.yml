@@ -5,43 +5,29 @@ services:
 build:
     # The steps that will be executed on build
     steps:
+        # Setup ssh-key for accessing the garmin-communicator repo
         - add-ssh-key:
             keyname: GARMIN_COMMUNICATOR_KEY
+        # Copy the dotenv config file into place
         - script:
-            name: set dotenv environment file
+            name: setup dotenv
             code: cp -n .env.example .env
+        # Start the xvfb framebuffer
         - script:
-            name: Enable virtual display
+            name: start xvfb
             code: |
-                # Start xvfb which gives the context an virtual display
-                # which is required for tests that require an GUI
                 export DISPLAY=":99.0"
-                start-stop-daemon --start --quiet --pidfile /tmp/xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset
-                # Give xvfb time to start. 3 seconds is the default for all xvfb-run commands.
+                start-stop-daemon --start --quiet --pidfile /tmp/xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- $DISPLAY -screen 0 1024x768x24 -ac +extension GLX +render -noreset
                 sleep 3
+                cat /tmp/xvfb_99.pid
         # Ensure that selenium server is downloaded and running
         - desmondmorris/selenium-install@0.0.2
         # A step that executes `bundle install` command
         - bundle-install
-        # A step that prepares the database.yml with settings from the database you defined in services
-        - rails-database-yml
         # A step that executes `npm install`
         - npm-install
-        # A custom script step, name value is used in the UI
-        # and the code value contains the command that get executed
-        - script:
-            name: echo ruby information
-            code: |
-                echo "ruby version $(ruby --version) running"
-                echo "from location $(which ruby)"
-                echo -p "gem list: $(gem list)"
-        # A custom script step, name value is used in the UI
-        # and the code value contains the command that get executed
-        - script:
-            name: echo nodejs information
-            code: |
-              echo "node version $(node -v) running"
-              echo "npm version $(npm -v) running"
+        # A step that prepares the database.yml with settings from the database you defined in services
+        - rails-database-yml
         - script:
             name: db setup
             code: RAILS_ENV=test bundle exec rake db:structure:load
