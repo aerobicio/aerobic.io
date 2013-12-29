@@ -5,7 +5,7 @@
 #= require turbolinks
 #= require jquery/jquery
 #= require jquery_ujs
-#= require spin.js/dist/spin
+#= require spin.js/spin
 #= require underscore/underscore
 #= require backbone/backbone
 #= require react/react-with-addons
