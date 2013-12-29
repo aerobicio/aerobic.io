@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/quamen/tcx.git
+  revision: c0f5e8ccb86c83bc8a2de2cfa69fdc7a7d5cbd71
+  branch: parse-active-duration-and-distance
+  specs:
+    tcx (0.0.1)
+      ox
+
+GIT
   remote: https://github.com/aerobicio/fit.git
   revision: e65ea01eb20dea137dd976e016a25b75609d3117
   specs:
@@ -160,6 +168,7 @@ GEM
     omniauth-identity (1.1.1)
       bcrypt-ruby (~> 3.0)
       omniauth (~> 1.0)
+    ox (2.0.12)
     parallel (0.9.0)
     pg (0.17.0)
     phantomjs (1.9.2.0)
@@ -342,6 +351,7 @@ DEPENDENCIES
   sentry-raven
   shoulda-matchers
   simplecov
+  tcx!
   teaspoon
   turbolinks
   typogruby
