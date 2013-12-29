@@ -3,7 +3,8 @@
 #
 # The show action renders the Communicator Device Upload UI.
 #
-# The create action is called via AJAX and processes a single FIT file.
+# The create action is called via AJAX and processes a single FIT or TCX file.
+#
 class UploadsController < ApplicationController
   layout 'garmin'
 
@@ -29,7 +30,7 @@ class UploadsController < ApplicationController
     when "fit"
       CreateWorkoutFromUploadedFitFile.perform(upload_params)
     when "tcx"
-      ProcessUploadedTcxFile.perform(upload_params)
+      CreateWorkoutFromUploadedTcxFile.perform(upload_params)
     end
   end
 

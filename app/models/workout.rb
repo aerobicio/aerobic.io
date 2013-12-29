@@ -1,8 +1,10 @@
 require_relative "fit_file"
+require_relative "tcx_file"
 require_relative "user"
 
 class Workout < ActiveRecord::Base
   has_one :fit_file
+  has_one :tcx_file
   belongs_to :user
 
   validates :active_duration, :distance, :duration,  presence: true
