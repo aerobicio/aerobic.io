@@ -12,7 +12,7 @@ describe "app.components.WorkoutListHeaderComponent", ->
     React.renderComponent(@component, @fixtureEl)
 
   afterEach ->
-    React.unmountAndReleaseReactRootNode(@fixtureEl)
+    React.unmountComponentAtNode(@fixtureEl)
     @fixture.remove()
 
   describe "#onClick", ->

@@ -10,7 +10,7 @@ describe "app.components.WorkoutComponent", ->
     React.renderComponent(@component, @fixtureEl)
 
   afterEach ->
-    React.unmountAndReleaseReactRootNode(@fixtureEl)
+    React.unmountComponentAtNode(@fixtureEl)
     @fixture.remove()
 
   describe "#classes", ->

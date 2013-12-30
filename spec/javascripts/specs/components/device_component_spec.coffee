@@ -15,7 +15,7 @@ describe "app.components.DeviceComponent", ->
     React.renderComponent(@component, @fixtureEl)
 
   afterEach ->
-    React.unmountAndReleaseReactRootNode(@fixtureEl)
+    React.unmountComponentAtNode(@fixtureEl)
     @fixture.remove()
 
   describe "#classes", ->

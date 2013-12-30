@@ -7,7 +7,7 @@ describe "app.components.WorkoutListComponent", ->
     React.renderComponent(@component, @fixtureEl)
 
   afterEach ->
-    React.unmountAndReleaseReactRootNode(@fixtureEl)
+    React.unmountComponentAtNode(@fixtureEl)
     @fixture.remove()
 
   describe "#workoutNodesForDevice", ->

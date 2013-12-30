@@ -8,7 +8,7 @@ describe "app.components.ExistingWorkoutComponent", ->
     React.renderComponent(@component, @fixtureEl)
 
   afterEach ->
-    React.unmountAndReleaseReactRootNode(@fixtureEl)
+    React.unmountComponentAtNode(@fixtureEl)
     @fixture.remove()
 
   describe "#classes", ->

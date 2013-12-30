@@ -6,7 +6,7 @@ describe "app.components.SpinnerComponent", ->
     React.renderComponent(@component, @fixtureEl)
 
   afterEach ->
-    React.unmountAndReleaseReactRootNode(@fixtureEl)
+    React.unmountComponentAtNode(@fixtureEl)
     @fixture.remove()
 
   describe "#classes", ->
@@ -22,7 +22,7 @@ describe "app.components.SpinnerComponent", ->
       beforeEach ->
         @preset = {herp: 'derp'}
         @visible = false
-        React.unmountAndReleaseReactRootNode(@fixtureEl)
+        React.unmountComponentAtNode(@fixtureEl)
         @component = new app.components.SpinnerComponent(preset: @preset, isVisible: @visible)
         React.renderComponent(@component, @fixtureEl)
 
