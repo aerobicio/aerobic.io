@@ -1,7 +1,10 @@
 ###* @jsx React.DOM ###
 
 @app.components.WorkoutsComponent = React.createClass
-  mixins: [@lib.BackboneMixin]
+  mixins: [@lib.BackboneModelMixin]
+
+  getBackboneModels: ->
+    [@props.collection]
 
   getInitialState: ->
     queueUploadRequests: true
@@ -10,11 +13,10 @@
   render: ->
     WorkoutListHeaderComponent = app.components.WorkoutListHeaderComponent
     WorkoutListComponent = app.components.WorkoutListComponent
-    collection = @props.collection
 
     `<div className={this.classes()}>
-      <WorkoutListHeaderComponent collection={collection} onClick={this.onClick} />
-      <WorkoutListComponent collection={collection} />
+      <WorkoutListHeaderComponent collection={this.props.collection} onClick={this.onClick} />
+      <WorkoutListComponent collection={this.props.collection} />
     </div>`
 
   classes: ->

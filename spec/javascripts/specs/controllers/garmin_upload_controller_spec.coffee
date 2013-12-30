@@ -6,6 +6,7 @@ describe "app.controllers.GarminUploadController", ->
         <div id="Workouts"></div>
       </div>
     """).appendTo "body"
+    @garminStub = sinon.stub(Garmin.prototype, 'unlock')
     @initializeUIStub = sinon.stub(app.controllers.GarminUploadController.prototype, 'initializeUI')
     @controller = new app.controllers.GarminUploadController(el: @container)
     @controller.workoutsComponent = setState: -> return
@@ -16,6 +17,7 @@ describe "app.controllers.GarminUploadController", ->
   afterEach ->
     @controller = null
     @container.remove()
+    @garminStub.restore()
     @initializeUIStub.restore()
     @workoutsComponentSetStateStub.restore()
 

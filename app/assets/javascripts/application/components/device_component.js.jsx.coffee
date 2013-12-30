@@ -1,7 +1,10 @@
 ###* @jsx React.DOM ###
 
 @app.components.DeviceComponent = React.createClass
-  mixins: [@lib.BackboneMixin]
+  mixins: [@lib.BackboneModelMixin]
+
+  getBackboneModels: ->
+    [@props.model]
 
   classes: ->
     selected = @props.model.get('selected')

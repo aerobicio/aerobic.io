@@ -1,7 +1,10 @@
 ###* @jsx React.DOM ###
 
 @app.components.ExistingWorkoutComponent = React.createClass
-  mixins: [@lib.BackboneMixin]
+  mixins: [@lib.BackboneModelMixin]
+
+  getBackboneModels: ->
+    [@props.model]
 
   classes: ->
     React.addons.classSet

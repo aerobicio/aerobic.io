@@ -1,7 +1,10 @@
 ###* @jsx React.DOM ###
 
 @app.components.WorkoutComponent = React.createClass
-  mixins: [@lib.BackboneMixin]
+  mixins: [@lib.BackboneModelMixin]
+
+  getBackboneModels: ->
+    [@props.model]
 
   getInitialState: ->
     checked: false

@@ -1,7 +1,10 @@
 ###* @jsx React.DOM ###
 
 @app.components.WorkoutListHeaderComponent = React.createClass
-  mixins: [@lib.BackboneMixin]
+  mixins: [@lib.BackboneModelMixin]
+
+  getBackboneModels: ->
+    [@props.collection]
 
   render: ->
     selectedWorkoutsCount = @getSelectedWorkouts()
@@ -9,7 +12,7 @@
 
     `<header className="workouts__header">
       <h6 className="h6">{this.props.collection.length} Workouts found on your device.</h6>
-      <button class="workouts__upload-button" disabled={uploadButtonDisabled} onClick={this.onClick}>
+      <button className="workouts__upload-button" disabled={uploadButtonDisabled} onClick={this.onClick}>
         Upload Workouts {selectedWorkoutsCount}
       </button>
     </header>`

@@ -1,7 +1,10 @@
 ###* @jsx React.DOM ###
 
 @app.components.WorkoutListComponent = React.createClass
-  mixins: [@lib.BackboneMixin]
+  mixins: [@lib.BackboneModelMixin]
+
+  getBackboneModels: ->
+    [@props.collection]
 
   render: ->
     workoutNodes = @workoutNodesForDevice(@props.collection)
@@ -21,8 +24,8 @@
 
   existingWorkoutNode: (model) ->
     ExistingWorkoutComponent = app.components.ExistingWorkoutComponent
-    `<ExistingWorkoutComponent model={model} />`
+    `<ExistingWorkoutComponent key={model.cid} model={model} />`
 
   workoutNode: (model) ->
     WorkoutComponent = app.components.WorkoutComponent
-    `<WorkoutComponent model={model} />`
+    `<WorkoutComponent key={model.cid} model={model} />`

@@ -1,7 +1,10 @@
 ###* @jsx React.DOM ###
 
 @app.components.DeviceListComponent = React.createClass
-  mixins: [@lib.BackboneMixin]
+  mixins: [@lib.BackboneModelMixin]
+
+  getBackboneModels: ->
+    [@props.collection]
 
   getInitialState: ->
     isLoading: true
@@ -50,7 +53,8 @@
 
   deviceNode: (model, progressModel, selectDeviceHandler, unselectDeviceHandler) ->
     deviceComponent = app.components.DeviceComponent
-    `<deviceComponent model={model}
+    `<deviceComponent key={model.cid}
+                      model={model}
                       progressModel={progressModel}
                       selectDeviceHandler={selectDeviceHandler}
                       unselectDeviceHandler={unselectDeviceHandler} />`

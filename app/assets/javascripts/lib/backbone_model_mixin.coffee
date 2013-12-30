@@ -1,5 +1,5 @@
 # https://gist.github.com/ssorallen/7883081
-@lib.BackboneMixin =
+@lib.BackboneModelMixin =
   componentDidMount: ->
     @_boundForceUpdate = @forceUpdate.bind(@, null)
     @getBackboneObject().on("all", @_boundForceUpdate, @)

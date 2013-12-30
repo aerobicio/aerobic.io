@@ -30,9 +30,9 @@ Teaspoon.setup do |config|
   config.color            = true
 
   # Coverage (requires istanbul -- https://github.com/gotwarlost/istanbul)
-  config.coverage         = true
-  config.coverage_output_dir "js-coverage"
-  config.coverage_reports = "text,html"
+  config.coverage                      = true
+  config.coverage_output_dir           = "js-coverage"
+  config.coverage_reports              = "text,html"
   config.statements_coverage_threshold = 96.98
   config.branches_coverage_threshold   = 69.64
   config.functions_coverage_threshold  = 94
