@@ -13,3 +13,4 @@
 #= require jquery.ajax.queue
 #= require nprogress
 #= require turbolinks
+#= require google_analytics

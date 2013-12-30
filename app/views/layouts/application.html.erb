@@ -16,5 +16,10 @@
 <body class="<%= area :body_class %>" <%= area :body_data_attributes %>>
   <%= area :main, yield %>
   <%= area :js %>
+  <%= javascript_tag async: 'async', defer: 'defer' do -%>
+    $(function() {
+      new window.NprogressController({el: $(document)});
+    });
+  <% end %>
 </body>
 </html>
