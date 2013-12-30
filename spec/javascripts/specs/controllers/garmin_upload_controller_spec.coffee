@@ -41,7 +41,7 @@ describe "app.controllers.GarminUploadController", ->
         percent: 69
         message: "derp"
       @controller.deviceUnselected()
-      chai.expect(@controller.progressModel.get('percent')).to.equal 0
+      chai.expect(@controller.progressModel.get('percent')).to.equal -1
       chai.expect(@controller.progressModel.get('message')).to.equal ""
 
     it "lets the workouts component know that no devices are selected", ->

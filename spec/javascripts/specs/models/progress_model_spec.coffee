@@ -7,5 +7,5 @@ describe "app.models.ProgressModel", ->
 
   describe "defaults", ->
     it "has default attributes", ->
-      chai.expect(@model.get('percent')).to.equal 0
+      chai.expect(@model.get('percent')).to.equal -1
       chai.expect(@model.get('message')).to.equal ""
