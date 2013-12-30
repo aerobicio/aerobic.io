@@ -1,9 +1,7 @@
-#= require application/nprogress_controller
-
-describe "NprogressController", ->
+describe "app.controllers.NprogressController", ->
   beforeEach ->
     @fixture = $("""<div></div>""").appendTo "body"
-    @controller = new NprogressController el: @fixture
+    @controller = new app.controllers.NprogressController el: @fixture
     @controller.delegate = {
       start: -> return
       done: -> return

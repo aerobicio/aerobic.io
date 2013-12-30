@@ -1,8 +1,14 @@
-window.NprogressController = class NprogressController extends ViewController
+@app.controllers.NprogressController = class NprogressController extends app.controllers.ViewController
+  nprogressConfiguration:
+    showSpinner: false
+    ease: 'ease'
+    speed: 300
+
   initialize: ->
+    window.NProgress.configure @nprogressConfiguration
     @delegate = window.NProgress
 
-  _bindEvents: ->
+  bindEvents: ->
     @$el
       .on('page:fetch', @show)
       .on('page:change', @hide)
