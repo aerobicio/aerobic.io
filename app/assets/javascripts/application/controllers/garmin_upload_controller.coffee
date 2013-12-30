@@ -44,7 +44,7 @@
       workoutsCollectionClone.remove(workout)
       workoutsCollectionClone.add(existingWorkout, at: workoutIndex)
 
-    @workoutsCollection.reset(workoutsCollectionClone.toJSON())
+    @workoutsCollection.reset(workoutsCollectionClone.models)
 
   updateProgress: (progress) =>
     unless progress.percent is @_lastProgressPercentage
