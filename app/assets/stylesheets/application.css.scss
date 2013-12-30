@@ -5,13 +5,10 @@
 @import "bourbon";
 @import "constants";
 @import "neat";
-@import "nprogress/nprogress";
-
 
 // Fonts
 // ----------------------------------------
 @import "lib/fonts";
-
 
 // Mixins, functions and placeholders
 // ----------------------------------------
@@ -19,31 +16,25 @@
 @import "lib/functions";
 @import "lib/placeholders";
 
-
 // Base styles, unclassed HTML elems, reset
 // ----------------------------------------
 @import "lib/reset";
 @import "base/*";
 
-
 // Layout styles, high level structural stuff
 // ----------------------------------------
 @import "layout/*";
 
-
 // Modules/Components
 // ----------------------------------------
-// placeholders that we reuse in other modules are here
-@import "lib/placeholders";
+@import "lib/placeholders"; // placeholders that we reuse in other modules are here
+@import "modules/*"; // BEM style modules live here.
+@import "shame"; // The shame! The shame!
 
-// BEM style modules live here.
-@import "modules/*";
-
-// The shame! The shame!
-@import "shame";
-
+// Vendored styles
+// ----------------------------------------
+@import "vendor";
 
 // Bits and bobs
 // ----------------------------------------
 @import "lib/debug";
-
