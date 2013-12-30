@@ -1,6 +1,6 @@
 window.NprogressController = class NprogressController extends ViewController
   initialize: ->
-    @delegate = NProgress
+    @delegate = window.NProgress
 
   _bindEvents: ->
     @$el
@@ -8,11 +8,11 @@ window.NprogressController = class NprogressController extends ViewController
       .on('page:change', @hide)
       .on('page:restore', @remove)
 
-  show: ->
+  show: =>
     @delegate.start()
 
-  hide: ->
+  hide: =>
     @delegate.done()
 
-  remove: ->
+  remove: =>
     @delegate.remove()
