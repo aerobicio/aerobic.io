@@ -12,6 +12,5 @@ Then(/^I should see workout information on my dashboard$/) do
 end
 
 Then(/^I should see a message telling me that I have no devices$/) do
-  binding.pry
-  page.should have_content "We couldn't find any devices!"
+  page.should have_content "Uh oh, we couldn’t find any devices!"
 end
