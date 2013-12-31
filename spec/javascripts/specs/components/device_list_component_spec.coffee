@@ -40,11 +40,18 @@ describe "app.components.DeviceListComponent", ->
   describe "#deviceNodesForDevices", ->
     beforeEach ->
       @deviceNodeStub = sinon.stub(@component, 'deviceNode').returns(sinon.stub())
+      @noDeviceNodeStub = sinon.stub(@component, 'noDeviceNode').returns(sinon.stub())
 
     it "creates a device node for each device in the collection", ->
       devicesCollection = new Backbone.Collection [sinon.stub(), sinon.stub(), sinon.stub()]
       @component.deviceNodesForDevices(devicesCollection)
       chai.expect(@deviceNodeStub.calledThrice).to.be.true
+
+    it "should show a message if you have no devices", ->
+      devicesCollection = new Backbone.Collection []
+      @component.deviceNodesForDevices(devicesCollection)
+      chai.expect(@deviceNodeStub.called).to.be.false
+      chai.expect(@noDeviceNodeStub.calledOnce).to.be.true
 
   describe "#deviceNode", ->
     it "creates a DeviceComponent", ->
