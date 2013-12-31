@@ -4,7 +4,6 @@ ruby "2.0.0", :patchlevel => "353"
 gem "bcrypt-ruby", "~> 3.1.2"
 gem "bindata"
 gem "bourbon"
-gem "consistency_fail"
 gem "dalli"
 gem "fit", git: "https://github.com/aerobicio/fit.git"
 gem "foreigner"
@@ -49,13 +48,14 @@ end
 
 group :test do
   gem "codeclimate-test-reporter", require: nil
+  gem "consistency_fail"
   gem "cucumber-nc"
   gem "cucumber-rails", :require => false
   gem "database_cleaner"
   gem "faker"
   gem "rspec-nc"
-  gem "simplecov", :require => false
   gem "shoulda-matchers"
+  gem "simplecov", :require => false
 end
 
 group :production do
