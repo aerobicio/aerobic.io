@@ -21,8 +21,6 @@ module AerobicIo
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.autoload_paths += %W(#{config.root}/app/view_controllers)
 
-    config.assets.precompile += ['upload.js']
-
     config.assets.paths << "vendor/assets/components"
 
     config.lograge.enabled = true

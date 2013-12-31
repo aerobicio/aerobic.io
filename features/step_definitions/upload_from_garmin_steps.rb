@@ -14,3 +14,11 @@ end
 Then(/^I should see a message telling me that I have no devices$/) do
   page.should have_content "Uh oh, we couldn’t find any devices!"
 end
+
+Given(/^I have a Garmin device that supports FIT files$/) do
+  member_has_fit_device
+end
+
+When(/^I upload a FIT workout from my device$/) do
+  binding.pry
+end

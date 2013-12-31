@@ -1,4 +1,4 @@
-@garmin @javascript
+@javascript
 Feature: Upload From Garmin
   In order to track my workouts
   As a registered member
@@ -11,21 +11,29 @@ Feature: Upload From Garmin
 
   Scenario: Uploading a FIT file from a device
     Given I am a member
-    When I upload a FIT workout from my device
+    And I have a Garmin device that supports FIT files
+    When I visit the upload page
+    And I upload a FIT workout from my device
     Then I should see the workout in my activity feed
 
   Scenario: Uploading a TCX file from a device
     Given I am a member
-    When I upload a TCX workout from my device
+    And I have a Garmin device that supports TCX files
+    When I visit the upload page
+    And I upload a TCX workout from my device
     Then I should see the workout in my activity feed
 
   Scenario: Uploading multiple files from a device
     Given I am a member
-    When I upload a multiple workouts from my device
+    And I have a Garmin device that supports FIT files
+    When I visit the upload page
+    And I upload a multiple workouts from my device
     Then I should see the workouts in my activity feed
 
   Scenario: Uploading fails
     Given I am a member
-    When I upload a FIT workout from my device
-    And there was a problem with the upload
+    And I have a Garmin device that supports FIT files
+    When I visit the upload page
+    And I upload a FIT workout from my device
+    And there is a problem with the upload
     Then I should see an error message for the upload
