@@ -29,7 +29,7 @@ class UploadsController < ApplicationController
   end
 
   def member_workouts
-    @member_workouts ||= current_user.workouts.all
+    @member_workouts ||= current_user.workouts.load
   end
 
   def upload_params
