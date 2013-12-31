@@ -7,3 +7,4 @@
 #= require jquery_ujs
 #= require nprogress
 #= require turbolinks
+#= require google_analytics
