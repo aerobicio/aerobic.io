@@ -47,9 +47,17 @@
     @setState(isLoading: false)
 
   deviceNodesForDevices: (devicesCollection) ->
-    devicesCollection.map (device) =>
-      onSelectDeviceHandler = @onSelectDevice.bind(@, device)
-      @deviceNode(device, @props.progressModel, onSelectDeviceHandler, @onUnselectDevice)
+    if devicesCollection.length
+      devicesCollection.map (device) =>
+        onSelectDeviceHandler = @onSelectDevice.bind(@, device)
+        @deviceNode(device, @props.progressModel, onSelectDeviceHandler, @onUnselectDevice)
+    else
+      @noDeviceNode()
+
+  noDeviceNode: ->
+    `<div className="devices-list__no-devices">
+      Uh oh, we couldn’t find any devices!
+    </div>`
 
   deviceNode: (model, progressModel, selectDeviceHandler, unselectDeviceHandler) ->
     deviceComponent = app.components.DeviceComponent
