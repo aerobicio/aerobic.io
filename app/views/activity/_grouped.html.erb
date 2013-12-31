@@ -1,6 +1,6 @@
 <% grouped.each do |group| %>
   <% cache group.second.map(&:cache_key).join(":") do %>
-    <ol id="activity" class="grouped-list">
+    <ol class="grouped-list">
       <li class="grouped-list__group">
       <h6 class="grouped-list__group__heading">
         <%= group.first.to_formatted_s(:long) %>
