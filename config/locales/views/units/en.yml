@@ -1,0 +1,4 @@
+en:
+  units:
+    duration: "%{duration} min"
+    distance: "%{distance} km"

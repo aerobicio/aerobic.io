@@ -34,25 +34,26 @@ describe Activity::AddedWorkoutView do
     context "when current_member added the activity" do
       let(:member) { current_member }
 
-      it { should == "You did a workout:" }
+      it { should == I18n.t("activity.workout.title.first_person") }
     end
 
     context "when another member added the activity" do
       let(:member) { another_member }
 
-      it { should == "#{another_member.name} did a workout:" }
+      it { should == I18n.t("activity.workout.title.third_person",
+        name: another_member.name) }
     end
   end
 
   describe "duration" do
     subject { view.duration }
 
-    it { should == "1 minutes" }
+    it { should == "1 min" }
   end
 
   describe "distance" do
     subject { view.distance }
 
-    it { should == "2.0km" }
+    it { should == "2.0 km" }
   end
 end
