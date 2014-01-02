@@ -2,14 +2,22 @@
   el: "#GarminUploadController"
 
   initialize: (options) ->
-    @options = options
+    @options = _(options).defaults {}
+
     @garmin = new Garmin unlockCodes: @options.garmin?.unlockCodes
     @progressModel = new app.models.ProgressModel
     @devicesCollection = new app.collections.DevicesCollection [], garminDelegate: @garmin
     @workoutsCollection = new app.collections.WorkoutsCollection []
     @exitstingWorkoutsCollection = new app.collections.WorkoutsCollection []
     @exitstingWorkoutsCollection.reset(@options.existingMemberWorkouts)
+
     @initializeUI()
+    @fetchDevices()
+
+  fetchDevices: ->
+    promise = @devicesCollection.fetch()
+    promise.then(=> @deviceListComponent.setState(isLoading: false))
+    promise
 
   initializeUI: ->
     @deviceListComponent = app.components.DeviceListComponent(

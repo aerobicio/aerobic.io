@@ -1,9 +1,10 @@
 #= require support/sinon
+#= require underscore/underscore
 #= require q/q
 
 class GarminStubs
   _stubs: []
-  _garminDevicesBuffer: []
+  _fitDeviceWorkouts: []
 
   constructor: ->
     @_stubs['Garmin.unlock']  = @_stubGarminUnlock()
@@ -14,22 +15,37 @@ class GarminStubs
 
   _stubGarminDevices: ->
     deferred = Q.defer()
-    deferred.resolve(@_garminDevicesBuffer)
-    stub = sinon.stub(Garmin.prototype, 'devices')
-    stub.returns(deferred.promise)
-    stub
+    deferred.resolve([])
+    sinon.stub(Garmin.prototype, 'devices').returns(deferred.promise)
+    deferred.promise
 
   restoreAll: ->
     _.invoke(@_stubs, 'restore')
 
-  createFITDevice: ->
-    @_garminDevicesBuffer.push {
-      name: "TEST"
-    }
+  createFITDevice: (options = {}) ->
+    device = _(options).defaults
+      name: "Test FIT Device"
+      activities: => @getFitActivities()
+    window.garminUploadController.devicesCollection.add(device)
 
-  createTCXDevice: ->
-    @_garminDevicesBuffer.push {
-      name: "TEST"
-    }
+  getFitActivities: ->
+    deferred = Q.defer()
+    deferred.resolve(@_fitDeviceWorkouts)
+    deferred.promise
+
+  createFITWorkouts: (workoutsJson) ->
+    _(workoutsJson).map (workout) =>
+      workout.date = new Date(workout.date)
+      workout.getData = ->
+        deferred = Q.defer()
+        deferred.resolve(workout.data)
+        deferred.promise
+      @_fitDeviceWorkouts.push(workout)
+
+  createTCXDevice: (options = {}) ->
+    device = _(options).defaults
+      name: "Test TCX Device"
+      activities: -> []
+    window.garminUploadController.devicesCollection.add(device)
 
 window.GarminStubs = new GarminStubs

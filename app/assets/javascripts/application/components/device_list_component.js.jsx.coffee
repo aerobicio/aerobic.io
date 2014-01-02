@@ -10,11 +10,6 @@
     isLoading: true
     hasDeviceSelected: false
 
-  componentDidMount: ->
-    promise = @props.collection.fetch()
-    promise.then(@devicesDidFinishLoading)
-    promise
-
   classes: ->
     React.addons.classSet
       "devices-list": true
@@ -42,9 +37,6 @@
     @setState(hasDeviceSelected: false)
     @props.collection.unselectAllDevices()
     @props.deviceUnselectedDelegate()
-
-  devicesDidFinishLoading: ->
-    @setState(isLoading: false)
 
   deviceNodesForDevices: (devicesCollection) ->
     if devicesCollection.length

@@ -52,6 +52,7 @@
     activity: data
     device_id: workout.get('device').id
     device_workout_id: workout.get('id')
+    uuid: workout.get('uuid')
 
   _uploadStarted: (workout) ->
     workout.set(status: 'uploading')

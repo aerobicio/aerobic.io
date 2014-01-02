@@ -61,7 +61,10 @@ end
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
 Capybara.register_driver :chrome do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  Capybara::Selenium::Driver.new(app,
+    :browser => :chrome,
+    :args => ["--always-authorize-plugins"]
+  )
 end
 
 Capybara.javascript_driver = :chrome

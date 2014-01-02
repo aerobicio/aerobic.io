@@ -5,7 +5,7 @@
 
 <% append :js do %>
   <%= javascript_tag do %>
-    new app.controllers.GarminUploadController({
+    window.garminUploadController = new app.controllers.GarminUploadController({
       garmin: {
         unlockCodes: {
           "http://app.aerobic.io": "4aef82fa29da77a8a1ba21fa00124d2f",
