@@ -26,11 +26,3 @@ Then(/^"(.*?)" should not see the workout in their activity feed$/) do |name|
   page_doesnt_have_workout
   Capybara.session_name = "mine"
 end
-
-def page_has_workout
-  page.should have_content "Distance: 41.32km"
-end
-
-def page_doesnt_have_workout
-  page.should have_no_content "Distance: 41.32km"
-end

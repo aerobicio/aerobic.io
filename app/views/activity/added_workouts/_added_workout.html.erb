@@ -3,7 +3,7 @@
 <% cache view.cache_key do %>
   <article class="panel">
     <div class="panel__content">
-      <p><%= view.title %></p>
+      <%= link_to view.title, view.workout_path %>
       <ul>
         <li><strong>Duration:</strong> <%= view.duration %></li>
         <li><strong>Distance:</strong> <%= view.distance %></li>
