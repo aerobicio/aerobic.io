@@ -17,6 +17,8 @@ AerobicIo::Application.routes.draw do
       post "follow"
       post "unfollow"
     end
+
+    resources :workouts, only: [:show]
   end
 
   if defined?(Kayessess)
