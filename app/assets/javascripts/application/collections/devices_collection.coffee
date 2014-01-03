@@ -1,7 +1,7 @@
 @app.collections.DevicesCollection = class DevicesCollection extends Backbone.Collection
   model: app.models.DeviceModel
 
-  initialize: (@models, @options) ->
+  initialize: (@models, @options = {}) ->
     @garminDelegate = @options.garminDelegate
 
   fetch: ->

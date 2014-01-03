@@ -92,19 +92,25 @@ describe "app.controllers.GarminUploadController", ->
       chai.expect(@workoutsComponentSetStateStub.calledWith(hasDeviceSelected: false)).to.be.true
 
     it "empties the workoutsCollection", ->
-      @controller.workoutsCollection.reset([derp: 'test', date: -> new Date])
+      @controller.workoutsCollection.reset([
+        derp: 'test'
+        date: -> new Date
+        id: 1
+        device:
+          id: 2
+      ])
       @controller.deviceUnselected()
       chai.expect(@controller.workoutsCollection.length).to.equal 0
 
   describe "#updateWorkoutCollectionWithExistingWorkouts", ->
     beforeEach ->
-      @workout1 = new app.models.WorkoutModel id: 1, name: 'workout1'
+      @workout1 = new app.models.WorkoutModel id: 1, name: 'workout1', device: id: 2
       @workout1.date = -> new Date
-      @workout2 = new app.models.WorkoutModel id: 2, name: 'workout2'
+      @workout2 = new app.models.WorkoutModel id: 2, name: 'workout2', device: id: 2
       @workout2.date = -> new Date
-      @workout3 = new app.models.WorkoutModel id: 3, name: 'workout3'
+      @workout3 = new app.models.WorkoutModel id: 3, name: 'workout3', device: id: 2
       @workout3.date = -> new Date
-      @existingWorkout = new app.models.WorkoutModel id: 2, device_workout_id: 2, name: 'existingWorkout'
+      @existingWorkout = new app.models.WorkoutModel id: 2, device_workout_id: 2, name: 'existingWorkout', device: id: 2
       @existingWorkout.date = -> new Date
       @controller.workoutsCollection.reset([@workout1, @workout2, @workout3])
       @controller.exitstingWorkoutsCollection = new app.collections.WorkoutsCollection []

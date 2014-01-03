@@ -29,5 +29,7 @@
       <div className="panel__content">
         <input type="checkbox" checked={this.state.checked} ref="workoutCheckbox" />
         {this.props.model.date().toString()} - {this.props.model.get('status')}
+        <br />
+        {this.props.model.get('uuid')}
       </div>
     </li>`

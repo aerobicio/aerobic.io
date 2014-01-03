@@ -1,6 +1,8 @@
 describe "app.models.WorkoutModel", ->
   beforeEach ->
     @model = new app.models.WorkoutModel
+      id: 1
+      device: id: 2
 
   afterEach ->
     @model = null

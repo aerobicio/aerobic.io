@@ -4,10 +4,10 @@
   initialize: (options) ->
     @options = _(options).defaults {}
 
-    @garmin = new Garmin unlockCodes: @options.garmin?.unlockCodes
+    @garmin = new Garmin @options.garmin
     @progressModel = new app.models.ProgressModel
     @devicesCollection = new app.collections.DevicesCollection [], garminDelegate: @garmin
-    @workoutsCollection = new app.collections.WorkoutsCollection []
+    @workoutsCollection = new app.collections.WorkoutsCollection [], uploadPath: @options.uploadPath
     @exitstingWorkoutsCollection = new app.collections.WorkoutsCollection []
     @exitstingWorkoutsCollection.reset(@options.existingMemberWorkouts)
 
@@ -28,7 +28,6 @@
     )
     @workoutsComponent = app.components.WorkoutsComponent(
       collection: @workoutsCollection
-      uploadPath: @options.uploadPath
     )
     React.renderComponent(@deviceListComponent, document.getElementById("DevicesList"))
     React.renderComponent(@workoutsComponent, document.getElementById("Workouts"))
@@ -48,7 +47,7 @@
     workoutsCollectionClone = @workoutsCollection.clone()
     @exitstingWorkoutsCollection.getWorkoutsForDeviceId(deviceId).map (existingWorkout) =>
       workout = workoutsCollectionClone.get(existingWorkout.get('device_workout_id'))
-      workoutIndex = workoutsCollectionClone.indexOf(workout) - 1
+      workoutIndex = workoutsCollectionClone.indexOf(workout)
       workoutsCollectionClone.remove(workout)
       workoutsCollectionClone.add(existingWorkout, at: workoutIndex)
 
