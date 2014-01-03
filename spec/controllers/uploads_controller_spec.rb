@@ -11,7 +11,7 @@ describe UploadsController do
 
   describe "#show" do
     before do
-      workouts.should_receive(:all) { [] }
+      workouts.should_receive(:load) { [] }
       user.should_receive(:workouts) { workouts }
       get :show
     end
