@@ -7,7 +7,7 @@
   "dependencies": {
     "backbone": "~1.1.0",
     "cookie-monster": "~0.2.0",
-    "garmin-communicator": "git@github.com:plasticine/garmin-communicator.git#0.2.1",
+    "garmin-communicator": "git@github.com:plasticine/garmin-communicator.git#0.2.2",
     "jquery": "~2.0.3",
     "nprogress": "~0.1.2",
     "qjax": "~1.5.2",

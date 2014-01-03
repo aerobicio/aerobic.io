@@ -15,7 +15,10 @@ describe "app.controllers.GarminUploadController", ->
       deferred.resolve [sinon.mock(model)]
       deferred.promise
     @initializeUISpy = sinon.spy(app.controllers.GarminUploadController.prototype, 'initializeUI')
-    @controller = new app.controllers.GarminUploadController(el: @container)
+    @controller = new app.controllers.GarminUploadController(
+      el: @container
+      garmin: testMode: true
+    )
     @controller.workoutsComponent = setState: -> return
     @controller.workoutsCollection.fetch = -> return
     @workoutsComponentSetStateStub = sinon.stub(@controller.workoutsComponent, 'setState')
