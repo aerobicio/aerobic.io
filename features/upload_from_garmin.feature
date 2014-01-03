@@ -43,7 +43,7 @@ Feature: Upload From Garmin
     Given I am a member
     And I visit the upload page
     And I have a Garmin device that supports FIT files
-    And I have some FIT workouts on my device
+    And I have a FIT file that cannot be parsed
     When I upload a FIT workout from my device
-    And there is a problem with the upload
+    And it fails to upload properly
     Then I should see an error message for the upload
