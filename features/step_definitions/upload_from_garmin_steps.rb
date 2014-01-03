@@ -86,6 +86,34 @@ Then(/^I should see the workouts in my activity feed$/) do
   page_has_workout2
 end
 
+Given(/^I have a Garmin device that supports TCX files$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Given(/^I have some TCX workouts on my device$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^I upload a TCX workout from my device$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should see a message telling me there are no workouts on my device$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Given(/^I have a FIT file that cannot be parsed$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+When(/^it fails to upload properly$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+Then(/^I should see an error message for the upload$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
 def page_has_workouts
   page.should have_content "2 Workouts found on your device."
   page.should have_css("[data-workout-uuid='#{@workouts.first[:uuid]}']")
