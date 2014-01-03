@@ -26,7 +26,7 @@ class TcxFile < ActiveRecord::Base
   end
 
   def start_time
-    to_tcx.end_time
+    to_tcx.start_time
   end
 
   private
