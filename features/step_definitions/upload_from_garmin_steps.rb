@@ -28,26 +28,19 @@ When(/^I upload a FIT workout from my device$/) do
   select_device_with_name("Test FIT Device")
 
   within "#Workouts" do
-    # check for workout list content
     page_has_workouts
 
-    # get a reference for the workout node
     workout = get_workout_node_for_workout(@workouts.first)
 
-    # select it...
     workout.click
 
-    # ...it should be selected
     within workout do
       page.find('input[type=checkbox]').should be_checked
     end
 
-    # upload the selected workout
     upload_button = find_button("Upload Workouts (1)")
     upload_button.click
-    # upload_button.should be_disabled
 
-    # check that it uploads the workout
     ensure_workout_uploads(@workouts.first[:uuid])
   end
 end
@@ -58,14 +51,12 @@ When(/^I upload multiple workouts from my device$/) do
   within "#Workouts" do
     page_has_workouts
 
-    # check the first workout
     workout1 = get_workout_node_for_workout(@workouts.first)
     workout1.click
     within workout1 do
       page.find('input[type=checkbox]').should be_checked
     end
 
-    # check the second workout
     workout2 = get_workout_node_for_workout(@workouts.last)
     workout2.click
     within workout2 do
@@ -87,19 +78,36 @@ Then(/^I should see the workouts in my activity feed$/) do
 end
 
 Given(/^I have a Garmin device that supports TCX files$/) do
-  pending # express the regexp above with the code you wish you had
+  member_has_tcx_device
 end
 
 Given(/^I have some TCX workouts on my device$/) do
-  pending # express the regexp above with the code you wish you had
+  member_tcx_workouts_on_device
 end
 
 When(/^I upload a TCX workout from my device$/) do
-  pending # express the regexp above with the code you wish you had
+  select_device_with_name("Test TCX Device")
+
+  within "#Workouts" do
+    page_has_workouts
+
+    workout = get_workout_node_for_workout(@workouts.first)
+
+    workout.click
+
+    within workout do
+      page.find('input[type=checkbox]').should be_checked
+    end
+
+    upload_button = find_button("Upload Workouts (1)")
+    upload_button.click
+
+    ensure_workout_uploads(@workouts.first[:uuid])
+  end
 end
 
 Then(/^I should see a message telling me there are no workouts on my device$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content "We couldn’t find any workouts — better go training!"
 end
 
 Given(/^I have a FIT file that cannot be parsed$/) do
@@ -112,6 +120,14 @@ end
 
 Then(/^I should see an error message for the upload$/) do
   pending # express the regexp above with the code you wish you had
+end
+
+Given(/^I do not have the Garmin communicator plugin installed$/) do
+  member_does_not_have_plugin_installed
+end
+
+Then(/^I should see a message telling me that I need to install the Garmin plugin$/) do
+  page.should have_content "Go and install the garmin plugin!"
 end
 
 def page_has_workouts
