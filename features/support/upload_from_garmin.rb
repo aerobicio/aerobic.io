@@ -25,6 +25,11 @@ def member_tcx_workouts_on_device
   page.execute_script("window.GarminStubs.createTCXWorkouts(#{@workouts.to_json});")
 end
 
+def member_bad_data_workouts_on_device
+  @workouts = [workout_with_bad_data]
+  page.execute_script("window.GarminStubs.createFITWorkouts(#{@workouts.to_json});")
+end
+
 def workout1
   {
     id: 1,
@@ -42,6 +47,16 @@ def workout2
     date: "2013-12-12 08:53:01",
     data: workout2_fit_data,
     device: { id: 99 }
+  }
+end
+
+def workout_with_bad_data
+  {
+    id: 3,
+    uuid: "4500e0ee180cf7a3549ecc5d3317c70fc821e819",
+    date: "2013-12-12 08:53:01",
+    data: "Derp! I am not data!",
+    device: { id: 100 }
   }
 end
 

@@ -59,3 +59,29 @@ end
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
+
+Capybara.register_driver :firefox do |app|
+  profile = Selenium::WebDriver::Firefox::Profile.new
+
+  # profile keys map to settings in 'about:config'
+  profile["javascript.options.strict"]         = true
+  profile["extensions.update.enabled"]         = false
+  profile["app.update.enabled"]                = false
+  profile["app.update.auto"]                   = false
+  profile["network.http.prompt-temp-redirect"] = false
+  profile["plugin.state.flash"]                = 0
+  profile["plugin.state.garmingpscontrol"]     = 0
+
+  Capybara::Selenium::Driver.new(app, :browser => :firefox, :profile => profile)
+end
+
+Capybara.javascript_driver = :firefox
+
+Before('@no-garmin') do
+  ENV["DISABLE_GARMIN_TESTMODE"] = "true"
+end
+
+
+After('@no-garmin') do
+  ENV["DISABLE_GARMIN_TESTMODE"] = nil
+end

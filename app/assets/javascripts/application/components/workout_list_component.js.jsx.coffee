@@ -13,8 +13,11 @@
     </ol>`
 
   workoutNodesForDevice: (workoutCollection) ->
-    workoutCollection.map (workout) =>
-      @workoutNodeForWorkout(workout)
+    if workoutCollection.length
+      workoutCollection.map (workout) =>
+        @workoutNodeForWorkout(workout)
+    else
+      `<li>We couldn’t find any workouts — better go training!</li>`
 
   workoutNodeForWorkout: (model) ->
     if model instanceof app.models.ExistingWorkoutModel

@@ -40,8 +40,6 @@ When(/^I upload a FIT workout from my device$/) do
 
     upload_button = find_button("Upload Workouts (1)")
     upload_button.click
-
-    ensure_workout_uploads(@workouts.first[:uuid])
   end
 end
 
@@ -65,9 +63,6 @@ When(/^I upload multiple workouts from my device$/) do
 
     upload_button = find_button("Upload Workouts (2)")
     upload_button.click
-
-    ensure_workout_uploads(@workouts.first[:uuid])
-    ensure_workout_uploads(@workouts.last[:uuid])
   end
 end
 
@@ -83,6 +78,10 @@ end
 
 Given(/^I have some TCX workouts on my device$/) do
   member_tcx_workouts_on_device
+end
+
+Given(/^I have a FIT workout that cannot be parsed on my device$/) do
+  member_bad_data_workouts_on_device
 end
 
 When(/^I upload a TCX workout from my device$/) do
@@ -101,29 +100,34 @@ When(/^I upload a TCX workout from my device$/) do
 
     upload_button = find_button("Upload Workouts (1)")
     upload_button.click
-
-    ensure_workout_uploads(@workouts.first[:uuid])
   end
+end
+
+Then(/^the workout should be uploaded$/) do
+  within "#Workouts" do
+    ensure_workout_upload_succeeds(@workouts.first[:uuid])
+  end
+end
+
+Then(/^the workouts should both be uploaded$/) do
+  within "#Workouts" do
+    ensure_workout_upload_succeeds(@workouts.first[:uuid])
+    ensure_workout_upload_succeeds(@workouts.last[:uuid])
+  end
+end
+
+Then(/^I should see an error message for the upload$/) do
+  within "#Workouts" do
+    ensure_workout_upload_fails(@workouts.first[:uuid])
+  end
+end
+
+When(/^I select the device$/) do
+  select_device_with_name("Test FIT Device")
 end
 
 Then(/^I should see a message telling me there are no workouts on my device$/) do
   page.should have_content "We couldn’t find any workouts — better go training!"
-end
-
-Given(/^I have a FIT file that cannot be parsed$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-When(/^it fails to upload properly$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I should see an error message for the upload$/) do
-  pending # express the regexp above with the code you wish you had
-end
-
-Given(/^I do not have the Garmin communicator plugin installed$/) do
-  member_does_not_have_plugin_installed
 end
 
 Then(/^I should see a message telling me that I need to install the Garmin plugin$/) do
@@ -131,16 +135,27 @@ Then(/^I should see a message telling me that I need to install the Garmin plugi
 end
 
 def page_has_workouts
-  page.should have_content "2 Workouts found on your device."
-  page.should have_css("[data-workout-uuid='#{@workouts.first[:uuid]}']")
-  page.should have_css("[data-workout-uuid='#{@workouts.last[:uuid]}']")
+  page.should have_content "#{@workouts.length} Workouts found on your device."
+
+  @workouts.map {|workout|
+    page.should have_css("[data-workout-uuid='#{workout[:uuid]}']")
+  }
 end
 
-def ensure_workout_uploads(uuid)
+def ensure_workout_upload_succeeds(uuid)
   Capybara.default_wait_time = 15
   newWorkout = page.find(".is-uploaded[data-workout-uuid='#{uuid}']")
   within newWorkout do
     page.should have_content('uploaded')
+  end
+  Capybara.default_wait_time = 2
+end
+
+def ensure_workout_upload_fails(uuid)
+  Capybara.default_wait_time = 15
+  newWorkout = page.find(".is-failed[data-workout-uuid='#{uuid}']")
+  within newWorkout do
+    page.should have_content('failed')
   end
   Capybara.default_wait_time = 2
 end

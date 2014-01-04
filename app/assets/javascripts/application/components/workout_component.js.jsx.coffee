@@ -23,6 +23,7 @@
       "is-new": @props.model.get('status') == "new"
       "is-uploading": @props.model.get('status') == "uploading"
       "is-uploaded": @props.model.get('status') == "uploaded"
+      "is-failed": @props.model.get('status') == "failed"
 
   render: ->
     `<li key={this.props.model.cid} className={this.classes()} onClick={this.toggleChecked} data-workout-uuid={this.props.model.get('uuid')}>

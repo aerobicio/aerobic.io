@@ -5,6 +5,8 @@
     @options = _(options).defaults {}
 
     @garmin = new Garmin @options.garmin
+    @garminIsInstalled = @garmin.isInstalled()
+
     @progressModel = new app.models.ProgressModel
     @devicesCollection = new app.collections.DevicesCollection [], garminDelegate: @garmin
     @workoutsCollection = new app.collections.WorkoutsCollection [], uploadPath: @options.uploadPath
@@ -12,7 +14,9 @@
     @exitstingWorkoutsCollection.reset(@options.existingMemberWorkouts)
 
     @initializeUI()
-    @fetchDevices()
+
+    if @garminIsInstalled
+      @fetchDevices()
 
   fetchDevices: ->
     promise = @devicesCollection.fetch()
@@ -25,6 +29,7 @@
       deviceSelectedDelegate: @deviceSelected
       deviceUnselectedDelegate: @deviceUnselected
       progressModel: @progressModel
+      pluginIsInstalled: @garminIsInstalled
     )
     @workoutsComponent = app.components.WorkoutsComponent(
       collection: @workoutsCollection

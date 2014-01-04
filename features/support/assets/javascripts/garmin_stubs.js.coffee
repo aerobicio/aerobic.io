@@ -8,8 +8,8 @@ class GarminStubs
   _tcxDeviceWorkouts: []
 
   constructor: ->
-    @_stubs['Garmin.unlock']  = @_stubGarminUnlock()
-    @_stubs['Garmin.devices'] = @_stubGarminDevices()
+    @_stubs['Garmin.unlock']      = @_stubGarminUnlock()
+    @_stubs['Garmin.devices']     = @_stubGarminDevices()
 
   _stubGarminUnlock: ->
     sinon.stub(Garmin.prototype, 'unlock')
@@ -19,10 +19,6 @@ class GarminStubs
     deferred.resolve([])
     sinon.stub(Garmin.prototype, 'devices').returns(deferred.promise)
     deferred.promise
-
-  pluginNotInstalled: ->
-    @restoreAll()
-    window.garminUploadController.testMode = false
 
   restoreAll: ->
     _.invoke(@_stubs, 'restore')
@@ -59,6 +55,5 @@ class GarminStubs
       deferred.resolve(workoutJson.data)
       deferred.promise
     workoutJson
-
 
 window.GarminStubs = new GarminStubs

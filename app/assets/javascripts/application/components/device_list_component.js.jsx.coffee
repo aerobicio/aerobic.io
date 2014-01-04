@@ -16,13 +16,16 @@
       "has-device-selected": @state.hasDeviceSelected
 
   render: ->
-    SpinnerComponent = app.components.SpinnerComponent
-    deviceNodes = @deviceNodesForDevices(@props.collection)
+    if @props.pluginIsInstalled
+      SpinnerComponent = app.components.SpinnerComponent
+      deviceNodes = @deviceNodesForDevices(@props.collection)
 
-    `<nav className={this.classes()}>
-      <SpinnerComponent preset={app.config.spinner.small} isVisible={this.state.isLoading} />
-      {deviceNodes}
-    </nav>`
+      `<nav className={this.classes()}>
+        <SpinnerComponent preset={app.config.spinner.small} isVisible={this.state.isLoading} />
+        {deviceNodes}
+      </nav>`
+    else
+      `<div>Go and install the garmin plugin!</div>`
 
   onSelectDevice: (device, event) ->
     event.preventDefault()
