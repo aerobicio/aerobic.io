@@ -43,7 +43,9 @@ describe "app.components.WorkoutListComponent", ->
     describe "for a new workout", ->
       beforeEach ->
         @model = new app.models.WorkoutModel
+          id: 1
           name: "Velociraptor"
+          device: id: 2
         @workout = @component.workoutNodeForWorkout(@model)
 
       it "creates a WorkoutComponent", ->

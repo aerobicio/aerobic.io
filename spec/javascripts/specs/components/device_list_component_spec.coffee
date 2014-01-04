@@ -25,10 +25,6 @@ describe "app.components.DeviceListComponent", ->
       chai.expect(@component.state.isLoading).to.be.true
       chai.expect(@component.state.hasDeviceSelected).to.be.false
 
-  describe "#componentDidMount", ->
-    it "calls fetch on the collection", ->
-      chai.expect(@collection.fetch.called).to.be.true
-
   describe "#classes", ->
     it "has default classes", ->
       chai.expect(@component.classes()).to.have.string "devices-list"
@@ -113,9 +109,3 @@ describe "app.components.DeviceListComponent", ->
 
     it "calls the device unselected delegate method", ->
       chai.expect(@deviceUnselectedDelegate.called).to.be.true
-
-  describe "#devicesDidFinishLoading", ->
-    it "sets marks the loading state as completed", ->
-      @component.devicesDidFinishLoading()
-      chai.expect(@component.state.isLoading).to.be.false
-

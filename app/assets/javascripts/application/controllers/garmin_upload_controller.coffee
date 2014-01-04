@@ -2,14 +2,26 @@
   el: "#GarminUploadController"
 
   initialize: (options) ->
-    @options = options
-    @garmin = new Garmin unlockCodes: @options.garmin?.unlockCodes
+    @options = _(options).defaults {}
+
+    @garmin = new Garmin @options.garmin
+    @garminIsInstalled = @garmin.isInstalled()
+
     @progressModel = new app.models.ProgressModel
     @devicesCollection = new app.collections.DevicesCollection [], garminDelegate: @garmin
-    @workoutsCollection = new app.collections.WorkoutsCollection []
+    @workoutsCollection = new app.collections.WorkoutsCollection [], uploadPath: @options.uploadPath
     @exitstingWorkoutsCollection = new app.collections.WorkoutsCollection []
     @exitstingWorkoutsCollection.reset(@options.existingMemberWorkouts)
+
     @initializeUI()
+
+    if @garminIsInstalled
+      @fetchDevices()
+
+  fetchDevices: ->
+    promise = @devicesCollection.fetch()
+    promise.then(=> @deviceListComponent.setState(isLoading: false))
+    promise
 
   initializeUI: ->
     @deviceListComponent = app.components.DeviceListComponent(
@@ -17,10 +29,10 @@
       deviceSelectedDelegate: @deviceSelected
       deviceUnselectedDelegate: @deviceUnselected
       progressModel: @progressModel
+      pluginIsInstalled: @garminIsInstalled
     )
     @workoutsComponent = app.components.WorkoutsComponent(
       collection: @workoutsCollection
-      uploadPath: @options.uploadPath
     )
     React.renderComponent(@deviceListComponent, document.getElementById("DevicesList"))
     React.renderComponent(@workoutsComponent, document.getElementById("Workouts"))
@@ -40,7 +52,7 @@
     workoutsCollectionClone = @workoutsCollection.clone()
     @exitstingWorkoutsCollection.getWorkoutsForDeviceId(deviceId).map (existingWorkout) =>
       workout = workoutsCollectionClone.get(existingWorkout.get('device_workout_id'))
-      workoutIndex = workoutsCollectionClone.indexOf(workout) - 1
+      workoutIndex = workoutsCollectionClone.indexOf(workout)
       workoutsCollectionClone.remove(workout)
       workoutsCollectionClone.add(existingWorkout, at: workoutIndex)
 

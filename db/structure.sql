@@ -259,7 +259,8 @@ CREATE TABLE workouts (
     updated_at timestamp without time zone,
     user_id integer NOT NULL,
     device_workout_id character varying(255),
-    device_id character varying(255)
+    device_id character varying(255),
+    uuid character varying(255)
 );
 
 
@@ -493,6 +494,13 @@ CREATE INDEX index_workouts_on_user_id ON workouts USING btree (user_id);
 
 
 --
+-- Name: index_workouts_on_uuid; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_workouts_on_uuid ON workouts USING btree (uuid);
+
+
+--
 -- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -602,3 +610,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131209080642');
 INSERT INTO schema_migrations (version) VALUES ('20131222225330');
 
 INSERT INTO schema_migrations (version) VALUES ('20131222225612');
+
+INSERT INTO schema_migrations (version) VALUES ('20140102110634');

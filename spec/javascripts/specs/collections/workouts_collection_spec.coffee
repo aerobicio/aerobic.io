@@ -1,6 +1,10 @@
 describe "app.collections.WorkoutsCollection", ->
   beforeEach ->
-    @collection = new app.collections.WorkoutsCollection [], garminDelegate: @garminDelegateStub
+    @collection = new app.collections.WorkoutsCollection [], uploadPath: '/velociraptor/butts/'
+    @collection.queueUploadRequests = false
+    @onUploadStartedSpy = sinon.spy(@collection, 'onUploadStarted')
+    @onUploadDoneSpy = sinon.spy(@collection, 'onUploadDone')
+    @onUploadFailSpy = sinon.spy(@collection, 'onUploadFail')
 
   afterEach ->
     @collection = null
@@ -13,7 +17,11 @@ describe "app.collections.WorkoutsCollection", ->
 
     describe "a new workout", ->
       it "creates a WorkoutModel", ->
-        model = @collection.model({})
+        model = @collection.model(
+          id: 1,
+          device:
+            id: 2
+        )
         chai.expect(model).to.be.an.instanceof(app.models.WorkoutModel)
 
   describe "#fetch", ->
@@ -23,7 +31,7 @@ describe "app.collections.WorkoutsCollection", ->
       @deviceStub.getActivities.returns(@promise.promise)
 
     it "empties the collection", ->
-      @collection.add foo: 'bar'
+      @collection.add foo: 'bar', id: 1, device: id: 2
       @collection.fetch(@deviceStub)
       chai.expect(@collection.length).to.equal 0
 
@@ -77,3 +85,101 @@ describe "app.collections.WorkoutsCollection", ->
       w2.date = -> new Date
       @collection.add([w1, w2])
       chai.expect(@collection.getWorkoutsForDeviceId(99)[0]).to.equal w2
+
+  describe "#uploadSelectedWorkouts", ->
+    beforeEach ->
+      @collection.selectedWorkouts = sinon.stub()
+      @w1 = new Backbone.Model
+      @w1DataPromise = Q.defer()
+      @w1.data = => @w1DataPromise.promise
+      @w1.date = -> new Date
+      @w2 = new Backbone.Model
+      @w2DataPromise = Q.defer()
+      @w2.data = => @w2DataPromise.promise
+      @w2.date = -> new Date
+      @w3 = new Backbone.Model
+      @w3DataPromise = Q.defer()
+      @w3.data = => @w3DataPromise.promise
+      @w3.date = -> new Date
+      @w1Spy = sinon.spy(@w1, 'data')
+      @w2Spy = sinon.spy(@w2, 'data')
+      @w3Spy = sinon.spy(@w3, 'data')
+
+    afterEach ->
+      @w1Spy.restore()
+      @w2Spy.restore()
+      @w3Spy.restore()
+
+    it "loads the data for each workout", ->
+      @collection.selectedWorkouts.returns([@w1, @w2, @w3])
+      @collection.uploadSelectedWorkouts()
+      chai.expect(@w1Spy.calledOnce).to.be.true
+      chai.expect(@w2Spy.calledOnce).to.be.true
+      chai.expect(@w3Spy.calledOnce).to.be.true
+
+    it "uploads the data for each workout", (done) ->
+      @collection.uploadWorkout = sinon.stub()
+      data = 'I am data!'
+      @collection.selectedWorkouts.returns([@w1])
+      @collection.uploadSelectedWorkouts()
+      @w1DataPromise.promise.then =>
+        chai.expect(@collection.uploadWorkout.calledWith(@w1, data)).to.be.true
+        done()
+      @w1DataPromise.resolve(data)
+
+  describe "#uploadWorkout", ->
+    beforeEach ->
+      @workout = new Backbone.Model
+      @server = sinon.fakeServer.create()
+      sinon.stub(@collection, 'workoutData').returns(herp: 'derp')
+
+    it "sets the upload started state", ->
+      @collection.uploadWorkout(@workout, @data)
+      chai.expect(@onUploadStartedSpy.calledOnce).to.be.true
+      chai.expect(@workout.get('status')).to.equal "uploading"
+
+    describe "success", ->
+      beforeEach ->
+        @responseData =
+          id: 1
+          device: id: 2
+        @server.respondWith(
+          "POST", "/velociraptor/butts/",
+          [200, {"Content-Type": "application/json"}, JSON.stringify(@responseData)]
+        )
+
+      it "sets the upload done state", (done) ->
+        promise = @collection.uploadWorkout(@workout)
+        promise.always (data) =>
+          workout = @collection.models[@collection.indexOf(@workout)]
+          chai.expect(workout.get('status')).to.equal "uploaded"
+          done()
+        @server.respond()
+
+    describe "failure", ->
+      beforeEach ->
+        @server.respondWith(
+          "POST", "/velociraptor/butts/",
+          [500, {"Content-Type": "application/json"}, 'derp']
+        )
+
+      it "sets the upload failed state", (done) ->
+        promise = @collection.uploadWorkout(@workout)
+        promise.always =>
+          chai.expect(@workout.get('status')).to.equal "failed"
+          done()
+        @server.respond()
+
+  describe "#workoutData", ->
+    beforeEach ->
+      @workout = get: -> return
+      @workoutGetStub = sinon.stub(@workout, 'get')
+      @workoutGetStub.withArgs('device').returns(id: 1)
+      @workoutGetStub.withArgs('id').returns(2)
+      @data = "I am data."
+
+    it "retuns a object with the workout data", ->
+      workoutData = @collection.workoutData(@workout, @data)
+      chai.expect(workoutData.activity).to.equal @data
+      chai.expect(workoutData.device_id).to.equal 1
+      chai.expect(workoutData.device_workout_id).to.equal 2

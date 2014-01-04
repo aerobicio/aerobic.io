@@ -25,11 +25,13 @@ class UploadsController < ApplicationController
   private
 
   def render_json_response(result)
-    render json: {status: result.success?}.to_json
+    if result.success?
+      render json: result.context[:workout].to_json
+    end
   end
 
   def member_workouts
-    @member_workouts ||= current_user.workouts.all
+    @member_workouts ||= current_user.workouts.load
   end
 
   def upload_params

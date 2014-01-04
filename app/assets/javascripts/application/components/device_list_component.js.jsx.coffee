@@ -10,24 +10,22 @@
     isLoading: true
     hasDeviceSelected: false
 
-  componentDidMount: ->
-    promise = @props.collection.fetch()
-    promise.then(@devicesDidFinishLoading)
-    promise
-
   classes: ->
     React.addons.classSet
       "devices-list": true
       "has-device-selected": @state.hasDeviceSelected
 
   render: ->
-    SpinnerComponent = app.components.SpinnerComponent
-    deviceNodes = @deviceNodesForDevices(@props.collection)
+    if @props.pluginIsInstalled
+      SpinnerComponent = app.components.SpinnerComponent
+      deviceNodes = @deviceNodesForDevices(@props.collection)
 
-    `<nav className={this.classes()}>
-      <SpinnerComponent preset={app.config.spinner.small} isVisible={this.state.isLoading} />
-      {deviceNodes}
-    </nav>`
+      `<nav className={this.classes()}>
+        <SpinnerComponent preset={app.config.spinner.small} isVisible={this.state.isLoading} />
+        {deviceNodes}
+      </nav>`
+    else
+      `<div>Go and install the garmin plugin!</div>`
 
   onSelectDevice: (device, event) ->
     event.preventDefault()
@@ -42,9 +40,6 @@
     @setState(hasDeviceSelected: false)
     @props.collection.unselectAllDevices()
     @props.deviceUnselectedDelegate()
-
-  devicesDidFinishLoading: ->
-    @setState(isLoading: false)
 
   deviceNodesForDevices: (devicesCollection) ->
     if devicesCollection.length
