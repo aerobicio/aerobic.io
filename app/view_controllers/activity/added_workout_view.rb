@@ -39,6 +39,10 @@ class Activity
       member_workout_path(member_id: member.id, id: workout.id)
     end
 
+    def workout_member
+      @added_workout.activity_user
+    end
+
     private
 
     def member

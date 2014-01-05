@@ -6,7 +6,7 @@ When(/^I visit the workout page from the activity feed$/) do
   visit dashboard_path
 
   page_has_workout
-  click_link(I18n.t("activity.workout.title.first_person"))
+  page.find("[data-href]", text: I18n.t("activity.workout.title.first_person")).click
 end
 
 Then(/^I should see my workout$/) do

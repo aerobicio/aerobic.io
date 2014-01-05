@@ -12,9 +12,9 @@ def fit_file
 end
 
 def page_has_workout
-  page.should have_content "Distance: 41.32 km"
+  page.should have_content "41.32 km Distance"
 end
 
 def page_doesnt_have_workout
-  page.should have_no_content "Distance: 41.32 km"
+  page.should have_no_content "41.32 km Distance"
 end
