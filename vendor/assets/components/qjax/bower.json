@@ -1,8 +1,0 @@
-{
-	"name": "qJax",
-	"version": "1.5.2",
-	"main": "./jquery.qjax.js",
-	"dependencies": {
-		"jquery": ">=1.8"
-	}
-}
