@@ -10,7 +10,8 @@
         testMode: <%= (Rails.env.test? && !ENV['DISABLE_GARMIN_TESTMODE']) ? true : false %>,
         unlockCodes: {
           "http://app.aerobic.io": "4aef82fa29da77a8a1ba21fa00124d2f",
-          "https://app.aerobic.io": "92c4f797178604a964ab3e983475e4b3"
+          "https://app.aerobic.io": "92c4f797178604a964ab3e983475e4b3",
+          "http://beta-aerobic.herokuapp.com": "937e574570346a768ba4e963855f99e1"
         }
       },
       uploadPath: "<%= upload_path %>",
