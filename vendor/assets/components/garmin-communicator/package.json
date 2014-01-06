@@ -1,0 +1,41 @@
+{
+  "name": "garmin-communicator",
+  "version": "0.2.6",
+  "description": "A sane re-write of the garmin-communicator plugin.",
+  "main": "garmin.js",
+  "directories": {},
+  "devDependencies": {
+    "coffee-script": "~1.6.3",
+    "mocha": "~1.15.0",
+    "coffeeify": "~0.5.2",
+    "chai": "~1.8.1",
+    "istanbul": "~0.1.44",
+    "browserify": "~2.35.1",
+    "sinon": "~1.7.3",
+    "coffeelint": "~0.6.1",
+    "uglify-js": "~2.4.3",
+    "underscore": "~1.5.2",
+    "q": "~0.9.7",
+    "jsdom": "~0.8.9",
+    "xmldom": "~0.1.16",
+    "jquery": "~1.8.3"
+  },
+  "scripts": {
+    "lint": "make lint",
+    "spec": "make spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/plasticine/garmin-communicator.git"
+  },
+  "keywords": [
+    "garmin",
+    "communicator",
+    "garmin-communicator"
+  ],
+  "author": "Justin Morris",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/plasticine/garmin-communicator/issues"
+  }
+}
