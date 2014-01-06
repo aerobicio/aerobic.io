@@ -1,0 +1,26 @@
+.workouts {
+  display: none;
+
+  &.has-device-selected {
+    display: block;
+  }
+}
+
+.workouts__header {
+
+}
+
+.workouts__list {
+
+}
+
+.workouts__list__item {
+  @include transition(opacity 0.2s ease-in);
+
+  opacity: 1;
+
+  &.workout-enter { opacity: 0; }
+  &.workout-enter-active { opacity: 1; }
+  &.workout-leave { opacity: 1; }
+  &.workout-leave-active { opacity: 0; }
+}

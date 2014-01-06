@@ -2,7 +2,7 @@ html,
 body {
   @include prefixer(tap-highlight-color, rgba(0,0,0,0), webkit);
 
-  height: 100%;
+  min-height: 100vh;
   font-family: $font-family;
 }
 
