@@ -3,6 +3,7 @@
 --
 
 SET statement_timeout = 0;
+SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -497,7 +498,7 @@ CREATE INDEX index_workouts_on_user_id ON workouts USING btree (user_id);
 -- Name: index_workouts_on_uuid; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_workouts_on_uuid ON workouts USING btree (uuid);
+CREATE UNIQUE INDEX index_workouts_on_uuid ON workouts USING btree (uuid);
 
 
 --
@@ -612,3 +613,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131222225330');
 INSERT INTO schema_migrations (version) VALUES ('20131222225612');
 
 INSERT INTO schema_migrations (version) VALUES ('20140102110634');
+
+INSERT INTO schema_migrations (version) VALUES ('20140106061052');
