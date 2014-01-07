@@ -1,7 +1,7 @@
 describe "PanelsController", ->
   beforeEach ->
     @wrapperEl  = $("""<div id="wrapper"></div>""").appendTo 'body'
-    @controller = new PanelsController el: @wrapperEl
+    @controller = new app.controllers.PanelsController el: @wrapperEl
     @container  = $("""
       <div>
         <div class="panel" data-href="/some-url">

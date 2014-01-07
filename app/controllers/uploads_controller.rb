@@ -5,7 +5,7 @@
 #
 # The create action is called via AJAX and processes a single FIT file.
 class UploadsController < ApplicationController
-  layout 'garmin'
+  before_filter :member_workouts, only: [:show]
 
   def show
   end
@@ -15,18 +15,30 @@ class UploadsController < ApplicationController
       result = CreateWorkoutFromUploadedFitFile.perform(upload_params)
 
       raise ActiveRecord::Rollback unless result.success?
-    end
 
-    respond_to do |format|
-      format.json { render json: "OK" }
+      respond_to do |format|
+        format.json { render_json_response(result) }
+      end
     end
   end
 
   private
 
+  def render_json_response(result)
+    if result.success?
+      render json: result.context[:workout].to_json
+    end
+  end
+
+  def member_workouts
+    @member_workouts ||= current_user.workouts.load
+  end
+
   def upload_params
     {
       activity: params[:activity],
+      device_id: params[:device_id],
+      device_workout_id: params[:device_workout_id],
       member_id: current_user.id
     }
   end

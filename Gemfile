@@ -18,8 +18,8 @@ gem "newrelic_rpm"
 gem "omniauth"
 gem "omniauth-identity"
 gem "pg"
-gem "prototype-rails"
 gem "rails", "4.0.2"
+gem "react-rails", "~> 0.5"
 gem "redis"
 gem "rollout"
 gem "sass-rails", "~> 4.0.0"
@@ -39,6 +39,7 @@ group :development, :test do
   gem "pry"
   gem "rails_best_practices"
   gem "rspec-rails", "~> 2.0"
+  gem "selenium-webdriver"
   gem "teaspoon", "~> 0.7.8"
 end
 

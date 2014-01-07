@@ -16,7 +16,7 @@ require File.expand_path("../../config/environment", __FILE__)
 # rake teaspoon DRIVER=selenium SUPPRESS_LOG=false
 Teaspoon.setup do |config|
   # Driver / Server
-  config.driver           = "phantomjs" # available: phantomjs, selenium
+  config.driver           = "selenium" # available: phantomjs, selenium
   #config.server           = nil # defaults to Rack::Server
 
   # Behaviors
@@ -30,10 +30,11 @@ Teaspoon.setup do |config|
   config.color            = true
 
   # Coverage (requires istanbul -- https://github.com/gotwarlost/istanbul)
-  config.coverage         = true
-  config.coverage_reports = "text,html"
-  config.statements_coverage_threshold = 96.61
-  config.functions_coverage_threshold  = 96.67
-  config.branches_coverage_threshold   = 65
-  config.lines_coverage_threshold      = 100
+  config.coverage                      = true
+  config.coverage_output_dir           = "js-coverage"
+  config.coverage_reports              = "text,html"
+  config.statements_coverage_threshold = 96.98
+  config.branches_coverage_threshold   = 69.64
+  config.functions_coverage_threshold  = 94
+  config.lines_coverage_threshold      = 97.05
 end

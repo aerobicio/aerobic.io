@@ -1,0 +1,17 @@
+.spinner {
+  @include transition(opacity 0.2s ease-in);
+
+  opacity: 0;
+
+  &.spinner-enter {
+    opacity: 0;
+
+    &.spinner-enter-active { opacity: 1; }
+  }
+
+  &.spinner-leave {
+    opacity: 1;
+
+    &.spinner-leave-active { opacity: 0; }
+  }
+}
