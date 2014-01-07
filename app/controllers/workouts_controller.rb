@@ -1,6 +1,6 @@
 # WorkoutsController is responsible for displaying member workouts.
 class WorkoutsController < ApplicationController
   def show
-    @view = Workouts::Show.new(self, current_user, params[:id].to_i)
+    @view = Workouts::Show.new(self, params[:member_id].to_i, params[:id].to_i)
   end
 end

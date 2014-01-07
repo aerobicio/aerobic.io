@@ -6,17 +6,13 @@ module Workouts
     include UnitsHelper
     attr_reader :workout
 
-    def initialize(controller, current_member, workout_id)
+    def initialize(controller, member_id, workout_id)
       @controller = controller
-      @current_member = current_member
-      @workout = Workout.find_by!(user_id: current_member.id, id: workout_id)
+      @workout = Workout.find_by!(user_id: member_id, id: workout_id)
     end
 
     def cache_key
-      [
-        @current_member.cache_key,
-        @workout.cache_key,
-      ].flatten.join(":")
+      @workout.cache_key
     end
 
     def duration
