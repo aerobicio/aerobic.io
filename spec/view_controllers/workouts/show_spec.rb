@@ -2,9 +2,9 @@ require "spec_helper"
 require_relative "../../../app/view_controllers/workouts/show"
 
 describe Workouts::Show do
-  let(:view) { described_class.new(controller, current_member, workout_id) }
+  let(:view) { described_class.new(controller, member_id, workout_id) }
   let(:controller) { double(:controller) }
-  let(:current_member) { double(:current_member, id: 1, cache_key: "1") }
+  let(:member_id) { 1 }
   let(:workout_id) { 2 }
 
   let(:workout) do
@@ -19,7 +19,7 @@ describe Workouts::Show do
   before do
     stub_const("Workout", Class.new)
     Workout.should_receive(:find_by!).with(
-      user_id: current_member.id,
+      user_id: member_id,
       id: workout_id,
     ) { workout }
   end
@@ -28,7 +28,7 @@ describe Workouts::Show do
     subject(:cache_key) { view.cache_key }
 
     it "should be a combination of the member and workout cache keys" do
-      cache_key.should == "1:2"
+      cache_key.should == "2"
     end
   end
 
