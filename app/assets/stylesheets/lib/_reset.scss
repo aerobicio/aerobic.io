@@ -219,7 +219,7 @@ tt, code, kbd, samp {
 
 b,
 strong {
-  font-weight:bold;
+  @extend %font-weight-bold;
 }
 
 em {
