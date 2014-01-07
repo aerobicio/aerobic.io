@@ -70,3 +70,8 @@ deploy:
         - script:
             name: Migrate Database
             code: heroku run rake db:migrate --app $HEROKU_APP_NAME
+    after-steps:
+        - hipchat-notify:
+            token: $HIPCHAT_TOKEN
+            room-id: $HIPCHAT_ROOM_ID
+            from-name: Wercker
