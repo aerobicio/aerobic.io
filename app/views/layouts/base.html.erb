@@ -17,6 +17,7 @@
 
         <%= area :content_outer do %>
           <section class="<%= area :content_class, 'content' %>" role="main">
+            <a href="#" class="burger" onclick="javascript: $('.header').toggleClass('is-expanded'); return false;">Burger!</a>
             <%= area :content do %>
               <div class="content-inner">
                 <%= area :content_inner -%>

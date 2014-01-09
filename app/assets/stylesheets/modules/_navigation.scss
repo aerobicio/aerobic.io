@@ -5,7 +5,18 @@
 //
 // Styleguide Components.Navigation
 .navigation {
-  float: right;
+  background-color: rgba(0,0,0,0.85);
+  z-index: 2;
+  height: 100%;
+
+  @include media($lap-and-up) {
+    float: right;
+    background-color: transparent;
+  }
+}
+
+.navigation__items {
+  float: left;
 }
 
 // Navigation Items.
@@ -16,49 +27,61 @@
 // :hover       - Hover state
 // :focus       - Focus state
 // :active      - Active state
-// .is-cta      - Call to action link, more prominent treatment.
 //
 // Styleguide Components.Navigation.Navigation Item
-.navigation__item {
+.navigation__items__item {
   @include transition(all 100ms $ease-in-out-quad);
+  @include padding(medium);
 
-  @extend .padding-medium-left;
-  @extend .padding-medium-right;
-  @extend .margin-medium-left;
+  display: block;
+  width: 100%;
 
-  border-radius: 4px;
-  border: 2px solid transparent;
-  color: #a1a1a1;
-  float: left;
-  font-size: 1.1rem;
-  line-height: 2.2;
-  text-transform: capitalize;
+  @include media($lap-and-up) {
+    @include padding(medium, left);
+    @include padding(medium, right);
+    @include margin(medium, left);
 
-  &:first-child {
-    margin-left: 0;
+    border-radius: 4px;
+    border: 2px solid transparent;
+    color: #a1a1a1;
+    float: left;
+    font-size: 1.1rem;
+    line-height: 2.2;
+    text-transform: capitalize;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: #a1a1a1;
+    }
+
+    &:active,
+    &.is-active {
+      border-color: $header-navigation-color;
+      color: $header-navigation-color;
+    }
+
+    @include media($desk) {
+      padding-left: 1.8rem;
+      padding-right: 1.8rem;
+      margin-left: get_spacing(wide);
+      line-height: 2.6;
+    }
   }
+}
 
-  &:hover,
-  &:focus {
-    border-color: #a1a1a1;
-  }
+.navigation__items__item--upload {
+  @extend .navigation__items__item;
 
-  &:active,
-  &.is-active {
-    border-color: $header-navigation-color;
-    color: $header-navigation-color;
-  }
+  display: none;
 
-  &.is-cta {
+  @include media($lap-and-up) {
+    display: block;
     background-color: #0072bc;
     border-color: #0072bc;
     color: #fff;
-  }
-
-  @include media($desk) {
-    padding-left: 1.8rem;
-    padding-right: 1.8rem;
-    margin-left: get_spacing(wide);
-    line-height: 2.6;
   }
 }

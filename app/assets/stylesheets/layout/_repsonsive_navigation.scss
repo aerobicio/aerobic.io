@@ -1,0 +1,57 @@
+.burger {
+  display: block;
+  width: 100%;
+  height: 4.4rem;
+
+  @include media($lap-and-up) {
+    display: none;
+  }
+}
+
+[role="banner"] {
+  position: -webkit-sticky;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  height: 100vh;
+  width: 85%;
+  overflow: scroll;
+}
+
+[role="main"],
+[role="contentinfo"] {
+  @include transform-origin(top right);
+  @include transition-property(transform);
+  @include transition-duration(250ms);
+  @include transition-timing-function($ease-in-out-quad);
+  @include transform(translate3d(0, 0, 0));
+
+  position: relative;
+  z-index: 2;
+  background-color: $background-color;
+}
+
+[role="banner"].is-expanded + [role="main"] {
+  @include transform(translate3d(85%, 0, 0));
+
+  .burger {
+    @include padding(medium);
+
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .content-inner {
+    @include transition(opacity 350ms $ease-in-out-quad);
+
+    opacity: 0.25;
+  }
+}

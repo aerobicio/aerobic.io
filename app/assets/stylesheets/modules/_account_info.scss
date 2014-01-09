@@ -1,15 +1,20 @@
-// Styleguide Components.Header.Account Info
+// Styleguide Components.Navigation.Account Info
 .account_info {
   @extend .media;
   @extend .margin-medium-left;
-  @extend .padding-medium-left;
+  @extend .margin-medium-right;
+  @extend .padding-medium;
 
-  float: right;
-  border-left: 2px solid #e3e4e7;
   clear: none;
   margin-bottom: 0;
   color: #a1a1a1;
   line-height: 1.5;
+  border-bottom: 1px solid #111;
+
+  @include media($lap-and-up) {
+    float: right;
+    border-left: 2px solid #e3e4e7;
+  }
 
   @include media($desk) {
     padding-left: get_spacing(wide) * 2;

@@ -9,9 +9,14 @@
 .header {}
 
 .header__inner {
-  @extend .padding-medium;
+  position: relative;
+  height: 100%;
 
-  overflow: auto;
+  @include media($lap-and-up) {
+    @include padding(medium);
+
+    overflow: hidden;
+  }
 
   @include media($desk) {
     @include padding(wide);
@@ -19,19 +24,23 @@
 }
 
 .header__masthead {
-  @include transition(all 100ms $ease-in-out-quad);
-  @include hide-text;
+  display: none;
 
-  display: block;
-  float: left;
-  background:transparent image-url('masthead.svg') left top no-repeat;
-  background-size: 100% 100%;
-  width: 90px;
-  height: 22px;
-  margin-top: 6px;
+  @include media($lap-and-up) {
+    @include transition(all 100ms $ease-in-out-quad);
+    @include hide-text;
 
-  .landing__hero & {
-    background-image: image-url('landing/masthead.svg')
+    float: left;
+    display: block;
+    background:transparent image-url('masthead.svg') left top no-repeat;
+    background-size: 100% 100%;
+    width: 90px;
+    height: 22px;
+    margin-top: 6px;
+
+    .landing__hero & {
+      background-image: image-url('landing/masthead.svg')
+    }
   }
 
   @include media($desk) {
