@@ -6,7 +6,7 @@ describe UnitsHelper do
     subject { format_duration(duration) }
     let(:duration) { 60000 }
 
-    it { should == "1 min" }
+    it { should == "0:01:00" }
   end
 
   describe "#format_distance" do

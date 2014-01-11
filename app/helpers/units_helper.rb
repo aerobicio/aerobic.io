@@ -2,7 +2,7 @@
 # common formatting for presentation to users
 module UnitsHelper
   def format_duration(duration_ms)
-    I18n.t("units.duration", duration: milliseconds_to_minutes(duration_ms))
+    DisplayTime.new(duration_ms / 1000).to_s
   end
 
   def format_distance(distance_cm)
