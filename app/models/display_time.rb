@@ -5,6 +5,13 @@ class DisplayTime
     @duration = duration
   end
 
+  def to_s
+    output = ""
+    output = hours.to_s << ":"
+    output << minutes.to_s.rjust(2, '0') << ":"
+    output << seconds.to_s.rjust(2, '0')
+  end
+
   def hours
     @hours || hours_from_duration
   end
