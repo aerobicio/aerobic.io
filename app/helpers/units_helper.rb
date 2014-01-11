@@ -2,7 +2,7 @@
 # common formatting for presentation to users
 module UnitsHelper
   def format_duration(duration_ms)
-    DisplayTime.new(duration_ms / 1000).to_s
+    DisplayTime.new(milliseconds_to_seconds(duration_ms)).to_s
   end
 
   def format_distance(distance_cm)
@@ -11,8 +11,8 @@ module UnitsHelper
 
   private
 
-  def milliseconds_to_minutes(ms)
-    ms / 1000 / 60
+  def milliseconds_to_seconds(ms)
+    ms / 1000
   end
 
   def centimeters_to_meters(cm)
