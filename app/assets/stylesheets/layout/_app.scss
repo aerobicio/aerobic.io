@@ -1,6 +1,11 @@
 .layout-app {
+  .page {
+    overflow-x: hidden;
+  }
+
   .content {
     @extend .padding-medium;
+    @include spacing(padding, wide, top, 2);
 
     @include media($desk) {
       @include padding(wide);
