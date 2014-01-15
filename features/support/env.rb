@@ -6,8 +6,9 @@
 
 ENV["COVERAGE_GROUP"] ||= "acceptance"
 require 'simplecov'
-
 require 'cucumber/rails'
+require 'capybara-screenshot/cucumber'
+require 'capybara/poltergeist'
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
@@ -60,27 +61,84 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
-Capybara.register_driver :firefox do |app|
-  profile = Selenium::WebDriver::Firefox::Profile.new
+# Capybara.register_driver :firefox do |app|
+#   profile = Selenium::WebDriver::Firefox::Profile.new
+#   # profile keys map to settings in 'about:config'
+#   profile["javascript.options.strict"]         = true
+#   profile["extensions.update.enabled"]         = false
+#   profile["app.update.enabled"]                = false
+#   profile["app.update.auto"]                   = false
+#   profile["network.http.prompt-temp-redirect"] = false
+#   profile["plugin.state.flash"]                = 0
+#   profile["plugin.state.garmingpscontrol"]     = 0
+#   Capybara::Selenium::Driver.new(app, :browser => :firefox, :profile => profile)
+# end
+# Capybara.javascript_driver = :firefox
 
-  # profile keys map to settings in 'about:config'
-  profile["javascript.options.strict"]         = true
-  profile["extensions.update.enabled"]         = false
-  profile["app.update.enabled"]                = false
-  profile["app.update.auto"]                   = false
-  profile["network.http.prompt-temp-redirect"] = false
-  profile["plugin.state.flash"]                = 0
-  profile["plugin.state.garmingpscontrol"]     = 0
+# Capybara.register_driver :webkit do |app|
+#   driver = Capybara::Webkit::Driver.new(app)
+#   driver
+# end
+# Capybara.javascript_driver = :webkit
 
-  Capybara::Selenium::Driver.new(app, :browser => :firefox, :profile => profile)
+module Capybara::Poltergeist
+  class Client
+    private
+    def redirect_stdout
+      prev = STDOUT.dup
+      prev.autoclose = false
+      $stdout = @write_io
+      STDOUT.reopen(@write_io)
+
+      prev = STDERR.dup
+      prev.autoclose = false
+      $stderr = @write_io
+      STDERR.reopen(@write_io)
+      yield
+    ensure
+      STDOUT.reopen(prev)
+      $stdout = STDOUT
+      STDERR.reopen(prev)
+      $stderr = STDERR
+    end
+  end
 end
 
-Capybara.javascript_driver = :firefox
+class WarningSuppressor
+  IGNORES = [
+    /QFont::setPixelSize: Pixel size <= 0/,
+    /CoreText performance note:/,
+    /Heya! This page is using wysihtml5/,
+    /Method userSpaceScaleFactor in class NSView/,
+  ]
+
+  class << self
+    def write(message)
+      if suppress?(message) then 0 else puts(message);1;end
+    end
+
+    private
+
+    def suppress?(message)
+      IGNORES.any? { |re| message =~ re }
+    end
+  end
+end
+
+Capybara.register_driver :poltergeist do |app|
+  options = {
+    timeout: 10,
+    js_errors: true,
+    debug: false,
+    phantomjs_logger: WarningSuppressor,
+  }
+  Capybara::Poltergeist::Driver.new(app, options)
+end
+Capybara.javascript_driver = :poltergeist
 
 Before('@no-garmin') do
   ENV["DISABLE_GARMIN_TESTMODE"] = "true"
 end
-
 
 After('@no-garmin') do
   ENV["DISABLE_GARMIN_TESTMODE"] = nil
