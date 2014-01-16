@@ -66,7 +66,13 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 
 Capybara.javascript_driver = :webkit
 
-Before('@garmin') do
+Around('@fast') do |scenario, block|
+  Timeout.timeout(0.5) do
+    block.call
+  end
+end
+
+Before('@poltergeist') do
   Capybara.current_driver = :poltergeist
 end
 
@@ -74,7 +80,7 @@ Before('@firefox') do
   Capybara.current_driver = :firefox
 end
 
-After('@garmin, @firefox') do
+After('@poltergeist, @firefox') do
   Capybara.use_default_driver
 end
 

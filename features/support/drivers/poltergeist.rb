@@ -25,5 +25,10 @@ module Capybara::Poltergeist
 end
 
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, phantomjs_logger: WarningSuppressor)
+  Capybara::Poltergeist::Driver.new(app, {
+    phantomjs_logger: WarningSuppressor,
+    extensions: [
+      'vendor/assets/components/es5-shim/es5-shim.js',
+    ],
+  })
 end
