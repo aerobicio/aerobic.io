@@ -12,6 +12,7 @@ require 'capybara-screenshot/cucumber'
 require_relative './drivers/poltergeist'
 require_relative './drivers/webkit'
 require_relative './drivers/firefox'
+require_relative './hooks'
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
@@ -65,29 +66,3 @@ end
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
 Capybara.javascript_driver = :webkit
-
-Around('@fast') do |scenario, block|
-  Timeout.timeout(0.5) do
-    block.call
-  end
-end
-
-Before('@poltergeist') do
-  Capybara.current_driver = :poltergeist
-end
-
-Before('@firefox') do
-  Capybara.current_driver = :firefox
-end
-
-After('@poltergeist, @firefox') do
-  Capybara.use_default_driver
-end
-
-Before('@no-garmin') do
-  ENV["DISABLE_GARMIN_TESTMODE"] = "true"
-end
-
-After('@no-garmin') do
-  ENV["DISABLE_GARMIN_TESTMODE"] = nil
-end
