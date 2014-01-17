@@ -5,32 +5,24 @@ Given(/^"(.*?)" is a member$/) do |name|
 end
 
 Given(/^I have some activity$/) do
-  add_workout
+  upload_default_workout
 end
 
 Then(/^I should see the workout in my activity feed$/) do
   visit dashboard_path
-  page_has_workout
+  page_has_workout1
 end
 
 Then(/^"(.*?)" should see the workout in their activity feed$/) do |name|
   Capybara.session_name = name
   visit dashboard_path
-  page_has_workout
+  page_has_workout1
   Capybara.session_name = "mine"
 end
 
 Then(/^"(.*?)" should not see the workout in their activity feed$/) do |name|
   Capybara.session_name = name
   visit dashboard_path
-  page_doesnt_have_workout
+  page_doesnt_have_workout1
   Capybara.session_name = "mine"
-end
-
-def page_has_workout
-  page.should have_content "Distance: 41.32km"
-end
-
-def page_doesnt_have_workout
-  page.should have_no_content "Distance: 41.32km"
 end

@@ -6,11 +6,9 @@
 @import "constants";
 @import "neat";
 
-
 // Fonts
 // ----------------------------------------
 @import "lib/fonts";
-
 
 // Mixins, functions and placeholders
 // ----------------------------------------
@@ -18,32 +16,27 @@
 @import "lib/functions";
 @import "lib/placeholders";
 
-
 // Base styles, unclassed HTML elems, reset
 // ----------------------------------------
 @import "lib/reset";
 @import "base/*";
 
-
 // Layout styles, high level structural stuff
 // ----------------------------------------
 @import "layout/*";
 
-
 // Modules/Components
 // ----------------------------------------
-// placeholders that we reuse in other modules are here
-@import "lib/placeholders";
+@import "lib/placeholders"; // placeholders that we reuse in other modules are here
 
-// new refactored BEM stuff lives here.
-@import "modules/*";
-@import "modules/landing/*";
+@import "modules/*"; // BEM style modules live here.
 
-// The shame! The shame!
-@import "shame";
+@import "shame"; // The shame! The shame!
 
+// Vendored styles
+// ----------------------------------------
+@import "vendor";
 
 // Bits and bobs
 // ----------------------------------------
 @import "lib/debug";
-

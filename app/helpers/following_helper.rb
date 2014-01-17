@@ -3,7 +3,7 @@
 #
 module FollowingHelper
   def following_link_for_members(member, other_member)
-    return unless $switch_board.following_active?
+    return unless $switch_board.following_active?(member)
 
     if members_are_different(member, other_member)
       if member.follows?(other_member)
@@ -15,12 +15,12 @@ module FollowingHelper
   end
 
   def member_relationship_status_for_members(member, other_member)
-    return unless $switch_board.following_active?
+    return unless $switch_board.following_active?(member)
 
-    if member.follows?(other_member)
-      "#{member.name} follows you"
+    if other_member.follows?(member)
+      "#{other_member.name} follows you"
     else
-      "#{member.name} doesn’t follow you"
+      "#{other_member.name} doesn’t follow you"
     end
   end
 

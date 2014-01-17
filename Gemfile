@@ -1,10 +1,9 @@
 source "https://rubygems.org"
-ruby "2.0.0", :patchlevel => "247"
+ruby "2.0.0", :patchlevel => "353"
 
-gem "bcrypt-ruby", "~> 3.0.0"
+gem "bcrypt-ruby", "~> 3.1.2"
 gem "bindata"
 gem "bourbon"
-gem "consistency_fail"
 gem "dalli"
 gem "fit", git: "https://github.com/aerobicio/fit.git"
 gem "foreigner"
@@ -19,8 +18,8 @@ gem "newrelic_rpm"
 gem "omniauth"
 gem "omniauth-identity"
 gem "pg"
-gem "prototype-rails"
-gem "rails", "4.0.0"
+gem "rails", "4.0.2"
+gem "react-rails", "~> 0.5"
 gem "redis"
 gem "rollout"
 gem "sass-rails", "~> 4.0.0"
@@ -36,10 +35,12 @@ group :development, :test do
   gem "cane"
   gem "dotenv-rails"
   gem "factory_girl_rails"
-  gem "kayessess", "~> 0.2.0"
+  gem "kayessess", "~> 0.2.7"
+  gem "pry"
   gem "rails_best_practices"
   gem "rspec-rails", "~> 2.0"
-  gem "teaspoon"
+  gem "selenium-webdriver"
+  gem "teaspoon", "~> 0.7.8"
 end
 
 group :doc do
@@ -48,16 +49,17 @@ end
 
 group :test do
   gem "codeclimate-test-reporter", require: nil
+  gem "consistency_fail"
   gem "cucumber-nc"
   gem "cucumber-rails", :require => false
   gem "database_cleaner"
   gem "faker"
   gem "rspec-nc"
-  gem "simplecov", :require => false
   gem "shoulda-matchers"
   gem "simplecov", :require => false
 end
 
 group :production do
+  gem "memcachier"
   gem "rails_12factor"
 end

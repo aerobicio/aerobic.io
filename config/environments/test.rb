@@ -34,4 +34,7 @@ AerobicIo::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  config.assets.precompile += ['garmin_stubs.js']
+  config.assets.paths << "features/support/assets/javascripts"
 end

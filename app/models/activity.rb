@@ -11,4 +11,14 @@ class Activity < ActiveRecord::Base
   belongs_to :activity_followed_user, class_name: "User"
 
   validates_presence_of :user
+
+  default_scope { order(created_at: :desc) }
+
+  scope :exclude_following, -> {
+    where.not(:type => ["Activity::FollowedUser", "Activity::UnfollowedUser"])
+  }
+
+  def date
+    created_at.try(:to_date)
+  end
 end

@@ -9,13 +9,17 @@
     "doc": "doc",
     "test": "test"
   },
+  "engines": {
+    "node": "0.10.21"
+  },
   "dependencies": {
     "bower": "~1.2.6",
-    "istanbul": "~0.1.44"
+    "istanbul": "~0.1.46"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "bin/teaspoon"
+    "test": "bin/teaspoon",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "repository": {
     "type": "git",

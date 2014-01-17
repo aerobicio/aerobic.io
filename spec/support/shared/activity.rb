@@ -8,4 +8,23 @@ shared_examples "an activity model" do
 end
 
 shared_examples "an activity models public API" do
+  let(:activity) { described_class.new }
+
+  describe "#date" do
+    subject { activity.date }
+
+    context "when created_at is not set" do
+      it { should == nil }
+    end
+
+    context "when created_at is set" do
+      let(:time) { Time.zone.now }
+
+      before do
+        activity.created_at = time
+      end
+
+      it { should == time.to_date }
+    end
+  end
 end

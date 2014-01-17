@@ -20,12 +20,14 @@ nohup.*
 
 /config/database.yml
 /coverage
+/js-coverage
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
 
 /public/assets
+/vendor/assets/components
 /node_modules
 
 /spec/ui/**/diff.png
