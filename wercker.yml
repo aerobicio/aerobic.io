@@ -63,6 +63,10 @@ build:
             room-id: 541059
             subdomain: aerobicio
             on: failed
+        - sherzberg/slack-notify:
+            subdomain: aerobic
+            token: $SLACK_TOKEN
+            channel: general
 
 deploy:
     steps:
@@ -75,3 +79,7 @@ deploy:
             token: $HIPCHAT_TOKEN
             room-id: $HIPCHAT_ROOM_ID
             from-name: Wercker
+        - sherzberg/slack-notify:
+            subdomain: aerobic
+            token: $SLACK_TOKEN
+            channel: general
