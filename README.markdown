@@ -14,6 +14,7 @@ Aerobic.io is a Fitness Tracking service by @quamen and @plasticine.
 * Postgresql
 * Phantomjs
 * npm
+* Qt
 
 ### Getting Started
 

@@ -8,8 +8,8 @@ class GarminStubs
   _tcxDeviceWorkouts: []
 
   constructor: ->
-    @_stubs['Garmin.unlock']      = @_stubGarminUnlock()
-    @_stubs['Garmin.devices']     = @_stubGarminDevices()
+    @_stubs['Garmin.unlock']  = @_stubGarminUnlock()
+    @_stubs['Garmin.devices'] = @_stubGarminDevices()
 
   _stubGarminUnlock: ->
     sinon.stub(Garmin.prototype, 'unlock')
