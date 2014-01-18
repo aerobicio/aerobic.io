@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-box: plasticine/aerobic.io@0.0.5
-=======
 box: plasticine/aerobic.io@0.0.6
->>>>>>> master
 services:
     - wercker/postgresql
     - wercker/redis

@@ -23,7 +23,7 @@ function teardown {
 
 function huxley_test {
   start_app_server
-  huxley --playback-only --save-diff -f ./spec/ui/**Huxleyfile
+  huxley --playback-only --save-diff --browser phantomjs -f ./spec/ui/**Huxleyfile
   HUXLEY_EXIT_CODE=$?
   teardown
   exit $HUXLEY_EXIT_CODE
@@ -33,7 +33,7 @@ function huxley_record {
   # first run through is used to record interactions and steps using a visual
   # browser (firefox)
   start_app_server
-  huxley --record -f ./spec/ui/**Huxleyfile
+  huxley --record --save-diff --browser phantomjs --testfile ./spec/ui/**Huxleyfile
   HUXLEY_EXIT_CODE=$?
   teardown
   exit $HUXLEY_EXIT_CODE
