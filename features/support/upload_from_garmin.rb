@@ -83,22 +83,22 @@ def tcx_workout_data
 end
 
 def page_has_workout1
-  page.should have_content "91 min Duration"
+  page.should have_content "1:31:23 Duration"
   page.should have_content "41.32 km Distance"
 end
 
 def page_doesnt_have_workout1
-  page.should have_no_content "91 min Duration"
+  page.should have_no_content "1:31:23 Duration"
   page.should have_no_content "41.32 km Distance"
 end
 
 def page_has_workout2
-  page.should have_content "37 min Duration"
+  page.should have_content "0:37:30 Duration"
   page.should have_content "17.04 km Distance"
 end
 
 def page_doesnt_have_workout2
-  page.should have_no_content "37 min Duration"
+  page.should have_no_content "0:37:30 Duration"
   page.should have_no_content "17.04 km Distance"
 end
 

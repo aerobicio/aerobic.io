@@ -36,7 +36,7 @@ describe Workouts::Show do
     subject(:duration) { view.duration }
 
     it "returns the formatted workout duration" do
-      duration.should == "1 min"
+      duration.should == "0:01:00"
     end
   end
 
