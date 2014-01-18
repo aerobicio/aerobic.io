@@ -15,6 +15,7 @@ check_version "bundle -v"
 check_version "psql --version"
 check_version "phantomjs --version"
 check_version "npm -v"
+check_version "qmake -v"
 
 bundle
 bundle binstubs rspec-core --force

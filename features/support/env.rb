@@ -6,8 +6,13 @@
 
 ENV["COVERAGE_GROUP"] ||= "acceptance"
 require 'simplecov'
-
 require 'cucumber/rails'
+require 'capybara-screenshot/cucumber'
+
+require_relative './drivers/poltergeist'
+require_relative './drivers/webkit'
+require_relative './drivers/firefox'
+require_relative './hooks'
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
 # order to ease the transition to Capybara we set the default here. If you'd
@@ -60,28 +65,4 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
-Capybara.register_driver :firefox do |app|
-  profile = Selenium::WebDriver::Firefox::Profile.new
-
-  # profile keys map to settings in 'about:config'
-  profile["javascript.options.strict"]         = true
-  profile["extensions.update.enabled"]         = false
-  profile["app.update.enabled"]                = false
-  profile["app.update.auto"]                   = false
-  profile["network.http.prompt-temp-redirect"] = false
-  profile["plugin.state.flash"]                = 0
-  profile["plugin.state.garmingpscontrol"]     = 0
-
-  Capybara::Selenium::Driver.new(app, :browser => :firefox, :profile => profile)
-end
-
-Capybara.javascript_driver = :firefox
-
-Before('@no-garmin') do
-  ENV["DISABLE_GARMIN_TESTMODE"] = "true"
-end
-
-
-After('@no-garmin') do
-  ENV["DISABLE_GARMIN_TESTMODE"] = nil
-end
+Capybara.javascript_driver = :webkit

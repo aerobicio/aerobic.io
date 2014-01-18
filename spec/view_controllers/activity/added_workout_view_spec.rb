@@ -48,7 +48,7 @@ describe Activity::AddedWorkoutView do
   describe "duration" do
     subject { view.duration }
 
-    it { should == "1 min" }
+    it { should == "0:01:40" }
   end
 
   describe "distance" do

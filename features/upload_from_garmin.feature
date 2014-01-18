@@ -1,4 +1,4 @@
-@javascript
+@javascript @poltergeist
 Feature: Upload From Garmin
   In order to track my workouts
   As a registered member

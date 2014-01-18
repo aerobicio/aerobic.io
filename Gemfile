@@ -33,9 +33,13 @@ gem "yui-compressor"
 
 group :development, :test do
   gem "cane"
+  gem "capybara-screenshot"
+  gem "capybara-webkit"
   gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "kayessess", "~> 0.2.7"
+  gem "launchy"
+  gem "poltergeist"
   gem "pry"
   gem "rails_best_practices"
   gem "rspec-rails", "~> 2.0"
