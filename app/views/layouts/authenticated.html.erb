@@ -1,6 +1,7 @@
 <%= extends :base do %>
   <% replace :body_class, 'authenticated layout-app' %>
   <% append :header_masthead, render(partial: 'shared/header_authenticated') %>
+  <% prepend :content, render(partial: 'shared/burger') %>
   <% replace :content_inner, yield %>
 <% end %>
 

@@ -86,5 +86,9 @@
     background-color: #0072bc;
     border-color: #0072bc;
     color: #fff;
+
+    &:hover {
+      border-color: #0072bc;
+    }
   }
 }
