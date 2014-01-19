@@ -17,6 +17,7 @@ describe "PanelsController", ->
   afterEach ->
     @controller = null
     @container.remove()
+    @wrapperEl.remove()
 
   describe "data-href behaviour when the panel is triggered", ->
     beforeEach ->

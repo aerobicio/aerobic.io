@@ -33,7 +33,7 @@
 [role="contentinfo"] {
   @include transform-origin(top right);
   @include transition-property(transform);
-  @include transition-duration(300ms);
+  @include transition-duration(450ms);
   @include transition-timing-function($ease-in-out-quad);
   @include transform(translate3d(0, 0, 0));
 
@@ -45,7 +45,7 @@
 .content__inner {
   @extend .padding-medium-top;
   @include transform(translate3d(0, 0, 0));
-  @include transition(opacity 300ms $ease-in-out-quad);
+  @include transition(opacity 450ms $ease-in-out-quad);
 
   border-top: 1px solid #d5d8dd;
   opacity: 1.0;

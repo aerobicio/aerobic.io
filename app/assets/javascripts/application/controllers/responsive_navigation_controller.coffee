@@ -11,7 +11,7 @@
       .on("keyup", @_onKeyup)
 
   _onKeyup: (event) =>
-    @_onClick(event) if event.keyCode == @enterKeycode
+    @_onClick(event) if event.keyCode is @enterKeycode
 
   _onClick: (event) =>
     event.stopImmediatePropagation()
