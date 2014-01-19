@@ -1,8 +1,11 @@
 @app.controllers.ResponsiveNavigationController = class ResponsiveNavigationController extends app.controllers.ViewController
   initialize: ->
-    @$burgerEl = $('a.burger')
+    @$bannerEl = @$el.find("[role='banner']")
+    @$burgerEl = @$el.find("a.burger")
 
   bindEvents: ->
+    @$el
+      .on('page:before-change', @_onPageChange)
     @$burgerEl
       .on("click", @_onClick)
       .on("keyup", @_onKeyup)
@@ -13,5 +16,14 @@
   _onClick: (event) =>
     event.stopImmediatePropagation()
     event.preventDefault()
-    @$el.toggleClass('is-expanded')
+    @toggleNavigationState()
+
+  _onPageChange: =>
+    @toggleNavigationState()
+
+  toggleNavigationState: ->
+    @$bannerEl.toggleClass('is-expanded')
     @$burgerEl.toggleClass('is-active')
+
+  isExpanded: ->
+    @$bannerEl.hasClass('is-expanded')
