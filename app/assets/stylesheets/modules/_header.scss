@@ -6,27 +6,23 @@
 // -
 //
 // Styleguide Components.Header
-.header {}
+%header {}
 
 .header__inner {
   position: relative;
   height: 100%;
 
-  @include media($lap-and-up) {
-    @include padding(medium);
-
-    overflow: hidden;
-  }
-
   @include media($desk) {
     @include padding(wide);
+
+    overflow: hidden;
   }
 }
 
 .header__masthead {
   display: none;
 
-  @include media($lap-and-up) {
+  @include media($desk) {
     @include transition(all 100ms $ease-in-out-quad);
     @include hide-text;
 

@@ -5,7 +5,7 @@
 
   .content {
     @extend .padding-medium;
-    @include spacing(padding, wide, top, 2);
+    @include spacing(padding, medium, top, 4.5);
 
     @include media($desk) {
       @include padding(wide);
