@@ -1,8 +1,4 @@
 @app.controllers.PanelsController = class PanelsController extends app.controllers.ViewController
-
-  # This is the keycode returned for a kepress event on "enter".
-  enterKeycode: 13
-
   initialize: (options) ->
     @options = _(options).defaults
       navigableHrefSelector:    "[data-href]"

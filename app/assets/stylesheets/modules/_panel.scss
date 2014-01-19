@@ -37,8 +37,20 @@
 
 .panel__header__figure {
   position: absolute;
-  left: -2.35rem;
   top: 0.5rem;
+  left: -1rem;
+
+  @include media($desk) {
+    left: -2rem;
+  }
+}
+
+.panel__header__figure + .panel__header__heading {
+  margin-left: 1.5rem;
+
+  @include media($desk) {
+    margin-left: 0.5rem;
+  }
 }
 
 .panel__content {

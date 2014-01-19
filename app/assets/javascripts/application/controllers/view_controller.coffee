@@ -1,6 +1,10 @@
 # The view controller is the base class for binding to an element and adding
 # logic.
 @app.controllers.ViewController = class ViewController
+
+  # This is the keycode returned for a kepress event on "enter".
+  enterKeycode: 13
+
   constructor: (options) ->
     el   = options?.el
     @$el = @_jQueryifyElement(el)

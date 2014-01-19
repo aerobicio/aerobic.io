@@ -8,6 +8,10 @@
 #= require_tree ./application/components
 #= require_tree ./application/controllers
 
-jQuery ->
+ready = ->
   new app.controllers.PanelsController(el: "body")
   new app.controllers.NprogressController(el: $(document))
+  new app.controllers.ResponsiveNavigationController(el: $(document))
+
+$(document).ready(ready)
+$(document).on('page:load', ready)

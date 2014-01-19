@@ -21,11 +21,11 @@
 //
 // returns [$method]: $size;
 // returns [$method]-$direction: size;
-@mixin spacing($method, $size, $direction: false) {
+@mixin spacing($method, $size, $direction: false, $scale: 1) {
   @if $direction {
-    #{$method}-#{$direction}: get_spacing($size);
+    #{$method}-#{$direction}: get_spacing($size) * $scale;
   } @else {
-    #{$method}: get_spacing($size);
+    #{$method}: get_spacing($size) * $scale;
   }
 }
 

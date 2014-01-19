@@ -1,19 +1,24 @@
-// Styleguide Components.Header.Account Info
+// Styleguide Components.Navigation.Account Info
 .account_info {
   @extend .media;
-  @extend .margin-medium-left;
-  @extend .padding-medium-left;
+  @extend .padding-medium-top;
+  @extend .padding-medium-bottom;
 
-  float: right;
-  border-left: 2px solid #e3e4e7;
-  clear: none;
   margin-bottom: 0;
+  clear: none;
   color: #a1a1a1;
   line-height: 1.5;
+  height: 6.4rem;
+  border-bottom: 1px solid darken(#d5d8dd, 10%);
 
   @include media($desk) {
-    padding-left: get_spacing(wide) * 2;
+    padding: 0;
+    padding-left: get_spacing(wide);
     margin-left: get_spacing(wide) * 2;
+    float: right;
+    border-left: 2px solid #e3e4e7;
+    border-bottom: none;
+    height: auto;
   }
 }
 

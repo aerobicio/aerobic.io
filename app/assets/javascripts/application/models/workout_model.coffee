@@ -5,7 +5,6 @@
 
   initialize: ->
     if @get("uuid") is undefined
-      console.log @
       uuidString = [@get("id"), @get("device").id].join(":")
       @set(uuid: new jsSHA(uuidString, "TEXT" ).getHash("SHA-1", "HEX"))
 
