@@ -19,7 +19,7 @@
     @toggleNavigationState()
 
   _onPageChange: =>
-    @toggleNavigationState()
+    @toggleNavigationState() if @isExpanded()
 
   toggleNavigationState: ->
     @$bannerEl.toggleClass('is-expanded')
