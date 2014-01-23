@@ -31,6 +31,9 @@ AerobicIo::Application.configure do
   config.serve_static_assets = true
   config.static_cache_control = "public, max-age=#{1.year.to_i}"
 
+  # http://blog.alexmaccaw.com/faster-deploys
+  config.assets.cache_store = :dalli_store
+
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
