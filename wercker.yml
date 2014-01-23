@@ -74,6 +74,9 @@ deploy:
         - script:
             name: Migrate Database
             code: heroku run rake db:migrate --app $HEROKU_APP_NAME
+        - script:
+            name: Clear Rails Cache
+            code: heroku run rails runner -e production Rails.cache.clear
     after-steps:
         - hipchat-notify:
             token: $HIPCHAT_TOKEN
