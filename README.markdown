@@ -34,6 +34,10 @@ You can also pull down a mirror of the production database to develop against by
 
     $ script/heroku-clone
 
+### Coding Style
+
+We follow the [GitHub Ruby Styleguide](https://github.com/styleguide/ruby).
+
 ### Testing
 
 We use three types of tests in the project:
