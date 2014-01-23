@@ -1,0 +1,55 @@
+// A tooltip for displaying detail information in an interactive fashion
+//
+// Styleguide Components.Tooltip
+.tooltip {
+  @extend .margin-medium-bottom;
+  @include font-size(0.9);
+
+  position: relative;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 2px solid #053a51;
+  max-width: 250px;
+  min-width: 100px;
+
+  &:before {
+    @include triangle(1.7rem, #053a51, down);
+
+    content: '';
+    position: absolute;
+    bottom: -1.7rem;
+    left: 50%;
+    margin-left: -0.85rem;
+  }
+
+  &:after {
+    @include triangle(1.3rem, #fff, down);
+
+    content: '';
+    position: absolute;
+    bottom: -1.2rem;
+    left: 50%;
+    margin-left: -0.65rem;
+    z-index: 1;
+  }
+}
+
+.tooltip__content {
+  @extend .padding-tight;
+}
+
+.tooltip__header,
+.tooltip__footer {
+  @extend .padding-tight-top;
+  @extend .padding-tight-bottom;
+  @extend .margin-tight-left;
+  @extend .margin-tight-right;
+}
+
+.tooltip__header {
+  border-bottom: 1px solid #ccc;
+}
+
+.tooltip__footer {
+  border-top: 1px solid #ccc;
+}
