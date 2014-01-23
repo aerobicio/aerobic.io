@@ -1,0 +1,12 @@
+<% member = OpenStruct.new(email: "justin@pixelbloom.com") %>
+<%= styleguide_example_for(section) do -%>
+  <article class="comment">
+    <%= gravatar_for_member(member, extra_classes: 'comment__figure') %>
+    <header class="comment__header">
+      <strong>Lorem ipsum dolor sit amet</strong>
+    </header>
+    <div class="comment__content">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, similique, magnam, esse repellendus velit maiores provident culpa doloribus minus nobis optio nisi quos voluptates! Atque, magni odit quod commodi quos.
+    </div>
+  </article>
+<% end %>
