@@ -35,7 +35,7 @@
   @include media($desk) {
     @include transition(all 100ms $ease-in-out-quad);
 
-    position: relative;
+    position: static;
     float: left;
     margin-top: 6px;
   }
