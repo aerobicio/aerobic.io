@@ -8,13 +8,13 @@
 //
 // Styleguide Forms.Label
 label {
+  @extend %font-weight-bold;
   @extend .padding-tight-left;
   @extend .padding-tight-top;
   @extend .padding-tight-bottom;
   @include font-size(0.9);
 
   text-transform: uppercase;
-  font-weight: bold;
   display: block;
 
   &:first-child {

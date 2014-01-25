@@ -18,18 +18,14 @@
     @include display-box;
     @include box-align(center);
     @include box-pack(center);
+
+    padding-top: 2.1rem;
   }
 
   .content__dialog {
     width: 100%;
-
-    @include media($lap-and-up) {
-      @include span-columns(6);
-    }
-
-    @include media($desk) {
-      @include span-columns(5);
-    }
+    max-width: 450px;
+    min-width: 300px;
   }
 
   .footer {

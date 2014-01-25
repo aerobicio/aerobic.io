@@ -26,6 +26,7 @@ end
 
 Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app, {
+    window_size: [1024, 768],
     phantomjs_logger: WarningSuppressor,
     extensions: [
       'vendor/assets/components/es5-shim/es5-shim.js',
