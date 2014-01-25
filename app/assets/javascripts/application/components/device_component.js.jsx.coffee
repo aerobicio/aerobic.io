@@ -8,6 +8,7 @@
 
   classes: ->
     selected = @props.model.get('selected')
+
     React.addons.classSet(
       "panel": true
       "devices-list__device": true
@@ -18,7 +19,7 @@
   render: ->
     ProgressBarComponent = app.components.ProgressBarComponent
 
-    `<div key={this.props.model.cid} onClick={this.props.selectDeviceHandler} className={this.classes()}>
+    `<div key={this.props.model.cid} onClick={this.props.selectDeviceHandler} className={this.classes()} data-device-model={this.props.model.get('partNumber')}>
       <a className="devices-list__device__unselect" onClick={this.props.unselectDeviceHandler}>
         Unselect
       </a>

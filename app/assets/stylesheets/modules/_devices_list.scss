@@ -27,6 +27,7 @@
 .devices-list__device {
   $size: 140px;
 
+  @include hide-text();
   @include transition(
     opacity 0.35s $ease-in-out-quad,
     transition-property-names((transform), webkit) 0.5s $ease-in-out-quad
@@ -40,11 +41,17 @@
   text-align: center;
   cursor: pointer;
   background-color: #ccc;
+
   border-radius: 5px;
   padding: 20px;
   position: relative;
   left: auto;
   margin: 0 10px;
+
+  &[data-device-model="006-B1036-00"] { background:#fff image-url('devices/garmin_500.svg') center -10px no-repeat; }
+  &[data-device-model="010-01064-02"] { background:#fff image-url('devices/garmin_510.svg') center -10px no-repeat; }
+  &[data-device-model="006-B1250-00"] { background:#fff image-url('devices/garmin_forerunner.svg') center -10px no-repeat; }
+  &[data-device-model="006-B1499-00"] { background:#fff image-url('devices/garmin_swim.svg') center -10px no-repeat; }
 
   &.device-enter { opacity: 0; }
   &.device-enter-active { opacity: 1; }
