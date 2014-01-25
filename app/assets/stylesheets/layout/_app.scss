@@ -1,8 +1,11 @@
 .layout-app {
   .page {
-    overflow-x: hidden;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
     flex-direction: column;
+    -webkit-flex-direction: column;
+    overflow-x: hidden;
     min-height: 100vh;
   }
 
@@ -10,6 +13,8 @@
     @extend .padding-medium;
     @include spacing(padding, medium, top, 4.5);
 
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
     flex: 1;
 
     @include media($desk) {
