@@ -16,6 +16,7 @@ function run_command {
 script/bootstrap
 
 run_command "rm -rf coverage/*"
+run_command "rm -rf tmp/capybara/*"
 
 rake db:migrate
 rake assets:precompile

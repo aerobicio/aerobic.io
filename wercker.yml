@@ -1,4 +1,4 @@
-box: plasticine/aerobic.io@0.0.6
+box: plasticine/aerobic.io@0.0.7
 services:
     - wercker/postgresql
     - wercker/redis
@@ -20,8 +20,6 @@ build:
                 start-stop-daemon --start --quiet --pidfile /tmp/xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- $DISPLAY -screen 0 1024x768x24 -ac +extension GLX +render -noreset
                 sleep 3
                 cat /tmp/xvfb_99.pid
-        # Ensure that selenium server is downloaded and running
-        - desmondmorris/selenium-install@0.0.2
         # A step that executes `bundle install` command
         - bundle-install
         # A step that executes `npm install`

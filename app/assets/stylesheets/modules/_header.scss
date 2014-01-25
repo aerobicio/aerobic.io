@@ -20,23 +20,24 @@
 }
 
 .header__masthead {
-  display: none;
+  @include hide-text;
+
+  display: block;
+  background:transparent image-url('masthead.svg') left top no-repeat;
+  background-size: 100% 100%;
+  width: 90px;
+  height: 22px;
+  position: absolute;
+  top: 2.1rem;
+  left: 1.4rem;
+  z-index: 1;
 
   @include media($desk) {
     @include transition(all 100ms $ease-in-out-quad);
-    @include hide-text;
 
+    position: static;
     float: left;
-    display: block;
-    background:transparent image-url('masthead.svg') left top no-repeat;
-    background-size: 100% 100%;
-    width: 90px;
-    height: 22px;
     margin-top: 6px;
-
-    .landing__hero & {
-      background-image: image-url('landing/masthead.svg')
-    }
   }
 
   @include media($desk) {

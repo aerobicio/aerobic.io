@@ -37,7 +37,7 @@ group :development, :test do
   gem "capybara-webkit"
   gem "dotenv-rails"
   gem "factory_girl_rails"
-  gem "kayessess", "~> 0.2.7"
+  gem "kayessess", "~> 0.2.8"
   gem "launchy"
   gem "poltergeist"
   gem "pry"
