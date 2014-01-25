@@ -22,9 +22,13 @@
 
   .content__dialog {
     width: 100%;
+    max-width: 450px;
+    min-width: 300px;
 
     @include media($lap-and-up) {
       @include span-columns(6);
+
+      float: none;
     }
 
     @include media($desk) {
