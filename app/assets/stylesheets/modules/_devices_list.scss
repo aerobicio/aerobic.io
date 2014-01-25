@@ -5,21 +5,8 @@
   position: relative;
 
   &.has-device-selected {
-    .devices-list__device {
-      @include transform-origin(center);
-
-      opacity: 1;
-      position: absolute;
-
-      &.is-selected {
-        @include transform(translateX(-50px));
-
-        z-index: 2;
-      }
-
-      &.is-not-selected {
-        opacity: 0;
-      }
+    .devices-list__device.is-not-selected {
+      opacity: 0.35;
     }
   }
 }
@@ -27,7 +14,7 @@
 .devices-list__device {
   $size: 140px;
 
-  @include hide-text();
+  @include hide-text;
   @include transition(
     opacity 0.35s $ease-in-out-quad,
     transition-property-names((transform), webkit) 0.5s $ease-in-out-quad
@@ -58,8 +45,11 @@
   &.device-leave { opacity: 1; }
   &.device-leave-active { opacity: 0; }
 
-  &.is-not-selected .devices-list__device__unselect {
-    display: none;
+  &.is-not-selected {
+    > .progress,
+    .devices-list__device__unselect {
+      opacity: 0;
+    }
   }
 
   > .progress {
@@ -68,6 +58,7 @@
     left: 20px;
     right: 20px;
     width: auto;
+    display: block;
   }
 }
 
