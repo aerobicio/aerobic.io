@@ -9,7 +9,10 @@
       @set(uuid: new jsSHA(uuidString, "TEXT" ).getHash("SHA-1", "HEX"))
 
   date: ->
-    @get('date')
+    moment(@get('date')).calendar()
+
+  dateSince: ->
+    "(about #{moment(@get('date')).fromNow()})"
 
   data: ->
     @attributes.getData()
