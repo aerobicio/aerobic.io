@@ -15,6 +15,7 @@
 
   render: ->
     TransitionGroup = React.addons.TransitionGroup
+
     `<TransitionGroup transitionName="spinner" component={React.DOM.figure}>
       <div ref="spinnerEl" className={this.classes()}></div>
     </TransitionGroup>`

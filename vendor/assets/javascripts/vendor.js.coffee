@@ -9,6 +9,7 @@
 #= require backbone/backbone
 #= require react/react-with-addons
 #= require q/q
+#= require momentjs/moment
 #= require jssha/src/sha1
 #= require garmin-communicator/garmin
 #= require jquery.ajax.queue
