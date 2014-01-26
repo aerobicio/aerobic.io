@@ -1,16 +1,17 @@
 @app.controllers.GarminUploadController = class GarminUploadController extends app.controllers.ViewController
   el: "#GarminUploadController"
+  garmin: null
 
   initialize: (options) ->
-    @options = _(options).defaults {}
+    @options = _(options).defaults({})
 
-    @garmin = new Garmin @options.garmin
-    @garminIsInstalled = @garmin.isInstalled()
+    @garmin = new Garmin(@options.garmin)
+    @garminIsInstalled = false #@garmin.isInstalled()
 
-    @progressModel = new app.models.ProgressModel
-    @devicesCollection = new app.collections.DevicesCollection [], garminDelegate: @garmin
-    @workoutsCollection = new app.collections.WorkoutsCollection [], uploadPath: @options.uploadPath
-    @exitstingWorkoutsCollection = new app.collections.WorkoutsCollection []
+    @progressModel = new app.models.ProgressModel()
+    @devicesCollection = new app.collections.DevicesCollection([], garminDelegate: @garmin)
+    @workoutsCollection = new app.collections.WorkoutsCollection([], uploadPath: @options.uploadPath)
+    @exitstingWorkoutsCollection = new app.collections.WorkoutsCollection([])
     @exitstingWorkoutsCollection.reset(@options.existingMemberWorkouts)
 
     @initializeUI()
@@ -24,18 +25,14 @@
     promise
 
   initializeUI: ->
-    @deviceListComponent = app.components.DeviceListComponent(
-      collection: @devicesCollection
+    @garminUploadComponent = app.components.GarminUploadComponent(
+      devicesCollection: @devicesCollection
+      workoutsCollection: @workoutsCollection
       deviceSelectedDelegate: @deviceSelected
       deviceUnselectedDelegate: @deviceUnselected
       progressModel: @progressModel
-      pluginIsInstalled: @garminIsInstalled
     )
-    @workoutsComponent = app.components.WorkoutsComponent(
-      collection: @workoutsCollection
-    )
-    React.renderComponent(@deviceListComponent, document.getElementById("DevicesList"))
-    React.renderComponent(@workoutsComponent, document.getElementById("Workouts"))
+    React.renderComponent(@garminUploadComponent, document.getElementById("GarminUpload"))
 
   deviceSelected: (device) =>
     @workoutsComponent.setState(hasDeviceSelected: true)

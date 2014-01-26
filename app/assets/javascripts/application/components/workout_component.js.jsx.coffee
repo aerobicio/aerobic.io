@@ -26,11 +26,19 @@
       "is-failed": @props.model.get('status') == "failed"
 
   render: ->
-    `<li key={this.props.model.cid} className={this.classes()} onClick={this.toggleChecked} data-workout-uuid={this.props.model.get('uuid')}>
-      <div className="panel__content">
-        <input type="checkbox" checked={this.state.checked} ref="workoutCheckbox" />
-        {this.props.model.date().toString()} - {this.props.model.get('status')}
-        <br />
-        {this.props.model.get('uuid')}
+    SpinnerComponent = app.components.SpinnerComponent
+
+    `<li
+      key={this.props.model.cid}
+      className={this.classes()}
+      onClick={this.toggleChecked}
+      data-workout-uuid={this.props.model.get('uuid')}
+    >
+      <input className="workouts__list__item__checkbox" type="checkbox" checked={this.state.checked} ref="workoutCheckbox" />
+      <div className="panel__content--padded">
+        <h6 className="h6">
+          {this.props.model.date()} <span>{this.props.model.dateSince()}</span>
+        </h6>
+        <SpinnerComponent />
       </div>
     </li>`

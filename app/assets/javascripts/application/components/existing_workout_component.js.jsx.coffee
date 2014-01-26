@@ -13,15 +13,25 @@
       "is-uploaded": true
 
   render: ->
-    `<li key={this.props.model.cid} className={this.classes()} data-workout-uuid={this.props.model.get('uuid')}>
-      <div className="panel__content">
-        <input type="checkbox" checked disabled />
-        <strong>{this.props.model.date().toString()}</strong>: {this.props.model.get('status')}
-        <br />
-        {this.props.model.get('uuid')}
-        <ul>
-          <li>Distance: {this.props.model.get('distance')}</li>
-          <li>Duration: {this.props.model.get('duration')}</li>
-        </ul>
+    `<li
+      key={this.props.model.cid}
+      className={this.classes()}
+      data-workout-uuid={this.props.model.get('uuid')}
+    >
+      <input className="workouts__list__item__checkbox" type="checkbox" checked disabled />
+      <div className="panel__header--padded">
+        <h6 className="h6">
+          {this.props.model.date().toString()} <span>{this.props.model.dateSince()}</span>
+        </h6>
       </div>
+      <ul className="data-row">
+        <li className="data-row__item">
+          <h6 className="h3 data-row__item__value">{this.props.model.activeDuration()}</h6>
+          <span className="data-row__item__key">Duration</span>
+        </li>
+        <li className="data-row__item">
+          <h6 className="h3 data-row__item__value">{this.props.model.distance()}</h6>
+          <span className="data-row__item__key">Distance</span>
+        </li>
+      </ul>
     </li>`

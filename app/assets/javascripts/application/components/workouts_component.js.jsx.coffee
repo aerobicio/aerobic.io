@@ -13,10 +13,15 @@
     WorkoutListHeaderComponent = app.components.WorkoutListHeaderComponent
     WorkoutListComponent = app.components.WorkoutListComponent
 
-    `<div className={this.classes()}>
-      <WorkoutListHeaderComponent collection={this.props.collection} onClick={this.onClick} />
-      <WorkoutListComponent collection={this.props.collection} />
-    </div>`
+    if @state.hasDeviceSelected
+      `<div className={this.classes()}>
+        <WorkoutListHeaderComponent collection={this.props.collection} onClick={this.onClick} />
+        <WorkoutListComponent collection={this.props.collection} />
+      </div>`
+    else
+      `<div className={this.classes()}>
+        Select a device to get started.
+      </div>`
 
   classes: ->
     React.addons.classSet
