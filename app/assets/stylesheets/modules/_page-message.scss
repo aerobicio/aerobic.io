@@ -1,0 +1,47 @@
+// Render a full page message that can optionally display an icon or image
+// with the content.
+//
+// By default text is centered with the figure displayed above, at larger
+// sizes the icon aligns to the left, and text becomes left aligned.
+//
+// -
+//
+// Styleguide Components.Page Message
+.page-message {
+  text-align: center;
+  max-width: 450px;
+  margin: 0 auto;
+
+  @include media($desk) {
+    @include clearfix;
+
+    text-align: left;
+    max-width: 650px;
+    clear: both;
+    overflow: hidden;
+  }
+}
+
+.page-message__figure {
+  @extend .margin-medium-bottom;
+
+  display: block;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include media($desk) {
+    float: left;
+    margin: 0;
+  }
+}
+
+.page-message__content {
+  @extend .padding-medium-left;
+  @extend .padding-medium-right;
+
+  @include media($desk) {
+    padding-right: 0;
+    overflow: hidden;
+  }
+}

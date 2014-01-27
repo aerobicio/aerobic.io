@@ -167,6 +167,11 @@ h6 {
 
 p {
   margin:0;
+  margin-bottom: 1em;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 blockquote {
@@ -244,6 +249,13 @@ a {
   font-weight:inherit;
   color: #0072bc;
   text-decoration:none;
+}
+
+a,
+[data-href] {
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 a:hover,

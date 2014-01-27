@@ -1,12 +1,12 @@
 <% member = OpenStruct.new(email: "justin@pixelbloom.com") %>
 <%= styleguide_example_for(section) do -%>
-  <div class="panel $modifier_class">
+  <div class="panel--flat $modifier_class">
     <p class="panel__content--padded">
       Ethical Thundercats seitan kale chips, drinking vinegar 8-bit 90's irony bitters XOXO single-origin coffee meh paleo. Shoreditch distillery ethical 8-bit brunch gluten-free.
     </p>
   </div>
 
-  <section class="panel $modifier_class">
+  <section class="panel--flat $modifier_class">
     <header class="panel__header--padded">
       <h6 class="panel__header__heading h6">Shoreditch distillery ethical 8-bit</h6>
     </header>
@@ -15,7 +15,7 @@
     </div>
   </section>
 
-  <section class="panel $modifier_class">
+  <section class="panel--flat $modifier_class">
     <header class="panel__header--padded">
       <div class="panel__header__figure">
         <%= gravatar_for_member(member) %>
@@ -27,7 +27,7 @@
     </div>
   </section>
 
-  <section class="panel $modifier_class">
+  <section class="panel--flat $modifier_class">
     <header class="panel__header--padded">
       <div class="panel__header__figure">
         <%= gravatar_for_member(member) %>

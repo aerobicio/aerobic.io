@@ -35,7 +35,7 @@
   border-radius: 4px;
   cursor: pointer;
   color: darken($grey, 70%);
-  border: 1px solid darken($grey, 10%);
+  border: 1px solid darken($grey, 15%);
 
   &:hover {
     @include linear-gradient(lighten($grey, 10%), lighten($grey, 2%), $fallback: #fff);

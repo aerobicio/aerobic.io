@@ -19,6 +19,8 @@ blockquote{
 .h5,
 .h6 {
   @extend %font-weight-bold;
+
+  margin-bottom: 0.25em;
 }
 
 .h1{
