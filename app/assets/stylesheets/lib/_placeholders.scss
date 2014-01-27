@@ -25,6 +25,7 @@
   $grey: #eaeaea;
 
   @extend .padding-tight;
+  @extend .margin-tight-top;
   @extend .margin-medium-bottom;
   @include linear-gradient(lighten($grey, 10%), darken($grey, 0%), $fallback: #fbfbfb);
   @include appearance(none);
@@ -36,6 +37,9 @@
   cursor: pointer;
   color: darken($grey, 70%);
   border: 1px solid darken($grey, 15%);
+  text-align: center;
+  margin-bottom: 0;
+  clear: both;
 
   &:hover {
     @include linear-gradient(lighten($grey, 10%), lighten($grey, 2%), $fallback: #fff);
