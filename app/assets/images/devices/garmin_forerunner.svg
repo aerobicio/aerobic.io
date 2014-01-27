@@ -3,14 +3,6 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="125px"
 	 height="125px" viewBox="0 0 125 125" enable-background="new 0 0 125 125" xml:space="preserve">
-<g id="Layer_2" display="none">
-	<g id="vd1JdW_1_" display="inline">
-		
-			<image overflow="visible" width="417" height="278" id="vd1JdW" xlink:href="67251EDFB53AE396.jpg"  transform="matrix(0.3125 0 0 0.3125 -37.6667 25)">
-		</image>
-	</g>
-</g>
-<g id="Layer_1">
 	<circle fill="none" stroke="#000000" stroke-miterlimit="10" cx="62.5" cy="62.5" r="16.625"/>
 	<path fill="none" stroke="#7F7F7F" stroke-miterlimit="10" d="M75.346,55.372c1.174,2.111,1.842,4.541,1.842,7.128
 		c0,8.112-6.576,14.688-14.688,14.688S47.812,70.612,47.812,62.5c0-2.586,0.668-5.015,1.841-7.125L75.346,55.372z"/>
@@ -39,5 +31,4 @@
 		<path fill="none" stroke="#000000" stroke-miterlimit="10" d="M83.793,47.968c-0.089,0.045-0.175,0.089-0.252,0.128
 			c-0.507,0.258,0.108,2.119,0.789,3.456c0.681,1.336,1.896,3.032,2.272,2.841c0.059-0.03,0.14-0.071,0.228-0.116"/>
 	</g>
-</g>
 </svg>

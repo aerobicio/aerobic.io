@@ -3,11 +3,6 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="125px" height="125px" viewBox="0 0 125 125" enable-background="new 0 0 125 125" xml:space="preserve">
-<g id="Layer_2" display="none">
-	
-		<image display="inline" overflow="visible" enable-background="new    " width="300" height="300" xlink:href="../../../../../../../Library/Caches/TemporaryItems/pd-03-lg.jpg"  transform="matrix(0.3 0 0 0.3 16 21)">
-	</image>
-</g>
 <path fill="none" stroke="#000000" stroke-miterlimit="10" d="M62,40.56c-11.21,0-20.498,8.22-22.17,18.961
 	c1.491,0.107,2.67,1.337,2.67,2.854v0.25c0,1.562-1.247,2.826-2.799,2.867C40.941,76.712,50.45,85.44,62,85.44
 	c12.393,0,22.44-10.047,22.44-22.44S74.393,40.56,62,40.56z"/>
