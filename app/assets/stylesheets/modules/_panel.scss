@@ -16,13 +16,47 @@
 }
 
 .panel__header {
-  @extend .padding-medium;
-
+  position: relative;
   border-bottom: 1px solid #898989;
 }
 
-.panel__content {
+.panel__header--padded {
+  @extend .panel__header;
   @extend .padding-medium;
+}
 
+.panel__content--padded {
+  @extend .panel__content;
+  @extend .padding-medium;
+}
+
+.panel__footer--padded {
+  @extend .panel__footer;
+  @extend .padding-medium;
+}
+
+.panel__header__figure {
+  position: absolute;
+  top: 0.5rem;
+  left: -1rem;
+
+  @include media($desk) {
+    left: -2rem;
+  }
+}
+
+.panel__header__figure + .panel__header__heading {
+  margin-left: 1.5rem;
+
+  @include media($desk) {
+    margin-left: 0.5rem;
+  }
+}
+
+.panel__content {
   margin-bottom: 0;
+}
+
+.panel__footer {
+  border-top: 1px solid #898989;
 }

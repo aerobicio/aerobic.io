@@ -5,7 +5,24 @@
 //
 // Styleguide Components.Navigation
 .navigation {
-  float: right;
+  @include padding(medium, right);
+  @include padding(medium, left);
+
+  background-color: #d5d8dd;
+  z-index: 2;
+  height: 100%;
+
+  @include media($desk) {
+    padding: 0;
+    float: right;
+    background-color: transparent;
+  }
+}
+
+.navigation__items {
+  @include media($desk) {
+    float: left;
+  }
 }
 
 // Navigation Items.
@@ -16,49 +33,62 @@
 // :hover       - Hover state
 // :focus       - Focus state
 // :active      - Active state
-// .is-cta      - Call to action link, more prominent treatment.
 //
 // Styleguide Components.Navigation.Navigation Item
-.navigation__item {
+.navigation__items__item {
   @include transition(all 100ms $ease-in-out-quad);
+  @include padding(medium, top);
+  @include padding(medium, bottom);
+  @include font-size(1.3);
 
-  @extend .padding-medium-left;
-  @extend .padding-medium-right;
-  @extend .margin-medium-left;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid darken(#d5d8dd, 5%);
 
-  border-radius: 4px;
-  border: 2px solid transparent;
-  color: #a1a1a1;
-  float: left;
-  font-size: 1.1rem;
-  line-height: 2.2;
-  text-transform: capitalize;
+  @include media($desk) {
+    @include padding(tight);
+    @include padding(medium, left);
+    @include padding(medium, right);
+    @include margin(medium, left);
+    @include font-size(1.0, 1.5);
 
-  &:first-child {
-    margin-left: 0;
+    border-radius: 4px;
+    border: 2px solid transparent;
+    color: #a1a1a1;
+    float: left;
+    text-transform: capitalize;
+    width: auto;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: #a1a1a1;
+    }
+
+    &:active,
+    &.is-active {
+      border-color: $header-navigation-color;
+      color: $header-navigation-color;
+    }
   }
+}
 
-  &:hover,
-  &:focus {
-    border-color: #a1a1a1;
-  }
+.navigation__items__item--upload {
+  @extend .navigation__items__item;
 
-  &:active,
-  &.is-active {
-    border-color: $header-navigation-color;
-    color: $header-navigation-color;
-  }
+  display: none;
 
-  &.is-cta {
+  @include media($desk) {
+    display: block;
     background-color: #0072bc;
     border-color: #0072bc;
     color: #fff;
-  }
 
-  @include media($desk) {
-    padding-left: 1.8rem;
-    padding-right: 1.8rem;
-    margin-left: get_spacing(wide);
-    line-height: 2.6;
+    &:hover {
+      border-color: #0072bc;
+    }
   }
 }

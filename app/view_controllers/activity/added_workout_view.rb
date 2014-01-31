@@ -4,6 +4,9 @@ class Activity
   # /activity/added_workout/_added_workout
   #
   class AddedWorkoutView
+    include UnitsHelper
+    include Rails.application.routes.url_helpers
+
     def initialize(current_member, added_workout)
       @current_member = current_member
       @added_workout = added_workout
@@ -18,18 +21,26 @@ class Activity
 
     def title
       if @current_member == member
-        "You did a workout:"
+        I18n.t("activity.workout.title.first_person")
       else
-        "#{member.name} did a workout:"
+        I18n.t("activity.workout.title.third_person", name: member.name)
       end
     end
 
     def duration
-      "#{(workout.active_duration / 1000 / 60)} minutes"
+      format_duration(workout.active_duration)
     end
 
     def distance
-      "#{(workout.distance / 100000.0).round(2)}km"
+      format_distance(workout.distance)
+    end
+
+    def workout_path
+      member_workout_path(member_id: member.id, id: workout.id)
+    end
+
+    def workout_member
+      @added_workout.activity_user
     end
 
     private

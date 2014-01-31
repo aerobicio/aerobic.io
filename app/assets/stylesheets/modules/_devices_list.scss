@@ -1,0 +1,81 @@
+.devices-list {
+  text-align: center;
+  padding: 50px 0;
+  min-height: 200px;
+  position: relative;
+
+  &.has-device-selected {
+    .devices-list__device {
+      @include transform-origin(center);
+
+      opacity: 1;
+      position: absolute;
+
+      &.is-selected {
+        @include transform(translateX(-50px));
+
+        z-index: 2;
+      }
+
+      &.is-not-selected {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.devices-list__device {
+  $size: 140px;
+
+  @include transition(
+    opacity 0.35s $ease-in-out-quad,
+    transition-property-names((transform), webkit) 0.5s $ease-in-out-quad
+  );
+
+  display: inline-block;
+  vertical-align: top;
+  width: $size;
+  height: $size;
+  opacity: 1;
+  text-align: center;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  position: relative;
+  left: auto;
+  margin: 0 10px;
+
+  &.device-enter { opacity: 0; }
+  &.device-enter-active { opacity: 1; }
+  &.device-leave { opacity: 1; }
+  &.device-leave-active { opacity: 0; }
+
+  &.is-not-selected .devices-list__device__unselect {
+    display: none;
+  }
+
+  > .progress {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    width: auto;
+  }
+}
+
+.devices-list__device__unselect {
+  @include hide-text;
+
+  display: block;
+  width: 22px;
+  height: 22px;
+  background-color: #111;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  border-radius: 22px;
+  z-index: 3;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}

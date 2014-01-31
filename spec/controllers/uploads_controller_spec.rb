@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe UploadsController do
   let(:user) { double(User, id: 42) }
+  let(:workouts) { double() }
 
   before do
     session[:user_id] = 1
@@ -10,6 +11,8 @@ describe UploadsController do
 
   describe "#show" do
     before do
+      workouts.should_receive(:load) { [] }
+      user.should_receive(:workouts) { workouts }
       get :show
     end
 

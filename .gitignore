@@ -19,11 +19,12 @@
 
 /config/database.yml
 /coverage
+/js-coverage
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
 
 /public/assets
-/vendor/components
+/vendor/assets/components
 /node_modules

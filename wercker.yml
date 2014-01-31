@@ -1,34 +1,31 @@
-box: plasticine/aerobic.io@0.0.6
+box: plasticine/aerobic.io@0.0.7
 services:
     - wercker/postgresql
     - wercker/redis
 build:
     # The steps that will be executed on build
     steps:
+        # Setup ssh-key for accessing the garmin-communicator repo
+        - add-ssh-key:
+            keyname: GARMIN_COMMUNICATOR_KEY
+        # Copy the dotenv config file into place
         - script:
-            name: set dotenv environment file
+            name: setup dotenv
             code: cp -n .env.example .env
+        # Start the xvfb framebuffer
+        - script:
+            name: start xvfb
+            code: |
+                export DISPLAY=":99.0"
+                start-stop-daemon --start --quiet --pidfile /tmp/xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- $DISPLAY -screen 0 1024x768x24 -ac +extension GLX +render -noreset
+                sleep 3
+                cat /tmp/xvfb_99.pid
         # A step that executes `bundle install` command
         - bundle-install
-        # A step that prepares the database.yml with settings from the database you defined in services
-        - rails-database-yml
         # A step that executes `npm install`
         - npm-install
-        # A custom script step, name value is used in the UI
-        # and the code value contains the command that get executed
-        - script:
-            name: echo ruby information
-            code: |
-                echo "ruby version $(ruby --version) running"
-                echo "from location $(which ruby)"
-                echo -p "gem list: $(gem list)"
-        # A custom script step, name value is used in the UI
-        # and the code value contains the command that get executed
-        - script:
-            name: echo nodejs information
-            code: |
-              echo "node version $(node -v) running"
-              echo "npm version $(npm -v) running"
+        # A step that prepares the database.yml with settings from the database you defined in services
+        - rails-database-yml
         - script:
             name: db setup
             code: RAILS_ENV=test bundle exec rake db:structure:load
@@ -64,6 +61,10 @@ build:
             room-id: 541059
             subdomain: aerobicio
             on: failed
+        - sherzberg/slack-notify:
+            subdomain: aerobic
+            token: $SLACK_TOKEN
+            channel: general
 
 deploy:
     steps:
@@ -71,3 +72,15 @@ deploy:
         - script:
             name: Migrate Database
             code: heroku run rake db:migrate --app $HEROKU_APP_NAME
+        - script:
+            name: Clear Rails Cache
+            code: heroku run rails runner -e production Rails.cache.clear --app $HEROKU_APP_NAME
+    after-steps:
+        - hipchat-notify:
+            token: $HIPCHAT_TOKEN
+            room-id: $HIPCHAT_ROOM_ID
+            from-name: Wercker
+        - sherzberg/slack-notify:
+            subdomain: aerobic
+            token: $SLACK_TOKEN
+            channel: general

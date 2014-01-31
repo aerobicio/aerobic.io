@@ -17,8 +17,9 @@
 
         <%= area :content_outer do %>
           <section class="<%= area :content_class, 'content' %>" role="main">
+            <%= render(partial: 'shared/burger') %>
             <%= area :content do %>
-              <div class="content-inner">
+              <div class="content__inner">
                 <%= area :content_inner -%>
               </div>
             <% end %>

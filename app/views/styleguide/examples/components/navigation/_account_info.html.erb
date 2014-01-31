@@ -1,0 +1,4 @@
+<% current_user = OpenStruct.new(id: 1, email: "justin@pixelbloom.com", name: "Justin") %>
+<%= styleguide_example_for(section) do -%>
+  <%= render :partial => "shared/account_info", locals: {current_user: current_user} %>
+<% end %>

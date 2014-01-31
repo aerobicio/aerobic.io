@@ -14,6 +14,7 @@ Aerobic.io is a Fitness Tracking service by @quamen and @plasticine.
 * Postgresql
 * Phantomjs
 * npm
+* Qt
 
 ### Getting Started
 
@@ -32,6 +33,10 @@ As part of the bootstrap process we install a few binstubs:
 You can also pull down a mirror of the production database to develop against by running:
 
     $ script/heroku-clone
+
+### Coding Style
+
+We follow the [GitHub Ruby Styleguide](https://github.com/styleguide/ruby).
 
 ### Testing
 

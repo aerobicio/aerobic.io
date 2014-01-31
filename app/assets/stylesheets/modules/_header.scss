@@ -6,32 +6,38 @@
 // -
 //
 // Styleguide Components.Header
-.header {}
+%header {}
 
 .header__inner {
-  @extend .padding-medium;
-
-  overflow: auto;
+  position: relative;
+  height: 100%;
 
   @include media($desk) {
     @include padding(wide);
+
+    overflow: hidden;
   }
 }
 
 .header__masthead {
-  @include transition(all 100ms $ease-in-out-quad);
   @include hide-text;
 
   display: block;
-  float: left;
   background:transparent image-url('masthead.svg') left top no-repeat;
   background-size: 100% 100%;
   width: 90px;
   height: 22px;
-  margin-top: 6px;
+  position: absolute;
+  top: 2.1rem;
+  left: 1.4rem;
+  z-index: 1;
 
-  .landing__hero & {
-    background-image: image-url('landing/masthead.svg')
+  @include media($desk) {
+    @include transition(all 100ms $ease-in-out-quad);
+
+    position: static;
+    float: left;
+    margin-top: 6px;
   }
 
   @include media($desk) {

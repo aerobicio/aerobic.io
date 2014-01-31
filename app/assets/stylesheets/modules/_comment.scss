@@ -1,0 +1,18 @@
+// Styleguide Components.Comment
+.comment {
+  @extend .media;
+  @include font-size(1);
+}
+
+.comment__figure {
+  @extend .media__figure;
+}
+
+.comment__header {
+  @extend .media__content;
+  @extend .margin-tight-bottom;
+}
+
+.comment__content {
+  @extend .media__content;
+}

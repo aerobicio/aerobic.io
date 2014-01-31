@@ -6,7 +6,7 @@ When(/I visit my profile page/) do
 end
 
 Then(/^I should see my own activity$/) do
-  page_has_workout
+  page_has_workout1
 end
 
 When(/^I visit "(.*?)"’s profile$/) do |name|
