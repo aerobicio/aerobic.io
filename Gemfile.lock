@@ -1,18 +1,17 @@
 GIT
-  remote: git://github.com/quamen/tcx.git
-  revision: c0f5e8ccb86c83bc8a2de2cfa69fdc7a7d5cbd71
-  branch: parse-active-duration-and-distance
-  specs:
-    tcx (0.0.1)
-      ox
-
-GIT
   remote: https://github.com/aerobicio/fit.git
   revision: e65ea01eb20dea137dd976e016a25b75609d3117
   specs:
     fit (0.0.2)
       activesupport
       bindata (~> 1.4)
+
+GIT
+  remote: https://github.com/aerobicio/tcx.git
+  revision: 0508cadb75267d4a4b55fa85190be78c37952c39
+  specs:
+    tcx (0.0.1)
+      ox
 
 GIT
   remote: https://github.com/plasticine/nestive.git
@@ -142,7 +141,7 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.0)
-    kayessess (0.2.7)
+    kayessess (0.2.10)
       bourbon
       kss (>= 0.5.0)
       pygments.rb (>= 0.5.2)
@@ -359,7 +358,7 @@ DEPENDENCIES
   interactor-rails (~> 1.0)
   jbuilder (~> 1.2)
   jquery-rails
-  kayessess (~> 0.2.7)
+  kayessess (~> 0.2.8)
   launchy
   lograge
   memcachier
