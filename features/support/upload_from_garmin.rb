@@ -20,6 +20,7 @@ def member_fit_workouts_on_device
   page.execute_script("window.GarminStubs.createFITWorkouts(#{@workouts.to_json});")
 end
 
+def add_workout_using_fit_file
   # This is a hack that hits the upload controller directly as I have no idea
   # how to do this from the user interface without having a Garmin permentantly
   # connected to the computer.
