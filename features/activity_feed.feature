@@ -10,7 +10,7 @@ Feature: Activity Feed
 
   @following @activity
   Scenario: Viewing my workouts
-    When I add a workout using a FIT file
+    When I add a workout
     Then I should see the workout in my activity feed
     And "Justin" should see the workout in their activity feed
     And "Gus" should not see the workout in their activity feed
