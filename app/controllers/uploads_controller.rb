@@ -15,8 +15,6 @@ class UploadsController < ApplicationController
     ActiveRecord::Base.transaction do
       result = create_workout
 
-      raise ActiveRecord::Rollback unless result.success?
-
       respond_to do |format|
         format.json { render_json_response(result) }
       end
@@ -26,17 +24,24 @@ class UploadsController < ApplicationController
   private
 
   def create_workout
-    case params[:activity_type]
-    when "fit"
-      CreateWorkoutFromUploadedFitFile.perform(upload_params)
-    when "tcx"
-      CreateWorkoutFromUploadedTcxFile.perform(upload_params)
+    ActiveRecord::Base.transaction do
+      result = case params[:activity_type]
+               when "fit"
+                 CreateWorkoutFromUploadedFitFile.perform(upload_params)
+               when "tcx"
+                 CreateWorkoutFromUploadedTcxFile.perform(upload_params)
+               end
+
+      raise ActiveRecord::Rollback unless result.success?
+      result
     end
   end
 
   def render_json_response(result)
-    if result.success?
+    if result
       render json: result.context[:workout].to_json
+    else
+      render json: "", status: :unprocessable_entity
     end
   end
 

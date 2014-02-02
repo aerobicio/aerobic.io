@@ -28,7 +28,9 @@ describe UploadsController do
       end
 
       context "and the context returns successfully" do
-        let(:result) { double(:result, success?: true ) }
+        let(:result) do
+          double(:result, success?: true, context: { workout: "" } )
+        end
 
         it { should respond_with(:success) }
       end
@@ -36,18 +38,20 @@ describe UploadsController do
       context "and the context returns unsuccessfully" do
         let(:result) { double(:result, success?: false ) }
 
-        it { should respond_with(:success) }
+        it { should respond_with(:unprocessable_entity) }
       end
     end
 
     context "when given a tcx file" do
       before do
-        ProcessUploadedTcxFile.should_receive(:perform) { result }
+        CreateWorkoutFromUploadedTcxFile.should_receive(:perform) { result }
         post :create, { activity_type: "tcx", format: :json }
       end
 
       context "and the context returns successfully" do
-        let(:result) { double(:result, success?: true ) }
+        let(:result) do
+          double(:result, success?: true, context: { workout: "" } )
+        end
 
         it { should respond_with(:success) }
       end
@@ -55,7 +59,7 @@ describe UploadsController do
       context "and the context returns unsuccessfully" do
         let(:result) { double(:result, success?: false ) }
 
-        it { should respond_with(:success) }
+        it { should respond_with(:unprocessable_entity) }
       end
     end
   end
