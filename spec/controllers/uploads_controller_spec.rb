@@ -62,5 +62,13 @@ describe UploadsController do
         it { should respond_with(:unprocessable_entity) }
       end
     end
+
+    context "when given an unknown file" do
+      before do
+        post :create, { format: :json }
+      end
+
+      it { should respond_with(:unprocessable_entity) }
+    end
   end
 end

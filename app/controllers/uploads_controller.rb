@@ -25,12 +25,14 @@ class UploadsController < ApplicationController
 
   def create_workout
     ActiveRecord::Base.transaction do
-      result = case params[:activity_type]
-               when "fit"
-                 CreateWorkoutFromUploadedFitFile.perform(upload_params)
-               when "tcx"
-                 CreateWorkoutFromUploadedTcxFile.perform(upload_params)
-               end
+      case params[:activity_type]
+      when "fit"
+        result = CreateWorkoutFromUploadedFitFile.perform(upload_params)
+      when "tcx"
+        result = CreateWorkoutFromUploadedTcxFile.perform(upload_params)
+      else
+        return nil
+      end
 
       raise ActiveRecord::Rollback unless result.success?
       result
