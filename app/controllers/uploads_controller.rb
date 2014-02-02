@@ -43,7 +43,7 @@ class UploadsController < ApplicationController
     if result
       render json: result.context[:workout].to_json
     else
-      render json: "", status: :unprocessable_entity
+      head :unprocessable_entity
     end
   end
 
