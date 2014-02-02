@@ -17,8 +17,6 @@ Feature: Upload From Garmin
 
   Scenario: Uploading a FIT file from a device
     Given I am a member
-    When I add a workout using a FIT file
-    Then I should see the workout in my activity feed
     And I visit the upload page
     And I have a Garmin device that supports FIT files
     And I have some FIT workouts on my device

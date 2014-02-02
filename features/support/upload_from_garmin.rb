@@ -1,6 +1,9 @@
 def upload_default_workout
   visit upload_path
-  page.driver.post upload_path, activity: fit_workout1_data, format: :json
+  page.driver.post upload_path,
+                   activity: fit_workout1_data,
+                   activity_type: 'fit',
+                   format: :json
 end
 
 def member_does_not_have_plugin_installed
@@ -18,28 +21,6 @@ end
 def member_fit_workouts_on_device
   @workouts = [workout1, workout2]
   page.execute_script("window.GarminStubs.createFITWorkouts(#{@workouts.to_json});")
-end
-
-def add_workout_using_fit_file
-  # This is a hack that hits the upload controller directly as I have no idea
-  # how to do this from the user interface without having a Garmin permentantly
-  # connected to the computer.
-  page.driver.post upload_path,
-                   activity: fit_file,
-                   activity_type: "fit",
-                   format: :json
-end
-
-def add_workout_using_tcx_file
-  visit upload_path
-
-  # This is a hack that hits the upload controller directly as I have no idea
-  # how to do this from the user interface without having a Garmin permentantly
-  # connected to the computer.
-  page.driver.post upload_path,
-                   activity: tcx_file,
-                   activity_type: "tcx",
-                   format: :json
 end
 
 def page_has_workout1
@@ -122,7 +103,7 @@ def tcx_workout
   }
 end
 
-def tcx_file
+def tcx_workout_data
   <<-TCXFILE
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <TrainingCenterDatabase xmlns="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2 http://www.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd">

@@ -1,11 +1,3 @@
-When(/^I add a workout using a FIT file$/) do
-  add_workout_using_fit_file
-end
-
-When(/^I add a workout using a TCX file$/) do
-  add_workout_using_tcx_file
-end
-
 When(/^I visit the upload page$/) do
   visit upload_path
 end
