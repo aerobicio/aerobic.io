@@ -42,7 +42,9 @@ describe Workouts::WorkoutPartialView do
 
     context "when current member did not do the workout" do
       let(:title) { "Mike did a workout" }
-      let(:i18n_params) { ["activity.workout.title.third_person", name: workout_member.name] }
+      let(:i18n_params) do
+        ["activity.workout.title.third_person", name: workout_member.name]
+      end
 
       it { should == title }
     end
