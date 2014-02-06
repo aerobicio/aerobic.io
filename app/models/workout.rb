@@ -7,4 +7,8 @@ class Workout < ActiveRecord::Base
 
   validates :active_duration, :distance, :duration,  presence: true
   validates :end_time, :start_time, :user, presence: true
+
+  def date
+    start_time.to_date
+  end
 end
