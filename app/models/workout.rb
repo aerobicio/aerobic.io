@@ -1,6 +1,8 @@
 require_relative "fit_file"
 require_relative "user"
 
+# Represents a workout in the database.
+#
 class Workout < ActiveRecord::Base
   has_one :fit_file
   belongs_to :user
