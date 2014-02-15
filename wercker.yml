@@ -59,7 +59,8 @@ build:
 
 deploy:
     steps:
-        - heroku-deploy
+        - heroku-deploy:
+            key-name: HEROKU_KEY
         - script:
             name: Migrate Database
             code: heroku run rake db:migrate --app $HEROKU_APP_NAME
