@@ -1,0 +1,22 @@
+<% view = Workouts::WorkoutPartialView.new(current_user, workout) %>
+
+<% cache view.cache_key do %>
+  <article class="panel" data-href="<%= view.workout_path %>">
+    <header class="panel__header--padded">
+      <%= gravatar_for_member(view.workout_member, extra_classes: "panel__header__figure") %>
+      <h6 class="panel__header__heading h6"><%= view.title %></h6>
+    </header>
+    <div class="panel__content">
+      <ul class="data-row">
+        <li class="data-row__item">
+          <h6 class="h3 data-row__item__value"><%= view.duration %></h6>
+          <span class="data-row__item__key">Duration</span>
+        </li>
+        <li class="data-row__item">
+          <h6 class="h3 data-row__item__value"><%= view.distance %></h6>
+          <span class="data-row__item__key">Distance</span>
+        </li>
+      </ul>
+    </div>
+  </article>
+<% end %>
