@@ -10,13 +10,13 @@ describe Members::Show do
     double(:member,
            id: member_id,
            cache_key: member_id.to_s,
-           activities: member_activities,
+           workouts: member_workouts,
           )
   end
 
-  let(:member_activities) { [activity_1, activity_2] }
-  let(:activity_1) { double(:activity_1, cache_key: "a1", date: Date.today) }
-  let(:activity_2) { double(:activity_2, cache_key: "a2", date: Date.today) }
+  let(:member_workouts) { [workout_1, workout_2] }
+  let(:workout_1) { double(:workout_1, cache_key: "a1", date: Date.today) }
+  let(:workout_2) { double(:workout_2, cache_key: "a2", date: Date.today) }
   let(:following_active) { true }
 
   before do
@@ -34,58 +34,35 @@ describe Members::Show do
     end
   end
 
-  describe "#render_activities" do
-    subject(:render_activities) { view.render_activities }
+  describe "#render_workouts" do
+    subject(:render_workouts) { view.render_workouts }
 
     let(:render_params) do
       {
-        partial: "activity/grouped",
-        object: { Date.today =>  member_activities },
+        partial: "workouts/grouped",
+        object: { Date.today =>  member_workouts },
       }
     end
 
-    context "when the member has activities" do
-      let(:member_activities) { [activity_1] }
+    context "when the member has workouts" do
+      let(:member_workouts) { [workout_1] }
 
-      context "and following is active" do
-        let(:following_active) { true }
-
-        before do
-          controller.should_receive(:render).with(render_params) do
-            ["render"]
-          end
-        end
-
-        it "should render the activities" do
-          render_activities.should == "render"
+      before do
+        controller.should_receive(:render).with(render_params) do
+          ["render"]
         end
       end
 
-      context "and following is not active" do
-        let(:following_active) { false }
-
-        let(:member) { double(:member, activities: activities) }
-        let(:activities) do
-          double(:activities, exclude_following: member_activities)
-        end
-
-        before do
-          controller.should_receive(:render).with(render_params) do
-            ["render"]
-          end
-        end
-
-        it "should render the activities" do
-          render_activities.should == "render"
-        end
+      it "should render the workouts" do
+        render_workouts.should == "render"
       end
     end
 
-    context "when the member has no activities" do
-      let(:member_activities) { [] }
+    context "when the member has no workouts" do
+      let(:member_workouts) { [] }
 
       it "should render a message stating so" do
-        render_activities.should == "You have no activity!"
+        render_workouts.should == "You have no workouts!"
       end
     end
   end
