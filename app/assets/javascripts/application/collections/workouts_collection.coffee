@@ -51,11 +51,10 @@
     request
 
   workoutData: (workout, data) ->
-    activity: data
+    workout_data: data
+    workout_format: workout.get('format')
     device_id: workout.get('device').id
     device_workout_id: workout.get('id')
-    uuid: workout.get('uuid')
-    format: workout.get('format')
 
   onUploadStarted: (workout) ->
     workout.set(status: 'uploading')

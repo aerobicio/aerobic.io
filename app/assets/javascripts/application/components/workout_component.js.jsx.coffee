@@ -21,12 +21,9 @@
       "workouts__list__item": true
       "is-checked": @state.checked
       "is-uploading": @props.model.isUploading()
-      "is-uploaded": @props.model.isUploaded()
       "is-failed": @props.model.isFailed()
 
   render: ->
-    SpinnerComponent = app.components.SpinnerComponent
-
     `<li
       key={this.props.model.cid}
       className={this.classes()}
@@ -38,6 +35,14 @@
         <h6 className="h6">
           {this.props.model.date()}<span> {this.props.model.dateSince()}</span>
         </h6>
-        { this.props.model.isUploading() ? <SpinnerComponent /> : ''}
+        {this.renderStatus()}
       </div>
     </li>`
+
+  renderStatus: ->
+    SpinnerComponent = app.components.SpinnerComponent
+
+    `<div>
+      {this.props.model.isUploading() ? 'Uploading Workout' + <SpinnerComponent /> : ''}
+      {this.props.model.isFailed() ? 'Upload Failed' : ''}
+    </div>`

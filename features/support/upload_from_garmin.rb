@@ -1,6 +1,6 @@
 def upload_default_workout
   visit upload_path
-  page.driver.post upload_path, activity: fit_workout1_data, format: :json
+  page.driver.post upload_path, workout_data: fit_workout1_data, format: :json
 end
 
 def member_does_not_have_plugin_installed

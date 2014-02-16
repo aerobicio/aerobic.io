@@ -66,12 +66,6 @@ When(/^I upload multiple workouts from my device$/) do
   end
 end
 
-Then(/^I should see the workouts in my activity feed$/) do
-  visit dashboard_path
-  page_has_workout1
-  page_has_workout2
-end
-
 Given(/^I have a Garmin device that supports TCX files$/) do
   member_has_tcx_device
 end
@@ -146,7 +140,7 @@ def ensure_workout_upload_succeeds(uuid)
   Capybara.default_wait_time = 15
   newWorkout = page.find(".is-uploaded[data-workout-uuid='#{uuid}']")
   within newWorkout do
-    page.should have_content('uploaded')
+    page.should have_content('Workout Uploaded')
   end
   Capybara.default_wait_time = 2
 end
@@ -155,7 +149,7 @@ def ensure_workout_upload_fails(uuid)
   Capybara.default_wait_time = 15
   newWorkout = page.find(".is-failed[data-workout-uuid='#{uuid}']")
   within newWorkout do
-    page.should have_content('failed')
+    page.should have_content('Upload Failed')
   end
   Capybara.default_wait_time = 2
 end

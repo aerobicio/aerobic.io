@@ -28,10 +28,6 @@ describe "app.components.WorkoutComponent", ->
       @component.props.model.set(status: "uploading")
       chai.expect(@component.classes()).to.have.string "is-uploading"
 
-    it "has an 'is-uploaded' class if the component state is uploaded", ->
-      @component.props.model.set(status: "uploaded")
-      chai.expect(@component.classes()).to.have.string "is-uploaded"
-
     it "has an 'is-failed' class if the component state is failed", ->
       @component.props.model.set(status: "failed")
       chai.expect(@component.classes()).to.have.string "is-failed"

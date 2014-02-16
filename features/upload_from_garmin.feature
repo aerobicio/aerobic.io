@@ -22,16 +22,14 @@ Feature: Upload From Garmin
     And I have some FIT workouts on my device
     When I upload a FIT workout from my device
     Then the workout should be uploaded
-    And I should see the workout in my activity feed
 
-  Scenario: Uploading a TCX file from a device
-    Given I am a member
-    And I visit the upload page
-    And I have a Garmin device that supports TCX files
-    And I have some TCX workouts on my device
-    When I upload a TCX workout from my device
-    Then the workout should be uploaded
-    And I should see the workout in my activity feed
+  # Scenario: Uploading a TCX file from a device
+  #   Given I am a member
+  #   And I visit the upload page
+  #   And I have a Garmin device that supports TCX files
+  #   And I have some TCX workouts on my device
+  #   When I upload a TCX workout from my device
+  #   Then the workout should be uploaded
 
   Scenario: Uploading multiple files at once from a device
     Given I am a member
@@ -40,7 +38,6 @@ Feature: Upload From Garmin
     And I have some FIT workouts on my device
     When I upload multiple workouts from my device
     Then the workouts should both be uploaded
-    And I should see the workouts in my activity feed
 
   Scenario: Device has no workouts
     Given I am a member
