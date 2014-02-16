@@ -2,9 +2,8 @@
 
 @app.components.ExistingWorkoutComponent = React.createClass
   mixins: [@lib.BackboneModelMixin]
-
-  getBackboneModels: ->
-    [@props.model]
+  propTypes:
+    model: React.PropTypes.instanceOf(app.models.ExistingWorkoutModel).isRequireds
 
   classes: ->
     React.addons.classSet
@@ -23,6 +22,7 @@
         <h6 className="h6">
           {this.props.model.date().toString()} <span>{this.props.model.dateSince()}</span>
         </h6>
+        Workout Uploaded
       </div>
       <ul className="data-row">
         <li className="data-row__item">

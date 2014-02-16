@@ -1,33 +1,28 @@
 ###* @jsx React.DOM ###
 
 @app.components.WorkoutsComponent = React.createClass
-  mixins: [@lib.BackboneModelMixin]
+  propTypes:
+    collection: React.PropTypes.instanceOf(app.collections.WorkoutsCollection).isRequired
+    hasDeviceSelected: React.PropTypes.bool.isRequired
 
-  getBackboneModels: ->
-    [@props.collection]
+  classes: ->
+    React.addons.classSet
+      "workouts-list": true
 
-  getInitialState: ->
-    hasDeviceSelected: false
+  onClick: (event) ->
+    event.preventDefault()
+    @props.collection.uploadSelectedWorkouts()
 
   render: ->
     WorkoutListHeaderComponent = app.components.WorkoutListHeaderComponent
     WorkoutListComponent = app.components.WorkoutListComponent
 
-    if @state.hasDeviceSelected
-      `<div className={this.classes()}>
-        <WorkoutListHeaderComponent collection={this.props.collection} onClick={this.onClick} />
+    if @props.hasDeviceSelected
+      `<div>
+        <WorkoutListHeaderComponent collection={this.props.collection} onClickHandler={this.onClick} />
         <WorkoutListComponent collection={this.props.collection} />
       </div>`
     else
-      `<div className={this.classes()}>
-        Select a device to get started.
+      `<div>
+        Select a device above to start adding workouts!
       </div>`
-
-  classes: ->
-    React.addons.classSet
-      "workouts": true
-      "has-device-selected": @state.hasDeviceSelected
-
-  onClick: (event) ->
-    event.preventDefault()
-    @props.collection.uploadSelectedWorkouts()

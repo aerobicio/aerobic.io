@@ -52,15 +52,6 @@ build:
             user: $LIBRATO_USER
             token: $LIBRATO_TOKEN
             namespace: aerobicio
-        - hipchat-notify:
-            token: $HIPCHAT_TOKEN
-            room-id: $HIPCHAT_ROOM_ID
-            from-name: Wercker
-        - wercker/campfire-notify@0.1.1:
-            token: $CAMPFIRE_TOKEN
-            room-id: 541059
-            subdomain: aerobicio
-            on: failed
         - sherzberg/slack-notify:
             subdomain: aerobic
             token: $SLACK_TOKEN
@@ -68,7 +59,8 @@ build:
 
 deploy:
     steps:
-        - heroku-deploy
+        - heroku-deploy:
+            key-name: HEROKU_KEY
         - script:
             name: Migrate Database
             code: heroku run rake db:migrate --app $HEROKU_APP_NAME
@@ -76,10 +68,6 @@ deploy:
             name: Clear Rails Cache
             code: heroku run rails runner -e production Rails.cache.clear --app $HEROKU_APP_NAME
     after-steps:
-        - hipchat-notify:
-            token: $HIPCHAT_TOKEN
-            room-id: $HIPCHAT_ROOM_ID
-            from-name: Wercker
         - sherzberg/slack-notify:
             subdomain: aerobic
             token: $SLACK_TOKEN

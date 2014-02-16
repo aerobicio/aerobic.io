@@ -8,18 +8,6 @@ describe "app.collections.DevicesCollection", ->
   afterEach ->
     @collection = null
 
-  describe "#fetch", ->
-    it "asks the garminDelgate for a list of devices", ->
-      @collection.fetch()
-      chai.expect(@garminDelegateStub.devices.called).to.be.true
-
-    it "resets the collection with the returned devices", (done) ->
-      promise = @collection.fetch()
-      promise.done =>
-        chai.expect(@garminDelegateStub.devices.called).to.be.true
-        done()
-      @garminDelegateDevicesPromise.resolve(true)
-
   describe "#selectDevice", ->
     beforeEach ->
       @unselectAllDevicesSpy = sinon.spy(@collection, 'unselectAllDevices')
@@ -30,11 +18,11 @@ describe "app.collections.DevicesCollection", ->
       @unselectAllDevicesSpy.restore()
 
     it "unselects all devices in the collection", ->
-      @collection.selectDevice(@model.cid)
+      @collection.selectDevice(@model)
       chai.expect(@unselectAllDevicesSpy.called).to.be.true
 
     it "sets the device as selected", ->
-      @collection.selectDevice(@model.cid)
+      @collection.selectDevice(@model)
       chai.expect(@model.get('selected')).to.be.true
 
   describe "#unselectAllDevices", ->

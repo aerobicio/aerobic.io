@@ -2,15 +2,15 @@
 
 @app.components.WorkoutComponent = React.createClass
   mixins: [@lib.BackboneModelMixin]
-
-  getBackboneModels: ->
-    [@props.model]
+  propTypes:
+    model: React.PropTypes.instanceOf(app.models.WorkoutModel).isRequired
 
   getInitialState: ->
     checked: false
 
   toggleChecked: (event) ->
     event.preventDefault()
+
     checkedState = !@refs.workoutCheckbox.getDOMNode().checked
     @setState(checked: checkedState)
     @props.model.set(checked: checkedState)
@@ -20,14 +20,10 @@
       "panel": true
       "workouts__list__item": true
       "is-checked": @state.checked
-      "is-new": @props.model.get('status') == "new"
-      "is-uploading": @props.model.get('status') == "uploading"
-      "is-uploaded": @props.model.get('status') == "uploaded"
-      "is-failed": @props.model.get('status') == "failed"
+      "is-uploading": @props.model.isUploading()
+      "is-failed": @props.model.isFailed()
 
   render: ->
-    SpinnerComponent = app.components.SpinnerComponent
-
     `<li
       key={this.props.model.cid}
       className={this.classes()}
@@ -37,8 +33,16 @@
       <input className="workouts__list__item__checkbox" type="checkbox" checked={this.state.checked} ref="workoutCheckbox" />
       <div className="panel__content--padded">
         <h6 className="h6">
-          {this.props.model.date()} <span>{this.props.model.dateSince()}</span>
+          {this.props.model.date()}<span> {this.props.model.dateSince()}</span>
         </h6>
-        <SpinnerComponent />
+        {this.renderStatus()}
       </div>
     </li>`
+
+  renderStatus: ->
+    SpinnerComponent = app.components.SpinnerComponent
+
+    `<div>
+      {this.props.model.isUploading() ? 'Uploading Workout' + <SpinnerComponent /> : ''}
+      {this.props.model.isFailed() ? 'Upload Failed' : ''}
+    </div>`

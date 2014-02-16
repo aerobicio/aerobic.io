@@ -1,61 +1,69 @@
 @app.controllers.GarminUploadController = class GarminUploadController extends app.controllers.ViewController
   el: "#GarminUploadController"
-  garmin: null
 
   initialize: (options) ->
     @options = _(options).defaults({})
 
-    @garmin = new Garmin(@options.garmin)
-    @garminIsInstalled = false #@garmin.isInstalled()
+    @initializeGarmin()
+    @initializeData()
+    @initializeViews()
 
-    @progressModel = new app.models.ProgressModel()
+    @garminUploadComponent.setState(garminIsInstalled: @garmin.isInstalled())
+
+    # TODO: this should be refactored to some sort of promise based intitialser,
+    # something along the lines of this:
+    #
+    # `@garmin.initialize.then(=> @fetchDevices())`
+    #
+    @fetchDevices()
+
+  initializeGarmin: ->
+    @garmin = new Garmin(@options.garmin)
+
+  initializeData: ->
     @devicesCollection = new app.collections.DevicesCollection([], garminDelegate: @garmin)
     @workoutsCollection = new app.collections.WorkoutsCollection([], uploadPath: @options.uploadPath)
     @exitstingWorkoutsCollection = new app.collections.WorkoutsCollection([])
     @exitstingWorkoutsCollection.reset(@options.existingMemberWorkouts)
+    @progressModel = new app.models.ProgressModel()
 
-    @initializeUI()
-
-    if @garminIsInstalled
-      @fetchDevices()
-
-  fetchDevices: ->
-    promise = @devicesCollection.fetch()
-    promise.then(=> @deviceListComponent.setState(isLoading: false))
-    promise
-
-  initializeUI: ->
+  initializeViews: ->
     @garminUploadComponent = app.components.GarminUploadComponent(
       devicesCollection: @devicesCollection
       workoutsCollection: @workoutsCollection
-      deviceSelectedDelegate: @deviceSelected
-      deviceUnselectedDelegate: @deviceUnselected
       progressModel: @progressModel
+      onDeviceSelectDelegate: @onDeviceSelect
+      onDeviceUnselectDelegate: @onDeviceUnselect
     )
     React.renderComponent(@garminUploadComponent, document.getElementById("GarminUpload"))
 
-  deviceSelected: (device) =>
-    @workoutsComponent.setState(hasDeviceSelected: true)
-    @workoutsCollection.fetch(device)
-      .progress(@updateProgress)
-      .then(@updateWorkoutCollectionWithExistingWorkouts.bind(@, device.get('id')))
+  fetchDevices: ->
+    @garmin.devices().then (devices) =>
+      @devicesCollection.reset(devices)
+      @garminUploadComponent.setState(isInitializing: false)
 
-  deviceUnselected: =>
+  onDeviceSelect: (device) =>
     @progressModel.set(@progressModel.defaults)
-    @workoutsComponent.setState(hasDeviceSelected: false)
+    @garminUploadComponent.setState(hasDeviceSelected: true)
+    @workoutsCollection.fetch(device)
+      .progress(@_updateProgress)
+      .then(@_updateWorkoutCollectionWithExistingWorkouts.bind(@, device.get('id')))
+
+  onDeviceUnselect: =>
+    @progressModel.set(@progressModel.defaults)
+    @garminUploadComponent.setState(hasDeviceSelected: false)
     @workoutsCollection.reset([])
 
-  updateWorkoutCollectionWithExistingWorkouts: (deviceId) ->
+  _updateProgress: (progress) =>
+    unless progress.percent is @_lastProgressPercentage
+      @progressModel.set(progress)
+      @_lastProgressPercentage = progress.percent
+
+  _updateWorkoutCollectionWithExistingWorkouts: (deviceId) ->
     workoutsCollectionClone = @workoutsCollection.clone()
     @exitstingWorkoutsCollection.getWorkoutsForDeviceId(deviceId).map (existingWorkout) =>
       workout = workoutsCollectionClone.get(existingWorkout.get('device_workout_id'))
       workoutIndex = workoutsCollectionClone.indexOf(workout)
       workoutsCollectionClone.remove(workout)
       workoutsCollectionClone.add(existingWorkout, at: workoutIndex)
-
     @workoutsCollection.reset(workoutsCollectionClone.models)
-
-  updateProgress: (progress) =>
-    unless progress.percent is @_lastProgressPercentage
-      @progressModel.set(progress)
-      @_lastProgressPercentage = progress.percent

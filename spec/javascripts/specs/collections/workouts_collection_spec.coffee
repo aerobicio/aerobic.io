@@ -176,10 +176,12 @@ describe "app.collections.WorkoutsCollection", ->
       @workoutGetStub = sinon.stub(@workout, 'get')
       @workoutGetStub.withArgs('device').returns(id: 1)
       @workoutGetStub.withArgs('id').returns(2)
+      @workoutGetStub.withArgs('format').returns('fit')
       @data = "I am data."
 
     it "retuns a object with the workout data", ->
       workoutData = @collection.workoutData(@workout, @data)
-      chai.expect(workoutData.activity).to.equal @data
+      chai.expect(workoutData.workout_data).to.equal @data
+      chai.expect(workoutData.workout_format).to.equal 'fit'
       chai.expect(workoutData.device_id).to.equal 1
       chai.expect(workoutData.device_workout_id).to.equal 2

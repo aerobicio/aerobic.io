@@ -2,9 +2,8 @@
 
 @app.components.ProgressBarComponent = React.createClass
   mixins: [@lib.BackboneModelMixin]
-
-  getBackboneModels: ->
-    [@props.model]
+  propTypes:
+    model: React.PropTypes.object.isRequired
 
   getInitialState: ->
     isLoading: false
