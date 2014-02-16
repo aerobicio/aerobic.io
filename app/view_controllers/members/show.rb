@@ -15,32 +15,24 @@ module Members
       [
         @current_member.cache_key,
         @member.cache_key,
-        activities.map(&:cache_key)
+        workouts.map(&:cache_key)
       ].flatten.join(":")
     end
 
-    def render_activities
-      if activities.any?
-        @controller.render(partial: "activity/grouped",
-                           object: activities.group_by(&:date)
+    def render_workouts
+      if workouts.any?
+        @controller.render(partial: "workouts/grouped",
+                           object: workouts.group_by(&:date)
                           ).first
       else
-        "You have no activity!"
+        "You have no workouts!"
       end
     end
 
     private
 
-    def activities
-      @activities ||= member_activities
-    end
-
-    def member_activities
-      if $switch_board.following_active?(@member)
-        @member.activities
-      else
-        @member.activities.exclude_following
-      end
+    def workouts
+      @workouts ||= @member.workouts
     end
   end
 end
