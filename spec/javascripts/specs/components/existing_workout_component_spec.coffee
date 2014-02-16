@@ -1,14 +1,13 @@
 describe "app.components.ExistingWorkoutComponent", ->
   beforeEach ->
     @fixture = $("""<div id="device-component"></div>""").appendTo "body"
-    @fixtureEl = @fixture[0]
-    @model = new Backbone.Model
+    @model = new app.models.ExistingWorkoutModel
     @model.date = -> ""
     @component = app.components.ExistingWorkoutComponent(model: @model)
-    React.renderComponent(@component, @fixtureEl)
+    React.renderComponent(@component, @fixture[0])
 
   afterEach ->
-    React.unmountComponentAtNode(@fixtureEl)
+    React.unmountComponentAtNode(@fixture[0])
     @fixture.remove()
 
   describe "#classes", ->

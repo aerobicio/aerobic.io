@@ -1,0 +1,65 @@
+###* @jsx React.DOM ###
+
+@app.components.GarminUploadComponent = React.createClass
+  propTypes:
+    devicesCollection: React.PropTypes.object.isRequired
+    workoutsCollection: React.PropTypes.object.isRequired
+    progressModel: React.PropTypes.object.isRequired
+    onDeviceSelectDelegate: React.PropTypes.func.isRequired
+    onDeviceUnselectDelegate: React.PropTypes.func.isRequired
+
+  getInitialState: ->
+    isInitializing: true
+    garminIsInstalled: false
+    hasDeviceSelected: false
+
+  render: ->
+    if @state.garminIsInstalled
+      @renderGarminUploader()
+    else
+      @renderGarminNotInstalled()
+
+  renderGarminUploader: ->
+    SpinnerComponent = app.components.SpinnerComponent
+    DeviceListComponent = app.components.DeviceListComponent
+    WorkoutsComponent = app.components.WorkoutsComponent
+
+    `<div>
+      {this.state.isInitializing ? <SpinnerComponent preset={app.config.spinner.small}/> : '' }
+      <DeviceListComponent
+        collection={this.props.devicesCollection}
+        progressModel={this.props.progressModel}
+        hasDeviceSelected={this.state.hasDeviceSelected}
+        onDeviceSelectDelegate={this.props.onDeviceSelectDelegate}
+        onDeviceUnselectDelegate={this.props.onDeviceUnselectDelegate}
+      />
+      <WorkoutsComponent
+        collection={this.props.workoutsCollection}
+        hasDeviceSelected={this.state.hasDeviceSelected}
+      />
+    </div>`
+
+  renderGarminNotInstalled: ->
+    SVGImageReplaceComponent = app.components.SVGImageReplaceComponent
+
+    `<div className="page-message">
+      <SVGImageReplaceComponent className="page-message__figure" src="<%= asset_path("sad_garmin.svg") %>" />
+      <div className="page-message__content">
+        <h2 className="h2">Whoops!</h2>
+        <h3 className="h3">
+          We couldn’t find the Garmin Communicator&nbsp;Plugin
+        </h3>
+        <p>
+          It looks like the Garmin Communicator plugin is not installed on
+          this computer. The Garmin Communicator plugin is required in order
+          for Aerobic to read workouts from your Garmin devices.
+        </p>
+        <p>
+          <strong>
+            Head over to the <a href="http://www.garmin.com/products/communicator/">Garmin website</a> to install it.
+            Once you’re done, come back here and you can start uploading workouts!
+          </strong>
+        </p>
+        <a className="button" href="http://www.garmin.com/products/communicator/">Install Garmin Communicator</a>
+      </div>
+    </div>`

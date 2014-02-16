@@ -27,7 +27,7 @@ end
 When(/^I upload a FIT workout from my device$/) do
   select_device_with_name("Test FIT Device")
 
-  within "#Workouts" do
+  within "#GarminUpload" do
     page_has_workouts
 
     workout = get_workout_node_for_workout(@workouts.first)
@@ -46,7 +46,7 @@ end
 When(/^I upload multiple workouts from my device$/) do
   select_device_with_name("Test FIT Device")
 
-  within "#Workouts" do
+  within "#GarminUpload" do
     page_has_workouts
 
     workout1 = get_workout_node_for_workout(@workouts.first)
@@ -87,7 +87,7 @@ end
 When(/^I upload a TCX workout from my device$/) do
   select_device_with_name("Test TCX Device")
 
-  within "#Workouts" do
+  within "#GarminUpload" do
     page_has_workouts
 
     workout = get_workout_node_for_workout(@workouts.first)
@@ -104,20 +104,20 @@ When(/^I upload a TCX workout from my device$/) do
 end
 
 Then(/^the workout should be uploaded$/) do
-  within "#Workouts" do
+  within "#GarminUpload" do
     ensure_workout_upload_succeeds(@workouts.first[:uuid])
   end
 end
 
 Then(/^the workouts should both be uploaded$/) do
-  within "#Workouts" do
+  within "#GarminUpload" do
     ensure_workout_upload_succeeds(@workouts.first[:uuid])
     ensure_workout_upload_succeeds(@workouts.last[:uuid])
   end
 end
 
 Then(/^I should see an error message for the upload$/) do
-  within "#Workouts" do
+  within "#GarminUpload" do
     ensure_workout_upload_fails(@workouts.first[:uuid])
   end
 end
@@ -131,7 +131,7 @@ Then(/^I should see a message telling me there are no workouts on my device$/) d
 end
 
 Then(/^I should see a message telling me that I need to install the Garmin plugin$/) do
-  page.should have_content "Go and install the garmin plugin!"
+  page.should have_content "We couldn’t find the Garmin Communicator Plugin"
 end
 
 def page_has_workouts
@@ -161,9 +161,9 @@ def ensure_workout_upload_fails(uuid)
 end
 
 def select_device_with_name(name)
-  within "#DevicesList" do
+  within "#GarminUpload" do
     page_has_device
-    page.find('.devices-list__device', :text => name).click
+    page.find('.device-list__device', :text => name).click
   end
 end
 
@@ -172,5 +172,5 @@ def get_workout_node_for_workout(workout)
 end
 
 def page_has_device
-  page.should have_css('.devices-list__device')
+  page.should have_css('.device-list__device')
 end

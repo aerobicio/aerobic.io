@@ -1,9 +1,11 @@
 ###* @jsx React.DOM ###
 
 @app.components.SpinnerComponent = React.createClass
+  propTypes:
+    preset: React.PropTypes.object
+
   getInitialState: ->
     preset: @props.preset ? app.config.spinner.tiny
-    visible: @props.isVisible ? true
 
   classes: ->
     React.addons.classSet

@@ -2,36 +2,18 @@ describe "app.components.WorkoutListHeaderComponent", ->
   beforeEach ->
     @fixture = $("""<div id="device-list-component"></div>""").appendTo "body"
     @fixtureEl = @fixture[0]
-    @collection = new Backbone.Collection
+    @collection = new app.collections.WorkoutsCollection
     @collection.getSelectedWorkoutsCount = sinon.stub()
-    @onClick = sinon.spy()
+    @onClickHandler = sinon.spy()
     @component = app.components.WorkoutListHeaderComponent(
       collection: @collection
-      onClick: @onClick
+      onClickHandler: @onClickHandler
     )
     React.renderComponent(@component, @fixtureEl)
 
   afterEach ->
     React.unmountComponentAtNode(@fixtureEl)
     @fixture.remove()
-
-  describe "#onClick", ->
-    beforeEach ->
-      @event =
-        preventDefault: -> return
-      @preventDefaultSpy = sinon.spy(@event, 'preventDefault')
-
-    it "prevents default", ->
-      @component.onClick(@event)
-      chai.expect(@preventDefaultSpy.calledOnce).to.be.true
-
-    it "calls the onClick handler property", ->
-      @component.onClick(@event)
-      chai.expect(@onClick.calledOnce).to.be.true
-
-    it "passes the event into the onClick handler property", ->
-      @component.onClick(@event)
-      chai.expect(@onClick.calledWith(@event)).to.be.true
 
   describe "#getSelectedWorkoutsCount", ->
     beforeEach ->

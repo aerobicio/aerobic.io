@@ -5,7 +5,7 @@
 
   initialize: ->
     @set(format: @_workoutFormat())
-    @set(uuid: @_workoutUuid()) if @get("uuid") is undefined
+    @set(uuid: @_workoutUuid())
 
   date: ->
     moment(@get('date')).calendar()
@@ -27,7 +27,7 @@
 
   _workoutUuid: ->
     uuidString = [@get("id"), @get("device").id].join(":")
-    new jsSHA(uuidString, "TEXT" ).getHash("SHA-1", "HEX")
+    new jsSHA(uuidString, "TEXT").getHash("SHA-1", "HEX")
 
   _workoutFormat: ->
     if @attributes.device.canReadFITActivities is true
