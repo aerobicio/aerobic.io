@@ -29,24 +29,4 @@ describe FitFile do
 
     it { should validate_uniqueness_of(:workout_id) }
   end
-
-  context "accessing records" do
-    before(:all) do
-      @fit_file = FitFile.new(binary_data: binaray_activity_data)
-      @fit_file.send(:to_fit)
-    end
-
-    describe "that are present" do
-      subject(:records) { @fit_file.activity_records }
-
-      it { should_not == [] }
-    end
-
-    describe "that are not present" do
-      subject(:records) { @fit_file.blood_pressure_records }
-
-      it { should == [] }
-    end
-
-  end
 end
