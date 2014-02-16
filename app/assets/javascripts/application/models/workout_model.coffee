@@ -6,7 +6,6 @@
   initialize: ->
     @set(format: @_workoutFormat())
     @set(uuid: @_workoutUuid()) if @get("uuid") is undefined
-    console.log @get('format')
 
   date: ->
     moment(@get('date')).calendar()
