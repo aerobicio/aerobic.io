@@ -14,7 +14,8 @@ describe AvatarHelper do
                 "<img alt=\"4914f38406ec528bebfc1f8248e1cf17\" "\
                 "class=\"avatar__image\" src=\"//gravatar.com"\
                 "/avatar/4914f38406ec528bebfc1f8248e1cf17.png?s=64\" />"\
-                "</figure>" end
+                "</figure>"
+    end
 
     describe 'options' do
       describe 'when I pass in extra css classes' do
@@ -24,7 +25,8 @@ describe AvatarHelper do
                     "<img alt=\"4914f38406ec528bebfc1f8248e1cf17\" "\
                     "class=\"avatar__image\" src=\"//gravatar.com"\
                     "/avatar/4914f38406ec528bebfc1f8248e1cf17.png?s=64\" />"\
-                    "</figure>" end
+                    "</figure>"
+        end
       end
 
       describe 'when I pass in a different size option' do
@@ -33,7 +35,8 @@ describe AvatarHelper do
                        "<img alt=\"4914f38406ec528bebfc1f8248e1cf17\" "\
                        "class=\"avatar__image\" src=\"//gravatar.com"\
                        "/avatar/4914f38406ec528bebfc1f8248e1cf17.png?s=164\""\
-                       " /></figure>" end
+                       " /></figure>"
+        end
       end
     end
   end

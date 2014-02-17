@@ -51,10 +51,12 @@ describe Identities::New do
   end
 
   context 'when identity is set' do
-    let(:identity) do double(:identity,  name: name,
-                                         email: email,
-                                         errors: errors,
-                           ) end
+    let(:identity) do
+      double(:identity,  name: name,
+                         email: email,
+                         errors: errors,
+           )
+    end
     let(:name) { 'name' }
     let(:email) { 'email' }
     let(:errors) { [] }
@@ -102,10 +104,12 @@ describe Identities::New do
     end
 
     context 'and has errors' do
-      let(:errors) do double(:errors,  any?: true,
-                                       count: count,
-                                       full_messages: full_messages,
-                            ) end
+      let(:errors) do
+        double(:errors,  any?: true,
+                         count: count,
+                         full_messages: full_messages,
+              )
+      end
       let(:count) { 2 }
       let(:full_messages) { [1, 2] }
 

@@ -2,10 +2,12 @@ require 'active_record_helper'
 require_relative '../../app/models/identity'
 
 describe Identity do
-  subject do Identity.create(name: 'Gareth Townsend',
-                             email: 'gareth.townsend@me.com',
-                             password: 'password',
-                             password_confirmation: 'password') end
+  subject do
+    Identity.create(name: 'Gareth Townsend',
+                    email: 'gareth.townsend@me.com',
+                    password: 'password',
+                    password_confirmation: 'password')
+  end
 
   it { should validate_presence_of(:name) }
 

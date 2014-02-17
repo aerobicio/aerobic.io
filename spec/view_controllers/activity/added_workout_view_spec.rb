@@ -40,8 +40,10 @@ describe Activity::AddedWorkoutView do
     context 'when another member added the activity' do
       let(:member) { another_member }
 
-      it do should == I18n.t('activity.workout.title.third_person',
-                             name: another_member.name) end
+      it 'should use the third person' do
+        subject.should == I18n.t('activity.workout.title.third_person',
+                                 name: another_member.name)
+      end
     end
   end
 
