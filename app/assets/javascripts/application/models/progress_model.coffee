@@ -3,12 +3,6 @@
     percent: -1
     message: ""
 
-  constructor: ->
-    @on "change:percent", (model, value) ->
-      @trigger("complete") if @isComplete()
-      @trigger("empty") if @isEmpty()
-    super()
-
   isComplete: ->
     @get('percent') is 100
 

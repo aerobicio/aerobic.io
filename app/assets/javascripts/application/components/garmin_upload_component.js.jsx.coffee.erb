@@ -13,6 +13,7 @@
     isInitializing: true
     garminIsInstalled: false
     hasDeviceSelected: false
+    deviceHasFinishedLoading: false
 
   render: ->
     if @state.garminIsInstalled
@@ -38,6 +39,7 @@
         collection={this.props.workoutsCollection}
         progressModel={this.props.progressModel}
         hasDeviceSelected={this.state.hasDeviceSelected}
+        deviceHasFinishedLoading={this.state.deviceHasFinishedLoading}
       />
     </div>`
 

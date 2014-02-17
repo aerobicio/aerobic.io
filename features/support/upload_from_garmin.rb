@@ -8,10 +8,12 @@ def member_does_not_have_plugin_installed
 end
 
 def member_has_fit_device
+  page.execute_script("window.GarminStubs.resetDevices();")
   page.execute_script("window.GarminStubs.createFITDevice();")
 end
 
 def member_has_tcx_device
+  page.execute_script("window.GarminStubs.resetDevices();")
   page.execute_script("window.GarminStubs.createTCXDevice();")
 end
 
@@ -53,7 +55,7 @@ end
 def workout_with_bad_data
   {
     id: 3,
-    uuid: "4500e0ee180cf7a3549ecc5d3317c70fc821e819",
+    uuid: "637ced4d620f4f01eb561540616646971c531d08",
     date: "2013-12-12 08:53:01",
     data: "Derp! I am not data!",
     device: { id: 100 }

@@ -44,18 +44,21 @@
 
   onDeviceSelect: (device) =>
     @progressModel.set(@progressModel.defaults)
-    @garminUploadComponent.setState(hasDeviceSelected: true)
+    @garminUploadComponent.setState(hasDeviceSelected: true, deviceHasFinishedLoading: false)
     @workoutsCollection.fetch(device)
       .progress(@_updateProgress)
       .then(@_updateWorkoutCollectionWithExistingWorkouts.bind(@, device.get('id')))
+      .finally(=>
+        @garminUploadComponent.setState(hasDeviceSelected: true, deviceHasFinishedLoading: true)
+      )
 
   onDeviceUnselect: =>
     @progressModel.set(@progressModel.defaults)
-    @garminUploadComponent.setState(hasDeviceSelected: false)
+    @garminUploadComponent.setState(hasDeviceSelected: false, deviceHasFinishedLoading: false)
     @workoutsCollection.reset([])
 
   _updateProgress: (progress) =>
-    unless progress.percent is @_lastProgressPercentage
+    unless progress.percent is @progressModel.get('progress')
       @progressModel.set(progress)
       @_lastProgressPercentage = progress.percent
 

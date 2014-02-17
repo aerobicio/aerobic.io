@@ -23,13 +23,14 @@ Feature: Upload From Garmin
     When I upload a FIT workout from my device
     Then the workout should be uploaded
 
-  # Scenario: Uploading a TCX file from a device
-  #   Given I am a member
-  #   And I visit the upload page
-  #   And I have a Garmin device that supports TCX files
-  #   And I have some TCX workouts on my device
-  #   When I upload a TCX workout from my device
-  #   Then the workout should be uploaded
+  Scenario: Uploading a TCX file from a device
+    Given we have implemented TCX parsing server-side
+    Given I am a member
+    And I visit the upload page
+    And I have a Garmin device that supports TCX files
+    And I have some TCX workouts on my device
+    When I upload a TCX workout from my device
+    Then the workout should be uploaded
 
   Scenario: Uploading multiple files at once from a device
     Given I am a member
@@ -46,16 +47,11 @@ Feature: Upload From Garmin
     When I select the device
     Then I should see a message telling me there are no workouts on my device
 
-  # This scenario does actually pass in theory, however at the moment throwing
-  # bad data like this at the uploads_controller fails very explosively.
-  #
-  # Need to work out how to have it explode but still respond to the user in a
-  # better way. Need to talk to @quamen about this...
-  #
-  # Scenario: Uploading fails
-  #   Given I am a member
-  #   And I visit the upload page
-  #   And I have a Garmin device that supports FIT files
-  #   And I have a FIT workout that cannot be parsed on my device
-  #   When I upload a FIT workout from my device
-  #   Then I should see an error message for the upload
+  Scenario: Uploading fails
+    Given we have implemented less explosive handling of failing uploads
+    Given I am a member
+    And I visit the upload page
+    And I have a Garmin device that supports FIT files
+    And I have a FIT workout that cannot be parsed on my device
+    When I upload a FIT workout from my device
+    Then I should see an error message for the upload
