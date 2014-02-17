@@ -1,3 +1,5 @@
+# A support class for supressing warnings?
+#
 class WarningSuppressor
   IGNORES = [
     /QFont::setPixelSize: Pixel size <= 0/,

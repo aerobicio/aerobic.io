@@ -2,6 +2,7 @@ require 'capybara/poltergeist'
 require_relative './warning_suppressor'
 
 module Capybara::Poltergeist
+  # The Copybara::Poltergeist Client?
   class Client
     private
     def redirect_stdout
