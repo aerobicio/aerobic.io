@@ -5,6 +5,7 @@ module Capybara::Poltergeist
   # The Copybara::Poltergeist Client?
   class Client
     private
+
     def redirect_stdout
       prev = STDOUT.dup
       prev.autoclose = false
