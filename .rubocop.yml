@@ -5,8 +5,9 @@ AllCops:
     - Rakefile
     - config.ru
   Excludes:
-    - db/**
+    - bin/**
     - config/**
+    - db/**
     - script/**
     - vendor/**
   RunRailsCops: true
