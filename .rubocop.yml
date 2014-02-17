@@ -8,6 +8,7 @@ AllCops:
     - bin/**
     - config/**
     - db/**
+    - node_modules/**
     - script/**
     - vendor/**
   RunRailsCops: true
