@@ -26,7 +26,7 @@ class FitFile < ActiveRecord::Base
   end
 
   def start_time
-   Time.zone.at(to_fit.start_time)
+    Time.zone.at(to_fit.start_time)
   end
 
   private

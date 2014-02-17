@@ -4,7 +4,7 @@ Given(/^I have a registered account$/) do
 end
 
 When(/^I sign in with valid credentials$/) do
- sign_in
+  sign_in
 end
 
 Then(/^I should be signed in$/) do

@@ -8,6 +8,7 @@ AllCops:
     - bin/**
     - config/**
     - db/**
+    - features/support/upload_from_garmin.rb
     - node_modules/**
     - script/**
     - vendor/**
