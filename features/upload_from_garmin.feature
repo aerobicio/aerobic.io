@@ -23,6 +23,7 @@ Feature: Upload From Garmin
     When I upload a FIT workout from my device
     Then the workout should be uploaded
 
+  @wip
   Scenario: Uploading a TCX file from a device
     Given we have implemented TCX parsing server-side
     Given I am a member
@@ -47,6 +48,7 @@ Feature: Upload From Garmin
     When I select the device
     Then I should see a message telling me there are no workouts on my device
 
+  @wip
   Scenario: Uploading fails
     Given we have implemented less explosive handling of failing uploads
     Given I am a member
