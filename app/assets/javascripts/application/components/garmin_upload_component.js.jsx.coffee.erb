@@ -2,9 +2,9 @@
 
 @app.components.GarminUploadComponent = React.createClass
   propTypes:
-    devicesCollection: React.PropTypes.object.isRequired
-    workoutsCollection: React.PropTypes.object.isRequired
-    progressModel: React.PropTypes.object.isRequired
+    devicesCollection: React.PropTypes.instanceOf(app.collections.DevicesCollection).isRequired
+    workoutsCollection: React.PropTypes.instanceOf(app.collections.WorkoutsCollection).isRequired
+    progressModel: React.PropTypes.instanceOf(app.models.ProgressModel).isRequired
     onDeviceSelectDelegate: React.PropTypes.func.isRequired
     onDeviceUnselectDelegate: React.PropTypes.func.isRequired
 
