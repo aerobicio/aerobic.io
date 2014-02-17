@@ -1,37 +1,37 @@
 .device-list {
   padding: 50px 0;
   overflow: scroll;
+  text-align: center;
 }
 
 .device-list__device {
-  @include transition(all 550ms linear);
+  @include transition(all 250ms $ease-in-out-quad);
   @extend .panel--flat;
 
   background-color: #EEF0F3;
   box-shadow: none;
-  display: block;
+  display: inline-block;
   padding: 10px;
   width: 140px;
   height: 140px;
   margin: 0 10px;
   position: relative;
-  float: left;
 
   &:hover {
     cursor: pointer;
   }
 
   &.is-selected {
-    @include transition(all 550ms linear);
+    @include transition(all 250ms $ease-in-out-quad);
 
     border: 1px solid #5990D2;
     background-color: #fff;
   }
 
   .device-list.has-device-selected &.is-not-selected {
-    @include transition(opacity 550ms linear);
+    @include transition(opacity 250ms $ease-in-out-quad);
 
-    opacity: 0.75;
+    opacity: 0.5;
   }
 }
 
