@@ -23,6 +23,7 @@ bundle binstubs cucumber --force
 bundle binstubs rails_best_practices --force
 bundle binstubs consistency_fail --force
 bundle binstubs teaspoon --force
+bundle binstubs rubocop --force
 npm install
 
 cp -n .env.example .env

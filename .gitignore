@@ -12,6 +12,7 @@
 /bin/autospec
 /bin/rspec
 /bin/rails_best_practices
+/bin/rubocop
 /bin/cucumber
 /bin/consistency_fail
 /bin/teabag
