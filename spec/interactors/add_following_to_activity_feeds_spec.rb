@@ -1,5 +1,5 @@
-require_relative ".././../app/interactors/add_following_to_activity_feeds"
-require "active_support/core_ext/object/try"
+require_relative '.././../app/interactors/add_following_to_activity_feeds'
+require 'active_support/core_ext/object/try'
 
 describe AddFollowingToActivityFeeds do
   subject(:result) { described_class.perform(context) }
@@ -38,23 +38,23 @@ describe AddFollowingToActivityFeeds do
   end
 
   let(:member) { double(:member, followers: followers) }
-  let(:followed_member) { double(:followed_member, name: "Gus") }
+  let(:followed_member) { double(:followed_member, name: 'Gus') }
   let(:followers) { [double(:follower, id: 3)] }
 
   let(:activity) { double(:activity, save: activity_persisted) }
 
   before do
-    stub_const("Activity::FollowedUser", Class.new)
+    stub_const('Activity::FollowedUser', Class.new)
 
     Activity::FollowedUser.should_receive(:create).with(member_feed) do
       activity
     end
   end
 
-  context "when all feeds are updated successfully" do
+  context 'when all feeds are updated successfully' do
     let(:activity_persisted) { true }
 
-    context "and followers are not involved in the following event" do
+    context 'and followers are not involved in the following event' do
       before do
         Activity::FollowedUser.should_receive(:create).
           with(followed_member_feed) { activity }
@@ -63,12 +63,12 @@ describe AddFollowingToActivityFeeds do
           with(follower_member_feed) { activity }
       end
 
-      it "should be marked as successful" do
+      it 'should be marked as successful' do
         result.success?.should be_true
       end
     end
 
-    context "and followers are involved in the following event" do
+    context 'and followers are involved in the following event' do
       let(:followers) { [double(:follower, id: 2)] }
 
       before do
@@ -76,16 +76,16 @@ describe AddFollowingToActivityFeeds do
           with(followed_member_feed).once { activity }
       end
 
-      it "should be marked as successful" do
+      it 'should be marked as successful' do
         result.success?.should be_true
       end
     end
   end
 
-  context "when feeds are not updated succesfully" do
+  context 'when feeds are not updated succesfully' do
     let(:activity_persisted) { false }
 
-    it "should not be marked as successful" do
+    it 'should not be marked as successful' do
       result.success?.should be_false
     end
   end

@@ -1,5 +1,4 @@
 module Workouts
-
   # View Controller for managing the logic around rendering /members/show
   #
   class Show

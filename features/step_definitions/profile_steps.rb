@@ -1,7 +1,7 @@
 When(/I visit my profile page/) do
   visit dashboard_path
-  within ".navigation" do
-    click_link I18n.t("navigation.profile")
+  within '.navigation' do
+    click_link I18n.t('navigation.profile')
   end
 end
 

@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :home_page_path
 
-  layout "authenticated"
+  layout 'authenticated'
 
   private
 
@@ -25,6 +25,6 @@ class ApplicationController < ActionController::Base
   end
 
   def home_page_path
-    ENV["STATIC_SITE_URL"]
+    ENV['STATIC_SITE_URL']
   end
 end

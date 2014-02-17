@@ -6,16 +6,16 @@
 #
 class Activity < ActiveRecord::Base
   belongs_to :user
-  belongs_to :activity_workout, class_name: "Workout"
-  belongs_to :activity_user, class_name: "User"
-  belongs_to :activity_followed_user, class_name: "User"
+  belongs_to :activity_workout, class_name: 'Workout'
+  belongs_to :activity_user, class_name: 'User'
+  belongs_to :activity_followed_user, class_name: 'User'
 
   validates_presence_of :user
 
   default_scope { order(created_at: :desc) }
 
   scope :exclude_following, -> {
-    where.not(:type => ["Activity::FollowedUser", "Activity::UnfollowedUser"])
+    where.not(type: ['Activity::FollowedUser', 'Activity::UnfollowedUser'])
   }
 
   def date

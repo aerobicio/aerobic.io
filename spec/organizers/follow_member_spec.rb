@@ -1,4 +1,4 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe FollowMember do
   let(:context) do
@@ -19,7 +19,7 @@ describe FollowMember do
   let(:followings) { double(:followings, include?: false).as_null_object }
   let(:followers) { double(:followers).as_null_object }
 
-  let(:followed_member) { double(:followed_member, name: "Gus", touch: true) }
+  let(:followed_member) { double(:followed_member, name: 'Gus', touch: true) }
 
   let(:activity) { double(:activity, save: activity_persisted) }
 
@@ -28,83 +28,83 @@ describe FollowMember do
     User.should_receive(:find).with(context[:followed_id]) { followed_member }
   end
 
-  context "when CreateFollowing is successful" do
+  context 'when CreateFollowing is successful' do
     before do
       followings.should_receive(:<<).with(followed_member)
     end
 
-    context "and when AddFollowingToActivityFeeds is successful" do
+    context 'and when AddFollowingToActivityFeeds is successful' do
       let(:activity_persisted) { true }
 
       before do
         Activity::FollowedUser.stub(:create) { activity }
       end
 
-      it "should be marked as successful" do
+      it 'should be marked as successful' do
         result.success?.should be_true
       end
 
-      it "should add the member to the context" do
+      it 'should add the member to the context' do
         result.member.should == member
       end
 
-      it "should add the followed member to the context" do
+      it 'should add the followed member to the context' do
         result.followed_member.should == followed_member
       end
 
-      it "should add the successful notice to the context" do
-        result.notice.should == "Now following Gus"
+      it 'should add the successful notice to the context' do
+        result.notice.should == 'Now following Gus'
       end
     end
 
-    context "when when AddFollowingToActivityFeeds is unsuccessful" do
+    context 'when when AddFollowingToActivityFeeds is unsuccessful' do
       let(:activity_persisted) { false }
 
       before do
         Activity::FollowedUser.stub(:create) { activity }
       end
 
-      it "should not be marked as successful" do
+      it 'should not be marked as successful' do
         result.success?.should be_false
       end
 
-      it "should add the member to the context" do
+      it 'should add the member to the context' do
         result.member.should == member
       end
 
-      it "should add the followed member to the context" do
+      it 'should add the followed member to the context' do
         result.followed_member.should == followed_member
       end
 
-      it "should add the successful notice to the context" do
-        result.notice.should == "Could not follow Gus"
+      it 'should add the successful notice to the context' do
+        result.notice.should == 'Could not follow Gus'
       end
     end
   end
 
-  context "when CreateFollowing is unsuccessful" do
+  context 'when CreateFollowing is unsuccessful' do
     before do
       followings.should_receive(:<<).with(followed_member) do
-        raise ActiveRecord::ActiveRecordError.new("lol")
+        fail ActiveRecord::ActiveRecordError.new('lol')
       end
 
       Activity::FollowedUser.should_not_receive(:create)
     end
 
-    it "should not be marked as successful" do
+    it 'should not be marked as successful' do
       result.success?.should be_false
     end
 
-    it "should add the member to the context" do
+    it 'should add the member to the context' do
       result.member.should == member
     end
 
-    it "should add the followed member to the context" do
+    it 'should add the followed member to the context' do
       result.followed_member.should == followed_member
     end
 
-    it "should add the unsuccessful notice to the context" do
-      result.notice.should == "Could not follow Gus"
+    it 'should add the unsuccessful notice to the context' do
+      result.notice.should == 'Could not follow Gus'
     end
   end
 end

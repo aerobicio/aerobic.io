@@ -1,8 +1,7 @@
-require "i18n"
-require_relative "../../helpers/units_helper"
+require 'i18n'
+require_relative '../../helpers/units_helper'
 
 module Workouts
-
   # View Controller for managing the logic around rendering
   # /workouts/_workout
   #
@@ -18,14 +17,14 @@ module Workouts
       [
         @workout.cache_key,
         @current_member.cache_key,
-      ].join(":")
+      ].join(':')
     end
 
     def title
       if @current_member == member
-        I18n.t("activity.workout.title.first_person")
+        I18n.t('activity.workout.title.first_person')
       else
-        I18n.t("activity.workout.title.third_person", name: member.name)
+        I18n.t('activity.workout.title.third_person', name: member.name)
       end
     end
 

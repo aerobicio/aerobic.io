@@ -1,5 +1,5 @@
-require "spec_helper"
-require_relative "../../../app/view_controllers/workouts/show"
+require 'spec_helper'
+require_relative '../../../app/view_controllers/workouts/show'
 
 describe Workouts::Show do
   let(:view) { described_class.new(controller, member_id, workout_id) }
@@ -17,34 +17,34 @@ describe Workouts::Show do
   end
 
   before do
-    stub_const("Workout", Class.new)
+    stub_const('Workout', Class.new)
     Workout.should_receive(:find_by!).with(
       user_id: member_id,
       id: workout_id,
     ) { workout }
   end
 
-  describe "#cache_key" do
+  describe '#cache_key' do
     subject(:cache_key) { view.cache_key }
 
-    it "should be a combination of the member and workout cache keys" do
-      cache_key.should == "2"
+    it 'should be a combination of the member and workout cache keys' do
+      cache_key.should == '2'
     end
   end
 
-  describe "#duration" do
+  describe '#duration' do
     subject(:duration) { view.duration }
 
-    it "returns the formatted workout duration" do
-      duration.should == "0:01:00"
+    it 'returns the formatted workout duration' do
+      duration.should == '0:01:00'
     end
   end
 
-  describe "#distance" do
+  describe '#distance' do
     subject(:distance) { view.distance }
 
-    it "returns the formatted workout distance" do
-      distance.should == "1.0 km"
+    it 'returns the formatted workout distance' do
+      distance.should == '1.0 km'
     end
   end
 end

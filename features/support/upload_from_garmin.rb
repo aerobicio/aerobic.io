@@ -4,15 +4,15 @@ def upload_default_workout
 end
 
 def member_does_not_have_plugin_installed
-  page.execute_script("window.GarminStubs.pluginNotInstalled();")
+  page.execute_script('window.GarminStubs.pluginNotInstalled();')
 end
 
 def member_has_fit_device
-  page.execute_script("window.GarminStubs.createFITDevice();")
+  page.execute_script('window.GarminStubs.createFITDevice();')
 end
 
 def member_has_tcx_device
-  page.execute_script("window.GarminStubs.createTCXDevice();")
+  page.execute_script('window.GarminStubs.createTCXDevice();')
 end
 
 def member_fit_workouts_on_device
@@ -33,8 +33,8 @@ end
 def workout1
   {
     id: 1,
-    uuid: "87e2918af1be412fb5b018b21048a91bce67d5ab",
-    date: "2013-07-16 06:00:39",
+    uuid: '87e2918af1be412fb5b018b21048a91bce67d5ab',
+    date: '2013-07-16 06:00:39',
     data: fit_workout1_data,
     device: { id: 98 }
   }
@@ -43,8 +43,8 @@ end
 def workout2
   {
     id: 2,
-    uuid: "4500e0ee180cf7a3549ecc5d3317c70fc821e819",
-    date: "2013-12-12 08:53:01",
+    uuid: '4500e0ee180cf7a3549ecc5d3317c70fc821e819',
+    date: '2013-12-12 08:53:01',
     data: workout2_fit_data,
     device: { id: 99 }
   }
@@ -53,9 +53,9 @@ end
 def workout_with_bad_data
   {
     id: 3,
-    uuid: "4500e0ee180cf7a3549ecc5d3317c70fc821e819",
-    date: "2013-12-12 08:53:01",
-    data: "Derp! I am not data!",
+    uuid: '4500e0ee180cf7a3549ecc5d3317c70fc821e819',
+    date: '2013-12-12 08:53:01',
+    data: 'Derp! I am not data!',
     device: { id: 100 }
   }
 end
@@ -63,8 +63,8 @@ end
 def tcx_workout
   {
     id: 2,
-    uuid: "4500e0ee180cf7a3549ecc5d3317c70fc821e819",
-    date: "2013-12-12 08:53:01",
+    uuid: '4500e0ee180cf7a3549ecc5d3317c70fc821e819',
+    date: '2013-12-12 08:53:01',
     data: tcx_workout_data,
     device: { id: 99 }
   }
@@ -83,31 +83,31 @@ def tcx_workout_data
 end
 
 def page_has_workout1
-  page.should have_content "1:31:23 Duration"
-  page.should have_content "41.32 km Distance"
+  page.should have_content '1:31:23 Duration'
+  page.should have_content '41.32 km Distance'
 end
 
 def page_doesnt_have_workout1
-  page.should have_no_content "1:31:23 Duration"
-  page.should have_no_content "41.32 km Distance"
+  page.should have_no_content '1:31:23 Duration'
+  page.should have_no_content '41.32 km Distance'
 end
 
 def page_has_workout2
-  page.should have_content "0:37:30 Duration"
-  page.should have_content "17.04 km Distance"
+  page.should have_content '0:37:30 Duration'
+  page.should have_content '17.04 km Distance'
 end
 
 def page_doesnt_have_workout2
-  page.should have_no_content "0:37:30 Duration"
-  page.should have_no_content "17.04 km Distance"
+  page.should have_no_content '0:37:30 Duration'
+  page.should have_no_content '17.04 km Distance'
 end
 
 def page_has_tcx_workout
-  page.should have_content "HERP"
-  page.should have_content "DERP"
+  page.should have_content 'HERP'
+  page.should have_content 'DERP'
 end
 
 def page_doesnt_have_tcx_workout
-  page.should have_no_content "HERP"
-  page.should have_no_content "DERP"
+  page.should have_no_content 'HERP'
+  page.should have_no_content 'DERP'
 end

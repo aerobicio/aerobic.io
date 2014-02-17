@@ -3,6 +3,6 @@
 #
 module RegistrationHelper
   def registration_path
-    "/auth/identity/register"
+    '/auth/identity/register'
   end
 end

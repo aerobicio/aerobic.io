@@ -1,5 +1,5 @@
-require_relative "authentication"
-require_relative "workout"
+require_relative 'authentication'
+require_relative 'workout'
 
 # User is an ActiveRecord model that represents
 # a user in our system.
@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
                           class_name: 'User',
                           join_table: 'users_followings'
 
-
   has_and_belongs_to_many :followers,
                           foreign_key: 'following_id',
                           association_foreign_key: 'user_id',
@@ -24,7 +23,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true
 
   def to_partial_path
-    "members/member"
+    'members/member'
   end
 
   def email

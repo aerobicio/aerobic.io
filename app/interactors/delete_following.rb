@@ -1,4 +1,4 @@
-require "interactor"
+require 'interactor'
 
 # Takes a member_id and an unfollowed_id and removes the following relationship
 # between the member and the unfollowed member.

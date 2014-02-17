@@ -1,4 +1,4 @@
-require_relative "user"
+require_relative 'user'
 
 # Authentication is an ActiveRecord model that represents
 # a method via which a user can authenticate with the

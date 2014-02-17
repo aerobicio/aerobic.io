@@ -3,25 +3,25 @@ Given(/^the sign up feature is active$/) do
 end
 
 When(/^I sign up with valid credentials$/) do
-  email = "something@example.com"
-  name = "Someone Awesome"
+  email = 'something@example.com'
+  name = 'Someone Awesome'
 
   sign_up(name, email)
 end
 
 When(/^I sign up with invalid credentials$/) do
-  email = "something@com"
-  name = "Someone Awesome"
+  email = 'something@com'
+  name = 'Someone Awesome'
 
   sign_up(name, email)
 end
 
 Then(/^I should be on the sign up page$/) do
-  current_path.should == "/auth/identity/register"
+  current_path.should == '/auth/identity/register'
 end
 
 Then(/^I should see error messages$/) do
-  page.should have_content("Email is not a valid email")
+  page.should have_content('Email is not a valid email')
 end
 
 Given(/^the sign up feature is not active$/) do
@@ -53,5 +53,5 @@ def sign_up(name, email)
 end
 
 def sign_up_text
-  I18n.t("identities.new.submit")
+  I18n.t('identities.new.submit')
 end

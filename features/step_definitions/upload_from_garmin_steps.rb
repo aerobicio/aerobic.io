@@ -8,11 +8,11 @@ end
 
 Then(/^I should see workout information on my dashboard$/) do
   visit dashboard_path
-  page.should have_content "Distance: 41.32km"
+  page.should have_content 'Distance: 41.32km'
 end
 
 Then(/^I should see a message telling me that I have no devices$/) do
-  page.should have_content "Uh oh, we couldn’t find any devices!"
+  page.should have_content 'Uh oh, we couldn’t find any devices!'
 end
 
 Given(/^I have a Garmin device that supports FIT files$/) do
@@ -25,9 +25,9 @@ Given(/^I have some FIT workouts on my device$/) do
 end
 
 When(/^I upload a FIT workout from my device$/) do
-  select_device_with_name("Test FIT Device")
+  select_device_with_name('Test FIT Device')
 
-  within "#Workouts" do
+  within '#Workouts' do
     page_has_workouts
 
     workout = get_workout_node_for_workout(@workouts.first)
@@ -38,15 +38,15 @@ When(/^I upload a FIT workout from my device$/) do
       page.find('input[type=checkbox]').should be_checked
     end
 
-    upload_button = find_button("Upload Workouts (1)")
+    upload_button = find_button('Upload Workouts (1)')
     upload_button.click
   end
 end
 
 When(/^I upload multiple workouts from my device$/) do
-  select_device_with_name("Test FIT Device")
+  select_device_with_name('Test FIT Device')
 
-  within "#Workouts" do
+  within '#Workouts' do
     page_has_workouts
 
     workout1 = get_workout_node_for_workout(@workouts.first)
@@ -61,7 +61,7 @@ When(/^I upload multiple workouts from my device$/) do
       page.find('input[type=checkbox]').should be_checked
     end
 
-    upload_button = find_button("Upload Workouts (2)")
+    upload_button = find_button('Upload Workouts (2)')
     upload_button.click
   end
 end
@@ -85,9 +85,9 @@ Given(/^I have a FIT workout that cannot be parsed on my device$/) do
 end
 
 When(/^I upload a TCX workout from my device$/) do
-  select_device_with_name("Test TCX Device")
+  select_device_with_name('Test TCX Device')
 
-  within "#Workouts" do
+  within '#Workouts' do
     page_has_workouts
 
     workout = get_workout_node_for_workout(@workouts.first)
@@ -98,48 +98,48 @@ When(/^I upload a TCX workout from my device$/) do
       page.find('input[type=checkbox]').should be_checked
     end
 
-    upload_button = find_button("Upload Workouts (1)")
+    upload_button = find_button('Upload Workouts (1)')
     upload_button.click
   end
 end
 
 Then(/^the workout should be uploaded$/) do
-  within "#Workouts" do
+  within '#Workouts' do
     ensure_workout_upload_succeeds(@workouts.first[:uuid])
   end
 end
 
 Then(/^the workouts should both be uploaded$/) do
-  within "#Workouts" do
+  within '#Workouts' do
     ensure_workout_upload_succeeds(@workouts.first[:uuid])
     ensure_workout_upload_succeeds(@workouts.last[:uuid])
   end
 end
 
 Then(/^I should see an error message for the upload$/) do
-  within "#Workouts" do
+  within '#Workouts' do
     ensure_workout_upload_fails(@workouts.first[:uuid])
   end
 end
 
 When(/^I select the device$/) do
-  select_device_with_name("Test FIT Device")
+  select_device_with_name('Test FIT Device')
 end
 
 Then(/^I should see a message telling me there are no workouts on my device$/) do
-  page.should have_content "We couldn’t find any workouts — better go training!"
+  page.should have_content 'We couldn’t find any workouts — better go training!'
 end
 
 Then(/^I should see a message telling me that I need to install the Garmin plugin$/) do
-  page.should have_content "Go and install the garmin plugin!"
+  page.should have_content 'Go and install the garmin plugin!'
 end
 
 def page_has_workouts
   page.should have_content "#{@workouts.length} Workouts found on your device."
 
-  @workouts.map {|workout|
+  @workouts.map do|workout|
     page.should have_css("[data-workout-uuid='#{workout[:uuid]}']")
-  }
+  end
 end
 
 def ensure_workout_upload_succeeds(uuid)
@@ -161,9 +161,9 @@ def ensure_workout_upload_fails(uuid)
 end
 
 def select_device_with_name(name)
-  within "#DevicesList" do
+  within '#DevicesList' do
     page_has_device
-    page.find('.devices-list__device', :text => name).click
+    page.find('.devices-list__device', text: name).click
   end
 end
 

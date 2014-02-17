@@ -1,5 +1,4 @@
 module Dashboards
-
   # View Controller for managing the logic around rendering /dashboards/show
   #
   class Show
@@ -9,16 +8,16 @@ module Dashboards
     end
 
     def cache_key
-      activities.map(&:cache_key).join(":")
+      activities.map(&:cache_key).join(':')
     end
 
     def render_activities
       if activities.any?
-        @controller.render(partial: "activity/grouped",
+        @controller.render(partial: 'activity/grouped',
                            object: activities.group_by(&:date)
                           ).first
       else
-        "You have no activity!"
+        'You have no activity!'
       end
     end
 

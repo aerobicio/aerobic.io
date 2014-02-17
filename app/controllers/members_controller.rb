@@ -41,14 +41,14 @@ class MembersController < ApplicationController
     ActiveRecord::Base.transaction do
       result = block.call
       notice = result.notice
-      raise ActiveRecord::Rollback unless result.success?
+      fail ActiveRecord::Rollback unless result.success?
     end
     notice
   end
 
   def ensure_following_is_active
     unless $switch_board.following_active?(current_user)
-       render_404 and return
+       render_404 && return
     end
   end
 

@@ -1,4 +1,4 @@
-require "interactor"
+require 'interactor'
 
 # Takes a member_id and a followed_id and sets up the following relationship
 # between the member and followed member.

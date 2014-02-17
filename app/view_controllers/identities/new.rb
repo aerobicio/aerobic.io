@@ -1,7 +1,6 @@
-require "active_support/core_ext/object/try"
+require 'active_support/core_ext/object/try'
 
 module Identities
-
   # View Controller for managing the logic around rendering /identities/new
   #
   class New
@@ -11,7 +10,7 @@ module Identities
     end
 
     def cache_key
-      [name, email, full_messages].map(&:to_s).join(":")
+      [name, email, full_messages].map(&:to_s).join(':')
     end
 
     def email
@@ -36,8 +35,8 @@ module Identities
 
     def render_errors
       if errors?
-        @controller.render(partial: "identities/form_errors",
-                           :locals => { :view => self } ).first
+        @controller.render(partial: 'identities/form_errors',
+                           locals: { view: self }).first
       end
     end
   end

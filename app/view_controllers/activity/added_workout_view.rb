@@ -1,5 +1,4 @@
 class Activity
-
   # View Controller for managing the logic around rendering
   # /activity/added_workout/_added_workout
   #
@@ -16,14 +15,14 @@ class Activity
       [
         @added_workout.cache_key,
         @added_workout.activity_workout.cache_key,
-      ].map(&:to_s).join(":")
+      ].map(&:to_s).join(':')
     end
 
     def title
       if @current_member == member
-        I18n.t("activity.workout.title.first_person")
+        I18n.t('activity.workout.title.first_person')
       else
-        I18n.t("activity.workout.title.third_person", name: member.name)
+        I18n.t('activity.workout.title.third_person', name: member.name)
       end
     end
 

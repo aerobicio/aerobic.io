@@ -1,4 +1,4 @@
-require_relative "../../app/interactors/add_workout_to_activity_feeds"
+require_relative '../../app/interactors/add_workout_to_activity_feeds'
 
 describe AddWorkoutToActivityFeeds do
   let(:context) do
@@ -30,11 +30,11 @@ describe AddWorkoutToActivityFeeds do
   end
 
   before do
-    stub_const("User", Class.new)
-    stub_const("Activity::AddedWorkout", Class.new)
+    stub_const('User', Class.new)
+    stub_const('Activity::AddedWorkout', Class.new)
   end
 
-  describe "#perform" do
+  describe '#perform' do
     subject(:result) { described_class.perform(context) }
     let(:activity) { double(:activity, save: activity_persisted) }
 
@@ -44,7 +44,7 @@ describe AddWorkoutToActivityFeeds do
       end
     end
 
-    context "when successfull" do
+    context 'when successfull' do
       let(:activity_persisted) { true }
 
       before do
@@ -54,15 +54,15 @@ describe AddWorkoutToActivityFeeds do
         end
       end
 
-      it "should be marked as successfull" do
+      it 'should be marked as successfull' do
         result.success?.should be_true
       end
     end
 
-    context "when unsuccessfull" do
+    context 'when unsuccessfull' do
       let(:activity_persisted) { false }
 
-      it "should be marked as successfull" do
+      it 'should be marked as successfull' do
         result.success?.should be_false
       end
     end

@@ -16,7 +16,7 @@ class WarningSuppressor
     private
 
     def should_suppress_message?(message)
-      IGNORES.any? {|re| message =~ re }
+      IGNORES.any? { |re| message =~ re }
     end
   end
 end

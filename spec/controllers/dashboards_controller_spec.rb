@@ -8,7 +8,7 @@ describe DashboardsController do
     User.stub(:find).and_return(user)
   end
 
-  describe "#show" do
+  describe '#show' do
     before do
       get :show
     end
