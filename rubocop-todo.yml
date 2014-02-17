@@ -15,10 +15,6 @@ GlobalVars:
 HasAndBelongsToMany:
   Enabled: false
 
-# Offence count: 1
-Lambda:
-  Enabled: false
-
 # Offence count: 34
 LineLength:
   Max: 472217
