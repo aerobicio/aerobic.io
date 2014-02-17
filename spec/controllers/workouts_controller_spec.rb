@@ -9,8 +9,8 @@ describe WorkoutsController do
   end
 
   describe '#show' do
-    let(:member) { double(:member, id: 1, ) }
-    let(:workout) { double(:workout, id: 101, ) }
+    let(:member) { double(:member, id: 1) }
+    let(:workout) { double(:workout, id: 101) }
 
     before do
       User.should_receive(:find).with(user.id) { member }

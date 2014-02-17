@@ -38,11 +38,6 @@ Output:
 RaiseArgs:
   EnforcedStyle: compact
 
-# Offence count: 2
-# Cop supports --auto-correct.
-SpaceInsideParens:
-  Enabled: false
-
 # Offence count: 38
 # Configuration parameters: EnforcedStyleForMultiline, SupportedStyles.
 TrailingComma:
