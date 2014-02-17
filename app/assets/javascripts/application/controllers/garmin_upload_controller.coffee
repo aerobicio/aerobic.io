@@ -58,7 +58,7 @@
     @workoutsCollection.reset([])
 
   _updateProgress: (progress) =>
-    unless progress.percent is @progressModel.get('progress')
+    unless progress.percent is @progressModel.get('percent')
       @progressModel.set(progress)
       @_lastProgressPercentage = progress.percent
 

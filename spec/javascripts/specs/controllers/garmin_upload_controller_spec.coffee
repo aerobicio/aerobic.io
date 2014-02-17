@@ -21,7 +21,8 @@ describe "app.controllers.GarminUploadController", ->
     @controller.workoutsComponent = setState: -> return
     @controller.workoutsCollection.fetch = -> return
     @garminUploadComponentStub = sinon.stub(@controller.garminUploadComponent, 'setState')
-    @workoutsCollectionStub = sinon.stub(@controller.workoutsCollection, 'fetch').returns(Q.defer().promise)
+    @workoutsCollectionFetchDeferred = Q.defer()
+    @workoutsCollectionFetchStub = sinon.stub(@controller.workoutsCollection, 'fetch').returns(@workoutsCollectionFetchDeferred.promise)
 
   afterEach ->
     @controller = null
@@ -55,15 +56,18 @@ describe "app.controllers.GarminUploadController", ->
         )).to.be.true
 
   describe "#onDeviceSelect", ->
-    it "lets the workouts component know that a device is selected", ->
+    it "lets the garmin upload component know that a device is selected", ->
       device = get: -> return
       @controller.onDeviceSelect(device)
-      chai.expect(@garminUploadComponentStub.calledWith(hasDeviceSelected: true)).to.be.true
+      chai.expect(@garminUploadComponentStub.calledWith(
+        hasDeviceSelected: true
+        deviceHasFinishedLoading: false
+      )).to.be.true
 
     it "fetches workouts", ->
       device = get: -> return
       @controller.onDeviceSelect(device)
-      chai.expect(@workoutsCollectionStub.calledWith(device)).to.be.true
+      chai.expect(@workoutsCollectionFetchStub.calledWith(device)).to.be.true
 
   describe "#onDeviceUnselect", ->
     it "resets the progressModel", ->
@@ -76,7 +80,10 @@ describe "app.controllers.GarminUploadController", ->
 
     it "lets the workouts component know that no devices are selected", ->
       @controller.onDeviceUnselect()
-      chai.expect(@garminUploadComponentStub.calledWith(hasDeviceSelected: false)).to.be.true
+      chai.expect(@garminUploadComponentStub.calledWith(
+        hasDeviceSelected: false
+        deviceHasFinishedLoading: false
+      )).to.be.true
 
     it "empties the workoutsCollection", ->
       @controller.workoutsCollection.reset([
@@ -123,6 +130,6 @@ describe "app.controllers.GarminUploadController", ->
 
     describe "progress percentage has not changed", ->
       it "does nothing", ->
+        @controller.progressModel.attributes.percent = 50
         @controller._updateProgress(percent: 50)
-        @controller._updateProgress(percent: 50)
-        chai.expect(@progressModelSetSpy.calledOnce).to.be.true
+        chai.expect(@progressModelSetSpy.called).to.be.false
