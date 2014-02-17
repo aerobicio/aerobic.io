@@ -27,10 +27,14 @@
     WorkoutListHeaderComponent = app.components.WorkoutListHeaderComponent
     WorkoutListComponent = app.components.WorkoutListComponent
 
-    if @props.hasDeviceSelected and @state.selectedDeviceHasFinishedLoading
+    if @props.hasDeviceSelected and @state.deviceHasFinishedLoading
       `<div>
         <WorkoutListHeaderComponent collection={this.props.collection} onClickHandler={this.onClick} />
         <WorkoutListComponent collection={this.props.collection} />
+      </div>`
+    else if @props.hasDeviceSelected and not @state.deviceHasFinishedLoading
+      `<div>
+        Reading workouts — hang tight!
       </div>`
     else
       `<div>
