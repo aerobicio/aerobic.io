@@ -31,8 +31,8 @@ describe DeleteFollowing do
     context 'when successful' do
       before do
         User.should_receive(:find).with(context[:member_id]) { member }
-        User.should_receive(:find).
-          with(context[:followed_id]) { unfollowed_member }
+        User.should_receive(:find)
+        .with(context[:followed_id]) { unfollowed_member }
       end
 
       context 'when member follows other followed_member' do

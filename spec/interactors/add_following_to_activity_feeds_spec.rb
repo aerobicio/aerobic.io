@@ -56,11 +56,11 @@ describe AddFollowingToActivityFeeds do
 
     context 'and followers are not involved in the following event' do
       before do
-        Activity::FollowedUser.should_receive(:create).
-          with(followed_member_feed) { activity }
+        Activity::FollowedUser.should_receive(:create)
+        .with(followed_member_feed) { activity }
 
-        Activity::FollowedUser.should_receive(:create).
-          with(follower_member_feed) { activity }
+        Activity::FollowedUser.should_receive(:create)
+        .with(follower_member_feed) { activity }
       end
 
       it 'should be marked as successful' do
@@ -72,8 +72,8 @@ describe AddFollowingToActivityFeeds do
       let(:followers) { [double(:follower, id: 2)] }
 
       before do
-        Activity::FollowedUser.should_receive(:create).
-          with(followed_member_feed).once { activity }
+        Activity::FollowedUser.should_receive(:create)
+        .with(followed_member_feed).once { activity }
       end
 
       it 'should be marked as successful' do
