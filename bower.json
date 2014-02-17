@@ -6,7 +6,7 @@
   "private": true,
   "dependencies": {
     "backbone": "~1.1.0",
-    "garmin-communicator": "git://github.com/aerobicio/garmin-communicator.git#0.2.6",
+    "garmin-communicator": "git://github.com/aerobicio/garmin-communicator.git#0.3.0",
     "jquery": "~2.0.3",
     "nprogress": "~0.1.2",
     "qjax": "~1.5.2",
