@@ -46,8 +46,8 @@ def sign_up(name, email)
 
   fill_in :name, with: name
   fill_in :email, with: email
-  fill_in :password, with: 123456789
-  fill_in :password_confirmation, with: 123456789
+  fill_in :password, with: '123456789'
+  fill_in :password_confirmation, with: '123456789'
 
   click_button(sign_up_text)
 end

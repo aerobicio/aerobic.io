@@ -3,7 +3,7 @@ require "faker"
 
 def create_registered_account(name = Faker::Name.name)
   $switch_board.activate_sign_up
-  @password = 123456789
+  @password = '123456789'
   @name = name
   @email = Faker::Internet.email
   @identity = OpenStruct.new(name: @name, email: @email)
