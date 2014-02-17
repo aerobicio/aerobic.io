@@ -1,6 +1,7 @@
 ###* @jsx React.DOM ###
 
 @app.components.WorkoutsComponent = React.createClass
+  displayName: 'app.components.WorkoutsComponent'
   propTypes:
     collection: React.PropTypes.instanceOf(app.collections.WorkoutsCollection).isRequired
     hasDeviceSelected: React.PropTypes.bool.isRequired

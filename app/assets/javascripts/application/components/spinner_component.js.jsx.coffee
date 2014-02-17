@@ -1,6 +1,7 @@
 ###* @jsx React.DOM ###
 
 @app.components.SpinnerComponent = React.createClass
+  displayName: 'app.components.SpinnerComponent'
   propTypes:
     preset: React.PropTypes.object
 

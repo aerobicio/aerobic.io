@@ -1,6 +1,7 @@
 ###* @jsx React.DOM ###
 
 @app.components.ProgressBarComponent = React.createClass
+  displayName: 'app.components.ProgressBarComponent'
   mixins: [@lib.BackboneModelMixin]
   propTypes:
     model: React.PropTypes.object.isRequired

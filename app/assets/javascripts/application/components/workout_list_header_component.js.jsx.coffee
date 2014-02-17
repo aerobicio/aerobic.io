@@ -1,6 +1,7 @@
 ###* @jsx React.DOM ###
 
 @app.components.WorkoutListHeaderComponent = React.createClass
+  displayName: 'app.components.WorkoutListHeaderComponent'
   mixins: [@lib.BackboneModelMixin]
   propTypes:
     collection: React.PropTypes.instanceOf(app.collections.WorkoutsCollection).isRequired

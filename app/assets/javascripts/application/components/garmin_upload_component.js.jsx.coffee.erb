@@ -1,6 +1,7 @@
 ###* @jsx React.DOM ###
 
 @app.components.GarminUploadComponent = React.createClass
+  displayName: 'app.components.GarminUploadComponent'
   propTypes:
     devicesCollection: React.PropTypes.instanceOf(app.collections.DevicesCollection).isRequired
     workoutsCollection: React.PropTypes.instanceOf(app.collections.WorkoutsCollection).isRequired

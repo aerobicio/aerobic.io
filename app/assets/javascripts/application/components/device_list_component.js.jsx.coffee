@@ -1,6 +1,7 @@
 ###* @jsx React.DOM ###
 
 @app.components.DeviceListComponent = React.createClass
+  displayName: 'app.components.DeviceListComponent'
   mixins: [@lib.BackboneModelMixin]
   propTypes:
     collection: React.PropTypes.instanceOf(app.collections.DevicesCollection).isRequired

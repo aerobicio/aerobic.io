@@ -1,6 +1,7 @@
 ###* @jsx React.DOM ###
 
 @app.components.ExistingWorkoutComponent = React.createClass
+  displayName: 'app.components.ExistingWorkoutComponent'
   mixins: [@lib.BackboneModelMixin]
   propTypes:
     model: React.PropTypes.instanceOf(app.models.ExistingWorkoutModel).isRequireds

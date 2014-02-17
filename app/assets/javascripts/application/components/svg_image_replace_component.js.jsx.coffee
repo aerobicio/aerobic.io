@@ -1,6 +1,7 @@
 ###* @jsx React.DOM ###
 
 @app.components.SVGImageReplaceComponent = React.createClass
+  displayName: 'app.components.SVGImageReplaceComponent'
   propTypes:
     src: React.PropTypes.string.isRequired
     className: React.PropTypes.string
