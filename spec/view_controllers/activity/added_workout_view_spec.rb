@@ -15,8 +15,8 @@ describe Activity::AddedWorkoutView do
 
   let(:activity_workout) do
     double(:activity_workout, :cache_key => "bar",
-                              :active_duration => 100000,
-                              :distance => 200000,
+                              :active_duration => 100_000,
+                              :distance => 200_000,
           )
   end
 

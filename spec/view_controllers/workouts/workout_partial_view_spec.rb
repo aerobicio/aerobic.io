@@ -8,8 +8,8 @@ describe Workouts::WorkoutPartialView do
   let(:workout) do
     double(:workout, user: workout_member,
                      cache_key: "lol",
-                     active_duration: 999999,
-                     distance: 444444,
+                     active_duration: 999_999,
+                     distance: 444_444,
           )
   end
 

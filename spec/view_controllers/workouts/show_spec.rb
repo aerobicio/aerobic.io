@@ -11,8 +11,8 @@ describe Workouts::Show do
     double(:workout,
            id: workout_id,
            cache_key: workout_id.to_s,
-           active_duration: 60000,
-           distance: 100000,
+           active_duration: 600_00,
+           distance: 100_000,
           )
   end
 
