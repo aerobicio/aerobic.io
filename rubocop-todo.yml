@@ -15,10 +15,6 @@ GlobalVars:
 HasAndBelongsToMany:
   Enabled: false
 
-# Offence count: 3
-IfUnlessModifier:
-  Enabled: false
-
 # Offence count: 8
 IndentationWidth:
   Enabled: false

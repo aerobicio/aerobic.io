@@ -10,9 +10,8 @@ class AddWorkoutToActivityFeeds
   include Interactor
 
   def perform
-    unless add_to_activity_feed(member_id) && add_to_followers_feeds
-      context.fail!
-    end
+    context.fail! unless add_to_activity_feed(member_id) &&
+                         add_to_followers_feeds
   end
 
   private

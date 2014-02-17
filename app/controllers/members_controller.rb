@@ -47,9 +47,7 @@ class MembersController < ApplicationController
   end
 
   def ensure_following_is_active
-    unless $switch_board.following_active?(current_user)
-       render_404 && return
-    end
+    render_404 && return unless $switch_board.following_active?(current_user)
   end
 
   def render_404
