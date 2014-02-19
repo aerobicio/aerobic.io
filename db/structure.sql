@@ -3,7 +3,6 @@
 --
 
 SET statement_timeout = 0;
-SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -185,6 +184,36 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: tcx_files; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE tcx_files (
+    id integer NOT NULL,
+    workout_id integer NOT NULL,
+    xml_data text NOT NULL
+);
+
+
+--
+-- Name: tcx_files_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE tcx_files_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: tcx_files_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE tcx_files_id_seq OWNED BY tcx_files.id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -316,6 +345,13 @@ ALTER TABLE ONLY identities ALTER COLUMN id SET DEFAULT nextval('identities_id_s
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY tcx_files ALTER COLUMN id SET DEFAULT nextval('tcx_files_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
@@ -363,6 +399,14 @@ ALTER TABLE ONLY fit_files
 
 ALTER TABLE ONLY identities
     ADD CONSTRAINT identities_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: tcx_files_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY tcx_files
+    ADD CONSTRAINT tcx_files_pkey PRIMARY KEY (id);
 
 
 --
@@ -443,6 +487,13 @@ CREATE UNIQUE INDEX index_fit_files_on_workout_id ON fit_files USING btree (work
 --
 
 CREATE UNIQUE INDEX index_identities_on_email ON identities USING btree (email);
+
+
+--
+-- Name: index_tcx_files_on_workout_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_tcx_files_on_workout_id ON tcx_files USING btree (workout_id);
 
 
 --
@@ -557,6 +608,14 @@ ALTER TABLE ONLY fit_files
 
 
 --
+-- Name: tcx_files_workout_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY tcx_files
+    ADD CONSTRAINT tcx_files_workout_id_fk FOREIGN KEY (workout_id) REFERENCES workouts(id);
+
+
+--
 -- Name: users_followings_following_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -611,6 +670,8 @@ INSERT INTO schema_migrations (version) VALUES ('20131209080642');
 INSERT INTO schema_migrations (version) VALUES ('20131222225330');
 
 INSERT INTO schema_migrations (version) VALUES ('20131222225612');
+
+INSERT INTO schema_migrations (version) VALUES ('20131229035452');
 
 INSERT INTO schema_migrations (version) VALUES ('20140102110634');
 

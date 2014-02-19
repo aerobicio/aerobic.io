@@ -25,7 +25,6 @@ Feature: Upload From Garmin
 
   @wip
   Scenario: Uploading a TCX file from a device
-    Given we have implemented TCX parsing server-side
     Given I am a member
     And I visit the upload page
     And I have a Garmin device that supports TCX files
