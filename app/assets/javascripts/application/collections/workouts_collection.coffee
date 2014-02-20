@@ -52,7 +52,7 @@
 
   workoutData: (workout, data) ->
     workout_data: data
-    activity_type: workout.get('device').get('format')
+    activity_type: workout.get('format')
     device_id: workout.get('device').id
     device_workout_id: workout.get('id')
 

@@ -4,8 +4,9 @@
     uuid: undefined
 
   initialize: ->
-    @set(format: @_workoutFormat())
-    @set(uuid: @_workoutUuid())
+    @set
+      format: @_workoutFormat()
+      uuid: @_workoutUuid()
 
   date: ->
     moment(@get('date')).calendar()

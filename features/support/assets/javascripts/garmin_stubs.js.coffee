@@ -53,7 +53,7 @@ class GarminStubs
 
   _parseWorkoutJson: (workoutJson) ->
     workoutJson.date = new Date(workoutJson.date)
-    workoutJson.device = new app.models.DeviceModel(workoutJson.device)
+    workoutJson.device = workoutJson.device
     workoutJson.getData = ->
       deferred = Q.defer()
       deferred.resolve(workoutJson.data)
