@@ -39,6 +39,7 @@
         @uploadWorkout(workout, data)
 
   uploadWorkout: (workout, data) ->
+    @onUploadStarted(workout)
     request = jQuery.ajax
       type: "POST"
       url: @uploadPath

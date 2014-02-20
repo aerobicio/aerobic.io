@@ -174,7 +174,7 @@ describe "app.collections.WorkoutsCollection", ->
     beforeEach ->
       @workout = get: -> return
       @workoutGetStub = sinon.stub(@workout, 'get')
-      @workoutGetStub.withArgs('device').returns(id: 1)
+      @workoutGetStub.withArgs('device').returns(new app.models.DeviceModel({id: 1, format: 'fit'}))
       @workoutGetStub.withArgs('id').returns(2)
       @workoutGetStub.withArgs('format').returns('fit')
       @data = "I am data."
@@ -182,6 +182,6 @@ describe "app.collections.WorkoutsCollection", ->
     it "retuns a object with the workout data", ->
       workoutData = @collection.workoutData(@workout, @data)
       chai.expect(workoutData.workout_data).to.equal @data
-      chai.expect(workoutData.workout_format).to.equal 'fit'
+      chai.expect(workoutData.activity_type).to.equal 'fit'
       chai.expect(workoutData.device_id).to.equal 1
       chai.expect(workoutData.device_workout_id).to.equal 2
