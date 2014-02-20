@@ -42,7 +42,7 @@ class UploadsController < ApplicationController
   end
 
   def render_json_response(result)
-    if result.success?
+    if result
       render json: json_attributes_for_workout(result.context[:workout])
     else
       head :unprocessable_entity

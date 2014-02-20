@@ -41,7 +41,7 @@ describe UploadsController do
 
       context "and the context returns successfully" do
         let(:result) do
-          double(:result, success?: true, context: { workout: "" } )
+          double(:result, success?: true, context: { workout: workout } )
         end
 
         it { should respond_with(:success) }
@@ -62,7 +62,7 @@ describe UploadsController do
 
       context "and the context returns successfully" do
         let(:result) do
-          double(:result, success?: true, context: { workout: "" } )
+          double(:result, success?: true, context: { workout: workout } )
         end
 
         it { should respond_with(:success) }
