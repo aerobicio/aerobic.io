@@ -26,10 +26,10 @@
         <WorkoutListComponent collection={this.props.collection} />
       </div>`
     else if @props.hasDeviceSelected and not @props.deviceHasFinishedLoading
-      `<div>
+      `<div className="uploader-status-text">
         Reading workouts — hang tight!
       </div>`
     else
-      `<div>
+      `<div className="uploader-status-text">
         Select a device above to start adding workouts!
       </div>`
