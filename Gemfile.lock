@@ -8,6 +8,13 @@ GIT
       bindata (~> 1.4)
 
 GIT
+  remote: https://github.com/aerobicio/tcx.git
+  revision: 0508cadb75267d4a4b55fa85190be78c37952c39
+  specs:
+    tcx (0.0.1)
+      ox
+
+GIT
   remote: https://github.com/plasticine/nestive.git
   revision: d741d0e130df7c23ee1fafd8e547a2231ad417dd
   specs:
@@ -173,6 +180,7 @@ GEM
     omniauth-identity (1.1.1)
       bcrypt-ruby (~> 3.0)
       omniauth (~> 1.0)
+    ox (2.0.12)
     parallel (0.9.0)
     pg (0.17.0)
     phantomjs (1.9.2.1)
@@ -377,6 +385,7 @@ DEPENDENCIES
   sentry-raven
   shoulda-matchers
   simplecov
+  tcx!
   teaspoon (~> 0.7.8)
   turbolinks
   typogruby

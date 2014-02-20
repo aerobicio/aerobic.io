@@ -24,17 +24,14 @@ Feature: Upload From Garmin
     Then the workout should be uploaded
     And I should see the workout in my activity feed
 
-  # Turn me back on when we can parse TCX server-side
-  #
-  # Scenario: Uploading a TCX file from a device
-  #   Given I am a member
-  #   And I visit the upload page
-  #   And I have a Garmin device that supports TCX files
-  #   And I have some TCX workouts on my device
-  #   When I upload a TCX workout from my device
-  #   Then the workout should be uploaded
-  #   And I should see the workout in my activity feed
-  #
+  Scenario: Uploading a TCX file from a device
+    Given I am a member
+    And I visit the upload page
+    And I have a Garmin device that supports TCX files
+    And I have some TCX workouts on my device
+    When I upload a TCX workout from my device
+    Then the workout should be uploaded
+    And I should see the workout in my activity feed
 
   Scenario: Uploading multiple files at once from a device
     Given I am a member

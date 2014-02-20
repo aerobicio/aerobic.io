@@ -3,7 +3,8 @@
 #
 # The show action renders the Communicator Device Upload UI.
 #
-# The create action is called via AJAX and processes a single FIT file.
+# The create action is called via AJAX and processes a single FIT or TCX file.
+#
 class UploadsController < ApplicationController
   before_filter :member_workouts, only: [:show]
 
@@ -12,9 +13,7 @@ class UploadsController < ApplicationController
 
   def create
     ActiveRecord::Base.transaction do
-      result = CreateWorkoutFromUploadedFitFile.perform(upload_params)
-
-      raise ActiveRecord::Rollback unless result.success?
+      result = create_workout
 
       respond_to do |format|
         format.json { render_json_response(result) }
@@ -24,9 +23,27 @@ class UploadsController < ApplicationController
 
   private
 
+  def create_workout
+    ActiveRecord::Base.transaction do
+      case params[:activity_type]
+      when "fit"
+        result = CreateWorkoutFromUploadedFitFile.perform(upload_params)
+      when "tcx"
+        result = CreateWorkoutFromUploadedTcxFile.perform(upload_params)
+      else
+        return nil
+      end
+
+      raise ActiveRecord::Rollback unless result.success?
+      result
+    end
+  end
+
   def render_json_response(result)
-    if result.success?
+    if result
       render json: result.context[:workout].to_json
+    else
+      head :unprocessable_entity
     end
   end
 
