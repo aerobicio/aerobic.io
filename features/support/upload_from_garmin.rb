@@ -73,7 +73,7 @@ def workout1
     data: fit_workout1_data,
     device: {
       id: 98,
-      format: 'fit'
+      canReadFITActivities: true,
     }
   }
 end
@@ -86,7 +86,7 @@ def workout2
     data: fit_workout2_data,
     device: {
       id: 99,
-      format: 'fit'
+      canReadFITActivities: true,
     }
   }
 end
@@ -99,7 +99,7 @@ def workout_with_bad_data
     data: "Derp! I am not data!",
     device: {
       id: 100,
-      format: 'fit'
+      canReadFITActivities: true,
     }
   }
 end
@@ -112,7 +112,8 @@ def tcx_workout
     data: tcx_workout_data,
     device: {
       id: 99,
-      format: 'tcx'
+      canReadFITActivities: false,
+      canReadActivities: true,
     }
   }
 end
