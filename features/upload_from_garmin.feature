@@ -23,7 +23,6 @@ Feature: Upload From Garmin
     When I upload a FIT workout from my device
     Then the workout should be uploaded
 
-  @wip
   Scenario: Uploading a TCX file from a device
     Given I am a member
     And I visit the upload page
@@ -49,7 +48,6 @@ Feature: Upload From Garmin
 
   @wip
   Scenario: Uploading fails
-    Given we have implemented less explosive handling of failing uploads
     Given I am a member
     And I visit the upload page
     And I have a Garmin device that supports FIT files

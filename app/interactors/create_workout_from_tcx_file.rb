@@ -21,12 +21,22 @@ class CreateWorkoutFromTcxFile
   private
 
   def create_workout
-    Workout.create( active_duration: tcxfile.active_duration,
+    Workout.create( uuid: workout_uuid(
+                      context[:device_workout_id],
+                      context[:device_id]
+                    ),
+                    device_id: context[:device_id],
+                    device_workout_id: context[:device_workout_id],
+                    active_duration: tcxfile.active_duration,
                     distance: tcxfile.distance,
                     duration: tcxfile.duration,
                     end_time: tcxfile.end_time,
                     start_time: tcxfile.start_time,
                     user_id: context[:member_id]
                   )
+  end
+
+  def workout_uuid(device_workout_id, device_id)
+    Digest::SHA1.hexdigest("#{device_workout_id}:#{device_id}")
   end
 end
