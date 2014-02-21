@@ -67,7 +67,7 @@ class UploadsController < ApplicationController
   def json_attributes_for_workout(workout)
     workout.attributes.merge({
       formatted_distance: format_distance(workout.distance),
-      formatted_active_duration: format_distance(workout.active_duration),
+      formatted_active_duration: format_duration(workout.active_duration),
       formatted_duration: format_duration(workout.duration),
     })
   end
