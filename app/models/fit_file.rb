@@ -32,6 +32,7 @@ class FitFile < ActiveRecord::Base
   private
 
   def to_fit
+    # TODO: we should rescue here so that we can handle data which is not binary
     @fit ||= Fit::File.read(StringIO.new(binary_data))
   end
 end
