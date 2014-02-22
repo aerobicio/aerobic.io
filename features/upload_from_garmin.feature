@@ -46,11 +46,18 @@ Feature: Upload From Garmin
     When I select the device
     Then I should see a message telling me there are no workouts on my device
 
-  @wip
-  Scenario: Uploading fails
+  Scenario: Uploading FIT fails
     Given I am a member
     And I visit the upload page
     And I have a Garmin device that supports FIT files
     And I have a FIT workout that cannot be parsed on my device
     When I upload a FIT workout from my device
+    Then I should see an error message for the upload
+
+  Scenario: Uploading TCX fails
+    Given I am a member
+    And I visit the upload page
+    And I have a Garmin device that supports TCX files
+    And I have a TCX workout that cannot be parsed on my device
+    When I upload a TCX workout from my device
     Then I should see an error message for the upload

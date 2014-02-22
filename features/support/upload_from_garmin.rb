@@ -60,9 +60,14 @@ def member_tcx_workouts_on_device
   page.execute_script("window.GarminStubs.createTCXWorkouts(#{@workouts.to_json});")
 end
 
-def member_bad_data_workouts_on_device
+def member_bad_fit_data_workouts_on_device
   @workouts = [workout_with_bad_data]
   page.execute_script("window.GarminStubs.createFITWorkouts(#{@workouts.to_json});")
+end
+
+def member_bad_tcx_data_workouts_on_device
+  @workouts = [workout_with_bad_data]
+  page.execute_script("window.GarminStubs.createTCXWorkouts(#{@workouts.to_json});")
 end
 
 def workout1

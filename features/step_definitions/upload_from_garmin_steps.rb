@@ -75,7 +75,11 @@ Given(/^I have some TCX workouts on my device$/) do
 end
 
 Given(/^I have a FIT workout that cannot be parsed on my device$/) do
-  member_bad_data_workouts_on_device
+  member_bad_fit_data_workouts_on_device
+end
+
+Given(/^I have a TCX workout that cannot be parsed on my device$/) do
+  member_bad_tcx_data_workouts_on_device
 end
 
 When(/^I upload a TCX workout from my device$/) do

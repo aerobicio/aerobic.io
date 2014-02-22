@@ -12,17 +12,27 @@ class FitFile < ActiveRecord::Base
   delegate :active_duration, :distance, :duration, to: :fit
 
   def end_time
-    Time.zone.at(fit.end_time)
+    Time.zone.at(fit.end_time) if fit.end_time
   end
 
   def start_time
-   Time.zone.at(fit.start_time)
+   Time.zone.at(fit.start_time) if fit.start_time
   end
 
   private
 
   def fit
-    # TODO: we should rescue here so that we can handle data which is not binary
-    @fit ||= Fit::File.read(StringIO.new(binary_data))
+    @fit ||= begin
+               Fit::File.read(StringIO.new(binary_data))
+             rescue EOFError
+               NullFitFile.new
+             end
+  end
+
+  # A null representation of a Fit::File that is substituted when a Fit::File
+  # cannot be processed.
+  #
+  class NullFitFile
+    attr_reader :active_duration, :distance, :duration, :start_time, :end_time
   end
 end
