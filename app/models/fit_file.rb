@@ -9,29 +9,19 @@ class FitFile < ActiveRecord::Base
   validates :binary_data, :name, presence: true
   validates :workout_id, uniqueness: true
 
-  def active_duration
-    to_fit.active_duration
-  end
-
-  def distance
-    to_fit.distance
-  end
-
-  def duration
-    to_fit.duration
-  end
+  delegate :active_duration, :distance, :duration, to: :fit
 
   def end_time
-    Time.zone.at(to_fit.end_time)
+    Time.zone.at(fit.end_time)
   end
 
   def start_time
-   Time.zone.at(to_fit.start_time)
+   Time.zone.at(fit.start_time)
   end
 
   private
 
-  def to_fit
+  def fit
     # TODO: we should rescue here so that we can handle data which is not binary
     @fit ||= Fit::File.read(StringIO.new(binary_data))
   end

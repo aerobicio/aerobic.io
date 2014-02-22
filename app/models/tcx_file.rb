@@ -9,29 +9,23 @@ class TcxFile < ActiveRecord::Base
   validates :xml_data, presence: true
   validates :workout_id, uniqueness: true
 
-  def active_duration
-    to_tcx.active_duration
-  end
-
-  def distance
-    to_tcx.distance
-  end
+  delegate :active_duration, :distance, to: :tcx
 
   def duration
-    to_tcx.active_duration
+    tcx.active_duration
   end
 
   def end_time
-    to_tcx.end_time
+    Time.zone.at(tcx.end_time)
   end
 
   def start_time
-    to_tcx.start_time
+   Time.zone.at(tcx.start_time)
   end
 
   private
 
-  def to_tcx
+  def tcx
     @tcx ||= Tcx.parse(xml_data)
   end
 end
