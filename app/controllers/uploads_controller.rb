@@ -48,7 +48,7 @@ class UploadsController < ApplicationController
   end
 
   def existing_member_workouts
-    @member_workouts ||= current_user.workouts.load.collect {|workout|
+    @member_workouts ||= current_user.workouts.load.collect { |workout|
       json_attributes_for_workout(workout)
     }
   end
