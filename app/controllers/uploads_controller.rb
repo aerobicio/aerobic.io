@@ -14,12 +14,10 @@ class UploadsController < ApplicationController
   end
 
   def create
-    ActiveRecord::Base.transaction do
-      result = create_workout
+    result = create_workout
 
-      respond_to do |format|
-        format.json { render_json_response(result) }
-      end
+    respond_to do |format|
+      format.json { render_json_response(result) }
     end
   end
 
