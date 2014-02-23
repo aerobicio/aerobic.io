@@ -38,6 +38,7 @@ group :development, :test do
   gem "capybara-webkit"
   gem "dotenv-rails"
   gem "factory_girl_rails"
+  gem "fontcustom"
   gem "kayessess", "~> 0.2.8"
   gem "launchy"
   gem "poltergeist"

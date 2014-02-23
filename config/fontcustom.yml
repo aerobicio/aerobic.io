@@ -1,0 +1,17 @@
+font_name: aerobic-sans
+css_selector: .icon-{{glyph}}
+preprocessor_path: ""
+autowidth: false
+no_hash: false
+force: false
+debug: false
+quiet: false
+input:
+  vectors: app/assets/images/aerobic-sans
+output:
+  fonts: app/assets/fonts
+  css: app/assets/stylesheets/modules
+  # preview: app/views/styleguide
+templates:
+ - scss-rails
+ - preview
