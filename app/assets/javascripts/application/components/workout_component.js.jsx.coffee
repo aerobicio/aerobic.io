@@ -48,6 +48,7 @@
           </i>
         </figure>
         <h6 className="panel__header__heading--padded uploader-workout__heading">
+          { this.props.model.isFailed() ? 'Upload Failed' : '' }
           <span className="h6">{ this.props.model.date().toString() }</span>
           <span>{ this.props.model.dateSince() }</span>
         </h6>
