@@ -6,7 +6,10 @@
 // -
 //
 // Styleguide Components.Header
-%header {}
+.header {
+  border-bottom: 1px solid darken($background-color, 5%);
+  background-color: $background-color;
+}
 
 .header__inner {
   position: relative;

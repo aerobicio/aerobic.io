@@ -1,7 +1,6 @@
 // Styleguide Components.Avatar
 .avatar {
   @include transform(translate3d(0, 0, 0));
-  @include hide-text;
 
   height: 3.2rem;
   width: 3.2rem;

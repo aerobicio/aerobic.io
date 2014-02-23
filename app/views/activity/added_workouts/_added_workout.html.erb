@@ -3,7 +3,7 @@
 <% cache view.cache_key do %>
   <article class="panel" data-href="<%= view.workout_path %>">
     <header class="panel__header--padded">
-      <div class="panel__header__figure">
+      <div class="panel__figure">
         <%= gravatar_for_member(view.workout_member) %>
       </div>
       <h6 class="panel__header__heading h6"><%= view.title %></h6>

@@ -1,0 +1,17 @@
+// `.data-row--inline`
+//
+// -
+//
+// Styleguide Components.Inline Data Row
+.data-row--inline {
+  @extend .data-row;
+
+  float: right;
+  width: auto;
+
+  .data-row__item {
+    @extend .padding-tight;
+    @extend .padding-wide-left;
+    @extend .padding-wide-right;
+  }
+}

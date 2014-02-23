@@ -13,11 +13,11 @@
   border-radius: 4px;
   border: 1px solid #898989;
   box-shadow: 0 1px 1px rgba(#000, 0.15);
+  position: relative;
 }
 
 .panel__header {
-  position: relative;
-  border-bottom: 1px solid #898989;
+  @include clearfix;
 }
 
 .panel__header--padded {
@@ -25,17 +25,35 @@
   @extend .padding-medium;
 }
 
+.panel__content {
+  @include clearfix;
+
+  margin-bottom: 0;
+
+  .panel__header + & {
+    border-top: 1px solid #898989;
+  }
+}
+
 .panel__content--padded {
   @extend .panel__content;
   @extend .padding-medium;
 }
+
+.panel__footer {
+  .panel__header + &,
+  .panel__content + & {
+    border-top: 1px solid #898989;
+  }
+}
+
 
 .panel__footer--padded {
   @extend .panel__footer;
   @extend .padding-medium;
 }
 
-.panel__header__figure {
+.panel__figure {
   position: absolute;
   top: 0.5rem;
   left: -1rem;
@@ -45,18 +63,19 @@
   }
 }
 
-.panel__header__figure + .panel__header__heading {
-  margin-left: 1.5rem;
+.panel__header__heading {
+  margin: 0;
 
-  @include media($desk) {
-    margin-left: 0.5rem;
+  .panel__figure + & {
+    margin-left: 1.5rem;
+
+    @include media($desk) {
+      margin-left: 0.5rem;
+    }
   }
 }
 
-.panel__content {
-  margin-bottom: 0;
-}
-
-.panel__footer {
-  border-top: 1px solid #898989;
+.panel__header__heading--padded {
+  @extend .panel__header__heading;
+  @extend .padding-medium;
 }

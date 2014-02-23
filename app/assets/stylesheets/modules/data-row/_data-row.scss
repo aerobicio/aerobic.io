@@ -1,0 +1,34 @@
+// `.data-row`
+//
+// -
+//
+// Styleguide Components.Data Row
+.data-row {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.data-row__item {
+  @extend .padding-medium;
+  @extend .padding-wide-left;
+  @extend .padding-wide-right;
+
+  position: relative;
+  display: table-cell;
+
+  &:before {
+    @include linear-gradient(rgba(#fff, 0.2), rgba(#898989, 0.5));
+
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 1px;
+  }
+
+  &:first-child:before{
+    display: none;
+  }
+}
