@@ -19,5 +19,5 @@ describe "app.components.ExistingWorkoutComponent", ->
   describe "#iconClass", ->
     it "has default classes", ->
       chai.expect(@component.iconClasses()).to.have.string "panel__figure"
-      chai.expect(@component.iconClasses()).to.have.string "uploader-workout__icon"
+      chai.expect(@component.iconClasses()).to.have.string "uploader-workout-avatar"
       chai.expect(@component.iconClasses()).to.have.string "is-uploaded"
