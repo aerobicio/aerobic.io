@@ -4,9 +4,9 @@
   initialize: (options) ->
     @options = _(options).defaults({})
 
-    @initializeGarmin()
     @initializeData()
     @initializeViews()
+    @initializeGarmin()
 
     @garminUploadComponent.setState(garminIsInstalled: @garmin.isInstalled())
 
@@ -15,6 +15,12 @@
     #
     # `@garmin.initialize.then(=> @fetchDevices())`
     #
+    # Currently there is a race condition that exists in the setup of the garmin
+    # communicator code that means that it is possible that we may start attempting
+    # to invoke methods on the plugin proxy before it has been created.
+    #
+    # Wrapping up the initialization stuff in a promise would mean that would be a
+    # lot nicer.
     @fetchDevices()
 
   initializeGarmin: ->
@@ -38,9 +44,10 @@
     React.renderComponent(@garminUploadComponent, document.getElementById("GarminUpload"))
 
   fetchDevices: ->
-    @garmin.devices().then (devices) =>
-      @devicesCollection.reset(devices)
-      @garminUploadComponent.setState(isInitializing: false)
+    @garmin.devices()
+      .then (devices) =>
+        @devicesCollection.reset(devices)
+        @garminUploadComponent.setState(isInitializing: false)
 
   onDeviceSelect: (device) =>
     @progressModel.set(@progressModel.defaults)
@@ -68,5 +75,4 @@
       workout = workoutsCollectionClone.get(existingWorkout.get('device_workout_id'))
       workoutIndex = workoutsCollectionClone.indexOf(workout)
       workoutsCollectionClone.remove(workout)
-      workoutsCollectionClone.add(existingWorkout, at: workoutIndex)
     @workoutsCollection.reset(workoutsCollectionClone.models)

@@ -35,25 +35,9 @@ describe "app.controllers.GarminUploadController", ->
     chai.expect(@initializeViewsSpy.calledOnce).to.be.true
 
   describe "#initializeViews", ->
-    beforeEach ->
-      @componentStub = sinon.stub()
-      @renderComponentStub = sinon.stub(React, 'renderComponent')
-      @garminUploadComponentStub = sinon.stub(app.components, 'GarminUploadComponent').returns @componentStub
-      @controller.initializeViews()
-
-    afterEach ->
-      @garminUploadComponentStub.restore()
-      @renderComponentStub.restore()
-
     describe "GarminUploadComponent", ->
       it "creates the component", ->
         chai.expect(@controller.garminUploadComponent).to.be.a.function
-
-      it "renders the component", ->
-        chai.expect(@renderComponentStub.calledWith(
-          @componentStub
-          document.getElementById("GarminUpload")
-        )).to.be.true
 
   describe "#onDeviceSelect", ->
     it "lets the garmin upload component know that a device is selected", ->
@@ -114,9 +98,8 @@ describe "app.controllers.GarminUploadController", ->
     it "removes workouts that are already uploaded from the workoutsCollection", ->
       @getWorkoutsForDeviceIdStub.withArgs(99).returns([@existingWorkout])
       @controller._updateWorkoutCollectionWithExistingWorkouts(99)
-      chai.expect(@controller.workoutsCollection.length).to.equal 3
+      chai.expect(@controller.workoutsCollection.length).to.equal 2
       chai.expect(@controller.workoutsCollection.get(1).get('name')).to.equal 'workout1'
-      chai.expect(@controller.workoutsCollection.get(2).get('name')).to.equal 'existingWorkout'
       chai.expect(@controller.workoutsCollection.get(3).get('name')).to.equal 'workout3'
 
   describe "#_updateProgress", ->

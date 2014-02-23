@@ -7,6 +7,10 @@
     collection: React.PropTypes.instanceOf(app.collections.WorkoutsCollection).isRequired
     onClickHandler: React.PropTypes.func.isRequired
 
+  classes: ->
+    React.addons.classSet
+      "workouts__header": true
+
   getSelectedWorkoutsCount: ->
     @props.collection.getSelectedWorkoutsCount()
 
@@ -21,9 +25,9 @@
     selectedWorkoutsCount = @getSelectedWorkouts()
     uploadButtonDisabled = @getUploadButtonDisabled()
 
-    `<header>
-      <h6 className="h6">{this.props.collection.length} Workouts found on your device.</h6>
-      <button className="workouts__upload-button" disabled={uploadButtonDisabled} onClick={this.props.onClickHandler}>
+    `<header className={this.classes()}>
+      <h6 className="h6 workouts__header__title">We found {this.props.collection.length} new workouts — awesome!</h6>
+      <button className="button workouts__header__upload-button" disabled={uploadButtonDisabled} onClick={this.props.onClickHandler}>
         Upload Workouts {selectedWorkoutsCount}
       </button>
     </header>`

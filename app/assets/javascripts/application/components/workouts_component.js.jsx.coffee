@@ -20,12 +20,12 @@
     WorkoutListHeaderComponent = app.components.WorkoutListHeaderComponent
     WorkoutListComponent = app.components.WorkoutListComponent
 
-    if @props.hasDeviceSelected and @props.deviceHasFinishedLoading
+    if @shouldRenderWorkoutList()
       `<div>
-        <WorkoutListHeaderComponent collection={this.props.collection} onClickHandler={this.onClick} />
+        { this.props.collection.length > 0 ? <WorkoutListHeaderComponent collection={this.props.collection} onClickHandler={this.onClick} /> : '' }
         <WorkoutListComponent collection={this.props.collection} />
       </div>`
-    else if @props.hasDeviceSelected and not @props.deviceHasFinishedLoading
+    else if @shouldRenderProgressMesage()
       `<div className="uploader-status-text">
         Reading workouts — hang tight!
       </div>`
@@ -33,3 +33,9 @@
       `<div className="uploader-status-text">
         Select a device above to start adding workouts!
       </div>`
+
+  shouldRenderWorkoutList: ->
+    @props.hasDeviceSelected and @props.deviceHasFinishedLoading
+
+  shouldRenderProgressMesage: ->
+    @props.hasDeviceSelected and not @props.deviceHasFinishedLoading

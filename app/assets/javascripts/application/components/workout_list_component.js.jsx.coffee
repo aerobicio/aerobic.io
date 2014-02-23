@@ -17,7 +17,9 @@
     if workoutCollection.length
       workoutCollection.map @workoutNodeForWorkout
     else
-      `<li>We couldn’t find any workouts — better go training!</li>`
+      `<li className="uploader-status-text">
+        We couldn’t find any new workouts — better go training!
+      </li>`
 
   workoutNodeForWorkout: (model) ->
     if model instanceof app.models.ExistingWorkoutModel

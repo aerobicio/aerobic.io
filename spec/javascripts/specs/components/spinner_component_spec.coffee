@@ -12,17 +12,3 @@ describe "app.components.SpinnerComponent", ->
   describe "#classes", ->
     it "has default classes", ->
       chai.expect(@component.classes()).to.have.string "spinner"
-
-  describe "#getInitialState", ->
-    it "sets the default state", ->
-      chai.expect(@component.state.preset).to.equal app.config.spinner.tiny
-
-    describe "passing in props", ->
-      beforeEach ->
-        @preset = {herp: 'derp'}
-        React.unmountComponentAtNode(@fixtureEl)
-        @component = new app.components.SpinnerComponent(preset: @preset)
-        React.renderComponent(@component, @fixtureEl)
-
-      it "sets the preset state if the preset props is passed in", ->
-        chai.expect(@component.state.preset).to.equal @preset

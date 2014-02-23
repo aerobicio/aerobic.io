@@ -13,4 +13,11 @@ describe "app.components.ExistingWorkoutComponent", ->
   describe "#classes", ->
     it "has default classes", ->
       chai.expect(@component.classes()).to.have.string "panel"
-      chai.expect(@component.classes()).to.have.string "workouts__list__item"
+      chai.expect(@component.classes()).to.have.string "uploader-workout"
+      chai.expect(@component.classes()).to.have.string "is-uploaded"
+
+  describe "#iconClass", ->
+    it "has default classes", ->
+      chai.expect(@component.iconClasses()).to.have.string "panel__figure"
+      chai.expect(@component.iconClasses()).to.have.string "uploader-workout__icon"
+      chai.expect(@component.iconClasses()).to.have.string "is-uploaded"

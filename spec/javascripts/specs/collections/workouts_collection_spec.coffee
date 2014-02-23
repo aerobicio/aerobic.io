@@ -27,7 +27,7 @@ describe "app.collections.WorkoutsCollection", ->
   describe "#fetch", ->
     beforeEach ->
       @promise = Q.defer()
-      @deviceStub = sinon.stub(getActivities: -> return)
+      @deviceStub = sinon.stub(getActivities: -> [{date: new Date}])
       @deviceStub.getActivities.returns(@promise.promise)
 
     it "empties the collection", ->
@@ -36,9 +36,9 @@ describe "app.collections.WorkoutsCollection", ->
       chai.expect(@collection.length).to.equal 0
 
     it "resets the collection with the returned workouts", (done) ->
-      w1 = new Backbone.Model
-      w2 = new Backbone.Model
-      w3 = new Backbone.Model
+      w1 = new app.models.WorkoutModel(date: new Date, device: id: 1, canReadFITActivities: true)
+      w2 = new app.models.WorkoutModel(date: new Date, device: id: 2, canReadFITActivities: true)
+      w3 = new app.models.WorkoutModel(date: new Date, device: id: 3, canReadFITActivities: true)
       promise = @collection.fetch(@deviceStub)
       promise.done =>
         chai.expect(@collection.length).to.equal 3
