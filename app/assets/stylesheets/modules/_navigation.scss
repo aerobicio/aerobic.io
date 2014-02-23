@@ -59,7 +59,7 @@
     float: left;
     text-transform: capitalize;
     width: auto;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 
     &:first-child {
       margin-left: 0;
@@ -85,12 +85,12 @@
 
   @include media($desk) {
     display: block;
-    background-color: #0072bc;
-    border-color: #0072bc;
+    background-color: #64A7EC;
+    border-color: #64A7EC;
     color: #fff;
 
     &:hover {
-      border-color: #0072bc;
+      border-color: #64A7EC;
     }
   }
 }

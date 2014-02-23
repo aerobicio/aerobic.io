@@ -26,11 +26,11 @@
         <WorkoutListComponent collection={this.props.collection} />
       </div>`
     else if @shouldRenderProgressMesage()
-      `<div className="uploader-status-text">
+      `<div className="subtle-text h4">
         Reading workouts — hang tight!
       </div>`
     else
-      `<div className="uploader-status-text">
+      `<div className="subtle-text h4">
         Select a device above to start adding workouts!
       </div>`
 

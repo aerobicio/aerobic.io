@@ -39,7 +39,6 @@
   border: 1px solid darken($grey, 15%);
   text-align: center;
   margin-bottom: 0;
-  clear: both;
 
   &:hover {
     @include linear-gradient(lighten($grey, 10%), lighten($grey, 2%), $fallback: #fff);

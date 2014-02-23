@@ -7,7 +7,7 @@
 //
 // Styleguide Components.Header
 .header {
-  border-bottom: 1px solid darken($background-color, 5%);
+  border-bottom: 1px solid darken($background-color, 7%);
   background-color: $background-color;
 }
 
@@ -16,9 +16,17 @@
   height: 100%;
 
   @include media($desk) {
-    @include padding(wide);
+    @include padding(medium);
 
     overflow: hidden;
+  }
+
+  @include media($superwide) {
+    @include padding(medium, top);
+    @include padding(medium, bottom);
+
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -44,6 +52,6 @@
   }
 
   @include media($desk) {
-    width: 150px;
+    width: 110px;
   }
 }

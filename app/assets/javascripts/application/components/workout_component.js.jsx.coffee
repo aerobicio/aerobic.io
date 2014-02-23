@@ -25,7 +25,7 @@
 
   iconClass: ->
     React.addons.classSet
-      "uploader-workout__icon": true
+      "uploader-workout-avatar": true
       "is-new": !@state.checked and not @props.model.isUploading()
       "is-checked": @state.checked and not @props.model.isUploading()
       "is-uploading": @props.model.isUploading()
@@ -41,14 +41,15 @@
       data-workout-uuid={this.props.model.get('uuid')}
     >
       <div className="panel__header">
-        <input className="workouts__list__item__checkbox" type="checkbox" checked={this.state.checked} ref="workoutCheckbox" />
+        <input className="uploader-workout-checkbox" type="checkbox" checked={this.state.checked} ref="workoutCheckbox" />
         <figure className="panel__figure">
           <i className={this.iconClass()}>
-            {this.props.model.isUploading() ? <SpinnerComponent preset={app.config.spinner.uploader} /> : ''}
+            { this.props.model.isUploading() ? <SpinnerComponent preset={app.config.spinner.uploader} /> : '' }
           </i>
         </figure>
-        <h6 className="panel__header__heading--padded uploader-workout__heading h6">
-          {this.props.model.date()}<span> {this.props.model.dateSince()}</span>
+        <h6 className="panel__header__heading--padded uploader-workout__heading">
+          <span className="h6">{ this.props.model.date().toString() }</span>
+          <span>{ this.props.model.dateSince() }</span>
         </h6>
       </div>
     </li>`

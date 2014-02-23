@@ -17,7 +17,7 @@
     if workoutCollection.length
       workoutCollection.map @workoutNodeForWorkout
     else
-      `<li className="uploader-status-text">
+      `<li className="h4 subtle-text">
         We couldn’t find any new workouts — better go training!
       </li>`
 

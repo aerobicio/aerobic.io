@@ -25,6 +25,17 @@
   @extend .padding-medium;
 }
 
+.panel__header--table {
+  display: table;
+  vertical-align: middle;
+  width: 100%;
+
+  & .panel__header__heading,
+  & .panel__header__heading--padded {
+    display: table-cell;
+  }
+}
+
 .panel__content {
   @include clearfix;
 
@@ -47,7 +58,6 @@
   }
 }
 
-
 .panel__footer--padded {
   @extend .panel__footer;
   @extend .padding-medium;
@@ -55,7 +65,7 @@
 
 .panel__figure {
   position: absolute;
-  top: 0.5rem;
+  top: 0.4rem;
   left: -1rem;
 
   @include media($desk) {

@@ -9,7 +9,7 @@
 
   classes: ->
     React.addons.classSet
-      "workouts__header": true
+      "uploader-header": true
 
   getSelectedWorkoutsCount: ->
     @props.collection.getSelectedWorkoutsCount()
@@ -26,8 +26,10 @@
     uploadButtonDisabled = @getUploadButtonDisabled()
 
     `<header className={this.classes()}>
-      <h6 className="h6 workouts__header__title">We found {this.props.collection.length} new workouts — awesome!</h6>
-      <button className="button workouts__header__upload-button" disabled={uploadButtonDisabled} onClick={this.props.onClickHandler}>
+      <h6 className="h5 subtle-text uploader-header__title">
+        We found {this.props.collection.length} new workouts — awesome!
+      </h6>
+      <button className="button uploader-header__button" disabled={uploadButtonDisabled} onClick={this.props.onClickHandler}>
         Upload Workouts {selectedWorkoutsCount}
       </button>
     </header>`

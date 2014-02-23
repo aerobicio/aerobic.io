@@ -67,6 +67,8 @@ $lap-and-up:                new-breakpoint(min-width $_lap-start 12);
 // $desk:                   [980px   ->    $max-width]
 $desk:                      new-breakpoint(min-width $_desk-start 12);
 
+$superwide:                 new-breakpoint(min-width 1600px 12);
+
 // private major structural breakpoints
 $_breakpoints: (
   'micro-palm'  $micro-palm,

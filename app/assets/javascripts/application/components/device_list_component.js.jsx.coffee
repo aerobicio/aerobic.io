@@ -26,7 +26,7 @@
     if deviceCollection.length
       deviceCollection.map @deviceNode
     else
-      `<div className="uploader-status-text">Uh oh, we couldn’t find any devices!</div>`
+      `<div className="h4 subtle-text">Uh oh, we couldn’t find any devices!</div>`
 
   deviceNode: (model) ->
     deviceComponent = app.components.DeviceComponent

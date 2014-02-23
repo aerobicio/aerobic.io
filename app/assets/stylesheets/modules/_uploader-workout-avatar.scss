@@ -1,14 +1,9 @@
-.uploader-workout {
-
-  &.is-uploaded {}
-  &.is-checked {}
-}
-
-.uploader-workout__heading {
-  float: left;
-}
-
-.uploader-workout__icon {
+// `.uploader-workout` An uploaded workout
+//
+// -
+//
+// Styleguide Components.Uploader Workout Avatar
+.uploader-workout-avatar {
   @extend .avatar;
 
   background-color: #fff;
