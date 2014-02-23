@@ -134,7 +134,7 @@ When(/^I select the device$/) do
 end
 
 Then(/^I should see a message telling me there are no workouts on my device$/) do
-  page.should have_content "We couldn’t find any workouts — better go training!"
+  page.should have_content "We couldn’t find any new workouts — better go training!"
 end
 
 Then(/^I should see a message telling me that I need to install the Garmin plugin$/) do
@@ -142,7 +142,7 @@ Then(/^I should see a message telling me that I need to install the Garmin plugi
 end
 
 def page_has_workouts
-  page.should have_content "#{@workouts.length} Workouts found on your device."
+  page.should have_content "We found #{@workouts.length} new workouts — awesome"
 
   @workouts.map {|workout|
     page.should have_css("[data-workout-uuid]")

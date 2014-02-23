@@ -101,7 +101,7 @@ def workout_with_bad_data
     id: 3,
     uuid: "637ced4d620f4f01eb561540616646971c531d08",
     date: "2013-12-12 08:53:01",
-    data: "Derp! I am not data!",
+    data: "I am not data!",
     device: {
       id: 100,
       canReadFITActivities: true,
