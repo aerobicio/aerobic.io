@@ -9,7 +9,8 @@ GIT
 
 GIT
   remote: https://github.com/aerobicio/tcx.git
-  revision: 0508cadb75267d4a4b55fa85190be78c37952c39
+  revision: 7babdb248b110ae31b34f805b91fb6b6efffa403
+  branch: units
   specs:
     tcx (0.0.1)
       ox
@@ -188,7 +189,7 @@ GEM
     omniauth-identity (1.1.1)
       bcrypt-ruby (~> 3.0)
       omniauth (~> 1.0)
-    ox (2.0.12)
+    ox (2.1.1)
     parallel (0.9.0)
     pg (0.17.0)
     phantomjs (1.9.2.1)
