@@ -17,7 +17,9 @@
 
   <section class="panel $modifier_class">
     <header class="panel__header--padded">
-      <%= gravatar_for_member(member, extra_classes: "panel__header__figure") %>
+      <div class="panel__figure">
+        <%= gravatar_for_member(member) %>
+      </div>
       <h6 class="panel__header__heading h6">Shoreditch distillery ethical 8-bit</h6>
     </header>
     <div class="panel__content--padded">
@@ -27,7 +29,9 @@
 
   <section class="panel $modifier_class">
     <header class="panel__header--padded">
-      <%= gravatar_for_member(member, extra_classes: "panel__header__figure") %>
+      <div class="panel__figure">
+        <%= gravatar_for_member(member) %>
+      </div>
       <h6 class="h6">Shoreditch distillery ethical 8-bit</h6>
     </header>
     <div class="panel__content--padded">

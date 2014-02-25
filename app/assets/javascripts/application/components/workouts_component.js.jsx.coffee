@@ -1,28 +1,41 @@
 ###* @jsx React.DOM ###
 
 @app.components.WorkoutsComponent = React.createClass
-  mixins: [@lib.BackboneModelMixin]
+  displayName: 'app.components.WorkoutsComponent'
+  propTypes:
+    collection: React.PropTypes.instanceOf(app.collections.WorkoutsCollection).isRequired
+    progressModel: React.PropTypes.instanceOf(app.models.ProgressModel).isRequired
+    hasDeviceSelected: React.PropTypes.bool.isRequired
+    deviceHasFinishedLoading: React.PropTypes.bool.isRequired
 
-  getBackboneModels: ->
-    [@props.collection]
+  classes: ->
+    React.addons.classSet
+      "workouts-list": true
 
-  getInitialState: ->
-    hasDeviceSelected: false
+  onClick: (event) ->
+    event.preventDefault()
+    @props.collection.uploadSelectedWorkouts()
 
   render: ->
     WorkoutListHeaderComponent = app.components.WorkoutListHeaderComponent
     WorkoutListComponent = app.components.WorkoutListComponent
 
-    `<div className={this.classes()}>
-      <WorkoutListHeaderComponent collection={this.props.collection} onClick={this.onClick} />
-      <WorkoutListComponent collection={this.props.collection} />
-    </div>`
+    if @shouldRenderWorkoutList()
+      `<div>
+        { this.props.collection.length > 0 ? <WorkoutListHeaderComponent collection={this.props.collection} onClickHandler={this.onClick} /> : '' }
+        <WorkoutListComponent collection={this.props.collection} />
+      </div>`
+    else if @shouldRenderProgressMesage()
+      `<div className="subtle-text h4">
+        Reading workouts — hang tight!
+      </div>`
+    else
+      `<div className="subtle-text h4">
+        Select a device above to start adding workouts!
+      </div>`
 
-  classes: ->
-    React.addons.classSet
-      "workouts": true
-      "has-device-selected": @state.hasDeviceSelected
+  shouldRenderWorkoutList: ->
+    @props.hasDeviceSelected and @props.deviceHasFinishedLoading
 
-  onClick: (event) ->
-    event.preventDefault()
-    @props.collection.uploadSelectedWorkouts()
+  shouldRenderProgressMesage: ->
+    @props.hasDeviceSelected and not @props.deviceHasFinishedLoading

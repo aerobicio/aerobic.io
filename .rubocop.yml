@@ -9,6 +9,7 @@ AllCops:
     - config/**
     - db/**
     - features/support/upload_from_garmin.rb
+    - spec/support/uploaded_activity.rb
     - node_modules/**
     - script/**
     - vendor/**

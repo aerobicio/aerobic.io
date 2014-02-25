@@ -8,6 +8,7 @@
 /.bundle
 .env
 .DS_Store
+.fontcustom-manifest.json
 
 /bin/autospec
 /bin/rspec

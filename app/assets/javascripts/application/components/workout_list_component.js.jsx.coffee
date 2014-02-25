@@ -1,23 +1,25 @@
 ###* @jsx React.DOM ###
 
 @app.components.WorkoutListComponent = React.createClass
+  displayName: 'app.components.WorkoutListComponent'
   mixins: [@lib.BackboneModelMixin]
-
-  getBackboneModels: ->
-    [@props.collection]
+  propTypes:
+    collection: React.PropTypes.instanceOf(app.collections.WorkoutsCollection).isRequired
 
   render: ->
     workoutNodes = @workoutNodesForDevice(@props.collection)
+
     `<ol className="workouts__list">
       {workoutNodes}
     </ol>`
 
   workoutNodesForDevice: (workoutCollection) ->
     if workoutCollection.length
-      workoutCollection.map (workout) =>
-        @workoutNodeForWorkout(workout)
+      workoutCollection.map @workoutNodeForWorkout
     else
-      `<li>We couldn’t find any workouts — better go training!</li>`
+      `<li className="h4 subtle-text">
+        We couldn’t find any new workouts — better go training!
+      </li>`
 
   workoutNodeForWorkout: (model) ->
     if model instanceof app.models.ExistingWorkoutModel

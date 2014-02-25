@@ -8,6 +8,8 @@ function check_version {
   fi
 }
 
+brew bundle
+
 check_version "git --version"
 check_version "ruby -v"
 check_version "gem -v"

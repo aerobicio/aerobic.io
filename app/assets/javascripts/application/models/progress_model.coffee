@@ -2,3 +2,9 @@
   defaults:
     percent: -1
     message: ""
+
+  isComplete: ->
+    @get('percent') is 100
+
+  isEmpty: ->
+    @get('percent') is @defaults.percent

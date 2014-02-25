@@ -18,7 +18,7 @@
   display: table-cell;
 
   &:before {
-    @include linear-gradient(#fff, #d6d6d6);
+    @include linear-gradient(rgba(#fff, 0.2), rgba(#898989, 0.5));
 
     content: "";
     position: absolute;

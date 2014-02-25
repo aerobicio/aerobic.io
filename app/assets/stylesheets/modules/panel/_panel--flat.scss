@@ -1,0 +1,11 @@
+// TODO
+//
+// -
+//
+// Styleguide Panels.Flat Panel
+.panel--flat {
+  @extend .panel;
+
+  background-color: transparent;
+  box-shadow: none;
+}

@@ -8,12 +8,11 @@
 // Styleguide Controls.Buttons.Default Button
 .button {
   @extend %button;
-  @extend .margin-wide-top;
 
-  display: block;
-  text-align: center;
-  margin-bottom: 0;
-  clear: both;
+  @include media($lap-and-up) {
+    width: auto;
+    display: inline-block;
+  }
 }
 
 // button and input tags need a little extra help to be 100% width...
@@ -22,4 +21,25 @@ input[type='submit'].button {
   @extend .button;
 
   width: 100%;
+
+  @include media($lap-and-up) {
+    width: auto;
+  }
+}
+
+
+// The default button style, but always fluid at every mediaquery breakpoint.
+//
+// :hover    - Hover state
+// :active   - Active state
+// :focus    - Focus state
+// :disabled - Disabled state
+//
+// Styleguide Controls.Buttons.Fluid Default Button
+.button--fluid {
+  @extend %button;
+
+  @include media($lap-and-up) {
+    width: 100%;
+  }
 }

@@ -1,7 +1,7 @@
 .spinner {
   @include transition(opacity 0.2s ease-in);
 
-  opacity: 0;
+  opacity: 1;
 
   &.spinner-enter {
     opacity: 0;

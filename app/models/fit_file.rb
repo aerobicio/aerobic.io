@@ -9,29 +9,30 @@ class FitFile < ActiveRecord::Base
   validates :binary_data, :name, presence: true
   validates :workout_id, uniqueness: true
 
-  def active_duration
-    to_fit.active_duration
-  end
-
-  def distance
-    to_fit.distance
-  end
-
-  def duration
-    to_fit.duration
-  end
+  delegate :active_duration, :distance, :duration, to: :fit
 
   def end_time
-    Time.zone.at(to_fit.end_time)
+    Time.zone.at(fit.end_time) if fit.end_time
   end
 
   def start_time
-    Time.zone.at(to_fit.start_time)
+    Time.zone.at(fit.start_time) if fit.start_time
   end
 
   private
 
-  def to_fit
-    @fit ||= Fit::File.read(StringIO.new(binary_data))
+  def fit
+    @fit ||= begin
+               Fit::File.read(StringIO.new(binary_data))
+             rescue EOFError
+               NullFitFile.new
+             end
+  end
+
+  # A null representation of a Fit::File that is substituted when a Fit::File
+  # cannot be processed.
+  #
+  class NullFitFile
+    attr_reader :active_duration, :distance, :duration, :start_time, :end_time
   end
 end

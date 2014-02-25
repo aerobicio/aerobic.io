@@ -4,12 +4,36 @@
     uuid: undefined
 
   initialize: ->
-    if @get("uuid") is undefined
-      uuidString = [@get("id"), @get("device").id].join(":")
-      @set(uuid: new jsSHA(uuidString, "TEXT" ).getHash("SHA-1", "HEX"))
+    @set
+      format: @_workoutFormat()
+      uuid: @_workoutUuid()
 
   date: ->
-    @get('date')
+    moment(@get('date')).calendar()
+
+  dateSince: ->
+    "(about #{moment(@get('date')).fromNow()})"
 
   data: ->
-    @attributes.getData()
+    @_data ||= @attributes.getData()
+
+  isUploading: ->
+    @get('status') is "uploading"
+
+  isUploaded: ->
+    @get('status') is "uploaded"
+
+  isFailed: ->
+    @get('status') is "failed"
+
+  _workoutUuid: ->
+    uuidString = [@get("id"), @get("device").id].join(":")
+    new jsSHA(uuidString, "TEXT").getHash("SHA-1", "HEX")
+
+  _workoutFormat: ->
+    if @attributes.device.canReadFITActivities is true
+      "fit"
+    else if @attributes.device.canReadActivities is true
+      "tcx"
+    else
+      null

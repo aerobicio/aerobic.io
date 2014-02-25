@@ -27,7 +27,7 @@ describe "app.collections.WorkoutsCollection", ->
   describe "#fetch", ->
     beforeEach ->
       @promise = Q.defer()
-      @deviceStub = sinon.stub(getActivities: -> return)
+      @deviceStub = sinon.stub(getActivities: -> [{date: new Date}])
       @deviceStub.getActivities.returns(@promise.promise)
 
     it "empties the collection", ->
@@ -36,9 +36,9 @@ describe "app.collections.WorkoutsCollection", ->
       chai.expect(@collection.length).to.equal 0
 
     it "resets the collection with the returned workouts", (done) ->
-      w1 = new Backbone.Model
-      w2 = new Backbone.Model
-      w3 = new Backbone.Model
+      w1 = new app.models.WorkoutModel(date: new Date, device: id: 1, canReadFITActivities: true)
+      w2 = new app.models.WorkoutModel(date: new Date, device: id: 2, canReadFITActivities: true)
+      w3 = new app.models.WorkoutModel(date: new Date, device: id: 3, canReadFITActivities: true)
       promise = @collection.fetch(@deviceStub)
       promise.done =>
         chai.expect(@collection.length).to.equal 3
@@ -174,12 +174,14 @@ describe "app.collections.WorkoutsCollection", ->
     beforeEach ->
       @workout = get: -> return
       @workoutGetStub = sinon.stub(@workout, 'get')
-      @workoutGetStub.withArgs('device').returns(id: 1)
+      @workoutGetStub.withArgs('device').returns(new app.models.DeviceModel({id: 1, format: 'fit'}))
       @workoutGetStub.withArgs('id').returns(2)
+      @workoutGetStub.withArgs('format').returns('fit')
       @data = "I am data."
 
     it "retuns a object with the workout data", ->
       workoutData = @collection.workoutData(@workout, @data)
-      chai.expect(workoutData.activity).to.equal @data
+      chai.expect(workoutData.workout_data).to.equal @data
+      chai.expect(workoutData.activity_type).to.equal 'fit'
       chai.expect(workoutData.device_id).to.equal 1
       chai.expect(workoutData.device_workout_id).to.equal 2

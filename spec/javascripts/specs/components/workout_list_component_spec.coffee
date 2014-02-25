@@ -2,7 +2,7 @@ describe "app.components.WorkoutListComponent", ->
   beforeEach ->
     @fixture = $("""<div id="device-component"></div>""").appendTo "body"
     @fixtureEl = @fixture[0]
-    @collection = new Backbone.Collection
+    @collection = new app.collections.WorkoutsCollection
     @component = app.components.WorkoutListComponent(collection: @collection)
     React.renderComponent(@component, @fixtureEl)
 

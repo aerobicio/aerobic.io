@@ -1,0 +1,91 @@
+// The `.panel` is the default container for content in the application.
+//
+// Panels have inner padding via `.panel__content`, have bottom margin, and are
+// 100% fluid.
+//
+// -
+//
+// Styleguide Panels.Panel
+.panel {
+  @extend .margin-medium-bottom;
+
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #898989;
+  box-shadow: 0 1px 1px rgba(#000, 0.15);
+  position: relative;
+}
+
+.panel__header {
+  @include clearfix;
+}
+
+.panel__header--padded {
+  @extend .panel__header;
+  @extend .padding-medium;
+}
+
+.panel__header--table {
+  display: table;
+  vertical-align: middle;
+  width: 100%;
+
+  & .panel__header__heading,
+  & .panel__header__heading--padded {
+    display: table-cell;
+  }
+}
+
+.panel__content {
+  @include clearfix;
+
+  margin-bottom: 0;
+
+  .panel__header + & {
+    border-top: 1px solid #898989;
+  }
+}
+
+.panel__content--padded {
+  @extend .panel__content;
+  @extend .padding-medium;
+}
+
+.panel__footer {
+  .panel__header + &,
+  .panel__content + & {
+    border-top: 1px solid #898989;
+  }
+}
+
+.panel__footer--padded {
+  @extend .panel__footer;
+  @extend .padding-medium;
+}
+
+.panel__figure {
+  position: absolute;
+  top: 0.4rem;
+  left: -1rem;
+
+  @include media($desk) {
+    left: -2rem;
+  }
+}
+
+.panel__header__heading {
+  margin: 0;
+
+  .panel__figure + & {
+    margin-left: 1.5rem;
+
+    @include media($desk) {
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+.panel__header__heading--padded {
+  @extend .panel__header__heading;
+  @extend .padding-medium;
+}

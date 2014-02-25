@@ -6,7 +6,7 @@
   "private": true,
   "dependencies": {
     "backbone": "~1.1.0",
-    "garmin-communicator": "git://github.com/aerobicio/garmin-communicator.git#0.2.6",
+    "garmin-communicator": "git://github.com/aerobicio/garmin-communicator.git#0.3.0",
     "jquery": "~2.0.3",
     "nprogress": "~0.1.2",
     "qjax": "~1.5.2",
@@ -15,6 +15,7 @@
     "underscore": "~1.5.2",
     "jssha": "~1.5.0",
     "es5-shim": "~2.3.0",
-    "sinon": "~1.7.3"
+    "sinon": "~1.7.3",
+    "momentjs": "~2.5.1"
   }
 }

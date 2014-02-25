@@ -2,13 +2,17 @@ describe "app.components.WorkoutsComponent", ->
   beforeEach ->
     @fixture = $("""<div id="device-list-component"></div>""").appendTo "body"
     @fixtureEl = @fixture[0]
-    @collection = new Backbone.Collection
+    @collection = new app.collections.WorkoutsCollection
     @collection.uploadSelectedWorkouts = sinon.stub()
     @collection.getSelectedWorkoutsCount = sinon.stub()
-    @onClickDelegate = sinon.stub()
+    @progressModel = new app.models.ProgressModel
+    @hasDeviceSelected = true
+    @deviceHasFinishedLoading = true
     @component = app.components.WorkoutsComponent(
       collection: @collection
-      onClick: @onClickDelegate
+      progressModel: @progressModel
+      hasDeviceSelected: @hasDeviceSelected
+      deviceHasFinishedLoading: @deviceHasFinishedLoading
     )
     React.renderComponent(@component, @fixtureEl)
 
@@ -16,17 +20,9 @@ describe "app.components.WorkoutsComponent", ->
     React.unmountComponentAtNode(@fixtureEl)
     @fixture.remove()
 
-  describe "#getInitialState", ->
-    it "sets the initial state", ->
-      chai.expect(@component.state.hasDeviceSelected).to.be.false
-
   describe "#classes", ->
     it "has default classes", ->
       chai.expect(@component.classes()).to.have.string "workouts"
-
-    it "has a selected class if the component state is selected", ->
-      @component.setState(hasDeviceSelected: true)
-      chai.expect(@component.classes()).to.have.string "has-device-selected"
 
   describe "#onClick", ->
     beforeEach ->

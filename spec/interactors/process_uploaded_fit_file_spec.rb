@@ -2,12 +2,6 @@ require_relative '../../app/interactors/process_uploaded_fit_file'
 require_relative '../support/uploaded_activity'
 
 describe ProcessUploadedFitFile do
-  let(:context) do
-    {
-      activity: uploaded_activity,
-    }
-  end
-
   let(:fit_file) { double(:fit_file) }
 
   before do
@@ -17,16 +11,34 @@ describe ProcessUploadedFitFile do
   describe '#perform' do
     subject(:result) { described_class.perform(context) }
 
-    before do
-      FitFile.should_receive(:new) { fit_file }
+    describe 'with activity' do
+      let(:context) do
+        {
+          activity: uploaded_activity,
+        }
+      end
+
+      before do
+        FitFile.should_receive(:new) { fit_file }
+      end
+
+      it 'should be marked as successful' do
+        result.success?.should be_true
+      end
+
+      it 'should add fit_file to the context' do
+        result.fitfile.should == fit_file
+      end
     end
 
-    it 'should be marked as successful' do
-      result.success?.should be_true
-    end
+    describe 'without activity' do
+      let(:context) do
+        {}
+      end
 
-    it 'should add fit_file to the context' do
-      result.fitfile.should == fit_file
+      it 'returns a notice if activity is not passed in' do
+        result.notice.should == 'No Fit File found'
+      end
     end
   end
 end
