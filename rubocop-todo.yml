@@ -57,11 +57,6 @@ UselessAssignment:
 Validation:
   Enabled: false
 
-# Offence count: 2
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-VariableName:
-  Enabled: false
-
 # Offence count: 4
 Void:
   Enabled: false

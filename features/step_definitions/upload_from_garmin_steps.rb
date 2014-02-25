@@ -144,8 +144,8 @@ end
 
 def ensure_workout_upload_succeeds(uuid)
   Capybara.default_wait_time = 15
-  newWorkout = page.find(".is-uploaded[data-workout-uuid='#{uuid}']")
-  within newWorkout do
+  new_workout = page.find(".is-uploaded[data-workout-uuid='#{uuid}']")
+  within new_workout do
     page.should have_content('uploaded')
   end
   Capybara.default_wait_time = 2
@@ -153,8 +153,8 @@ end
 
 def ensure_workout_upload_fails(uuid)
   Capybara.default_wait_time = 15
-  newWorkout = page.find(".is-failed[data-workout-uuid='#{uuid}']")
-  within newWorkout do
+  new_workout = page.find(".is-failed[data-workout-uuid='#{uuid}']")
+  within new_workout do
     page.should have_content('failed')
   end
   Capybara.default_wait_time = 2
