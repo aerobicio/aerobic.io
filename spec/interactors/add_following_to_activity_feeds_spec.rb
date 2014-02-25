@@ -9,7 +9,7 @@ describe AddFollowingToActivityFeeds do
       member_id: 1,
       followed_id: 2,
       member: member,
-      followed_member: followed_member,
+      followed_member: followed_member
     }
   end
 
@@ -17,7 +17,7 @@ describe AddFollowingToActivityFeeds do
     {
       user_id: context[:member_id],
       activity_user_id: context[:member_id],
-      activity_followed_user_id: context[:followed_id],
+      activity_followed_user_id: context[:followed_id]
     }
   end
 
@@ -25,7 +25,7 @@ describe AddFollowingToActivityFeeds do
     {
       user_id: context[:followed_id],
       activity_user_id: context[:member_id],
-      activity_followed_user_id: context[:followed_id],
+      activity_followed_user_id: context[:followed_id]
     }
   end
 
@@ -33,7 +33,7 @@ describe AddFollowingToActivityFeeds do
     {
       user_id: followers.first.id,
       activity_user_id: context[:member_id],
-      activity_followed_user_id: context[:followed_id],
+      activity_followed_user_id: context[:followed_id]
     }
   end
 

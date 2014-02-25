@@ -8,7 +8,7 @@ describe CreateFollowing do
   let(:context) do
     {
       member_id: 1,
-      followed_id: 2,
+      followed_id: 2
     }
   end
 
@@ -101,7 +101,7 @@ describe CreateFollowing do
     let(:context) do
       {
         member_id: 1,
-        followed_id: 1,
+        followed_id: 1
       }
     end
 

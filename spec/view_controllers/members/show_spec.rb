@@ -10,7 +10,7 @@ describe Members::Show do
     double(:member,
            id: member_id,
            cache_key: member_id.to_s,
-           workouts: member_workouts,
+           workouts: member_workouts
           )
   end
 
@@ -40,7 +40,7 @@ describe Members::Show do
     let(:render_params) do
       {
         partial: 'workouts/grouped',
-        object: { Date.today =>  member_workouts },
+        object: { Date.today =>  member_workouts }
       }
     end
 

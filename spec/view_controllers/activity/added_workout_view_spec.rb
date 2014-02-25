@@ -9,14 +9,14 @@ describe Activity::AddedWorkoutView do
   let(:added_workout) do
     double(:added_workout, cache_key: 'foo',
                            activity_workout: activity_workout,
-                           activity_user: member,
+                           activity_user: member
           )
   end
 
   let(:activity_workout) do
     double(:activity_workout, cache_key: 'bar',
                               active_duration: 100_000,
-                              distance: 200_000,
+                              distance: 200_000
           )
   end
 

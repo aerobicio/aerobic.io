@@ -12,7 +12,7 @@ describe Workouts::Show do
            id: workout_id,
            cache_key: workout_id.to_s,
            active_duration: 600_00,
-           distance: 100_000,
+           distance: 100_000
           )
   end
 
@@ -20,7 +20,7 @@ describe Workouts::Show do
     stub_const('Workout', Class.new)
     Workout.should_receive(:find_by!).with(
       user_id: member_id,
-      id: workout_id,
+      id: workout_id
     ) { workout }
   end
 

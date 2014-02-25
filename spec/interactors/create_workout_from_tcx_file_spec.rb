@@ -6,7 +6,7 @@ describe CreateWorkoutFromTcxFile do
 
   let(:context) do
     {
-      tcxfile: tcx_file,
+      tcxfile: tcx_file
     }
   end
 

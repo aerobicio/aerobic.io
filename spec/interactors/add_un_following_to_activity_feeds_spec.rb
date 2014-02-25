@@ -5,7 +5,7 @@ describe AddUnFollowingToActivityFeeds do
     {
       member_id: 1,
       followed_id: 2,
-      unfollowed_member: unfollowed_member,
+      unfollowed_member: unfollowed_member
     }
   end
 
@@ -13,7 +13,7 @@ describe AddUnFollowingToActivityFeeds do
     {
       user_id: context[:member_id],
       activity_user_id: context[:member_id],
-      activity_followed_user_id: context[:followed_id],
+      activity_followed_user_id: context[:followed_id]
     }
   end
 

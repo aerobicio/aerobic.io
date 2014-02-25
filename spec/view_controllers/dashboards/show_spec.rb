@@ -29,7 +29,7 @@ describe Dashboards::Show do
     let(:render_params) do
       {
         partial: 'activity/grouped',
-        object: { Date.today =>  member_activities },
+        object: { Date.today =>  member_activities }
       }
     end
 

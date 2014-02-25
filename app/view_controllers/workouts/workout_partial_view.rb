@@ -16,7 +16,7 @@ module Workouts
     def cache_key
       [
         @workout.cache_key,
-        @current_member.cache_key,
+        @current_member.cache_key
       ].join(':')
     end
 

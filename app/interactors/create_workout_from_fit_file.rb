@@ -34,7 +34,7 @@ class CreateWorkoutFromFitFile
                    duration: fitfile.duration,
                    end_time: fitfile.end_time,
                    start_time: fitfile.start_time,
-                   user_id: context[:member_id],
+                   user_id: context[:member_id]
                   )
   end
 

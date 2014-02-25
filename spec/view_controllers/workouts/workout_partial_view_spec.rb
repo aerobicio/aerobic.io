@@ -9,7 +9,7 @@ describe Workouts::WorkoutPartialView do
     double(:workout, user: workout_member,
                      cache_key: 'lol',
                      active_duration: 999_999,
-                     distance: 444_444,
+                     distance: 444_444
           )
   end
 

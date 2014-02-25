@@ -38,11 +38,6 @@ Output:
 RaiseArgs:
   EnforcedStyle: compact
 
-# Offence count: 38
-# Configuration parameters: EnforcedStyleForMultiline, SupportedStyles.
-TrailingComma:
-  Enabled: false
-
 # Offence count: 1
 # Configuration parameters: ExactNameMatch, AllowPredicates, Whitelist.
 TrivialAccessors:

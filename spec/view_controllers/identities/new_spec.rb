@@ -54,7 +54,7 @@ describe Identities::New do
     let(:identity) do
       double(:identity,  name: name,
                          email: email,
-                         errors: errors,
+                         errors: errors
            )
     end
     let(:name) { 'name' }
@@ -107,7 +107,7 @@ describe Identities::New do
       let(:errors) do
         double(:errors,  any?: true,
                          count: count,
-                         full_messages: full_messages,
+                         full_messages: full_messages
               )
       end
       let(:count) { 2 }
@@ -143,7 +143,7 @@ describe Identities::New do
         let(:render_params) do
           {
             partial: 'identities/form_errors',
-            locals: { view: view },
+            locals: { view: view }
           }
         end
 

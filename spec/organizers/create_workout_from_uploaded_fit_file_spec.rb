@@ -6,7 +6,7 @@ describe CreateWorkoutFromUploadedFitFile do
   let(:context) do
     {
       activity: uploaded_activity,
-      member_id: 1,
+      member_id: 1
     }
   end
 

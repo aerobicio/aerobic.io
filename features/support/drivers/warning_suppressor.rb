@@ -6,7 +6,7 @@ class WarningSuppressor
     /CoreText performance note:/,
     /Method userSpaceScaleFactor in class NSView/,
     /webkit_server/,
-    /objc[81574]: Class/,
+    /objc[81574]: Class/
   ]
 
   class << self

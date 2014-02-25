@@ -14,7 +14,7 @@ class Activity
     def cache_key
       [
         @added_workout.cache_key,
-        @added_workout.activity_workout.cache_key,
+        @added_workout.activity_workout.cache_key
       ].map(&:to_s).join(':')
     end
 

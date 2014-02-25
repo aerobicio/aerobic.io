@@ -6,7 +6,7 @@ describe CreateWorkoutFromFitFile do
 
   let(:context) do
     {
-      fitfile: fit_file,
+      fitfile: fit_file
     }
   end
 

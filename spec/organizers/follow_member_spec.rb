@@ -4,7 +4,7 @@ describe FollowMember do
   let(:context) do
     {
       member_id: 1,
-      followed_id: 2,
+      followed_id: 2
     }
   end
 
@@ -12,7 +12,7 @@ describe FollowMember do
 
   let(:member) do
     double(:member, followings: followings,
-                    followers: followers,
+                    followers: followers
           )
   end
 

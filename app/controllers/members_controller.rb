@@ -32,7 +32,7 @@ class MembersController < ApplicationController
   def follow_params
     {
       member_id: current_user.id,
-      followed_id: params[:id].to_i,
+      followed_id: params[:id].to_i
     }
   end
 

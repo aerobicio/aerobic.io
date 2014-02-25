@@ -50,7 +50,7 @@ class AddFollowingToActivityFeeds
     followed_params = {
       user_id: user_id,
       activity_user_id: member_id,
-      activity_followed_user_id: followed_id,
+      activity_followed_user_id: followed_id
     }
 
     activity = Activity::FollowedUser.create(followed_params)

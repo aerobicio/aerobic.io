@@ -14,7 +14,7 @@ describe ProcessUploadedFitFile do
     describe 'with activity' do
       let(:context) do
         {
-          activity: uploaded_activity,
+          activity: uploaded_activity
         }
       end
 

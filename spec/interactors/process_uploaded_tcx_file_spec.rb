@@ -14,7 +14,7 @@ describe ProcessUploadedTcxFile do
     describe 'with activity' do
       let(:context) do
         {
-          activity: tcx_uploaded_activity,
+          activity: tcx_uploaded_activity
         }
       end
 

@@ -17,7 +17,7 @@ describe AddWorkoutToActivityFeeds do
     {
       user_id: context[:member_id],
       activity_user_id: context[:member_id],
-      activity_workout_id: workout.id,
+      activity_workout_id: workout.id
     }
   end
 
@@ -25,7 +25,7 @@ describe AddWorkoutToActivityFeeds do
     {
       user_id: follower.id,
       activity_user_id: context[:member_id],
-      activity_workout_id: workout.id,
+      activity_workout_id: workout.id
     }
   end
 
