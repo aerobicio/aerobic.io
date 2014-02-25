@@ -123,35 +123,6 @@ def tcx_workout
   }
 end
 
-def page_has_workout1
-  page.should have_content '1:31:23 Duration'
-  page.should have_content '41.32 km Distance'
-end
-
-def page_doesnt_have_workout1
-  page.should have_no_content '1:31:23 Duration'
-  page.should have_no_content '41.32 km Distance'
-end
-
-def page_has_workout2
-  page.should have_content '0:37:30 Duration'
-  page.should have_content '17.04 km Distance'
-end
-
-def page_doesnt_have_workout2
-  page.should have_no_content '0:37:30 Duration'
-  page.should have_no_content '17.04 km Distance'
-end
-
-def page_has_tcx_workout
-  page.should have_content 'HERP'
-  page.should have_content 'DERP'
-end
-
-def page_doesnt_have_tcx_workout
-  page.should have_no_content 'HERP'
-  page.should have_no_content 'DERP'
-
 def tcx_workout_data
   <<-TCXFILE
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
