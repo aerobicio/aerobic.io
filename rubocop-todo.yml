@@ -48,11 +48,6 @@ TrailingComma:
 TrivialAccessors:
   Enabled: false
 
-# Offence count: 1
-# Configuration parameters: IncludePaths.
-Validation:
-  Enabled: false
-
 # Offence count: 4
 Void:
   Enabled: false
