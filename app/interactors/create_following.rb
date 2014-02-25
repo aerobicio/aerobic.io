@@ -27,7 +27,7 @@ class CreateFollowing
     begin
       member.followings << followed_member
       followed_member.touch
-    rescue ActiveRecord::ActiveRecordError => e
+    rescue ActiveRecord::ActiveRecordError
       false
     end
   end

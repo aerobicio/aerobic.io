@@ -48,10 +48,6 @@ TrailingComma:
 TrivialAccessors:
   Enabled: false
 
-# Offence count: 3
-UselessAssignment:
-  Enabled: false
-
 # Offence count: 1
 # Configuration parameters: IncludePaths.
 Validation:

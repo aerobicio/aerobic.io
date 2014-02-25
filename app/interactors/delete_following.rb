@@ -30,7 +30,7 @@ class DeleteFollowing
   end
 
   def delete_user_followings_sql
-    sql = <<-SQL
+    <<-SQL
       delete from users_followings
       where user_id = #{member_id}
       and following_id = #{followed_id}
