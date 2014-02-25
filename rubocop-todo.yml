@@ -38,11 +38,6 @@ Output:
 RaiseArgs:
   EnforcedStyle: compact
 
-# Offence count: 1
-# Configuration parameters: ExactNameMatch, AllowPredicates, Whitelist.
-TrivialAccessors:
-  Enabled: false
-
 # Offence count: 4
 Void:
   Enabled: false
