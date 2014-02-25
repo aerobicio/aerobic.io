@@ -8,7 +8,7 @@ class ProcessUploadedTcxFile
 
   def perform
     if context[:activity]
-      context[:tcxfile] = TcxFile.new(xml_data: activity)
+      context[:activity_file] = TcxFile.new(xml_data: activity)
     else
       context[:notice] = "No TCX File found"
       context.fail!

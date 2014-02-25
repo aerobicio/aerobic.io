@@ -1,29 +1,37 @@
 require "active_support/core_ext/object/try"
-require_relative "../../app/interactors/create_workout_from_tcx_file"
+require_relative "../../app/interactors/create_workout_from_activity_file"
 
-describe CreateWorkoutFromTcxFile do
+describe CreateWorkoutFromActivityFile do
   subject(:result) { described_class.perform(context) }
 
   let(:context) do
     {
-      tcxfile: tcx_file,
+      member_id: 1,
+      device_id: 2,
+      device_workout_id: 3,
+      activity_file: activity_file
     }
   end
 
-  let(:tcx_file) { double(:tcx_file, save: tcx_file_persisted).as_null_object }
+  let(:activity_file) do
+    double(:activity_file, save: activity_file_persisted).as_null_object
+  end
+
+  let(:workout_creator) { double(:workout_creator) }
   let(:workout) { double(:workout, id: 1, persisted?: persisted) }
 
   before do
-    stub_const("Workout", Class.new)
-    Workout.should_receive(:create) { workout }
-    tcx_file.should_receive(:workout_id=).with(workout.id)
+    stub_const("WorkoutCreator", Class.new)
+    WorkoutCreator.should_receive(:new) { workout_creator }
+    workout_creator.should_receive(:persist_workout) { workout }
+    activity_file.should_receive(:workout_id=).with(workout.id)
   end
 
   context "when workout is persisted" do
     let(:persisted) { true }
 
-    context "and fit file is persisted" do
-      let(:tcx_file_persisted) { true }
+    context "and activity file is persisted" do
+      let(:activity_file_persisted) { true }
 
       it "should be marked as successfull" do
         result.success?.should be_true
@@ -34,8 +42,8 @@ describe CreateWorkoutFromTcxFile do
       end
     end
 
-    context "and fit file is not persisted" do
-      let(:tcx_file_persisted) { false }
+    context "and activity file is not persisted" do
+      let(:activity_file_persisted) { false }
 
       it "should not be marked as successfull" do
         result.success?.should be_false
@@ -49,7 +57,7 @@ describe CreateWorkoutFromTcxFile do
 
   context "when unsuccessfull" do
     let(:persisted) { false }
-    let(:tcx_file_persisted) { false }
+    let(:activity_file_persisted) { false }
 
     it "should not be marked as successfull" do
       result.success?.should be_false

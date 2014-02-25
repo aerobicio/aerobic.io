@@ -7,13 +7,15 @@ describe CreateWorkoutFromUploadedFitFile do
     {
       activity: uploaded_activity,
       member_id: 1,
+      device_id: "123",
+      device_workout_id: "321"
     }
   end
 
-  let(:fit_file) { double(:fit_file) }
+  let(:activity_file) { double(:activity_file) }
 
   before do
-    FitFile.stub(:new) { fit_file.as_null_object }
+    FitFile.stub(:new) { activity_file.as_null_object }
   end
 
   context "Fit File is processed" do
@@ -29,7 +31,7 @@ describe CreateWorkoutFromUploadedFitFile do
       context "and fitfile is persisted" do
 
         before do
-          fit_file.should_receive(:save) { true }
+          activity_file.should_receive(:save) { true }
         end
 
         it "should add the workout to the context" do
@@ -69,7 +71,7 @@ describe CreateWorkoutFromUploadedFitFile do
 
       context "but fitfile is not persisted" do
         before do
-          fit_file.should_receive(:save) { false }
+          activity_file.should_receive(:save) { false }
         end
 
         it "should not be marked as succesful" do
