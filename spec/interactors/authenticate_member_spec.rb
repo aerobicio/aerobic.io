@@ -58,7 +58,7 @@ describe AuthenticateMember do
         end
 
         it 'should not add the user_id to the resulting context' do
-          result.try(:user_id).should == nil
+          result.try(:user_id).should eql(nil)
         end
       end
     end

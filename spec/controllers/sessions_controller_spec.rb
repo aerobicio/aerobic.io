@@ -29,8 +29,8 @@ describe SessionsController do
         double(:result,  success?: false)
       end
 
-      it 'should set the user_id in the session' do
-        session[:user_id].should == nil
+      it 'should not set the user_id in the session' do
+        session[:user_id].should eql(nil)
       end
 
       it { should render_template(:new) }

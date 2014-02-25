@@ -42,7 +42,7 @@ describe CreateWorkoutFromTcxFile do
       end
 
       it 'should not add workout to the context' do
-        result.try(:workout).should == nil
+        result.try(:workout).should eql(nil)
       end
     end
   end
@@ -56,7 +56,7 @@ describe CreateWorkoutFromTcxFile do
     end
 
     it 'should not add workout to the context' do
-      result.try(:workout).should == nil
+      result.try(:workout).should eql(nil)
     end
   end
 end

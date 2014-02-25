@@ -24,10 +24,6 @@ LineLength:
 MethodLength:
   Max: 14
 
-# Offence count: 5
-NilComparison:
-  Enabled: false
-
 # Offence count: 2
 # Configuration parameters: SupportedStyles.
 RaiseArgs:

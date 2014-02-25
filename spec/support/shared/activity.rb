@@ -14,7 +14,7 @@ shared_examples 'an activity models public API' do
     subject { activity.date }
 
     context 'when created_at is not set' do
-      it { should == nil }
+      it { should eql(nil) }
     end
 
     context 'when created_at is set' do
