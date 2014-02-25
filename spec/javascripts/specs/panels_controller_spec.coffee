@@ -37,9 +37,13 @@ describe "PanelsController", ->
       @$panel.focus().trigger event
       chai.expect(@redirectorStub.calledWith('/some-url')).to.be.true
 
-    it "should not change the location when other links are clicked on", ->
-      @$panel.find("a.misc-link").click()
-      chai.expect(@redirectorStub.called).to.be.false
+    describe "normal anchors", ->
+      afterEach ->
+        window.location.hash = null
 
-      @$panel.find("a.misc-link span").click()
-      chai.expect(@redirectorStub.called).to.be.false
+      it "should not change the location when other links are clicked on", ->
+        @$panel.find("a.misc-link").click()
+        chai.expect(@redirectorStub.called).to.be.false
+
+        @$panel.find("a.misc-link span").click()
+        chai.expect(@redirectorStub.called).to.be.false

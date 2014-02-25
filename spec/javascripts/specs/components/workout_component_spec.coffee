@@ -2,9 +2,11 @@ describe "app.components.WorkoutComponent", ->
   beforeEach ->
     @fixture = $("""<div id="device-component"></div>""").appendTo "body"
     @fixtureEl = @fixture[0]
-    @model = new Backbone.Model
+    @model = new app.models.WorkoutModel
       status: false
       checked: false
+      device:
+        canReadFITActivities: true
     @model.date = -> new Date
     @component = new app.components.WorkoutComponent(model: @model)
     React.renderComponent(@component, @fixtureEl)
@@ -21,6 +23,14 @@ describe "app.components.WorkoutComponent", ->
     it "has a state class if the component state is selected", ->
       @component.setState(checked: true)
       chai.expect(@component.classes()).to.have.string "is-checked"
+
+    it "has an 'is-uploading' class if the component state is uploading", ->
+      @component.props.model.set(status: "uploading")
+      chai.expect(@component.classes()).to.have.string "is-uploading"
+
+    it "has an 'is-failed' class if the component state is failed", ->
+      @component.props.model.set(status: "failed")
+      chai.expect(@component.classes()).to.have.string "is-failed"
 
   describe "#getInitialState", ->
     it "sets the default state", ->

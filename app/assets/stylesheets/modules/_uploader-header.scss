@@ -1,0 +1,16 @@
+.uploader-header {
+  @extend .padding-medium-bottom;
+  @include clearfix;
+
+  clear: both;
+}
+
+.uploader-header__title {
+  float: left;
+  clear: none;
+}
+
+.uploader-header__button {
+  float: right;
+  clear: none;
+}

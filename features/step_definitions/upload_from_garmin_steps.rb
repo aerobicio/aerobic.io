@@ -27,7 +27,7 @@ end
 When(/^I upload a FIT workout from my device$/) do
   select_device_with_name("Test FIT Device")
 
-  within "#Workouts" do
+  within "#GarminUpload" do
     page_has_workouts
 
     workout = get_workout_node_for_workout(@workouts.first)
@@ -46,7 +46,7 @@ end
 When(/^I upload multiple workouts from my device$/) do
   select_device_with_name("Test FIT Device")
 
-  within "#Workouts" do
+  within "#GarminUpload" do
     page_has_workouts
 
     workout1 = get_workout_node_for_workout(@workouts.first)
@@ -66,12 +66,6 @@ When(/^I upload multiple workouts from my device$/) do
   end
 end
 
-Then(/^I should see the workouts in my activity feed$/) do
-  visit dashboard_path
-  page_has_workout1
-  page_has_workout2
-end
-
 Given(/^I have a Garmin device that supports TCX files$/) do
   member_has_tcx_device
 end
@@ -81,13 +75,17 @@ Given(/^I have some TCX workouts on my device$/) do
 end
 
 Given(/^I have a FIT workout that cannot be parsed on my device$/) do
-  member_bad_data_workouts_on_device
+  member_bad_fit_data_workouts_on_device
+end
+
+Given(/^I have a TCX workout that cannot be parsed on my device$/) do
+  member_bad_tcx_data_workouts_on_device
 end
 
 When(/^I upload a TCX workout from my device$/) do
   select_device_with_name("Test TCX Device")
 
-  within "#Workouts" do
+  within "#GarminUpload" do
     page_has_workouts
 
     workout = get_workout_node_for_workout(@workouts.first)
@@ -104,20 +102,29 @@ When(/^I upload a TCX workout from my device$/) do
 end
 
 Then(/^the workout should be uploaded$/) do
-  within "#Workouts" do
+  within "#GarminUpload" do
     ensure_workout_upload_succeeds(@workouts.first[:uuid])
   end
 end
 
 Then(/^the workouts should both be uploaded$/) do
-  within "#Workouts" do
+  within "#GarminUpload" do
     ensure_workout_upload_succeeds(@workouts.first[:uuid])
     ensure_workout_upload_succeeds(@workouts.last[:uuid])
   end
 end
 
+Given(/^we have implemented less explosive handling of failing uploads$/) do
+  pending "This is pending until we are handling file parsing errors a bit more cleanly"
+end
+
+Given(/^we have implemented TCX parsing server-side$/) do
+  pending "This is pending until we have server-side support for parsing TCX"
+end
+
+
 Then(/^I should see an error message for the upload$/) do
-  within "#Workouts" do
+  within "#GarminUpload" do
     ensure_workout_upload_fails(@workouts.first[:uuid])
   end
 end
@@ -127,18 +134,18 @@ When(/^I select the device$/) do
 end
 
 Then(/^I should see a message telling me there are no workouts on my device$/) do
-  page.should have_content "We couldn’t find any workouts — better go training!"
+  page.should have_content "We couldn’t find any new workouts — better go training!"
 end
 
 Then(/^I should see a message telling me that I need to install the Garmin plugin$/) do
-  page.should have_content "Go and install the garmin plugin!"
+  page.should have_content "We couldn’t find the Garmin Communicator Plugin"
 end
 
 def page_has_workouts
-  page.should have_content "#{@workouts.length} Workouts found on your device."
+  page.should have_content "We found #{@workouts.length} new workouts — awesome"
 
   @workouts.map {|workout|
-    page.should have_css("[data-workout-uuid='#{workout[:uuid]}']")
+    page.should have_css("[data-workout-uuid]")
   }
 end
 
@@ -146,24 +153,24 @@ def ensure_workout_upload_succeeds(uuid)
   Capybara.default_wait_time = 15
   newWorkout = page.find(".is-uploaded[data-workout-uuid='#{uuid}']")
   within newWorkout do
-    page.should have_content('uploaded')
+    page.should have_content('Workout Uploaded')
   end
   Capybara.default_wait_time = 2
 end
 
 def ensure_workout_upload_fails(uuid)
   Capybara.default_wait_time = 15
-  newWorkout = page.find(".is-failed[data-workout-uuid='#{uuid}']")
-  within newWorkout do
-    page.should have_content('failed')
+  failedWorkout = page.find(".is-failed[data-workout-uuid='#{uuid}']")
+  within failedWorkout do
+    page.should have_content('Upload Failed')
   end
   Capybara.default_wait_time = 2
 end
 
 def select_device_with_name(name)
-  within "#DevicesList" do
+  within "#GarminUpload" do
     page_has_device
-    page.find('.devices-list__device', :text => name).click
+    page.find('.device-list__device', :text => name).click
   end
 end
 
@@ -172,5 +179,5 @@ def get_workout_node_for_workout(workout)
 end
 
 def page_has_device
-  page.should have_css('.devices-list__device')
+  page.should have_css('.device-list__device')
 end

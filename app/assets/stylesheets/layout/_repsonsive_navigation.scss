@@ -39,7 +39,7 @@
 
   position: relative;
   z-index: 2;
-  background-color: $background-color;
+  background-color: lighten($background-color, 1%);
 }
 
 .content__inner {
@@ -49,6 +49,7 @@
 
   border-top: 1px solid #d5d8dd;
   opacity: 1.0;
+  height: 100%;
 
   @include media($desk) {
     border-top: none;

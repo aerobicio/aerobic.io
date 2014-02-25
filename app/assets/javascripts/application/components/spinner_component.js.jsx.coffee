@@ -1,20 +1,19 @@
 ###* @jsx React.DOM ###
 
 @app.components.SpinnerComponent = React.createClass
-  getInitialState: ->
-    preset: @props.preset ? app.config.spinner.tiny
-    visible: @props.isVisible ? true
+  displayName: 'app.components.SpinnerComponent'
+  propTypes:
+    isVisible: React.PropTypes.bool
+    preset: React.PropTypes.object
 
   classes: ->
     React.addons.classSet
       "spinner": true
+      "is-visible": @props.isVisible
 
   componentDidMount: ->
-    el = @refs.spinnerEl.getDOMNode()
-    @spinner = new Spinner(@state.preset).spin(el)
+    config = @props.preset ? app.config.spinner.tiny
+    @spinner = new Spinner(config).spin(@refs.spinnerEl.getDOMNode())
 
   render: ->
-    TransitionGroup = React.addons.TransitionGroup
-    `<TransitionGroup transitionName="spinner" component={React.DOM.figure}>
-      <div ref="spinnerEl" className={this.classes()}></div>
-    </TransitionGroup>`
+    `<div ref="spinnerEl" className={this.classes()}></div>`

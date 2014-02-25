@@ -23,13 +23,16 @@ class GarminStubs
   restoreAll: ->
     _.invoke(@_stubs, 'restore')
 
+  resetDevices: ->
+    window.garminUploadController.devicesCollection.reset([])
+
   createFITDevice: (options = {}) ->
     device = _(options).defaults
       name: "Test FIT Device"
-      activities: => @getDeviceActivities(@_fitDeviceWorkouts)
+      activities: => @getDeviceWorkouts(@_fitDeviceWorkouts)
     window.garminUploadController.devicesCollection.add(device)
 
-  getDeviceActivities: (activitiesBuffer) ->
+  getDeviceWorkouts: (activitiesBuffer) ->
     deferred = Q.defer()
     deferred.resolve(activitiesBuffer)
     deferred.promise
@@ -45,11 +48,12 @@ class GarminStubs
   createTCXDevice: (options = {}) ->
     device = _(options).defaults
       name: "Test TCX Device"
-      activities: => @getDeviceActivities(@_tcxDeviceWorkouts)
+      activities: => @getDeviceWorkouts(@_tcxDeviceWorkouts)
     window.garminUploadController.devicesCollection.add(device)
 
   _parseWorkoutJson: (workoutJson) ->
     workoutJson.date = new Date(workoutJson.date)
+    workoutJson.device = workoutJson.device
     workoutJson.getData = ->
       deferred = Q.defer()
       deferred.resolve(workoutJson.data)

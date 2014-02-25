@@ -8,6 +8,14 @@ GIT
       bindata (~> 1.4)
 
 GIT
+  remote: https://github.com/aerobicio/tcx.git
+  revision: 7babdb248b110ae31b34f805b91fb6b6efffa403
+  branch: units
+  specs:
+    tcx (0.0.1)
+      ox
+
+GIT
   remote: https://github.com/plasticine/nestive.git
   revision: d741d0e130df7c23ee1fafd8e547a2231ad417dd
   specs:
@@ -114,6 +122,10 @@ GEM
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     ffi (1.9.3)
+    fontcustom (1.3.3)
+      json (~> 1.4)
+      listen (~> 1.0)
+      thor (~> 0.14)
     foreigner (1.6.0)
       activerecord (>= 3.0.0)
     foreman (0.63.0)
@@ -146,6 +158,10 @@ GEM
     kss (0.5.0)
     launchy (2.4.2)
       addressable (~> 2.3)
+    listen (1.3.1)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
+      rb-kqueue (>= 0.2)
     lockfile (2.1.0)
     lograge (0.2.2)
       actionpack (>= 3)
@@ -173,6 +189,7 @@ GEM
     omniauth-identity (1.1.1)
       bcrypt-ruby (~> 3.0)
       omniauth (~> 1.0)
+    ox (2.1.1)
     parallel (0.9.0)
     pg (0.17.0)
     phantomjs (1.9.2.1)
@@ -222,6 +239,11 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.12.0)
     rake (10.1.1)
+    rb-fsevent (0.9.4)
+    rb-inotify (0.9.3)
+      ffi (>= 0.5.0)
+    rb-kqueue (0.2.2)
+      ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
     react-rails (0.8.0.0)
@@ -346,6 +368,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   fit!
+  fontcustom
   foreigner
   foreman
   interactor-rails (~> 1.0)
@@ -377,6 +400,7 @@ DEPENDENCIES
   sentry-raven
   shoulda-matchers
   simplecov
+  tcx!
   teaspoon (~> 0.7.8)
   turbolinks
   typogruby

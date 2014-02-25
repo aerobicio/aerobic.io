@@ -1,0 +1,44 @@
+<% member = OpenStruct.new(email: "justin@pixelbloom.com") %>
+<%= styleguide_example_for(section) do -%>
+  <div class="panel--flat $modifier_class">
+    <p class="panel__content--padded">
+      Ethical Thundercats seitan kale chips, drinking vinegar 8-bit 90's irony bitters XOXO single-origin coffee meh paleo. Shoreditch distillery ethical 8-bit brunch gluten-free.
+    </p>
+  </div>
+
+  <section class="panel--flat $modifier_class">
+    <header class="panel__header--padded">
+      <h6 class="panel__header__heading h6">Shoreditch distillery ethical 8-bit</h6>
+    </header>
+    <div class="panel__content--padded">
+      Ethical Thundercats seitan kale chips, drinking vinegar 8-bit 90's irony bitters XOXO single-origin coffee meh paleo. Shoreditch distillery ethical 8-bit brunch gluten-free.
+    </div>
+  </section>
+
+  <section class="panel--flat $modifier_class">
+    <header class="panel__header--padded">
+      <div class="panel__figure">
+        <%= gravatar_for_member(member) %>
+      </div>
+      <h6 class="panel__header__heading h6">Shoreditch distillery ethical 8-bit</h6>
+    </header>
+    <div class="panel__content--padded">
+      Ethical Thundercats seitan kale chips, drinking vinegar 8-bit 90's irony bitters XOXO single-origin coffee meh paleo. Shoreditch distillery ethical 8-bit brunch gluten-free.
+    </div>
+  </section>
+
+  <section class="panel--flat $modifier_class">
+    <header class="panel__header--padded">
+      <div class="panel__figure">
+        <%= gravatar_for_member(member) %>
+      </div>
+      <h6 class="h6">Shoreditch distillery ethical 8-bit</h6>
+    </header>
+    <div class="panel__content--padded">
+      Ethical Thundercats seitan kale chips, drinking vinegar 8-bit 90's irony bitters XOXO single-origin coffee meh paleo. Shoreditch distillery ethical 8-bit brunch gluten-free.
+    </div>
+    <footer class="panel__footer--padded">
+      8-bit 90's irony bitters XOXO single-origin coffee
+    </footer>
+  </section>
+<% end %>

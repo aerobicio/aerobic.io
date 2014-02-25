@@ -1,0 +1,58 @@
+// `.uploader-workout` An uploaded workout
+//
+// -
+//
+// Styleguide Components.Uploader Workout Avatar
+.uploader-workout-avatar {
+  @extend .avatar;
+
+  background-color: #fff;
+  border: 2px solid #ccc;
+  color: #ccc;
+  font-size: 18px;
+  line-height: 3rem;
+  text-align: center;
+
+  &.is-new {
+    @extend .icon-add;
+
+    position: relative;
+  }
+
+  &.is-checked {
+    @extend .icon-check;
+
+    border-color: $positive-color;
+    color: $positive-color;
+  }
+
+  &.is-uploading {
+    border-color: $positive-color;
+    background-color: $positive-color;
+
+    .spinner {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &.is-uploaded {
+    @extend .icon-check;
+
+    border-color: $positive-color;
+    background-color: $positive-color;
+    color: #fff;
+  }
+
+  &.is-failed {
+    @extend .icon-cross;
+
+    border-color: #d9433b;
+    background-color: #d9433b;
+    color: #fff;
+  }
+}

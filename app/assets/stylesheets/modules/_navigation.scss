@@ -36,6 +36,7 @@
 //
 // Styleguide Components.Navigation.Navigation Item
 .navigation__items__item {
+  @extend %font-weight-bold;
   @include transition(all 100ms $ease-in-out-quad);
   @include padding(medium, top);
   @include padding(medium, bottom);
@@ -58,6 +59,7 @@
     float: left;
     text-transform: capitalize;
     width: auto;
+    font-size: 1.1rem;
 
     &:first-child {
       margin-left: 0;
@@ -83,12 +85,12 @@
 
   @include media($desk) {
     display: block;
-    background-color: #0072bc;
-    border-color: #0072bc;
+    background-color: #64A7EC;
+    border-color: #64A7EC;
     color: #fff;
 
     &:hover {
-      border-color: #0072bc;
+      border-color: #64A7EC;
     }
   }
 }
