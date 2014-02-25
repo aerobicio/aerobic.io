@@ -29,11 +29,6 @@ NilComparison:
   Enabled: false
 
 # Offence count: 2
-# Configuration parameters: Ignore.
-Output:
-  Enabled: false
-
-# Offence count: 2
 # Configuration parameters: SupportedStyles.
 RaiseArgs:
   EnforcedStyle: compact

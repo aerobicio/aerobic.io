@@ -11,7 +11,7 @@ class WarningSuppressor
 
   class << self
     def write(message)
-      puts(message) unless should_suppress_message?(message)
+      Rails.logger.warn(message) unless should_suppress_message?(message)
       0
     end
 
