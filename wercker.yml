@@ -36,6 +36,9 @@ build:
             name: rubocop
             code: bundle exec rubocop 
         - script:
+            name: best practices
+            code: bundle exec rails_best_practices .
+        - script:
             name: teaspoon
             code: RAILS_ENV=test bundle exec teaspoon
         - script:
@@ -47,9 +50,6 @@ build:
         - script:
             name: quality
             code: bundle exec rake quality
-        - script:
-            name: best practices
-            code: bundle exec rails_best_practices .
     after-steps:
         - plasticine/librato-build-metrics@0.0.18:
             user: $LIBRATO_USER
