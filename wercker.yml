@@ -33,6 +33,9 @@ build:
             name: consistency fail
             code: RAILS_ENV=test bundle exec consistency_fail
         - script:
+            name: rubocop
+            code: bundle exec rubocop 
+        - script:
             name: teaspoon
             code: RAILS_ENV=test bundle exec teaspoon
         - script:
