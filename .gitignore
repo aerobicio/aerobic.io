@@ -20,6 +20,7 @@
 
 /config/database.yml
 /coverage
+/doc/entity_relationship_diagram.pdf
 /js-coverage
 
 # Ignore all logfiles and tempfiles.
