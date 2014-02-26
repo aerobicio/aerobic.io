@@ -44,6 +44,7 @@ group :development, :test do
   gem "poltergeist"
   gem "pry"
   gem "rails_best_practices"
+  gem "rails-erd"
   gem "rspec-rails", "~> 2.0"
   gem "selenium-webdriver"
   gem "teaspoon", "~> 0.7.8"
