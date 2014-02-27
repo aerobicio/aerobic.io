@@ -1,0 +1,4 @@
+#!/bin/sh
+
+bin/rake erd inheritance=true notation=bachman title='Aerobic.io Active Record Domain Model'
+mv erd.pdf doc/entity_relationship_diagram.pdf 
