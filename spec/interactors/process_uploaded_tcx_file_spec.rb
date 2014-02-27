@@ -27,7 +27,7 @@ describe ProcessUploadedTcxFile do
       end
 
       it 'should add tcxfile to the context' do
-        result.tcxfile.should == tcxfile
+        result.activity_file.should == tcxfile
       end
     end
 

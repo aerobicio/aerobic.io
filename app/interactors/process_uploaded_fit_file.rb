@@ -13,8 +13,8 @@ class ProcessUploadedFitFile
 
       strip_casing_and_decode
 
-      context[:fitfile] = FitFile.new(name: name,
-                                      binary_data: @fit_file)
+      context[:activity_file] = FitFile.new(name: name,
+                                            binary_data: @fit_file)
     else
       context[:notice] = 'No Fit File found'
       context.fail!

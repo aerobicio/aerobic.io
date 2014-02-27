@@ -5,6 +5,6 @@ class CreateWorkoutFromUploadedTcxFile
   include Interactor::Organizer
 
   organize ProcessUploadedTcxFile,
-           CreateWorkoutFromTcxFile,
+           CreateWorkoutFromActivityFile,
            AddWorkoutToActivityFeeds
 end

@@ -27,7 +27,7 @@ describe ProcessUploadedFitFile do
       end
 
       it 'should add fit_file to the context' do
-        result.fitfile.should == fit_file
+        result.activity_file.should == fit_file
       end
     end
 
