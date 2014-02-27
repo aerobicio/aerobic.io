@@ -1,4 +1,4 @@
-require "interactor"
+require 'interactor'
 
 # Takes a member_id and a followed_id and sets up the following relationship
 # between the member and followed member.
@@ -27,7 +27,7 @@ class CreateFollowing
     begin
       member.followings << followed_member
       followed_member.touch
-    rescue ActiveRecord::ActiveRecordError => e
+    rescue ActiveRecord::ActiveRecordError
       false
     end
   end

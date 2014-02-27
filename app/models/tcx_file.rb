@@ -20,7 +20,7 @@ class TcxFile < ActiveRecord::Base
   end
 
   def start_time
-   Time.zone.at(tcx.start_time)
+    Time.zone.at(tcx.start_time)
   end
 
   private

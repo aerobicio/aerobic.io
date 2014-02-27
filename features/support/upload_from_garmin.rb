@@ -7,12 +7,12 @@ def upload_default_workout
 end
 
 def member_does_not_have_plugin_installed
-  page.execute_script("window.GarminStubs.pluginNotInstalled();")
+  page.execute_script('window.GarminStubs.pluginNotInstalled();')
 end
 
 def member_has_fit_device
   page.execute_script("window.GarminStubs.resetDevices();")
-  page.execute_script("window.GarminStubs.createFITDevice();")
+  page.execute_script('window.GarminStubs.createFITDevice();')
 end
 
 def member_has_tcx_device
@@ -73,8 +73,8 @@ end
 def workout1
   {
     id: 1,
-    uuid: "87e2918af1be412fb5b018b21048a91bce67d5ab",
-    date: "2013-07-16 06:00:39",
+    uuid: '87e2918af1be412fb5b018b21048a91bce67d5ab',
+    date: '2013-07-16 06:00:39',
     data: fit_workout1_data,
     device: {
       id: 98,
@@ -112,8 +112,8 @@ end
 def tcx_workout
   {
     id: 2,
-    uuid: "4500e0ee180cf7a3549ecc5d3317c70fc821e819",
-    date: "2013-12-12 08:53:01",
+    uuid: '4500e0ee180cf7a3549ecc5d3317c70fc821e819',
+    date: '2013-12-12 08:53:01',
     data: tcx_workout_data,
     device: {
       id: 99,
@@ -127,7 +127,6 @@ def tcx_workout_data
   <<-TCXFILE
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <TrainingCenterDatabase xmlns="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2 http://www.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd">
-
   <Activities>
     <Activity Sport="Running">
       <Id>2013-11-17T05:50:16Z</Id>

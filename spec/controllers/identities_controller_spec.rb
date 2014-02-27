@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe IdentitiesController do
 
-  describe "#new", flip: true, sign_up: true do
-    context "when sign up is active" do
+  describe '#new', flip: true, sign_up: true do
+    context 'when sign up is active' do
       before do
         $switch_board.stub(:sign_up_active?) { true }
         get :new
@@ -13,7 +13,7 @@ describe IdentitiesController do
       it { should render_template(:new) }
     end
 
-    context "when sign up is not active" do
+    context 'when sign up is not active' do
       before do
         $switch_board.stub(:sign_up_active?) { false }
         get :new

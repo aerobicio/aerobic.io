@@ -2,7 +2,7 @@ Given(/^"(.*?)" is following me$/) do |name|
   Capybara.session_name = name
   create_registered_account(name)
   follow(@my_name)
-  Capybara.session_name = "mine"
+  Capybara.session_name = 'mine'
 end
 
 Given(/^I am following "(.*?)"$/) do |name|
@@ -15,7 +15,7 @@ end
 
 Then(/^I should not be able to unfollow "(.*?)"$/) do |name|
   visit members_path
-  page.should have_no_content("Unfollow")
+  page.should have_no_content('Unfollow')
 end
 
 Given(/^I am not following "(.*?)"$/) do |name|
@@ -24,7 +24,7 @@ end
 
 Then(/^I should not be able to follow "(.*?)"$/) do |name|
   visit members_path
-  page.should have_no_content("Follow")
+  page.should have_no_content('Follow')
 end
 
 Given(/^the following feature is on$/) do
@@ -34,7 +34,7 @@ end
 When(/^I follow "(.*?)"$/) do |name|
   Capybara.session_name = name
   create_registered_account(name)
-  Capybara.session_name = "mine"
+  Capybara.session_name = 'mine'
 
   follow(name)
 end
@@ -90,4 +90,3 @@ def follow(name)
   click_button "Follow #{name}"
   $switch_board.deactivate_following
 end
-

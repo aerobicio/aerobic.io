@@ -1,5 +1,5 @@
-require "interactor"
-require "base64"
+require 'interactor'
+require 'base64'
 
 # Handles fit files as they are uploaded via the Garmin Communicator Plugin
 # and converts them to FitFile object, then stores them.
@@ -13,10 +13,10 @@ class ProcessUploadedFitFile
 
       strip_casing_and_decode
 
-      context[:fitfile] = FitFile.new(name: name,
-                                       binary_data: @fit_file)
+      context[:activity_file] = FitFile.new(name: name,
+                                            binary_data: @fit_file)
     else
-      context[:notice] = "No Fit File found"
+      context[:notice] = 'No Fit File found'
       context.fail!
     end
   end

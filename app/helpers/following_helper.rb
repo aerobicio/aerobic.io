@@ -32,11 +32,11 @@ module FollowingHelper
 
   def unfollow_button_for(member)
     button_to("Unfollow #{member.name}", unfollow_member_path(member.id),
-      class: "button--follow")
+              class: 'button--follow')
   end
 
   def follow_button_for(member)
     button_to("Follow #{member.name}", follow_member_path(member.id),
-      class: "button--follow")
+              class: 'button--follow')
   end
 end

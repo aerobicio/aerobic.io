@@ -1,6 +1,6 @@
-require "active_record_helper"
-require_relative "../../app/models/user"
-require_relative "../../app/models/activity"
+require 'active_record_helper'
+require_relative '../../app/models/user'
+require_relative '../../app/models/activity'
 
 describe User do
   let(:user) { described_class.new }
@@ -14,20 +14,20 @@ describe User do
 
   it { should validate_presence_of(:name) }
 
-  describe "#to_partial_path" do
+  describe '#to_partial_path' do
     subject(:to_partial_path) { user.to_partial_path }
 
-    it { should == "members/member" }
+    it { should == 'members/member' }
   end
 
-  describe "#email" do
+  describe '#email' do
     subject(:email) { user.email }
 
     let(:uid) { 1 }
-    let(:identity) { double(:identity, email: "test@example.com") }
+    let(:identity) { double(:identity, email: 'test@example.com') }
 
     before do
-      stub_const("Identity", Class.new)
+      stub_const('Identity', Class.new)
       user.stub(:authentications) { [double(:authentication, uid: uid)] }
       Identity.should_receive(:find).with(uid) { identity }
     end
@@ -35,7 +35,7 @@ describe User do
     it { should == identity.email }
   end
 
-  describe "#follows?" do
+  describe '#follows?' do
     subject(:follows?) { user.follows?(other_user) }
 
     let(:other_user) { double(:other_user, id: other_user_id) }
@@ -45,13 +45,13 @@ describe User do
       user.stub(:followings) { following_ids }
     end
 
-    context "when following other user" do
+    context 'when following other user' do
       let(:following_ids) { [double(id: other_user_id), double(id: 2)] }
 
       it { should be_true }
     end
 
-    context "when not following other user" do
+    context 'when not following other user' do
       let(:following_ids) { [double(id: 2), double(id: 3)] }
 
       it { should be_false }

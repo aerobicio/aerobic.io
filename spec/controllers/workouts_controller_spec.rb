@@ -8,15 +8,15 @@ describe WorkoutsController do
     User.stub(:find).with(42).and_return(user)
   end
 
-  describe "#show" do
-    let(:member) { double(:member, id: 1,) }
-    let(:workout) { double(:workout, id: 101,) }
+  describe '#show' do
+    let(:member) { double(:member, id: 1) }
+    let(:workout) { double(:workout, id: 101) }
 
     before do
       User.should_receive(:find).with(user.id) { member }
       Workout.should_receive(:find_by!).with(
         user_id: member.id,
-        id: workout.id,
+        id: workout.id
       ) { workout }
       get :show, member_id: 1, id: 101
     end
