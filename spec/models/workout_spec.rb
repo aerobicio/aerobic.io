@@ -1,5 +1,5 @@
-require "active_record_helper"
-require_relative "../../app/models/workout"
+require 'active_record_helper'
+require_relative '../../app/models/workout'
 
 describe Workout do
   it { should have_one(:fit_file) }

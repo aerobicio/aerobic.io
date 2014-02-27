@@ -2,7 +2,7 @@
 # Member email addresses
 #
 module AvatarHelper
-  GRAVATAR_URL = "//gravatar.com/avatar/"
+  GRAVATAR_URL = '//gravatar.com/avatar/'
   GRAVATAR_DIMENSIONS = {
     normal: 64,
     large:  164
@@ -13,7 +13,7 @@ module AvatarHelper
     classes = classes_for_avatar(options[:size], options[:extra_classes])
 
     content_tag :figure, class: classes do
-      image_tag(gravatar_url(member, options[:size]), class: "avatar__image")
+      image_tag(gravatar_url(member, options[:size]), class: 'avatar__image')
     end
   end
 
@@ -23,14 +23,14 @@ module AvatarHelper
     classes = []
     classes << "#{avatar_class_for_size(size)}"
     classes << "#{extra_classes}"
-    classes.map(&:strip).reject(&:empty?).join(" ")
+    classes.map(&:strip).reject(&:empty?).join(' ')
   end
 
   def avatar_class_for_size(size = :normal)
     if size == :normal
-      "avatar"
+      'avatar'
     elsif size == :large
-      "avatar--large"
+      'avatar--large'
     end
   end
 

@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :user do
-    name "Gareth Townsend"
+    name 'Gareth Townsend'
   end
 end

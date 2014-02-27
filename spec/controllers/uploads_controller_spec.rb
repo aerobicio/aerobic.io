@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UploadsController do
   let(:user) { double(User, id: 42) }
-  let(:user_workouts) { double() }
+  let(:user_workouts) { double }
 
   let(:workout) do
     double(:workout, attributes: { distance: 123,
@@ -20,7 +20,7 @@ describe UploadsController do
     User.stub(:find).and_return(user)
   end
 
-  describe "#show" do
+  describe '#show' do
     before do
       user.should_receive(:workouts) { user_workouts }
       user_workouts.should_receive(:load) { [workout] }
@@ -32,52 +32,52 @@ describe UploadsController do
     it { should render_template(:show) }
   end
 
-  describe "#create" do
-    context "when given a fit file" do
+  describe '#create' do
+    context 'when given a fit file' do
       before do
         CreateWorkoutFromUploadedFitFile.should_receive(:perform) { result }
-        post :create, { activity_type: "fit", format: :json }
+        post :create,  activity_type: 'fit', format: :json
       end
 
-      context "and the context returns successfully" do
+      context 'and the context returns successfully' do
         let(:result) do
-          double(:result, success?: true, context: { workout: workout } )
+          double(:result, success?: true, context: { workout: workout })
         end
 
         it { should respond_with(:success) }
       end
 
-      context "and the context returns unsuccessfully" do
-        let(:result) { double(:result, success?: false ) }
+      context 'and the context returns unsuccessfully' do
+        let(:result) { double(:result, success?: false) }
 
         it { should respond_with(:unprocessable_entity) }
       end
     end
 
-    context "when given a tcx file" do
+    context 'when given a tcx file' do
       before do
         CreateWorkoutFromUploadedTcxFile.should_receive(:perform) { result }
-        post :create, { activity_type: "tcx", format: :json }
+        post :create,  activity_type: 'tcx', format: :json
       end
 
-      context "and the context returns successfully" do
+      context 'and the context returns successfully' do
         let(:result) do
-          double(:result, success?: true, context: { workout: workout } )
+          double(:result, success?: true, context: { workout: workout })
         end
 
         it { should respond_with(:success) }
       end
 
-      context "and the context returns unsuccessfully" do
-        let(:result) { double(:result, success?: false ) }
+      context 'and the context returns unsuccessfully' do
+        let(:result) { double(:result, success?: false) }
 
         it { should respond_with(:unprocessable_entity) }
       end
     end
 
-    context "when given an unknown file" do
+    context 'when given an unknown file' do
       before do
-        post :create, { format: :json }
+        post :create,  format: :json
       end
 
       it { should respond_with(:unprocessable_entity) }

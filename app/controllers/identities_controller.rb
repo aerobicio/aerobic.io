@@ -3,12 +3,12 @@
 # Right now we use it solely to display the Sign Up form.
 #
 class IdentitiesController < ApplicationController
-  skip_before_filter :login_required, if: ->{ $switch_board.sign_up_active? }
+  skip_before_filter :login_required, if: -> { $switch_board.sign_up_active? }
 
-  layout "unauthenticated"
+  layout 'unauthenticated'
 
   def new
-    @view = Identities::New.new(self, env["omniauth.identity"])
-    render :layout => "authentication"
+    @view = Identities::New.new(self, env['omniauth.identity'])
+    render layout: 'authentication'
   end
 end

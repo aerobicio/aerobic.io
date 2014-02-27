@@ -1,4 +1,4 @@
-require "interactor"
+require 'interactor'
 
 # Takes a workout from the context, and writes an Activity::AddedWorkout
 # object into:
@@ -10,9 +10,8 @@ class AddWorkoutToActivityFeeds
   include Interactor
 
   def perform
-    unless add_to_activity_feed(member_id) && add_to_followers_feeds
-      context.fail!
-    end
+    context.fail! unless add_to_activity_feed(member_id) &&
+                         add_to_followers_feeds
   end
 
   private
@@ -27,7 +26,7 @@ class AddWorkoutToActivityFeeds
   def add_to_followers_feeds
     context[:member] = User.find(member_id)
 
-    member.followers.inject(true) do |success, follower|
+    member.followers.reduce(true) do |success, follower|
       add_to_activity_feed(follower.id)
     end
   end

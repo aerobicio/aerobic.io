@@ -17,9 +17,9 @@ After('@poltergeist, @firefox') do
 end
 
 Before('@no-garmin') do
-  ENV["DISABLE_GARMIN_TESTMODE"] = "true"
+  ENV['DISABLE_GARMIN_TESTMODE'] = 'true'
 end
 
 After('@no-garmin') do
-  ENV["DISABLE_GARMIN_TESTMODE"] = nil
+  ENV['DISABLE_GARMIN_TESTMODE'] = nil
 end

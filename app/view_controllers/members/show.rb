@@ -1,5 +1,4 @@
 module Members
-
   # View Controller for managing the logic around rendering /members/show
   #
   class Show
@@ -16,16 +15,16 @@ module Members
         @current_member.cache_key,
         @member.cache_key,
         workouts.map(&:cache_key)
-      ].flatten.join(":")
+      ].flatten.join(':')
     end
 
     def render_workouts
       if workouts.any?
-        @controller.render(partial: "workouts/grouped",
+        @controller.render(partial: 'workouts/grouped',
                            object: workouts.group_by(&:date)
                           ).first
       else
-        "You have no workouts!"
+        'You have no workouts!'
       end
     end
 

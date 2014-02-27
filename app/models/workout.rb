@@ -1,6 +1,6 @@
-require_relative "fit_file"
-require_relative "tcx_file"
-require_relative "user"
+require_relative 'fit_file'
+require_relative 'tcx_file'
+require_relative 'user'
 
 # Represents a workout in the database.
 #

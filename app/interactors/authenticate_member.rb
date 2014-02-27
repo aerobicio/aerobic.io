@@ -1,5 +1,5 @@
-require "interactor"
-require "active_support/core_ext/object/try"
+require 'interactor'
+require 'active_support/core_ext/object/try'
 
 # AuthenticateMember uses information provided by OmniAuth to authenticate
 # a User, or create a new User and Authentication object, then add the user_id
@@ -27,8 +27,8 @@ class AuthenticateMember
   def create_user_from_context
     @user = User.new(name: info[:name])
 
-    @user.authentications.build({ provider: provider,
-                                  uid: uid })
+    @user.authentications.build(provider: provider,
+                                uid: uid)
 
     @user = nil unless @user.save
   end

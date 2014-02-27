@@ -6,9 +6,8 @@ class DisplayTime
   end
 
   def to_s
-    output = ""
-    output = hours.to_s << ":"
-    output << minutes.to_s.rjust(2, '0') << ":"
+    output = hours.to_s << ':'
+    output << minutes.to_s.rjust(2, '0') << ':'
     output << seconds.to_s.rjust(2, '0')
   end
 
@@ -39,10 +38,10 @@ class DisplayTime
   end
 
   def minutes_in_seconds
-    self.minutes.to_i * 60
+    minutes.to_i * 60
   end
 
   def hours_in_seconds
-    self.hours.to_i * 60 * 60
+    hours.to_i * 60 * 60
   end
 end
