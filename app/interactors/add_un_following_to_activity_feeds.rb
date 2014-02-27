@@ -1,4 +1,4 @@
-require "interactor"
+require 'interactor'
 
 # Takes a member_id and an unfollowed_id and inserts an Activity::UnfollowedUser
 # record into the members feed.

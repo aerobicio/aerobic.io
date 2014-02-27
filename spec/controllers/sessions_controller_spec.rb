@@ -1,36 +1,36 @@
-require "spec_helper"
+require 'spec_helper'
 
 describe SessionsController do
-  describe "#create" do
+  describe '#create' do
     let(:user) { double(id: 1) }
 
     before do
-      auth_hash = { provider: 'identity', uid: 1, info: { name: 'GT' }}
+      auth_hash = { provider: 'identity', uid: 1, info: { name: 'GT' } }
       @request.env['omniauth.auth'] = auth_hash
       AuthenticateMember.should_receive(:perform) { result }
       post :create
     end
 
-    context "successfully" do
+    context 'successfully' do
       let(:result) do
         double(:result,  success?: true,
                          user_id: 1)
       end
 
-      it "should set the user_id in the session" do
+      it 'should set the user_id in the session' do
         session[:user_id].should == user.id
       end
 
       it { should redirect_to(dashboard_path) }
     end
 
-    context "unsuccessfully" do
+    context 'unsuccessfully' do
       let(:result) do
         double(:result,  success?: false)
       end
 
-      it "should set the user_id in the session" do
-        session[:user_id].should == nil
+      it 'should not set the user_id in the session' do
+        session[:user_id].should eql(nil)
       end
 
       it { should render_template(:new) }

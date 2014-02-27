@@ -1,5 +1,4 @@
 module Members
-
   # View Controller for managing the logic around rendering /members/index
   #
   class Index
@@ -9,7 +8,7 @@ module Members
     end
 
     def cache_key
-      [@member.cache_key, other_members.map(&:cache_key)].flatten.join(":")
+      [@member.cache_key, other_members.map(&:cache_key)].flatten.join(':')
     end
 
     def render_other_members
@@ -19,7 +18,7 @@ module Members
     private
 
     def other_members
-      @other_members ||= User.where.not(:id => @member.id)
+      @other_members ||= User.where.not(id: @member.id)
     end
   end
 end

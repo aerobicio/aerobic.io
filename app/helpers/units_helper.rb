@@ -6,7 +6,7 @@ module UnitsHelper
   end
 
   def format_distance(distance_cm)
-    I18n.t("units.distance", distance: centimeters_to_meters(distance_cm))
+    I18n.t('units.distance', distance: centimeters_to_meters(distance_cm))
   end
 
   private

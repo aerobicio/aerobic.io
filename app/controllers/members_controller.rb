@@ -32,7 +32,7 @@ class MembersController < ApplicationController
   def follow_params
     {
       member_id: current_user.id,
-      followed_id: params[:id].to_i,
+      followed_id: params[:id].to_i
     }
   end
 
@@ -41,15 +41,13 @@ class MembersController < ApplicationController
     ActiveRecord::Base.transaction do
       result = block.call
       notice = result.notice
-      raise ActiveRecord::Rollback unless result.success?
+      fail ActiveRecord::Rollback unless result.success?
     end
     notice
   end
 
   def ensure_following_is_active
-    unless $switch_board.following_active?(current_user)
-       render_404 and return
-    end
+    render_404 && return unless $switch_board.following_active?(current_user)
   end
 
   def render_404

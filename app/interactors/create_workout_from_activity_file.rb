@@ -22,5 +22,4 @@ class CreateWorkoutFromActivityFile
       context.fail!
     end
   end
-
 end

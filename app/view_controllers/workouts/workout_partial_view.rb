@@ -1,8 +1,7 @@
-require "i18n"
-require_relative "../../helpers/units_helper"
+require 'i18n'
+require_relative '../../helpers/units_helper'
 
 module Workouts
-
   # View Controller for managing the logic around rendering
   # /workouts/_workout
   #
@@ -17,28 +16,28 @@ module Workouts
     def cache_key
       [
         @workout.cache_key,
-        @current_member.cache_key,
-      ].join(":")
+        @current_member.cache_key
+      ].join(':')
     end
 
     def title
       if @current_member == member
-        I18n.t("activity.workout.title.first_person")
+        I18n.t('activity.workout.title.first_person')
       else
-        I18n.t("activity.workout.title.third_person", name: member.name)
+        I18n.t('activity.workout.title.third_person', name: member.name)
       end
     end
 
     def duration
-      format_duration(workout.active_duration)
+      format_duration(@workout.active_duration)
     end
 
     def distance
-      format_distance(workout.distance)
+      format_distance(@workout.distance)
     end
 
     def workout_path
-      url_helpers.member_workout_path(member_id: member.id, id: workout.id)
+      url_helpers.member_workout_path(member_id: member.id, id: @workout.id)
     end
 
     def workout_member
@@ -49,10 +48,6 @@ module Workouts
 
     def member
       @workout.user
-    end
-
-    def workout
-      @workout
     end
 
     # Wrap access to rails url helpers to avoid including them. This allows us

@@ -1,0 +1,16 @@
+inherit_from: rubocop-todo.yml
+
+AllCops:
+  Includes: 
+    - Rakefile
+    - config.ru
+  Excludes:
+    - bin/**
+    - config/**
+    - db/**
+    - features/support/upload_from_garmin.rb
+    - spec/support/uploaded_activity.rb
+    - node_modules/**
+    - script/**
+    - vendor/**
+  RunRailsCops: true

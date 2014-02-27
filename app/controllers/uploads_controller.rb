@@ -26,15 +26,15 @@ class UploadsController < ApplicationController
   def create_workout
     ActiveRecord::Base.transaction do
       case params[:activity_type]
-      when "fit"
+      when 'fit'
         result = CreateWorkoutFromUploadedFitFile.perform(upload_params)
-      when "tcx"
+      when 'tcx'
         result = CreateWorkoutFromUploadedTcxFile.perform(upload_params)
       else
         return nil
       end
 
-      raise ActiveRecord::Rollback unless result.success?
+      fail ActiveRecord::Rollback unless result.success?
       result
     end
   end
@@ -48,9 +48,9 @@ class UploadsController < ApplicationController
   end
 
   def existing_member_workouts
-    @member_workouts ||= current_user.workouts.load.collect { |workout|
+    @member_workouts ||= current_user.workouts.load.map do |workout|
       json_attributes_for_workout(workout)
-    }
+    end
   end
 
   def upload_params
@@ -63,10 +63,10 @@ class UploadsController < ApplicationController
   end
 
   def json_attributes_for_workout(workout)
-    workout.attributes.merge({
+    workout.attributes.merge(
       formatted_distance: format_distance(workout.distance),
       formatted_active_duration: format_duration(workout.active_duration),
-      formatted_duration: format_duration(workout.duration),
-    })
+      formatted_duration: format_duration(workout.duration)
+    )
   end
 end

@@ -10,14 +10,12 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :home_page_path
 
-  layout "authenticated"
+  layout 'authenticated'
 
   private
 
   def current_user
-    if session[:user_id]
-      @current_user ||= User.find(session[:user_id])
-    end
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
   def login_required
@@ -25,6 +23,6 @@ class ApplicationController < ActionController::Base
   end
 
   def home_page_path
-    ENV["STATIC_SITE_URL"]
+    ENV['STATIC_SITE_URL']
   end
 end

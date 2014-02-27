@@ -1,16 +1,16 @@
 Given(/^I have documented my CSS$/) do
   visit kayessess.root_path
 
-  anchors = page.all('.kayessess__node').reject{|anchor|
-    anchor[:href] == "/styleguide/styleguide"
-  }
+  anchors = page.all('.kayessess__node').reject do|anchor|
+    anchor[:href] == '/styleguide/styleguide'
+  end
 
-  @section_anchors = Hash[anchors.map{|anchor| [anchor.text, anchor]}]
+  @section_anchors = Hash[anchors.map { |anchor| [anchor.text, anchor] }]
 end
 
 Then(/^I should be able to view each component$/) do
   @section_anchors.each do |ancor_label, anchor|
-    puts "- #{ancor_label}"
+    Rails.logger.info "- #{ancor_label}"
     step %Q{I view the "#{ancor_label}" styleguide section}
     visit kayessess.root_path
   end

@@ -7,10 +7,10 @@
 class SessionsController < ApplicationController
   skip_before_filter :login_required
 
-  layout "unauthenticated"
+  layout 'unauthenticated'
 
   def new
-    render :layout => "authentication"
+    render layout: 'authentication'
   end
 
   def create
@@ -34,6 +34,6 @@ class SessionsController < ApplicationController
   protected
 
   def auth_hash
-    request.env["omniauth.auth"]
+    request.env['omniauth.auth']
   end
 end

@@ -1,15 +1,15 @@
-require "active_record_helper"
-require_relative "../support/uploaded_activity"
-require_relative "../../app/models/fit_file"
-require_relative "../../app/models/user"
+require 'active_record_helper'
+require_relative '../support/uploaded_activity'
+require_relative '../../app/models/fit_file'
+require_relative '../../app/models/user'
 
 describe FitFile do
 
-  context "validations and associations" do
+  context 'validations and associations' do
     before do
       FitFile.transaction do
-        user = User.create!(name: "Gareth Townsend")
-        fit_file = FitFile.new(name: "foo", binary_data: "adf")
+        user = User.create!(name: 'Gareth Townsend')
+        fit_file = FitFile.new(name: 'foo', binary_data: 'adf')
 
         workout = Workout.create!(active_duration: 1,
                                   distance: 1,

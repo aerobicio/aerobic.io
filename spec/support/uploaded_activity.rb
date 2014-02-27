@@ -9,7 +9,7 @@ def uploaded_activity
 end
 
 def tcx_uploaded_activity
-    <<-TCXFILE
+  <<-TCXFILE
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <TrainingCenterDatabase xmlns="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.garmin.com/xmlschemas/TrainingCenterDatabase/v2 http://www.garmin.com/xmlschemas/TrainingCenterDatabasev2.xsd">
 
