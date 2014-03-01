@@ -24,7 +24,7 @@ build:
         - bundle-install
         # A step that executes `npm install`
         - npm-install:
-            options: --production --loglevel warn
+            options: --production
         # A step that prepares the database.yml with settings from the database you defined in services
         - rails-database-yml
         - script:
