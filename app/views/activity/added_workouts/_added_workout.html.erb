@@ -6,7 +6,11 @@
       <div class="panel__figure">
         <%= gravatar_for_member(view.workout_member) %>
       </div>
-      <h6 class="panel__header__heading h6"><%= view.title %></h6>
+      <h6 class="panel__header__heading h6">
+        <%= link_to view.workout_path do %>
+          <%= view.title %>
+        <% end %>
+      </h6>
     </header>
     <div class="panel__content">
       <ul class="data-row">
