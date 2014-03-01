@@ -22,9 +22,19 @@ build:
                 cat /tmp/xvfb_99.pid
         # A step that executes `bundle install` command
         - bundle-install
+
+        - script:
+            name: debug1
+            code: ls -al $WERCKER_CACHE_DIR/wercker/npm
+
         # A step that executes `npm install`
         - npm-install:
             options: --production
+
+        - script:
+            name: debug2
+            code: ls -al $WERCKER_CACHE_DIR/wercker/npm
+
         # A step that prepares the database.yml with settings from the database you defined in services
         - rails-database-yml
         - script:
