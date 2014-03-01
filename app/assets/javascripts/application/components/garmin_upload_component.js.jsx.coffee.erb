@@ -27,7 +27,7 @@
     WorkoutsComponent = app.components.WorkoutsComponent
 
     `<div>
-      {this.state.isInitializing ? <SpinnerComponent preset={app.config.spinner.small}/> : '' }
+      {this.state.isInitializing ? <SpinnerComponent key="isInitializingSpinner" preset={app.config.spinner.small}/> : '' }
       <DeviceListComponent
         collection={this.props.devicesCollection}
         progressModel={this.props.progressModel}
