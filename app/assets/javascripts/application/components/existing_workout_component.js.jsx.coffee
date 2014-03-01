@@ -4,7 +4,7 @@
   displayName: 'app.components.ExistingWorkoutComponent'
   mixins: [@lib.BackboneModelMixin]
   propTypes:
-    model: React.PropTypes.instanceOf(app.models.ExistingWorkoutModel).isRequireds
+    model: React.PropTypes.instanceOf(app.models.ExistingWorkoutModel).isRequired
 
   classes: ->
     React.addons.classSet
