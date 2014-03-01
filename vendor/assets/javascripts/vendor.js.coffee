@@ -2,7 +2,7 @@
 # on all pages. It is required by the main application.js file, and also in
 # the teaspoon spec_helper
 #
-#= require jquery/jquery
+#= require jquery/dist/jquery
 #= require jquery_ujs
 #= require spin.js/spin
 #= require underscore/underscore
