@@ -49,6 +49,9 @@
   overflow: hidden;
   position: relative;
   height: 90px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
 
   > svg {
     height: 100px;
