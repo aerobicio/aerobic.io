@@ -8,5 +8,9 @@ PRIVATE_BETA_EMAILS = [
 $rollout = Rollout.new($redis)
 
 $rollout.define_group(:staff) do |user|
-  STAFF_EMAILS.concat(PRIVATE_BETA_EMAILS).include?(user.email)
+  STAFF_EMAILS.include?(user.email)
+end
+
+$rollout.define_group(:testers) do |user|
+  PRIVATE_BETA_EMAILS.include?(user.email)
 end
