@@ -1,7 +1,6 @@
 GIT
   remote: https://github.com/aerobicio/fit.git
-  revision: 82a2e8d7cd6e957ad234ccb90c3eeb7f393d4be3
-  branch: extract-session-data
+  revision: 67a09f9598c1d7768285e8c918b7289f986447a9
   specs:
     fit (0.0.2)
       activesupport
