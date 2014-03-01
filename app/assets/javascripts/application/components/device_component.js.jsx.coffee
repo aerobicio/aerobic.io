@@ -31,7 +31,6 @@
 
   render: ->
     ProgressBarComponent = app.components.ProgressBarComponent
-    SVGImageReplaceComponent = app.components.SVGImageReplaceComponent
 
     `<div
       key={this.props.model.cid}
@@ -41,7 +40,7 @@
       <header className="device-list__device__header">
         <h6 className="device-list__device__label h6">{this.props.model.get('name')}</h6>
       </header>
-      <SVGImageReplaceComponent src={this.props.model.icon()} className="devices-list__device__icon" />
+      <img src={this.props.model.icon()} className="devices-list__device__icon" />
       {this.isSelected() ? this.renderUnselect() : ''}
       <footer className="device-list__device__footer">
         {this.isSelected() ? <ProgressBarComponent model={this.props.progressModel} /> : ''}
