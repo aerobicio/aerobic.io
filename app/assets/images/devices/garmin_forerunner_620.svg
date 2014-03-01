@@ -3,14 +3,14 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
 <svg version="1.1" baseProfile="tiny" id="Layer_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 	 x="0px" y="0px" viewBox="0 0 125 125" xml:space="preserve">
-<polyline fill="none" stroke="#7F7F7F" stroke-width="0.5" stroke-miterlimit="10" points="50.268,32.546 53.875,32.546 
-	53.866,34.51 71.005,34.51 71,32.546 74.68,32.546 "/>
+<polyline fill="none" stroke="#7F7F7F" stroke-miterlimit="10" points="50.268,31.546 53.875,31.546 53.866,33.51 71.005,33.51 
+	71,31.546 74.68,31.546 "/>
 <line fill="none" stroke="#7F7F7F" stroke-width="0.5" stroke-miterlimit="10" x1="46.699" y1="65.564" x2="78.196" y2="65.564"/>
 <line fill="none" stroke="#7F7F7F" stroke-width="0.5" stroke-miterlimit="10" x1="62.447" y1="78.542" x2="62.447" y2="65.564"/>
-<polyline fill="none" stroke="#7F7F7F" stroke-width="0.5" stroke-miterlimit="10" points="50.268,92.51 53.875,92.51 
-	53.866,90.546 71.005,90.546 71,92.51 74.68,92.51 "/>
+<polyline fill="none" stroke="#7F7F7F" stroke-miterlimit="10" points="50.268,93.51 53.875,93.51 53.866,91.546 71.005,91.546 
+	71,93.51 74.68,93.51 "/>
 <circle fill="none" stroke="#000000" stroke-miterlimit="10" cx="62.447" cy="62.5" r="16.042"/>
-<circle fill="none" stroke="#000000" stroke-miterlimit="10" cx="62.447" cy="62.5" r="24.005"/>
+<circle fill="none" stroke="#000000" stroke-miterlimit="10" cx="62.447" cy="62.5" r="23.025"/>
 <path fill="none" stroke="#000000" stroke-miterlimit="10" d="M80.912,44.021c-6.783-6.278-11.88-7.242-18.469-7.242
 	s-11.686,1.025-18.469,7.303"/>
 <path fill="none" stroke="#000000" stroke-miterlimit="10" d="M80.912,80.568c-6.783,6.278-11.88,7.703-18.469,7.703
