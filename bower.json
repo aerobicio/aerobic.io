@@ -20,10 +20,5 @@
   },
   "resolutions": {
     "underscore": "~1.6.0"
-  },
-  "storage": {
-    "packages": ".bower-cache",
-    "registry": ".bower-registry"
-  },
-  "tmp": ".bower-tmp"
+  }
 }

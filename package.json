@@ -13,13 +13,13 @@
     "node": "0.10.21"
   },
   "dependencies": {
-    "bower": "1.2.6",
-    "istanbul": "0.1.46"
+    "bower": "~1.2.8",
+    "istanbul": "~0.1.46"
   },
   "devDependencies": {},
   "scripts": {
     "test": "bin/teaspoon",
-    "postinstall": "./node_modules/bower/bin/bower cache clean; ./node_modules/bower/bin/bower install"
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "repository": {
     "type": "git",
