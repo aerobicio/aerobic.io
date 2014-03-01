@@ -1,3 +1,7 @@
-require 'rubocop/rake_task'
+begin
+  require 'rubocop/rake_task'
 
-Rubocop::RakeTask.new
+  Rubocop::RakeTask.new
+rescue LoadError
+  warn "rubocop not available"
+end
