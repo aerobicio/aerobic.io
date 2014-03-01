@@ -23,7 +23,8 @@ build:
         # A step that executes `bundle install` command
         - bundle-install
         # A step that executes `npm install`
-        - npm-install
+        - npm-install:
+            options: --production
         # A step that prepares the database.yml with settings from the database you defined in services
         - rails-database-yml
         - script:
@@ -34,7 +35,7 @@ build:
             code: RAILS_ENV=test bundle exec consistency_fail
         - script:
             name: rubocop
-            code: bundle exec rubocop 
+            code: bundle exec rubocop
         - script:
             name: best practices
             code: bundle exec rails_best_practices .
