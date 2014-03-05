@@ -19,7 +19,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "bin/teaspoon",
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "postinstall": "./node_modules/bower/bin/bower install --production"
   },
   "repository": {
     "type": "git",

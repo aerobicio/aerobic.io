@@ -5,9 +5,6 @@ services:
 build:
     # The steps that will be executed on build
     steps:
-        # Setup ssh-key for accessing the garmin-communicator repo
-        - add-ssh-key:
-            keyname: GARMIN_COMMUNICATOR_KEY
         # Copy the dotenv config file into place
         - script:
             name: setup dotenv
@@ -22,6 +19,13 @@ build:
                 cat /tmp/xvfb_99.pid
         # A step that executes `bundle install` command
         - bundle-install
+        # Configure some NPM and Bower specific things
+        - script:
+            name: prepare for npm install
+            code: |
+                npm config set ca ""
+                mkdir -p $WERCKER_CACHE_DIR/wercker/bower
+                cp -R $WERCKER_CACHE_DIR/wercker/bower/. ./
         # A step that executes `npm install`
         - npm-install:
             options: --production
@@ -52,6 +56,11 @@ build:
             name: quality
             code: bundle exec rake quality
     after-steps:
+        # Make sure we persist the bower cache files into the bower cache dir
+        - script:
+            name: copy bower cache
+            code: |
+                cp -R .bower-* $WERCKER_CACHE_DIR/wercker/bower
         - plasticine/librato-build-metrics@0.0.18:
             user: $LIBRATO_USER
             token: $LIBRATO_TOKEN
