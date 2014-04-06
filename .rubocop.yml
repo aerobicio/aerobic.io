@@ -1,10 +1,10 @@
 inherit_from: rubocop-todo.yml
 
 AllCops:
-  Includes: 
+  Include:
     - Rakefile
     - config.ru
-  Excludes:
+  Exclude:
     - bin/**
     - config/**
     - db/**
