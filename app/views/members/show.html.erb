@@ -1,15 +1,14 @@
 <% cache @view.cache_key do %>
-  <div class="grid-container">
-    <header class="media">
-    <%= gravatar_for_member(@view.member, size: :large, extra_classes: "media__figure avatar--large") %>
-      <div class="media__content">
-        <h1><%= @view.member.name %></h1>
-        <div class="member-following">
-          <%= following_link_for_members(current_user, @view.member) %>
-        </div>
-      </div>
-    </header>
+  <div class="grid">
+    <header class="panel--flat">
+      <%= gravatar_for_member(@view.member, size: :large, extra_classes: "media__figure avatar--large") %>
+      <h1 class="h3"><%= @view.member.name %></h1>
+      <%= following_link_for_members(current_user, @view.member) %>
 
-    <%= @view.render_workouts %>
+    </header>
+    <section>
+      <h2 class="h3">Workouts</h2>
+      <%= @view.render_workouts %>
+    </section>
   </div>
 <% end %>

@@ -1,6 +1,8 @@
 <div class="account_info">
   <% if current_user %>
-    <%= gravatar_for_member(current_user, extra_classes: "account_info__avatar") %>
+    <%= link_to(member_path(current_user.id)) do %>
+      <%= gravatar_for_member(current_user, extra_classes: "account_info__avatar") %>
+    <% end %>
     <div class="account_info__content">
       <%= current_user.name %>
       <br>

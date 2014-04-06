@@ -22,7 +22,7 @@ body {
   @include font-size($base-font-size, $line-height-ratio);
 }
 
-.grid-container {
+.grid {
   max-width: 1600px;
   margin: 0 auto;
 }
