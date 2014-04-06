@@ -8,7 +8,7 @@
 class UploadsController < ApplicationController
   include UnitsHelper
 
-  before_filter :existing_member_workouts, only: [:show]
+  before_action :existing_member_workouts, only: [:show]
 
   def show
   end

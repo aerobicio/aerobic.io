@@ -1,4 +1,6 @@
 require_relative '../activity'
 
-class Activity::FollowedUser < Activity
+module Activity
+  class FollowedUser < Activity
+  end
 end
