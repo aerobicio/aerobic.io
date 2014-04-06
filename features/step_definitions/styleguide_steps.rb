@@ -11,7 +11,7 @@ end
 Then(/^I should be able to view each component$/) do
   @section_anchors.each do |ancor_label, anchor|
     Rails.logger.info "- #{ancor_label}"
-    step %Q{I view the "#{ancor_label}" styleguide section}
+    step %Q({I view the "#{ancor_label}" styleguide section})
     visit kayessess.root_path
   end
 end

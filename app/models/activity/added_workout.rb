@@ -1,4 +1,6 @@
 require_relative '../activity'
 
-class Activity::AddedWorkout < Activity
+class Activity
+  class AddedWorkout < Activity
+  end
 end
