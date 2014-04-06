@@ -41,7 +41,13 @@
       data-workout-uuid={this.props.model.get('uuid')}
     >
       <div className="panel__header">
-        <input className="uploader-workout-checkbox" type="checkbox" checked={this.state.checked} ref="workoutCheckbox" />
+        <input
+          className="uploader-workout-checkbox"
+          type="checkbox"
+          checked={this.state.checked}
+          ref="workoutCheckbox"
+          readOnly
+        />
         <figure className="panel__figure">
           <i className={this.iconClass()}>
             { this.props.model.isUploading() ? <SpinnerComponent preset={app.config.spinner.uploader} /> : '' }
