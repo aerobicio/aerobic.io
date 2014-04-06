@@ -1,6 +1,6 @@
 require_relative '../activity'
 
-module Activity
+class Activity
   class AddedWorkout < Activity
   end
 end
