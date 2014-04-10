@@ -1,4 +1,17 @@
-<ul>
-  <li><strong>Duration:</strong> <%= @view.duration %></li>
-  <li><strong>Distance:</strong> <%= @view.distance %></li>
-</ul>
+<%= extends :authenticated do %>
+  <%= prepend :content do %>
+    <figure style="background-color: #ddd; height: 450px;"></figure>
+  <% end %>
+  <%= area :content_inner do %>
+    <ul class="data-row">
+      <li class="data-row__item">
+        <h6 class="h3 data-row__item__value"><%= @view.duration %></h6>
+        <span class="data-row__item__key">Duration</span>
+      </li>
+      <li class="data-row__item">
+        <h6 class="h3 data-row__item__value"><%= @view.distance %></h6>
+        <span class="data-row__item__key">Distance</span>
+      </li>
+    </ul>
+  <% end %>
+<% end %>

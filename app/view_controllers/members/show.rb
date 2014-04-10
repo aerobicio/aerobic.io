@@ -38,18 +38,6 @@ module Members
       end
     end
 
-    def workouts_path
-      member_workouts_path(@member.id)
-    end
-
-    def followers_path
-      member_followers_path(@member.id)
-    end
-
-    def follows_path
-      member_follows_path(@member.id)
-    end
-
     def workouts_count
       workouts.count
     end
@@ -58,12 +46,20 @@ module Members
       followers.count
     end
 
-    def follows_count
-      follows.count
+    def following_count
+      following.count
     end
 
-    def member_created_date
-      @member.created_at
+    def workouts_path
+      member_workouts_path(@member.id)
+    end
+
+    def followers_path
+      member_followers_path(@member.id)
+    end
+
+    def followings_path
+      member_follows_path(@member.id)
     end
 
     private
@@ -72,8 +68,8 @@ module Members
       @followers ||= @member.followers
     end
 
-    def follows
-      @follows ||= @member.followings
+    def following
+      @following ||= @member.followings
     end
 
     def workouts

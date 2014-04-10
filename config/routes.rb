@@ -19,8 +19,8 @@ AerobicIo::Application.routes.draw do
     end
 
     resources :workouts, only: [:index, :show]
-    resources :follows, only: [:index], controller: :follows, action: :following
-    resources :followers, only: [:index], controller: :follows, action: :followers
+    resources :follows, only: [:index], controller: :follows
+    resources :followers, only: [:index], controller: :followers
   end
 
   if defined?(Kayessess)

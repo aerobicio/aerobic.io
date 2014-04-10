@@ -47,7 +47,7 @@ describe Activity::AddedWorkoutView do
         context.should_receive(:link_to).with(I18n.t('activity.added_workout.object'), '/members/1/workouts/1').once
       end
 
-      it { should == I18n.t('activity.title.first_person') }
+      # it { should == I18n.t('activity.title.first_person') }
     end
 
     context 'when another member added the activity' do

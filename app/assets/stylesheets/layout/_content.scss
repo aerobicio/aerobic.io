@@ -1,0 +1,5 @@
+.content {}
+
+.content__inner {
+  @include padding(wide);
+}

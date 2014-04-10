@@ -1,41 +1,12 @@
 <% cache @view.cache_key do %>
-  <div class="grid">
-    <header class="panel--flat">
-      <div class="member-details">
-        <%= gravatar_for_member(@view.member, size: :large, extra_classes: "member-details__avatar avatar--large") %>
-        <h1 class="member-details__title h4"><%= @view.member_title %></h1>
-        <%= following_link_for_members(current_user, @view.member) %>
-
-        <nav class="ui-list">
-          <div class="ui-list__row">
-            <div class="ui-list__key">Member Since</div>
-            <div class="ui-list__value"><%= @view.member_created_date %></div>
-          </div>
-          <%= link_to(@view.workouts_path, class: "ui-list__row") do %>
-            <div class="ui-list__key">Workouts</div>
-            <div class="ui-list__value">
-              <span class="badge"><%= @view.workouts_count %></span>
-            </div>
-          <% end %>
-          <% if $switch_board.following_active?(current_user) %>
-            <%= link_to(@view.followers_path, class: "ui-list__row") do %>
-              <div class="ui-list__key">Followers</div>
-              <div class="ui-list__value">
-                <span class="badge"><%= @view.follower_count %></span>
-              </div>
-            <% end %>
-            <%= link_to(@view.follows_path, class: "ui-list__row") do %>
-              <div class="ui-list__key">Follows</div>
-              <div class="ui-list__value">
-                <span class="badge"><%= @view.follows_count %></span>
-              </div>
-            <% end %>
-          <% end %>
-        </nav>
-      </div>
-    </header>
-    <section>
-      <h2 class="h3">Workouts</h2>
+  <div class="layout-with-sidebar">
+    <div class="layout-with-sidebar__sidebar">
+      <header class="panel--flat">
+        <%= render "member_details", locals: { view: @view } %>
+      </header>
+    </div>
+    <section class="layout-with-sidebar__content">
+      <h2 class="h2">Workouts</h2>
       <%= @view.render_workouts %>
     </section>
   </div>
