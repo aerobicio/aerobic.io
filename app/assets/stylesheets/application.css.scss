@@ -7,10 +7,6 @@
 @import "constants";
 @import "neat";
 
-// Fonts
-// ----------------------------------------
-@import "lib/fonts";
-
 // Mixins, functions and placeholders
 // ----------------------------------------
 @import "lib/mixins";
@@ -29,6 +25,7 @@
 // Modules/Components
 // ----------------------------------------
 @import "lib/placeholders"; // placeholders that we reuse in other modules are here
+
 @import "modules/*"; // BEM style modules live here.
 @import "shame"; // The shame! The shame!
 

@@ -2,6 +2,8 @@ module Members
   # View Controller for managing the logic around rendering /members/show
   #
   class Show
+    include Rails.application.routes.url_helpers
+
     attr_reader :member
 
     def initialize(controller, current_member, member_id)
@@ -28,7 +30,51 @@ module Members
       end
     end
 
+    def member_title
+      if @current_member == @member
+        'You'
+      else
+        @member.name
+      end
+    end
+
+    def workouts_path
+      member_workouts_path(@member.id)
+    end
+
+    def followers_path
+      member_followers_path(@member.id)
+    end
+
+    def follows_path
+      member_follows_path(@member.id)
+    end
+
+    def workouts_count
+      workouts.count
+    end
+
+    def follower_count
+      followers.count
+    end
+
+    def follows_count
+      follows.count
+    end
+
+    def member_created_date
+      @member.created_at
+    end
+
     private
+
+    def followers
+      @followers ||= @member.followers
+    end
+
+    def follows
+      @follows ||= @member.followings
+    end
 
     def workouts
       @workouts ||= @member.workouts

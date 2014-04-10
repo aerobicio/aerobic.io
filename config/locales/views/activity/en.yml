@@ -1,7 +1,17 @@
 en:
   activity:
+    title:
+      first_person: "You"
+      third_person: "%{name}"
 
-    workout:
-      title:
-        first_person: "You did a workout"
-        third_person: "%{name} did a workout"
+    added_workout:
+      action: "uploaded"
+      object: "a workout"
+
+    followed_user:
+      title: "followed"
+
+    unfollowed_user:
+      title: "unfollowed"
+
+

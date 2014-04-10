@@ -66,10 +66,11 @@
 .panel__figure {
   position: absolute;
   top: 0.4rem;
-  left: -1rem;
+  left: -0.8rem;
+  float: left;
 
   @include media($desk) {
-    left: -2rem;
+    left: -1.6rem;
   }
 }
 
@@ -77,10 +78,10 @@
   margin: 0;
 
   .panel__figure + & {
-    margin-left: 1.5rem;
+    margin-left: 1.6rem;
 
     @include media($desk) {
-      margin-left: 0.5rem;
+      margin-left: 1.2rem;
     }
   }
 }

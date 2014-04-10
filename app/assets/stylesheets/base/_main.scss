@@ -3,6 +3,7 @@ body {
   @include prefixer(tap-highlight-color, rgba(0,0,0,0), webkit);
 
   min-height: 100vh;
+  min-width: 320px;
   font-family: $font-family;
 }
 
@@ -20,9 +21,4 @@ html{
 body {
   // Set actual desired optical font-size
   @include font-size($base-font-size, $line-height-ratio);
-}
-
-.grid {
-  max-width: 1600px;
-  margin: 0 auto;
 }
