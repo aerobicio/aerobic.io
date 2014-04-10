@@ -32,6 +32,11 @@ gem "unicorn"
 gem "valid_email", :require => "valid_email/email_validator"
 gem "yui-compressor"
 
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
+
 group :development, :test do
   gem "cane"
   gem "capybara-screenshot"
