@@ -111,7 +111,7 @@ def stub_fit_workout1_data_service_request(with_ids = true)
     member_id: member_id
   }.to_json
 
-  stub_request(:post, "http://lol:@localhost:3000/v1/workouts")
+  stub_request(:post, "http://#{ENV['FIT_SERVICE_API_TOKEN']}:@#{ENV['FIT_SERVICE_HOST']}:#{ENV['FIT_SERVICE_PORT']}/v1/workouts")
   .with(:body => json_request,
         :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>'Ruby'})
   .to_return(:status => 201, :body => json_response, :headers => {})
@@ -158,7 +158,7 @@ def stub_fit_workout2_data_service_request(with_ids = true)
     member_id: member_id
   }.to_json
 
-  stub_request(:post, "http://lol:@localhost:3000/v1/workouts")
+stub_request(:post, "http://#{ENV['FIT_SERVICE_API_TOKEN']}:@#{ENV['FIT_SERVICE_HOST']}:#{ENV['FIT_SERVICE_PORT']}/v1/workouts")
   .with(:body => json_request,
         :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>'Ruby'})
   .to_return(:status => 201, :body => json_response, :headers => {})
