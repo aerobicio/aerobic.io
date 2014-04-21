@@ -29,7 +29,7 @@ module Workouts
     end
 
     def title
-      "My Workout Title"
+      'My Workout Title'
     end
 
     def time_boundaries

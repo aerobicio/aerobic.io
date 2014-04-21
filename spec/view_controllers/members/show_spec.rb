@@ -8,7 +8,7 @@ describe Members::Show do
 
   let(:member) do
     double(:member,
-           name: "Justin",
+           name: 'Justin',
            id: member_id,
            cache_key: member_id.to_s,
            workouts: member_workouts,
@@ -72,33 +72,33 @@ describe Members::Show do
     end
   end
 
-  describe "#member_title" do
+  describe '#member_title' do
     subject { view.member_title }
 
-    context "the current_member is the member" do
+    context 'the current_member is the member' do
       let(:current_member) { member }
 
-      it { should == "You" }
+      it { should == 'You' }
     end
 
-    context "" do
-      it { should == "Justin" }
+    context ' do
+      it { should == 'Justin' }
     end
   end
 
-  describe "#workouts_count" do
+  describe '#workouts_count' do
     subject { view.workouts_count }
 
     it { should == 2 }
   end
 
-  describe "#follower_count" do
+  describe '#follower_count' do
     subject { view.follower_count }
 
     it { should == 3 }
   end
 
-  describe "#following_count" do
+  describe '#following_count' do
     subject { view.following_count }
 
     it { should == 1 }
