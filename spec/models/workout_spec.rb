@@ -2,7 +2,6 @@ require 'active_record_helper'
 require_relative '../../app/models/workout'
 
 describe Workout do
-  it { should have_one(:fit_file) }
   it { should belong_to(:user) }
 
   it { should validate_presence_of(:active_duration) }
