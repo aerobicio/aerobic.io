@@ -1,5 +1,10 @@
+require 'json'
+
 def upload_default_workout
   visit upload_path
+
+  stub_fit_workout1_data_service_request(false)
+
   page.driver.post upload_path,
                    workout_data: fit_workout1_data,
                    activity_type: 'fit',
@@ -83,6 +88,35 @@ def workout1
   }
 end
 
+def stub_fit_workout1_data_service_request(with_ids = true)
+  member_id = current_member_id
+
+  json_response = {
+    id: 1,
+    uuid: '87e2918af1be412fb5b018b21048a91bce67d5ab',
+    device_id: 98,
+    device_workout_id: 1,
+    duration: (1.hour + 31.minutes + 23.seconds),
+    active_duration: (1.hour + 31.minutes + 23.seconds),
+    distance: 41320,
+    end_time: Time.zone.parse('2013-07-16 06:00:39'),
+    start_time: Time.zone.parse('2013-07-16 06:00:39'),
+    member_id: member_id
+  }.to_json
+
+  json_request = {
+    device_id: with_ids ? '98' : nil,
+    device_workout_id: with_ids ? '1' : nil,
+    fit_file: fit_workout1_data,
+    member_id: member_id
+  }.to_json
+
+  stub_request(:post, "http://#{ENV['FIT_SERVICE_API_TOKEN']}:@#{ENV['FIT_SERVICE_HOST']}:#{ENV['FIT_SERVICE_PORT']}/v1/workouts")
+  .with(:body => json_request,
+        :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>'Ruby'})
+  .to_return(:status => 201, :body => json_response, :headers => {})
+end
+
 def workout2
   {
     id: 2,
@@ -94,6 +128,40 @@ def workout2
       canReadFITActivities: true,
     }
   }
+end
+
+def current_member_id
+  url = find_link('Profile')[:href]
+  url.match(/\d+$/)[0].to_i
+end
+
+def stub_fit_workout2_data_service_request(with_ids = true)
+  member_id = current_member_id
+
+  json_response = {
+    id: 1,
+    uuid: '4500e0ee180cf7a3549ecc5d3317c70fc821e819',
+    device_id: 99,
+    device_workout_id: 2,
+    duration: (1.hour + 31.minutes + 23.seconds),
+    active_duration: (1.hour + 31.minutes + 23.seconds),
+    distance: 41320,
+    end_time: Time.zone.parse('2013-07-16 06:00:39'),
+    start_time: Time.zone.parse('2013-07-16 06:00:39'),
+    member_id: member_id
+  }.to_json
+
+  json_request = {
+    device_id: with_ids ? '99' : nil,
+    device_workout_id: with_ids ? '2' : nil,
+    fit_file: fit_workout2_data,
+    member_id: member_id
+  }.to_json
+
+stub_request(:post, "http://#{ENV['FIT_SERVICE_API_TOKEN']}:@#{ENV['FIT_SERVICE_HOST']}:#{ENV['FIT_SERVICE_PORT']}/v1/workouts")
+  .with(:body => json_request,
+        :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/json', 'User-Agent'=>'Ruby'})
+  .to_return(:status => 201, :body => json_response, :headers => {})
 end
 
 def workout_with_bad_data

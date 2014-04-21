@@ -5,7 +5,7 @@ gem "bcrypt-ruby", "~> 3.1.2"
 gem "bindata"
 gem "bourbon"
 gem "dalli"
-gem "fit", git: "https://github.com/aerobicio/fit.git"
+gem "fit-client", git: "https://github.com/aerobicio/fit-client.git", branch: 'create-workouts'
 gem "foreigner"
 gem "foreman"
 gem "interactor-rails", "~> 1.0"
@@ -65,6 +65,7 @@ group :test do
   gem "rspec-nc"
   gem "shoulda-matchers"
   gem "simplecov", :require => false
+  gem "webmock", :require => false
 end
 
 group :production do

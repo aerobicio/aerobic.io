@@ -4,7 +4,6 @@
 class CreateWorkoutFromUploadedFitFile
   include Interactor::Organizer
 
-  organize ProcessUploadedFitFile,
-           CreateWorkoutFromActivityFile,
+  organize CreateWorkoutFromFitFile,
            AddWorkoutToActivityFeeds
 end
