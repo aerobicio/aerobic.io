@@ -5,7 +5,9 @@
         <div class="grid">
           <div class="flag">
             <div class="flag__figure">
-              <%= gravatar_for_member(@view.member, size: :large) %>
+              <%= link_to member_path(id: @view.member.id) do %>
+                <%= gravatar_for_member(@view.member, size: :large) %>
+              <% end %>
             </div>
             <div class="flag__content">
               <%= @view.time_boundaries %>
@@ -33,7 +35,9 @@
             <ul class="avatar_row">
               <% User.all.each do |user| %>
                 <li class="avatar_row__item">
-                  <%= gravatar_for_member(user, size: :small) %>
+                  <%= link_to member_path(id: user.id) do %>
+                    <%= gravatar_for_member(user, size: :small) %>
+                  <% end %>
                 </li>
               <% end %>
             </ul>
