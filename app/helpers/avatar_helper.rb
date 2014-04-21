@@ -29,6 +29,8 @@ module AvatarHelper
   def avatar_class_for_size(size = :normal)
     if size == :normal
       'avatar'
+    elsif size == :small
+      'avatar--small'
     elsif size == :large
       'avatar--large'
     end

@@ -1,0 +1,9 @@
+.avatar_row {
+
+}
+
+.avatar_row__item {
+  @extend .margin-tight-right;
+
+  display: inline-block;
+}

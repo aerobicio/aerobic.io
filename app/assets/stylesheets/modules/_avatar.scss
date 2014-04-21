@@ -6,7 +6,6 @@
   width: 3.2rem;
   border-radius: 50%;
   display: block;
-  background-color: #ddd;
   position: relative;
   overflow: hidden;
 }
@@ -28,4 +27,12 @@
 
   height: 8.2rem;
   width: 8.2rem;
+}
+
+// Styleguide Components.Small Avatar
+.avatar--small {
+  @extend .avatar;
+
+  height: 2.2rem;
+  width: 2.2rem;
 }

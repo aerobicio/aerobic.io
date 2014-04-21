@@ -1,0 +1,18 @@
+.hero {
+  @extend .padding-wide;
+
+  background-color: #47536A;
+  height: 400px;
+  position: relative;
+}
+
+.hero__header {
+  @extend .padding-wide;
+
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  color: #fff;
+}

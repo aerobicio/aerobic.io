@@ -1,3 +1,6 @@
+require 'i18n'
+require_relative '../../helpers/units_helper'
+
 class Activity
   # View Controller for managing the logic around rendering
   # /activity/added_workout/_added_workout

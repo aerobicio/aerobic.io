@@ -15,7 +15,7 @@
   @include media($desk) {
     padding: 0;
     padding-left: get_spacing(wide);
-    margin-left: get_spacing(wide) * 2;
+    margin-left: get_spacing(wide);
     float: right;
     border-left: 2px solid #e3e4e7;
     border-bottom: none;

@@ -21,4 +21,6 @@ html{
 body {
   // Set actual desired optical font-size
   @include font-size($base-font-size, $line-height-ratio);
+
+  background-color: #fafbfb;
 }

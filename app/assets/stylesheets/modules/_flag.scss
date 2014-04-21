@@ -1,0 +1,56 @@
+%_flag_common {
+  display: table;
+  width: 100%;
+}
+
+// [The Flag object](http://csswizardry.com/2013/05/the-flag-object) is related
+// to the Media object in that it is a pattern abstraction for displaying image
+// content alongside text or other content.
+//
+// By default the flag object centers the content relative to tallest element.
+// It can be have `--top` and `--bottom` modifiers applied to align `.flag__content`
+// to the top or bottom of `.flag__content`.
+//
+// The intent of a flag is not to have any idea about the content that it holds
+// other than applying the layout. A figure and content are mandatory.
+//
+// -
+//
+// Styleguide Objects.Flag Object
+.flag {
+  @extend %_flag_common;
+}
+
+.flag--top {
+  @extend %_flag_common;
+}
+
+.flag--bottom {
+  @extend %_flag_common;
+}
+
+.flag__figure,
+.flag__content {
+  display: table-cell;
+  vertical-align: middle;
+
+  .flag--top &{
+    vertical-align: top;
+  }
+
+  .flag--bottom & {
+    vertical-align: bottom;
+  }
+}
+
+.flag__figure {
+  @extend .padding-medium-right;
+
+  > img {
+    display: block;
+  }
+}
+
+.flag__content {
+  width: 100%;
+}
