@@ -1,7 +1,7 @@
 # MembersController provides a restful interface onto the Member resource.
 #
 class MembersController < ApplicationController
-  before_filter :ensure_following_is_active, only: [:follow, :unfollow]
+  before_action :ensure_following_is_active, only: [:follow, :unfollow]
 
   def index
     @view = Members::Index.new(self, current_user)

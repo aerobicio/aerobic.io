@@ -6,6 +6,8 @@
 
 # Ignore bundler config.
 /.bundle
+.bower-cache
+.bower-registry
 .env
 .DS_Store
 .fontcustom-manifest.json

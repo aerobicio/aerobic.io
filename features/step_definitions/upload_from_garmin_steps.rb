@@ -27,6 +27,7 @@ end
 When(/^I upload a FIT workout from my device$/) do
   select_device_with_name('Test FIT Device')
 
+  stub_fit_workout1_data_service_request
   within '#GarminUpload' do
     page_has_workouts
 
@@ -45,6 +46,9 @@ end
 
 When(/^I upload multiple workouts from my device$/) do
   select_device_with_name('Test FIT Device')
+
+  stub_fit_workout1_data_service_request
+  stub_fit_workout2_data_service_request
 
   within '#GarminUpload' do
     page_has_workouts

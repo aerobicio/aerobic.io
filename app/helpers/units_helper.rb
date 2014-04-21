@@ -16,6 +16,6 @@ module UnitsHelper
   end
 
   def centimeters_to_meters(cm)
-    (cm / 100000.0).round(2)
+    (cm / 100_000.0).round(2)
   end
 end
