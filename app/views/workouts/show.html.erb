@@ -10,8 +10,8 @@
               <% end %>
             </div>
             <div class="flag__content">
-              <%= @view.time_boundaries %>
-              <h1 class="h1"><%= @view.title %></h1>
+              <span class="h4"><%= @view.time_boundaries %></span>
+              <h1 class="h1 slam-margin"><%= @view.title %></h1>
             </div>
           </div>
         </div>
@@ -21,30 +21,39 @@
 
   <%= area :content_inner do %>
     <div class="grid">
-      <ul class="data-row">
-        <li class="data-row__item">
-          <h6 class="h3 data-row__item__value"><%= @view.duration %></h6>
-          <span class="data-row__item__key">Duration</span>
-        </li>
-        <li class="data-row__item">
-          <h6 class="h3 data-row__item__value"><%= @view.distance %></h6>
-          <span class="data-row__item__key">Distance</span>
-        </li>
-        <li class="data-row__item">
-          <h6 class="h3 data-row__item__value">
-            <ul class="avatar_row">
-              <% User.all.each do |user| %>
-                <li class="avatar_row__item">
-                  <%= link_to member_path(id: user.id) do %>
-                    <%= gravatar_for_member(user, size: :small) %>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
-          </h6>
-          <span class="data-row__item__key">Training Partners</span>
-        </li>
-      </ul>
+      <div class="panel">
+        <ul class="data-row">
+          <li class="data-row__item">
+            <h6 class="h3 data-row__item__value"><%= @view.duration %></h6>
+            <span class="data-row__item__key">Duration</span>
+          </li>
+          <li class="data-row__item">
+            <h6 class="h3 data-row__item__value"><%= @view.distance %></h6>
+            <span class="data-row__item__key">Distance</span>
+          </li>
+          <li class="data-row__item">
+            <h6 class="h3 data-row__item__value">XXX</h6>
+            <span class="data-row__item__key">Training Stress Score</span>
+          </li>
+          <li class="data-row__item">
+            <h6 class="h3 data-row__item__value">
+              <ul class="avatar_row">
+                <% User.all.each do |user| %>
+                  <li class="avatar_row__item">
+                    <%= link_to member_path(id: user.id) do %>
+                      <%= gravatar_for_member(user, size: :small) %>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            </h6>
+            <span class="data-row__item__key">Training Partners</span>
+          </li>
+        </ul>
+      </div>
+
+      <hr class="divider">
+
     </div>
   <% end %>
 <% end %>

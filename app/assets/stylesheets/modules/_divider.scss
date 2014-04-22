@@ -1,7 +1,7 @@
 // TODO: Styleguide me
 .divider {
-  @extend .margin-wide-top;
-  @extend .margin-wide-bottom;
+  @include margin(wide, top);
+  @include margin(wide, bottom);
 
   clear: both;
   height: 0;
@@ -9,4 +9,16 @@
   border: none;
   border-top: 1px dotted #eee;
   height: 0px
+}
+
+.divider--medium {
+  @extend .divider;
+  @include margin(medium, top);
+  @include margin(medium, bottom);
+}
+
+.divider--tight {
+  @extend .divider;
+  @include margin(tight, top);
+  @include margin(tight, bottom);
 }

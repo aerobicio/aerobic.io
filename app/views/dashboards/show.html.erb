@@ -1,31 +1,33 @@
 <% cache @view.cache_key do %>
-  <section class="panel">
-    <header class="panel__header--padded">
-      <h6 class="h6">DD/MM/YYYY This is a date for this week</h6>
-    </header>
-    <div class="panel__content">
-      <ul class="data-row">
-        <li class="data-row__item">
-          <span class="h5 data-row__item__value">XXX</span>
-          <span class="data-row__item__key">Workouts</span>
-        </li>
-        <li class="data-row__item">
-          <span class="h5 data-row__item__value">XXX</span>
-          <span class="data-row__item__key">Duration</span>
-        </li>
-        <li class="data-row__item">
-          <span class="h5 data-row__item__value">XXX</span>
-          <span class="data-row__item__key">Distance</span>
-        </li>
-        <li class="data-row__item">
-          <span class="h5 data-row__item__value">XXX</span>
-          <span class="data-row__item__key">Training Stress Score</span>
-        </li>
-      </ul>
-    </div>
-  </section>
+  <div class="grid">
+    <section class="panel">
+      <header class="panel__header--padded">
+        <h6 class="h6">DD/MM/YYYY This is a date for this week</h6>
+      </header>
+      <div class="panel__content">
+        <ul class="data-row">
+          <li class="data-row__item">
+            <span class="h5 data-row__item__value">XXX</span>
+            <span class="data-row__item__key">Workouts</span>
+          </li>
+          <li class="data-row__item">
+            <span class="h5 data-row__item__value">XXX</span>
+            <span class="data-row__item__key">Duration</span>
+          </li>
+          <li class="data-row__item">
+            <span class="h5 data-row__item__value">XXX</span>
+            <span class="data-row__item__key">Distance</span>
+          </li>
+          <li class="data-row__item">
+            <span class="h5 data-row__item__value">XXX</span>
+            <span class="data-row__item__key">Training Stress Score</span>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-  <hr class="divider">
+    <hr class="divider">
+  </div>
 
   <div class="layout-with-sidebar">
     <div class="layout-with-sidebar__sidebar">
@@ -34,7 +36,7 @@
           <h6 class="h6">Upcoming Events?</h6>
         </header>
         <div class="panel__content--padded">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, itaque recusandae architecto. Molestias, vel, et, dicta ullam ab ipsam ut necessitatibus dolore praesentium dolorum dolorem consequatur hic molestiae impedit accusantium.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, debitis impedit officiis quae excepturi cum temporibus mollitia eveniet rem. Unde, blanditiis quam reiciendis accusamus quis dolores vel. Nulla, provident, facilis.
         </div>
       </article>
 
@@ -49,6 +51,7 @@
         </div>
       </article>
     </div>
+
     <section class="layout-with-sidebar__content">
       <h2 class="h4">Recent Activity</h2>
       <%= @view.render_activities %>

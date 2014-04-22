@@ -2,11 +2,11 @@
   <div class="layout-with-sidebar">
     <div class="layout-with-sidebar__sidebar">
       <header class="panel--flat">
-        <%= render 'member_details', view: @view %>
+        <%= render('member_details', view: @view) %>
       </header>
     </div>
     <section class="layout-with-sidebar__content">
-      <h2 class="h2">Workouts</h2>
+      <h2 class="h3">Workouts</h2>
       <%= @view.render_workouts %>
     </section>
   </div>
