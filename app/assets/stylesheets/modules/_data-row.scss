@@ -36,6 +36,11 @@
   }
 }
 
+.data-row__item__key,
+.data-row__item__value {
+  display: block;
+}
+
 .data-row__item__key {
   font-size: 1.1rem;
 }

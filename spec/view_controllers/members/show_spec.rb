@@ -75,14 +75,12 @@ describe Members::Show do
   describe '#member_title' do
     subject { view.member_title }
 
+    it { should == 'Justin' }
+
     context 'the current_member is the member' do
       let(:current_member) { member }
 
       it { should == 'You' }
-    end
-
-    context ' do
-      it { should == 'Justin' }
     end
   end
 
