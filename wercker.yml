@@ -74,6 +74,7 @@ deploy:
     steps:
         - heroku-deploy:
             key-name: HEROKU_KEY
+            install-toolbelt: true
         - script:
             name: Migrate Database
             code: heroku run rake db:migrate --app $HEROKU_APP_NAME
