@@ -67,15 +67,32 @@ describe Members::Show do
     context 'when the member has no workouts' do
       let(:member_workouts) { [] }
 
-      before do
-        I18n.should_receive(:t)
-        .with('workouts.none.third_person', name: member.name) do
-          'Gareth Townsend has no workouts!'
+      context 'and is looking at their own feed' do
+        let(:current_member) { member }
+
+        before do
+          I18n.should_receive(:t)
+          .with('workouts.none.first_person') do
+            'You have no workouts!'
+          end
+        end
+
+        it 'should render a message stating so' do
+          render_workouts.should == 'You have no workouts!'
         end
       end
 
-      it 'should render a message stating so' do
-        render_workouts.should == 'Gareth Townsend has no workouts!'
+      context 'when looking at another members feed' do
+        before do
+          I18n.should_receive(:t)
+          .with('workouts.none.third_person', name: member.name) do
+            'Gareth Townsend has no workouts!'
+          end
+        end
+
+        it 'should render a message stating so' do
+          render_workouts.should == 'Gareth Townsend has no workouts!'
+        end
       end
     end
   end
