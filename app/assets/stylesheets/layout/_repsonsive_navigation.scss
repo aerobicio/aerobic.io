@@ -42,21 +42,6 @@
   background-color: lighten($background-color, 6%);
 }
 
-// TODO: this sucks, shouldn't reach into .content_inner here!
-.content__inner {
-  @extend .padding-medium-top;
-  @include transform(translate3d(0, 0, 0));
-  @include transition(opacity 450ms $ease-in-out-quad);
-
-  border-top: 1px solid #d5d8dd;
-  opacity: 1.0;
-  height: 100%;
-
-  @include media($desk) {
-    border-top: none;
-  }
-}
-
 [role="banner"].is-expanded + [role="main"],
 [role="banner"].is-expanded ~ [role="contentinfo"] {
   @include transform(translate3d(85%, 0, 0));

@@ -6,20 +6,23 @@
   // height: 100%;
   position: relative;
   // max-height: 1000px;
-  min-height: 1000px;
+  min-height: 700px;
 
-  background: #47536A;
+  background: #47536A image-url('event_hero.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 
   &:before {
+    @include linear-gradient(rgba(#000, 0), rgba(#000, 0.85));
+
     content: '';
     position: absolute;
-    top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background: transparent image-url('map.png') center no-repeat;
-    opacity: 0.15;
+    height: 35%;
   }
 }
 
@@ -30,4 +33,6 @@
   color: #fff;
   display: table-cell;
   vertical-align: bottom;
+  z-index: 1;
+  position: relative;
 }

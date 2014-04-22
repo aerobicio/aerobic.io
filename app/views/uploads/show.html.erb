@@ -1,3 +1,5 @@
+<% purge :footer_outer %>
+
 <%= form_tag(upload_path, id: "GarminUploadController", class: "uploader") do %>
   <section id="GarminUpload" class="grid"></section>
 <% end %>
@@ -20,5 +22,3 @@
     });
   <% end %>
 <% end %>
-
-<% purge :footer_outer %>

@@ -10,7 +10,8 @@ AerobicIo::Application.routes.draw do
   resource :dashboard, only: [:show]
   resources :identities, only: [:new]
   resources :sessions, only: [:create, :new]
-  resource :upload, only: [ :show, :create ]
+  resource :upload, only: [:show, :create]
+  resources :events, only: [:show]
 
   resources :members, only: [:show, :index] do
     member do
