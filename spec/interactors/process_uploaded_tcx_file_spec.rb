@@ -1,5 +1,6 @@
-require_relative '../../app/interactors/process_uploaded_tcx_file'
-require_relative '../support/uploaded_activity'
+require 'load_paths_helper'
+require 'process_uploaded_tcx_file'
+require 'support/uploaded_activity'
 
 describe ProcessUploadedTcxFile do
   let(:tcxfile) { double(:tcxfile) }
