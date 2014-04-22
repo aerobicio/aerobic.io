@@ -1,4 +1,5 @@
-require_relative '../../../app/view_controllers/dashboards/show'
+require 'load_paths_helper'
+require 'dashboards/show'
 
 describe Dashboards::Show do
   let(:view) { described_class.new(controller, member) }
