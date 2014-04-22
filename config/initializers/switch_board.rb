@@ -1,4 +1,4 @@
-require_relative "rollout"
-require_relative "../../lib/switch_board"
+require 'rollout'
+require 'switch_board'
 
 $switch_board = SwitchBoard.new

@@ -1,4 +1,5 @@
-require_relative '../../app/helpers/registration_helper'
+require 'load_paths_helper'
+require 'registration_helper'
 
 include RegistrationHelper
 

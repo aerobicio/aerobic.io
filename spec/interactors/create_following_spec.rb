@@ -1,4 +1,5 @@
-require_relative '.././../app/interactors/create_following'
+require 'load_paths_helper'
+require 'create_following'
 require 'active_record/errors'
 require 'active_support/core_ext/object/try'
 

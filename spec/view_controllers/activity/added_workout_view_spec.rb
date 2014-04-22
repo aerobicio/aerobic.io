@@ -1,4 +1,4 @@
-require_relative '../../../app/view_controllers/activity/added_workout_view'
+require 'spec_helper'
 
 describe Activity::AddedWorkoutView do
   let(:view) { described_class.new(current_member, added_workout) }

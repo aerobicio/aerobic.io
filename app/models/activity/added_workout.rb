@@ -1,4 +1,4 @@
-require_relative '../activity'
+require 'activity'
 
 class Activity
   class AddedWorkout < Activity

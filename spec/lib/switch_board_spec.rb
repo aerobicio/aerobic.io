@@ -1,4 +1,4 @@
-require_relative '../../lib/switch_board'
+require 'switch_board'
 
 describe SwitchBoard do
   let(:feature_flip) { SwitchBoard.new(rollout) }

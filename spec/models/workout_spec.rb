@@ -1,5 +1,6 @@
+require 'load_paths_helper'
 require 'active_record_helper'
-require_relative '../../app/models/workout'
+require 'workout'
 
 describe Workout do
   it { should belong_to(:user) }

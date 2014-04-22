@@ -1,5 +1,5 @@
-require 'spec_helper'
-require_relative '../../../app/view_controllers/workouts/show'
+require 'load_paths_helper'
+require 'workouts/show'
 
 describe Workouts::Show do
   let(:view) { described_class.new(controller, member_id, workout_id) }
@@ -42,6 +42,10 @@ describe Workouts::Show do
 
   describe '#distance' do
     subject(:distance) { view.distance }
+
+    before do
+      I18n.should_receive(:t).with('units.distance', distance: 1.0) { '1.0 km' }
+    end
 
     it 'returns the formatted workout distance' do
       distance.should == '1.0 km'

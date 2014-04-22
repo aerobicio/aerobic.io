@@ -1,4 +1,5 @@
-require_relative '../../app/interactors/delete_following'
+require 'load_paths_helper'
+require 'delete_following'
 
 describe DeleteFollowing do
   let(:context) do

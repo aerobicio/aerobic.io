@@ -1,4 +1,5 @@
-require_relative '../../app/interactors/add_workout_to_activity_feeds'
+require 'load_paths_helper'
+require 'add_workout_to_activity_feeds'
 
 describe AddWorkoutToActivityFeeds do
   let(:context) do

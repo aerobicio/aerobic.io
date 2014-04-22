@@ -1,4 +1,5 @@
-require_relative '../../../app/view_controllers/members/show'
+require 'load_paths_helper'
+require 'members/show'
 
 describe Members::Show do
   let(:view) { described_class.new(controller, current_member, member_id) }

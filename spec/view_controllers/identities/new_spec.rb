@@ -1,4 +1,5 @@
-require_relative '../../../app/view_controllers/identities/new'
+require 'load_paths_helper'
+require 'identities/new'
 
 describe Identities::New do
   let(:view) { described_class.new(controller, identity) }

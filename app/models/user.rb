@@ -1,5 +1,6 @@
-require_relative 'authentication'
-require_relative 'workout'
+require 'activity'
+require 'authentication'
+require 'workout'
 
 # User is an ActiveRecord model that represents
 # a user in our system.

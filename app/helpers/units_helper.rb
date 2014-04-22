@@ -1,3 +1,6 @@
+require 'display_time'
+require 'i18n'
+
 # UnitsHelper provides standard ways of converting data from base units into
 # common formatting for presentation to users
 module UnitsHelper
@@ -6,7 +9,7 @@ module UnitsHelper
   end
 
   def format_distance(distance_cm)
-    I18n.t('units.distance', distance: centimeters_to_meters(distance_cm))
+    I18n.t('units.distance', distance: centimeters_to_kilometers(distance_cm))
   end
 
   private
@@ -15,7 +18,7 @@ module UnitsHelper
     ms / 1000
   end
 
-  def centimeters_to_meters(cm)
+  def centimeters_to_kilometers(cm)
     (cm / 100_000.0).round(2)
   end
 end

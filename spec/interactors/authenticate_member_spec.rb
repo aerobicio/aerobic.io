@@ -1,4 +1,5 @@
-require_relative '../../app/interactors/authenticate_member'
+require 'load_paths_helper'
+require 'authenticate_member'
 
 describe AuthenticateMember do
   describe '#perform' do
