@@ -1,3 +1,5 @@
+require 'i18n'
+
 module Members
   # View Controller for managing the logic around rendering /members/show
   #
@@ -24,7 +26,11 @@ module Members
                            object: workouts.group_by(&:date)
                           ).first
       else
-        'You have no workouts!'
+        if @current_member == member
+          I18n.t('workouts.none.first_person')
+        else
+          I18n.t('workouts.none.third_person', name: member.name)
+        end
       end
     end
 
