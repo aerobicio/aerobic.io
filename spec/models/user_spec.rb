@@ -1,6 +1,6 @@
+require 'load_paths_helper'
 require 'active_record_helper'
-require_relative '../../app/models/user'
-require_relative '../../app/models/activity'
+require 'models/user'
 
 describe User do
   let(:user) { described_class.new }
