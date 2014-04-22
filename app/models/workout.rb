@@ -1,5 +1,5 @@
-require_relative 'tcx_file'
-require_relative 'user'
+require 'tcx_file'
+require 'models/user'
 
 # Represents a workout in the database.
 #
