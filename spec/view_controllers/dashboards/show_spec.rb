@@ -8,7 +8,7 @@ describe Dashboards::Show do
   let(:member) { double(:member, activities: member_activities) }
 
   let(:member_activities) do
-     ActiveRecordArrayWithKaminari.new([activity_1, activity_2])
+    ActiveRecordArrayWithKaminari.new([activity_1, activity_2])
   end
 
   let(:activity_1) { double(:activity_1, cache_key: 1, date: Date.today) }
