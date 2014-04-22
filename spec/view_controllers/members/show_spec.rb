@@ -4,14 +4,19 @@ require 'members/show'
 describe Members::Show do
   let(:view) { described_class.new(controller, current_member, member_id) }
   let(:controller) { double(:controller) }
-  let(:current_member) { double(:current_member, id: 1, cache_key: '1') }
+
+  let(:current_member) do
+    double(:current_member, id: 1, cache_key: '1', name: 'Justin Morris')
+  end
+
   let(:member_id) { 2 }
 
   let(:member) do
     double(:member,
            id: member_id,
            cache_key: member_id.to_s,
-           workouts: member_workouts
+           workouts: member_workouts,
+           name: 'Gareth Townsend'
           )
   end
 
@@ -62,8 +67,15 @@ describe Members::Show do
     context 'when the member has no workouts' do
       let(:member_workouts) { [] }
 
+      before do
+        I18n.should_receive(:t)
+        .with('workouts.none.third_person', name: member.name) do
+          'Gareth Townsend has no workouts!'
+        end
+      end
+
       it 'should render a message stating so' do
-        render_workouts.should == 'You have no workouts!'
+        render_workouts.should == 'Gareth Townsend has no workouts!'
       end
     end
   end
