@@ -42,7 +42,7 @@ describe Workouts::Show do
 
   describe '#distance' do
     subject(:distance) { view.distance }
-    
+
     before do
       I18n.should_receive(:t).with('units.distance', distance: 1.0) { '1.0 km' }
     end
