@@ -1,5 +1,5 @@
 require 'activity'
-require 'models/authentication'
+require 'authentication'
 require 'workout'
 
 # User is an ActiveRecord model that represents
