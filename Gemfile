@@ -11,6 +11,7 @@ gem "foreman"
 gem "interactor-rails", "~> 1.0"
 gem "jbuilder", "~> 1.2"
 gem "jquery-rails"
+gem 'kaminari'
 gem "lograge"
 gem "neat", "~> 1.5.0"
 gem "nestive", git: "https://github.com/plasticine/nestive.git"
