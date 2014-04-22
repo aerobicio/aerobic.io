@@ -1,4 +1,5 @@
-require_relative '../../../app/view_controllers/workouts/workout_partial_view'
+require 'load_paths_helper'
+require 'workouts/workout_partial_view'
 
 describe Workouts::WorkoutPartialView do
   let(:view) { described_class.new(current_member, workout) }
