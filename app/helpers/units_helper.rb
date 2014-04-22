@@ -1,3 +1,6 @@
+require 'display_time'
+require 'i18n'
+
 # UnitsHelper provides standard ways of converting data from base units into
 # common formatting for presentation to users
 module UnitsHelper

@@ -1,4 +1,4 @@
-require_relative '../../app/helpers/avatar_helper'
+require 'spec_helper'
 
 include AvatarHelper
 
