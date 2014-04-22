@@ -1,5 +1,6 @@
+require 'load_paths_helper'
 require 'active_support/core_ext/object/try'
-require_relative '../../app/interactors/create_workout_from_activity_file'
+require 'create_workout_from_activity_file'
 
 describe CreateWorkoutFromActivityFile do
   subject(:result) { described_class.perform(context) }
