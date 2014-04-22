@@ -1,4 +1,5 @@
-require_relative '.././../app/interactors/add_following_to_activity_feeds'
+require 'load_paths_helper'
+require 'add_following_to_activity_feeds'
 require 'active_support/core_ext/object/try'
 
 describe AddFollowingToActivityFeeds do
