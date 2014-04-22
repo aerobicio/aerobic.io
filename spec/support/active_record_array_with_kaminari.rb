@@ -9,4 +9,8 @@ class ActiveRecordArrayWithKaminari
   def page(page = 1)
     @array
   end
+
+  def method_missing(meth, *args, &block)
+    self
+  end
 end
