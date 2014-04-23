@@ -1,4 +1,5 @@
 require 'load_paths_helper'
+require 'support/active_record_array_with_kaminari'
 require 'members/show'
 
 describe Members::Show do
@@ -20,7 +21,10 @@ describe Members::Show do
           )
   end
 
-  let(:member_workouts) { [workout_1, workout_2] }
+  let(:member_workouts) do
+    ActiveRecordArrayWithKaminari.new([workout_1, workout_2])
+  end
+
   let(:workout_1) { double(:workout_1, cache_key: 'a1', date: Date.today) }
   let(:workout_2) { double(:workout_2, cache_key: 'a2', date: Date.today) }
   let(:following_active) { true }
@@ -46,12 +50,13 @@ describe Members::Show do
     let(:render_params) do
       {
         partial: 'workouts/grouped',
-        object: { Date.today =>  member_workouts }
+        object: { Date.today =>  member_workouts.page },
+        locals: { workouts: member_workouts.page }
       }
     end
 
     context 'when the member has workouts' do
-      let(:member_workouts) { [workout_1] }
+      let(:member_workouts) { ActiveRecordArrayWithKaminari.new([workout_1]) }
 
       before do
         controller.should_receive(:render).with(render_params) do
@@ -65,7 +70,7 @@ describe Members::Show do
     end
 
     context 'when the member has no workouts' do
-      let(:member_workouts) { [] }
+      let(:member_workouts) { ActiveRecordArrayWithKaminari.new([]) }
 
       context 'and is looking at their own feed' do
         let(:current_member) { member }

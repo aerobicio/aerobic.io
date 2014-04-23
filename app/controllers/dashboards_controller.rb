@@ -2,6 +2,6 @@
 #
 class DashboardsController < ApplicationController
   def show
-    @view = Dashboards::Show.new(self, current_user)
+    @view = Dashboards::Show.new(self, current_user, params[:page])
   end
 end

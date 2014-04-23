@@ -1,4 +1,5 @@
 require 'i18n'
+require 'kaminari'
 
 module Members
   # View Controller for managing the logic around rendering /members/show
@@ -6,10 +7,11 @@ module Members
   class Show
     attr_reader :member
 
-    def initialize(controller, current_member, member_id)
+    def initialize(controller, current_member, member_id, page = 1)
       @controller = controller
       @current_member = current_member
       @member = User.find(member_id)
+      @page = page
     end
 
     def cache_key
@@ -23,7 +25,8 @@ module Members
     def render_workouts
       if workouts.any?
         @controller.render(partial: 'workouts/grouped',
-                           object: workouts.group_by(&:date)
+                           object: workouts.group_by(&:date),
+                           locals: { workouts: workouts }
                           ).first
       else
         if @current_member == member
@@ -37,7 +40,7 @@ module Members
     private
 
     def workouts
-      @workouts ||= @member.workouts
+      @workouts ||= @member.workouts.page(@page)
     end
   end
 end

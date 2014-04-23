@@ -1,11 +1,16 @@
 require 'load_paths_helper'
+require 'support/active_record_array_with_kaminari'
 require 'dashboards/show'
 
 describe Dashboards::Show do
   let(:view) { described_class.new(controller, member) }
   let(:controller) { double(:controller) }
   let(:member) { double(:member, activities: member_activities) }
-  let(:member_activities) { [activity_1, activity_2] }
+
+  let(:member_activities) do
+    ActiveRecordArrayWithKaminari.new([activity_1, activity_2])
+  end
+
   let(:activity_1) { double(:activity_1, cache_key: 1, date: Date.today) }
   let(:activity_2) { double(:activity_2, cache_key: 2, date: Date.today) }
 
@@ -30,12 +35,15 @@ describe Dashboards::Show do
     let(:render_params) do
       {
         partial: 'activity/grouped',
-        object: { Date.today =>  member_activities }
+        object: { Date.today =>  member_activities.page },
+        locals: { activities: member_activities.page }
       }
     end
 
     context 'when the member has activities' do
-      let(:member_activities) { [activity_1] }
+      let(:member_activities) do
+        ActiveRecordArrayWithKaminari.new([activity_1])
+      end
 
       context 'and following is active' do
         let(:following_active) { true }
@@ -72,7 +80,7 @@ describe Dashboards::Show do
     end
 
     context 'when the member has no activities' do
-      let(:member_activities) { [] }
+      let(:member_activities) { ActiveRecordArrayWithKaminari.new([]) }
 
       it 'should render a message stating so' do
         render_activities.should == 'You have no activity!'
