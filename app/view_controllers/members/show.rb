@@ -40,7 +40,7 @@ module Members
     private
 
     def workouts
-      @workouts ||= @member.workouts.page(@page)
+      @workouts ||= @member.workouts.desc.page(@page)
     end
   end
 end
