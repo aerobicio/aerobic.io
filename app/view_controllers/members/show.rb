@@ -9,8 +9,8 @@ module Members
 
     attr_reader :member
 
-    def initialize(controller, current_member, member_id, page = 1)
-      @controller = controller
+    def initialize(context, current_member, member_id, page = 1)
+      @context = context
       @current_member = current_member
       @member = User.find(member_id)
       @page = page
@@ -19,19 +19,19 @@ module Members
     def cache_key
       [
         @current_member.cache_key,
-        @member.cache_key,
+        member.cache_key,
         workouts.map(&:cache_key)
       ].flatten.join(':')
     end
 
     def render_workouts
       if workouts.any?
-        @controller.render(partial: 'workouts/grouped',
-                           object: workouts.group_by(&:date),
-                           locals: { workouts: workouts }
-                          ).first
+        @context.render(partial: 'workouts/grouped',
+                        object: workouts.group_by(&:date),
+                        locals: { workouts: workouts }
+                       )
       else
-        if @current_member == member
+        if viewing_self?
           I18n.t('workouts.none.first_person')
         else
           I18n.t('workouts.none.third_person', name: member.name)
@@ -39,12 +39,12 @@ module Members
       end
     end
 
+    def render_workout_pagination
+      @context.paginate(workouts)
+    end
+
     def member_title
-      if viewing_self?
-        'You'
-      else
-        @member.name
-      end
+      viewing_self? ? 'Hey, it’s You!' : member.name
     end
 
     def member_joined_date
@@ -52,7 +52,7 @@ module Members
     end
 
     def workouts_count
-      workouts.count
+      member.workouts.all.count
     end
 
     def follower_count
@@ -64,33 +64,33 @@ module Members
     end
 
     def workouts_path
-      member_workouts_path(@member.id)
+      member_workouts_path(member.id)
     end
 
     def followers_path
-      member_followers_path(@member.id)
+      member_followers_path(member.id)
     end
 
     def followings_path
-      member_follows_path(@member.id)
+      member_follows_path(member.id)
     end
 
     private
 
     def viewing_self?
-      @current_member == @member
+      @current_member == member
     end
 
     def followers
-      @followers ||= @member.followers
+      @followers ||= member.followers
     end
 
     def following
-      @following ||= @member.followings
+      @following ||= member.followings
     end
 
     def workouts
-      @workouts ||= @member.workouts.desc.page(@page)
+      @workouts ||= member.workouts.desc.page(@page)
     end
   end
 end

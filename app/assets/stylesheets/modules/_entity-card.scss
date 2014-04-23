@@ -1,18 +1,20 @@
-.member-details {
+.entity-card {
   @extend .padding-medium;
 }
 
-.member-details__title,
-.member-details__avatar {
+.entity-card__title,
+.entity-card__avatar {
   text-align: center;
   display: block;
 }
 
-.member-details__title {
+.entity-card__title {
   @extend .margin-medium-bottom;
+
+  color: #000;
 }
 
-.member-details__avatar {
+.entity-card__avatar {
   @extend .margin-medium-bottom;
 
   margin-left: auto;

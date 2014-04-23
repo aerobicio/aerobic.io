@@ -1,6 +1,8 @@
-<div class="member-details">
-  <%= gravatar_for_member(view.member, size: :large, extra_classes: "member-details__avatar avatar--large") %>
-  <h1 class="member-details__title h4"><%= view.member_title %></h1>
+<div class="entity-card">
+  <%= link_to(member_path(view.member)) do %>
+    <%= gravatar_for_member(view.member, size: :large, extra_classes: "entity-card__avatar avatar--large") %>
+    <h1 class="entity-card__title h4"><%= view.member_title %></h1>
+  <% end %>
   <%= following_link_for_members(current_user, view.member) %>
   <nav class="ui-list">
     <div class="ui-list__row">

@@ -17,7 +17,7 @@
     padding-left: get_spacing(wide);
     margin-left: get_spacing(wide);
     float: right;
-    border-left: 2px solid #e3e4e7;
+    border-left: 2px solid darken($background-color, 10%);
     border-bottom: none;
     height: auto;
   }

@@ -1,19 +1,20 @@
-<% cache @view.cache_key do %>
+<% view = Members::Show.new(self, current_user, params[:id], params[:page]) %>
+
+<% cache view.cache_key do %>
   <div class="layout-with-sidebar">
     <div class="layout-with-sidebar__sidebar">
       <header class="panel--flat">
-        <%= render('member_details', view: @view) %>
+        <%= render('card', view: view) %>
       </header>
     </div>
     <section class="layout-with-sidebar__content">
-
-      <div class="entity-masthead">
-        <div class="entity-masthead__inner">
-          <h1 class="entity-masthead__title h4">Workouts</h1>
+      <header class="entity-masthead">
+        <h1 class="entity-masthead__title h4">Workouts</h1>
+        <div class="entity-masthead__additional">
+          <%= view.render_workout_pagination %>
         </div>
-      </div>
-
-      <%= @view.render_workouts %>
+      </header>
+      <%= view.render_workouts %>
     </section>
   </div>
 <% end %>
