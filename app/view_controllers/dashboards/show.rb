@@ -2,6 +2,10 @@ module Dashboards
   # View Controller for managing the logic around rendering /dashboards/show
   #
   class Show
+    include UnitsHelper
+
+    WeeklyTotals = Struct.new(:workouts, :duration, :distance, :tss)
+
     def initialize(controller, member)
       @controller = controller
       @member = member
@@ -19,6 +23,15 @@ module Dashboards
       else
         'You have no activity!'
       end
+    end
+
+    def weekly_totals
+      WeeklyTotals.new(
+        @member.workouts.all.count,
+        format_duration(62345635),
+        format_distance(28131242),
+        'XXX'
+      )
     end
 
     private

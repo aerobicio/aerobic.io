@@ -1,26 +1,5 @@
 <% view = Activity::AddedWorkoutView.new(self, current_user, added_workout) %>
 
 <% cache view.cache_key do %>
-  <article class="panel" data-href="<%= view.workout_path %>">
-    <header class="panel__header--padded">
-      <%= link_to(member_path(id: view.workout_member.id), class: "panel__figure") do %>
-        <%= gravatar_for_member(view.workout_member) %>
-      <% end %>
-      <h6 class="panel__header__heading h6">
-        <%= view.title %>
-      </h6>
-    </header>
-    <div class="panel__content">
-      <ul class="data-row">
-        <li class="data-row__item">
-          <h6 class="h5 data-row__item__value"><%= view.duration %></h6>
-          <span class="data-row__item__key">Duration</span>
-        </li>
-        <li class="data-row__item">
-          <h6 class="h5 data-row__item__value"><%= view.distance %></h6>
-          <span class="data-row__item__key">Distance</span>
-        </li>
-      </ul>
-    </div>
-  </article>
+  <%= render('shared/workouts/workout', view: view) %>
 <% end %>

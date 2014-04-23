@@ -7,8 +7,10 @@ module Workouts
   #
   class WorkoutPartialView
     include UnitsHelper
+    include Rails.application.routes.url_helpers
 
-    def initialize(current_member, workout)
+    def initialize(context, current_member, workout)
+      @context = context
       @current_member = current_member
       @workout = workout
     end
@@ -21,11 +23,11 @@ module Workouts
     end
 
     def title
-      if @current_member == member
-        I18n.t('activity.workout.title.first_person')
-      else
-        I18n.t('activity.workout.title.third_person', name: member.name)
-      end
+      [
+        @context.link_to(member_title, member_path(id: member.id)),
+        I18n.t('activity.added_workout.action'),
+        @context.link_to(I18n.t('activity.added_workout.object'), workout_path)
+      ].join(' ').html_safe
     end
 
     def duration
@@ -45,6 +47,14 @@ module Workouts
     end
 
     private
+
+    def member_title
+      if @current_member == member
+        I18n.t('activity.title.first_person')
+      else
+        I18n.t('activity.title.third_person', name: member.name)
+      end
+    end
 
     def member
       @workout.user

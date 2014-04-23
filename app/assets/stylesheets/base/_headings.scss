@@ -57,6 +57,12 @@ blockquote{
   @include font-size(1.1, 1.2);
 }
 
+.feature-h1 {
+  @include font-size(4.2, 1.2);
+
+  font-weight: 700;
+}
+
 .subtle-text {
   text-align: center;
   padding: 1.5rem 0;

@@ -2,11 +2,10 @@
   <%= gravatar_for_member(view.member, size: :large, extra_classes: "member-details__avatar avatar--large") %>
   <h1 class="member-details__title h4"><%= view.member_title %></h1>
   <%= following_link_for_members(current_user, view.member) %>
-
   <nav class="ui-list">
     <div class="ui-list__row">
       <div class="ui-list__key">Member Since</div>
-      <div class="ui-list__value"><%= view.member.created_at %></div>
+      <div class="ui-list__value"><%= view.member_joined_date %></div>
     </div>
     <%= link_to(view.workouts_path, class: "ui-list__row") do %>
       <div class="ui-list__key">Workouts</div>

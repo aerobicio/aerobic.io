@@ -26,16 +26,20 @@ module Members
                            object: workouts.group_by(&:date)
                           ).first
       else
-        'You have no workouts!'
+        "#{member_title} have no workouts!"
       end
     end
 
     def member_title
-      if @current_member == @member
+      if viewing_self?
         'You'
       else
         @member.name
       end
+    end
+
+    def member_joined_date
+      member.created_at
     end
 
     def workouts_count
@@ -63,6 +67,10 @@ module Members
     end
 
     private
+
+    def viewing_self?
+      @current_member == @member
+    end
 
     def followers
       @followers ||= @member.followers

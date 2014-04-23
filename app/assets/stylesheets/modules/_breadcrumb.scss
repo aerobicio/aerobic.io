@@ -1,0 +1,18 @@
+.breadcrumb {}
+
+.breadcrumb__crumb {
+  display: inline-block;
+  color: #aaa;
+
+  &:after {
+    content: ' — ';
+    color: #ddd;
+    padding: 0 10px;
+  }
+
+  &:last-child {
+    color: darken(#ddd, 50%);
+
+    &:after { display: none; }
+  }
+}

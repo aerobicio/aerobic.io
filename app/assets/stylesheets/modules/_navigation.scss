@@ -36,7 +36,6 @@
 //
 // Styleguide Components.Navigation.Navigation Item
 .navigation__items__item {
-  // @extend %font-weight-bold;
   @include transition(all 100ms $ease-in-out-quad);
   @include padding(medium, top);
   @include padding(medium, bottom);
@@ -60,7 +59,7 @@
     float: left;
     text-transform: capitalize;
     width: auto;
-    font-size: 0.9rem;
+    font-size: 1rem;
 
     &:first-child {
       margin-left: 0;

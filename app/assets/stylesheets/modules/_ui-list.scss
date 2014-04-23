@@ -1,4 +1,6 @@
-.ui-list {}
+.ui-list {
+  font-size: 1rem;
+}
 
 .ui-list__row {
   @extend .padding-tight-top;
