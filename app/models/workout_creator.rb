@@ -20,8 +20,8 @@ class WorkoutCreator
                    duration: @file.duration,
                    end_time: @file.end_time,
                    start_time: @file.start_time,
-                   user_id: @member_id
-                  )
+                   user_id: @member_id,
+                   sport: @file.sport)
   end
 
   private
