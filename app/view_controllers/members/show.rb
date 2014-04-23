@@ -1,3 +1,4 @@
+require 'i18n'
 require 'kaminari'
 
 module Members
@@ -28,7 +29,11 @@ module Members
                            locals: { workouts: workouts }
                           ).first
       else
-        'You have no workouts!'
+        if @current_member == member
+          I18n.t('workouts.none.first_person')
+        else
+          I18n.t('workouts.none.third_person', name: member.name)
+        end
       end
     end
 
