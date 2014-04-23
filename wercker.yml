@@ -75,8 +75,8 @@ deploy:
         - heroku-deploy:
             key-name: HEROKU_KEY
             install-toolbelt: true
-            run: rake db:migrate --app $HEROKU_APP_NAME
-            run: rails runner -e production Rails.cache.clear --app $HEROKU_APP_NAME
+            run: rake db:migrate
+            run: rails runner -e production Rails.cache.clear
     after-steps:
         - sherzberg/slack-notify:
             subdomain: aerobic
