@@ -76,7 +76,7 @@ deploy:
             key-name: HEROKU_KEY
             install-toolbelt: true
             run: rake db:migrate
-            run: rails runner -e production Rails.cache.clear
+            # run: rails runner -e production Rails.cache.clear
     after-steps:
         - sherzberg/slack-notify:
             subdomain: aerobic
