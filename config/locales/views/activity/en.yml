@@ -1,7 +1,8 @@
 en:
   activity:
-
     workout:
       title:
-        first_person: "You did a workout"
-        third_person: "%{name} did a workout"
+        default: "%{name} did a workout"
+        cycling: "%{name} went for a ride"
+        running: "%{name} went for a run"
+        swimming: "%{name} went for a swim"

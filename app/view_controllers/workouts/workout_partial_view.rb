@@ -21,11 +21,7 @@ module Workouts
     end
 
     def title
-      if @current_member == member
-        I18n.t('activity.workout.title.first_person')
-      else
-        I18n.t('activity.workout.title.third_person', name: member.name)
-      end
+      I18n.t("activity.workout.title.#{sport}", name: name)
     end
 
     def duration
@@ -45,6 +41,18 @@ module Workouts
     end
 
     private
+
+    def name
+      if @current_member == member
+        I18n.t('you')
+      else
+        member.name
+      end
+    end
+
+    def sport
+      @workout.sport? ? @workout.sport.downcase : 'default'
+    end
 
     def member
       @workout.user

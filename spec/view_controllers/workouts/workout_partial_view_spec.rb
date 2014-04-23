@@ -10,7 +10,8 @@ describe Workouts::WorkoutPartialView do
     double(:workout, user: workout_member,
                      cache_key: 'lol',
                      active_duration: 999_999,
-                     distance: 444_444
+                     distance: 444_444,
+                     sport?: false
           )
   end
 
@@ -30,13 +31,14 @@ describe Workouts::WorkoutPartialView do
     subject { view.title }
 
     before do
+      I18n.stub(:t).with('you') { 'You' }
       I18n.should_receive(:t).with(*i18n_params) { title }
     end
 
     context 'when current member did the workout' do
       let(:workout_member) { current_member }
       let(:title) { 'You did a workout' }
-      let(:i18n_params) { ['activity.workout.title.first_person'] }
+      let(:i18n_params) { ['activity.workout.title.default', name: 'You'] }
 
       it { should == title }
     end
@@ -44,7 +46,7 @@ describe Workouts::WorkoutPartialView do
     context 'when current member did not do the workout' do
       let(:title) { 'Mike did a workout' }
       let(:i18n_params) do
-        ['activity.workout.title.third_person', name: workout_member.name]
+        ['activity.workout.title.default', name: workout_member.name]
       end
 
       it { should == title }
