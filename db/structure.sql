@@ -291,7 +291,8 @@ CREATE TABLE workouts (
     user_id integer NOT NULL,
     device_workout_id character varying(255),
     device_id character varying(255),
-    uuid character varying(255)
+    uuid character varying(255),
+    sport character varying(255)
 );
 
 
@@ -677,3 +678,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131229035452');
 INSERT INTO schema_migrations (version) VALUES ('20140102110634');
 
 INSERT INTO schema_migrations (version) VALUES ('20140106061052');
+
+INSERT INTO schema_migrations (version) VALUES ('20140423051358');
