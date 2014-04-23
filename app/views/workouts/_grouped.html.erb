@@ -1,4 +1,5 @@
 <ol class="grouped-list">
+  <%= paginate(workouts) %>
   <% grouped.each do |group| %>
     <% cache group.second.map(&:cache_key).join(":") do %>
       <li class="grouped-list__group">

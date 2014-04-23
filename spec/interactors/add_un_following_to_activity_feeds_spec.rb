@@ -1,4 +1,5 @@
-require_relative '../../app/interactors/add_un_following_to_activity_feeds'
+require 'load_paths_helper'
+require 'add_un_following_to_activity_feeds'
 
 describe AddUnFollowingToActivityFeeds do
   let(:context) do

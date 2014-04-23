@@ -1,4 +1,5 @@
-require_relative '../../../app/view_controllers/members/index'
+require 'load_paths_helper'
+require 'members/index'
 
 describe Members::Index do
   let(:view) { described_class.new(controller, member) }

@@ -1,5 +1,5 @@
-require_relative 'tcx_file'
-require_relative 'user'
+require 'tcx_file'
+require 'user'
 
 # Represents a workout in the database.
 #
@@ -9,6 +9,10 @@ class Workout < ActiveRecord::Base
 
   validates :active_duration, :distance, :duration,  presence: true
   validates :end_time, :start_time, :user, presence: true
+
+  scope :desc, lambda {
+    order(start_time: :desc)
+  }
 
   def date
     start_time.to_date

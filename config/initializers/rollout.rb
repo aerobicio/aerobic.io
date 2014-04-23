@@ -1,4 +1,4 @@
-require_relative "redis.rb"
+require 'redis'
 
 STAFF_EMAILS = ["gareth.townsend@me.com", "desk@pixelbloom.com"]
 PRIVATE_BETA_EMAILS = [

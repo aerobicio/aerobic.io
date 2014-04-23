@@ -1,9 +1,15 @@
-require_relative '../../../app/view_controllers/members/show'
+require 'load_paths_helper'
+require 'support/active_record_array_with_kaminari'
+require 'members/show'
 
 describe Members::Show do
   let(:view) { described_class.new(controller, current_member, member_id) }
   let(:controller) { double(:controller) }
-  let(:current_member) { double(:current_member, id: 1, cache_key: '1') }
+
+  let(:current_member) do
+    double(:current_member, id: 1, cache_key: '1', name: 'Justin Morris')
+  end
+
   let(:member_id) { 2 }
 
   let(:member) do
@@ -17,9 +23,12 @@ describe Members::Show do
           )
   end
 
-  let(:member_workouts) { [workout_1, workout_2] }
   let(:member_followers) { [double, double, double] }
   let(:member_followings) { [double] }
+  let(:member_workouts) do
+    ActiveRecordArrayWithKaminari.new([workout_1, workout_2])
+  end
+
   let(:workout_1) { double(:workout_1, cache_key: 'a1', date: Date.today) }
   let(:workout_2) { double(:workout_2, cache_key: 'a2', date: Date.today) }
   let(:following_active) { true }
@@ -45,12 +54,13 @@ describe Members::Show do
     let(:render_params) do
       {
         partial: 'workouts/grouped',
-        object: { Date.today =>  member_workouts }
+        object: { Date.today =>  member_workouts.page },
+        locals: { workouts: member_workouts.page }
       }
     end
 
     context 'when the member has workouts' do
-      let(:member_workouts) { [workout_1] }
+      let(:member_workouts) { ActiveRecordArrayWithKaminari.new([workout_1]) }
 
       before do
         controller.should_receive(:render).with(render_params) do
@@ -64,10 +74,34 @@ describe Members::Show do
     end
 
     context 'when the member has no workouts' do
-      let(:member_workouts) { [] }
+      let(:member_workouts) { ActiveRecordArrayWithKaminari.new([]) }
 
-      it 'should render a message stating so' do
-        render_workouts.should == 'You have no workouts!'
+      context 'and is looking at their own feed' do
+        let(:current_member) { member }
+
+        before do
+          I18n.should_receive(:t)
+          .with('workouts.none.first_person') do
+            'You have no workouts!'
+          end
+        end
+
+        it 'should render a message stating so' do
+          render_workouts.should == 'You have no workouts!'
+        end
+      end
+
+      context 'when looking at another members feed' do
+        before do
+          I18n.should_receive(:t)
+          .with('workouts.none.third_person', name: member.name) do
+            'Gareth Townsend has no workouts!'
+          end
+        end
+
+        it 'should render a message stating so' do
+          render_workouts.should == 'Gareth Townsend has no workouts!'
+        end
       end
     end
   end

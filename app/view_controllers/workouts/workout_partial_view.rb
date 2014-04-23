@@ -1,5 +1,5 @@
 require 'i18n'
-require_relative '../../helpers/units_helper'
+require 'units_helper'
 
 module Workouts
   # View Controller for managing the logic around rendering

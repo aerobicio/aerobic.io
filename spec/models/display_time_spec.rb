@@ -1,4 +1,5 @@
-require_relative '../../app/models/display_time'
+require 'load_paths_helper'
+require 'display_time'
 
 describe DisplayTime do
   let(:display_time) { DisplayTime.new(duration) }

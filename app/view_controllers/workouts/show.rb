@@ -1,3 +1,5 @@
+require 'units_helper'
+
 module Workouts
   # View Controller for managing the logic around rendering /members/show
   #

@@ -1,5 +1,5 @@
 require 'tcx'
-require_relative 'workout'
+require 'workout'
 
 # TcxFile represents an uploaded TCX file. It has a name and a stores the
 # xml data blob uploaded by the user.

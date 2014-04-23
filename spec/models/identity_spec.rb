@@ -1,5 +1,6 @@
+require 'load_paths_helper'
 require 'active_record_helper'
-require_relative '../../app/models/identity'
+require 'identity'
 
 describe Identity do
   subject do
