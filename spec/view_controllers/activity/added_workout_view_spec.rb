@@ -16,7 +16,8 @@ describe Activity::AddedWorkoutView do
   let(:activity_workout) do
     double(:activity_workout, cache_key: 'bar',
                               active_duration: 100_000,
-                              distance: 200_000
+                              distance: 200_000,
+                              sport?: false
           )
   end
 
@@ -34,14 +35,17 @@ describe Activity::AddedWorkoutView do
     context 'when current_member added the activity' do
       let(:member) { current_member }
 
-      it { should == I18n.t('activity.workout.title.first_person') }
+      it 'should use the first person' do
+        should == I18n.t('activity.workout.title.default',
+                         name: 'You')
+      end
     end
 
     context 'when another member added the activity' do
       let(:member) { another_member }
 
       it 'should use the third person' do
-        subject.should == I18n.t('activity.workout.title.third_person',
+        subject.should == I18n.t('activity.workout.title.default',
                                  name: another_member.name)
       end
     end

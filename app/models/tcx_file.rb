@@ -9,7 +9,7 @@ class TcxFile < ActiveRecord::Base
   validates :xml_data, presence: true
   validates :workout_id, uniqueness: true
 
-  delegate :active_duration, :distance, to: :tcx
+  delegate :active_duration, :distance, :sport, to: :tcx
 
   def duration
     tcx.active_duration

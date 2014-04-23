@@ -33,7 +33,8 @@ class CreateWorkoutFromFitFile
       duration: workout.duration,
       end_time: workout.end_time,
       start_time: workout.start_time,
-      user_id: member_id
+      user_id: member_id,
+      sport: workout.sport
     }
   end
 end

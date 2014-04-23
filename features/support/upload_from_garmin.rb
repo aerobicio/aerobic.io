@@ -101,7 +101,8 @@ def stub_fit_workout1_data_service_request(with_ids = true)
     distance: 41320,
     end_time: Time.zone.parse('2013-07-16 06:00:39'),
     start_time: Time.zone.parse('2013-07-16 06:00:39'),
-    member_id: member_id
+    member_id: member_id,
+    sport: "CYCLING"
   }.to_json
 
   json_request = {
@@ -148,7 +149,8 @@ def stub_fit_workout2_data_service_request(with_ids = true)
     distance: 41320,
     end_time: Time.zone.parse('2013-07-16 06:00:39'),
     start_time: Time.zone.parse('2013-07-16 06:00:39'),
-    member_id: member_id
+    member_id: member_id,
+    sport: "CYCLING"
   }.to_json
 
   json_request = {
