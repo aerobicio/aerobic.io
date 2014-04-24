@@ -1,13 +1,7 @@
 <% cache "#{current_user.cache_key}:#{followed_user.cache_key}" do %>
   <article class="panel">
     <ul class="panel__content--padded">
-      <% if current_user.id == followed_user.activity_user_id %>
-        You followed <%= followed_user.activity_followed_user.name %>
-      <% elsif current_user.id == followed_user.activity_followed_user_id %>
-        <%= followed_user.activity_user.name %> followed you
-      <% else %>
-        <%= followed_user.activity_user.name %> followed <%= followed_user.activity_followed_user.name %>
-      <% end %>
+      <%= followed_user.activity_user.name_in_context_of(current_user).titleize %> followed <%= followed_user.activity_followed_user.name_in_context_of(current_user) %>
     </ul>
   </article>
 <% end %>

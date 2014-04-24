@@ -30,26 +30,19 @@ describe Activity::AddedWorkoutView do
     end
   end
 
-  describe 'title' do
+  describe '#title' do
     subject { view.title }
 
-    context 'when current_member added the activity' do
-      let(:member) { current_member }
+    let(:name) { 'Name' }
+    let(:title) { 'Name did a workout' }
+    let(:i18n_params) { ['activity.workout.title.default', name: name] }
 
-      it 'should use the first person' do
-        should == I18n.t('activity.workout.title.default',
-                         name: 'You')
-      end
+    before do
+      another_member.should_receive(:name_in_context_of) { name }
+      I18n.should_receive(:t).with(*i18n_params) { title }
     end
 
-    context 'when another member added the activity' do
-      let(:member) { another_member }
-
-      it 'should use the third person' do
-        subject.should == I18n.t('activity.workout.title.default',
-                                 name: another_member.name)
-      end
-    end
+    it { should == title }
   end
 
   describe 'duration' do
