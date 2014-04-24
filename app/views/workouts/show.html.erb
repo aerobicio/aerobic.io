@@ -1,7 +1,7 @@
 <%= extends :authenticated do %>
   <% prepend :content do %>
     <header class="hero">
-      <div class="hero__header">
+      <div class="hero__inner">
         <div class="grid">
           <div class="flag">
             <div class="flag__figure">
@@ -11,7 +11,7 @@
             </div>
             <div class="flag__content">
               <span class="h4"><%= @view.time_boundaries %></span>
-              <h1 class="h1 slam-margin"><%= @view.title %></h1>
+              <h1 class="feature-h1 slam-margin"><%= @view.title %></h1>
             </div>
           </div>
         </div>
@@ -53,6 +53,14 @@
       </div>
 
       <hr class="divider">
+
+      <p class="feature-text">
+        The Wombat 100 is a cross country MTB marathon staged in the Wombat State Forest on the outskirts of Woodend, VIC. The 13th April 2014 will see the sixth instalment of this popular event, regarded as one of Victoria’s premier XC marathon events.
+      </p>
+
+      <p>
+        Participants can expect a world class marathon course that includes over 50% flowing, groomed single track (including the famous Wombat track), fast fire trail, pine forest single track and 4WD trails. No tarmac, guaranteed! The riding is diverse, challenging but achievable for most weekend warriors. Course options include the full 100km, a 75km option or the 50km half course. There is also an 18km loop of the wombat track for kids under the age of 16 – a perfect introduction to MTB racing!
+      </p>
 
     </div>
   <% end %>

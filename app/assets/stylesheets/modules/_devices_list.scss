@@ -24,7 +24,7 @@
   &.is-selected {
     @include transition(all 250ms $ease-in-out-quad);
 
-    border-color: #64A7EC;
+    border-color: #679CEE;
     background-color: #fff;
   }
 
@@ -81,7 +81,7 @@
   display: block;
   width: 22px;
   height: 22px;
-  background: #64A7EC image-url("icons/check.svg") no-repeat center;
+  background: #679CEE image-url("icons/check.svg") no-repeat center;
   background-size: 12px;
   position: absolute;
   top: -10px;

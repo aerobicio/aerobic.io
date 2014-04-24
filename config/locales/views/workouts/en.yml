@@ -1,0 +1,7 @@
+en:
+  workouts:
+    title:
+      first_person: "You"
+      third_person: "%{name}"
+      action: "did"
+      object: "a workout"

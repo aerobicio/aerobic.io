@@ -2,12 +2,14 @@ require 'load_paths_helper'
 require 'workouts/workout_partial_view'
 
 describe Workouts::WorkoutPartialView do
-  let(:view) { described_class.new(current_member, workout) }
-  let(:current_member) { double(:current_member, cache_key: 'foo') }
-  let(:workout_member) { double(:workout_member, name: 'Mike') }
+  let(:view) { described_class.new(context, current_member, workout) }
+  let(:context) { double(:context) }
+  let(:current_member) { double(:current_member, cache_key: 'foo', id: 1) }
+  let(:workout_member) { double(:workout_member, name: 'Mike', id: 2) }
 
   let(:workout) do
-    double(:workout, user: workout_member,
+    double(:workout, id: 1,
+                     user: workout_member,
                      cache_key: 'lol',
                      active_duration: 999_999,
                      distance: 444_444
@@ -29,22 +31,32 @@ describe Workouts::WorkoutPartialView do
   describe '#title' do
     subject { view.title }
 
-    before do
-      I18n.should_receive(:t).with(*i18n_params) { title }
-    end
-
     context 'when current member did the workout' do
       let(:workout_member) { current_member }
       let(:title) { 'You did a workout' }
-      let(:i18n_params) { ['activity.workout.title.first_person'] }
+
+      before do
+        context.should_receive(:link_to)
+          .with('You', '/members/1')
+          .once { 'You' }
+        context.should_receive(:link_to)
+          .with(I18n.t('workouts.title.object'), '/members/1/workouts/1')
+          .once { I18n.t('workouts.title.object') }
+      end
 
       it { should == title }
     end
 
     context 'when current member did not do the workout' do
       let(:title) { 'Mike did a workout' }
-      let(:i18n_params) do
-        ['activity.workout.title.third_person', name: workout_member.name]
+
+      before do
+        context.should_receive(:link_to)
+          .with('Mike', '/members/2')
+          .once { 'Mike' }
+        context.should_receive(:link_to)
+          .with(I18n.t('workouts.title.object'), '/members/2/workouts/1')
+          .once { I18n.t('workouts.title.object') }
       end
 
       it { should == title }

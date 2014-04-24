@@ -1,6 +1,8 @@
-<% cache @view.cache_key do %>
+<% view = Dashboards::Show.new(self, current_user, params[:page]) %>
+
+<% cache view.cache_key do %>
   <div class="grid">
-    <%= render('summary', weekly_totals: @view.weekly_totals) %>
+    <%= render('summary', weekly_totals: view.weekly_totals) %>
     <hr class="divider">
   </div>
 
@@ -28,8 +30,13 @@
     </div>
 
     <section class="layout-with-sidebar__content">
-      <h2 class="h4">Recent Activity</h2>
-      <%= @view.render_activities %>
+      <header class="entity-masthead">
+        <h1 class="entity-masthead__title h4">Activity Stream</h1>
+        <div class="entity-masthead__additional">
+          <%= view.render_activities_pagination %>
+        </div>
+      </header>
+      <%= view.render_activities %>
     </section>
   </div>
 <% end %>

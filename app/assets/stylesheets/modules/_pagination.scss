@@ -25,12 +25,23 @@
   }
 }
 
+.pagination__page,
+.pagination__gap,
+.pagination__first,
+.pagination__last {
+  display: none;
+
+  @include media($lap-and-up) {
+    display: inline-block;
+  }
+}
+
 .pagination__page {
   &.is-current {
     border-radius: 2px;
-    border: 2px solid #64A7EC;
+    border: 2px solid #679CEE;
     padding: 0 8px;
     border-radius: 2px;
-    color: #64A7EC;
+    color: #679CEE;
   }
 }

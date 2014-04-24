@@ -2,7 +2,7 @@
   @include clearfix;
   @include margin(medium, bottom);
 
-  border-bottom: 2px solid #eee;
+  border-bottom: 3px solid #ddd;
 }
 
 .entity-masthead__inner {
@@ -13,11 +13,13 @@
   width: 100%;
 }
 
-.entity-masthead__title,
-.entity-masthead__additional {
+.entity-masthead__title {
   @include padding(medium, top);
   @include padding(medium, bottom);
+}
 
+.entity-masthead__title,
+.entity-masthead__additional {
   display: table-cell;
   width: 100%;
   vertical-align: middle;
@@ -30,6 +32,8 @@
 
 .entity-masthead__navigation__item {
   @include margin(wide, left);
+  @include padding(medium, top);
+  @include padding(medium, bottom);
 
   display: inline-block;
   position: relative;
@@ -37,11 +41,11 @@
 
   &:before {
     content: '';
-    height: 2px;
+    height: 3px;
     width: 100%;
     background-color: #ddd;
     position: absolute;
-    bottom: -2px;
+    bottom: -3px;
     left: 0;
     right: 0;
   }
@@ -53,8 +57,8 @@
   }
 
   &.is-active {
-    color: #64A7EC;
+    color: #679CEE;
 
-    &:before { background-color: #64A7EC; }
+    &:before { background-color: #679CEE; }
   }
 }

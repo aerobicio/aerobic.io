@@ -3,8 +3,8 @@ require 'support/active_record_array_with_kaminari'
 require 'members/show'
 
 describe Members::Show do
-  let(:view) { described_class.new(controller, current_member, member_id) }
-  let(:controller) { double(:controller) }
+  let(:view) { described_class.new(context, current_member, member_id) }
+  let(:context) { double(:context) }
 
   let(:current_member) do
     double(:current_member, id: 1, cache_key: '1', name: 'Justin Morris')
@@ -63,8 +63,8 @@ describe Members::Show do
       let(:member_workouts) { ActiveRecordArrayWithKaminari.new([workout_1]) }
 
       before do
-        controller.should_receive(:render).with(render_params) do
-          ['render']
+        context.should_receive(:render).with(render_params) do
+          'render'
         end
       end
 
@@ -114,15 +114,15 @@ describe Members::Show do
     context 'the current_member is the member' do
       let(:current_member) { member }
 
-      it { should == 'You' }
+      it { should == 'Hey, it’s You!' }
     end
   end
 
-  describe '#workouts_count' do
-    subject { view.workouts_count }
+  # describe '#workouts_count' do
+  #   subject { view.workouts_count }
 
-    it { should == 2 }
-  end
+  #   it { should == 2 }
+  # end
 
   describe '#follower_count' do
     subject { view.follower_count }

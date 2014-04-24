@@ -29,7 +29,9 @@
 
       <%= area :footer_outer do %>
         <footer class="footer ta-center" role="contentinfo">
-          <%= area :footer, render(partial: 'shared/footer_content') -%>
+          <div class="grid">
+            <%= area :footer, render(partial: 'shared/footer_content') -%>
+          </div>
         </footer>
       <% end %>
 

@@ -25,8 +25,8 @@ module Workouts
     def title
       [
         @context.link_to(member_title, member_path(id: member.id)),
-        I18n.t('activity.added_workout.action'),
-        @context.link_to(I18n.t('activity.added_workout.object'), workout_path)
+        I18n.t('workouts.title.action'),
+        @context.link_to(I18n.t('workouts.title.object'), workout_path)
       ].join(' ').html_safe
     end
 
@@ -50,9 +50,9 @@ module Workouts
 
     def member_title
       if @current_member == member
-        I18n.t('activity.title.first_person')
+        I18n.t('workouts.title.first_person')
       else
-        I18n.t('activity.title.third_person', name: member.name)
+        I18n.t('workouts.title.third_person', name: member.name)
       end
     end
 

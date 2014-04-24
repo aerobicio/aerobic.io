@@ -4,6 +4,9 @@ en:
       first_person: "You"
       third_person: "%{name}"
 
+    none:
+      first_person: "You have no activity!"
+
     added_workout:
       action: "uploaded"
       object: "a workout"
@@ -13,5 +16,3 @@ en:
 
     unfollowed_user:
       title: "unfollowed"
-
-

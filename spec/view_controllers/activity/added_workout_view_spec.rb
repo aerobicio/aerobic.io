@@ -41,28 +41,35 @@ describe Activity::AddedWorkoutView do
 
     context 'when current_member added the activity' do
       let(:member) { current_member }
+      let(:title) { 'You uploaded a workout' }
 
       before do
-        context.should_receive(:link_to).with('You', '/members/1').once
-        context.should_receive(:link_to).with(I18n.t('activity.added_workout.object'), '/members/1/workouts/1').once
+        context.should_receive(:link_to)
+          .with('You', '/members/1')
+          .once { 'You' }
+        context.should_receive(:link_to)
+          .with(I18n.t('activity.added_workout.object'), '/members/1/workouts/1')
+          .once { I18n.t('activity.added_workout.object') }
       end
 
-      # it { should == I18n.t('activity.title.first_person') }
+      it { should == title }
     end
 
     context 'when another member added the activity' do
       let(:member) { another_member }
+      let(:title) { 'Gus uploaded a workout' }
 
       before do
         member.should_receive(:name)
-        context.should_receive(:link_to).with('Gus', '/members/2').once
-        context.should_receive(:link_to).with(I18n.t('activity.added_workout.object'), '/members/2/workouts/1').once
+        context.should_receive(:link_to)
+          .with(another_member.name, '/members/2')
+          .once { another_member.name }
+        context.should_receive(:link_to)
+          .with(I18n.t('activity.added_workout.object'), '/members/2/workouts/1')
+          .once { I18n.t('activity.added_workout.object') }
       end
 
-      # it 'should use the third person' do
-      #   subject.should == I18n.t('activity.title.third_person',
-      #                            name: another_member.name)
-      # end
+      it { should == title }
     end
   end
 

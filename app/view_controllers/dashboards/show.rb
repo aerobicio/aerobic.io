@@ -8,8 +8,8 @@ module Dashboards
 
     WeeklyTotals = Struct.new(:workouts, :duration, :distance, :tss)
 
-    def initialize(controller, member, page = 1)
-      @controller = controller
+    def initialize(context, member, page = 1)
+      @context = context
       @member = member
       @page = page
     end
@@ -20,20 +20,24 @@ module Dashboards
 
     def render_activities
       if activities.any?
-        @controller.render(partial: 'activity/grouped',
-                           object: activities.group_by(&:date),
-                           locals: { activities: activities }
-                          ).first
+        @context.render(partial: 'activity/grouped',
+                        object: activities.group_by(&:date),
+                        locals: { activities: activities }
+                       )
       else
-        'You have no activity!'
+        I18n.t('activity.none.first_person')
       end
+    end
+
+    def render_activities_pagination
+      @context.paginate(activities)
     end
 
     def weekly_totals
       WeeklyTotals.new(
         @member.workouts.all.count,
-        format_duration(62345635),
-        format_distance(28131242),
+        format_duration(623_456_35),
+        format_distance(281_312_42),
         'XXX'
       )
     end

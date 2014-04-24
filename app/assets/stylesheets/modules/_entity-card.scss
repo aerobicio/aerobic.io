@@ -1,4 +1,12 @@
-.entity-card {
+.entity-card {}
+
+.entity-card__header {
+  border-bottom: 1px solid darken($background-color, 10%);
+  background-color: #fff;
+}
+
+.entity-card__header,
+.entity-card__content {
   @extend .padding-medium;
 }
 
