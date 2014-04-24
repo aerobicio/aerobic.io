@@ -1,4 +1,5 @@
-require 'spec_helper'
+require 'load_paths_helper'
+require 'activity/added_workout_view'
 
 describe Activity::AddedWorkoutView do
   let(:view) { described_class.new(current_member, added_workout) }
@@ -59,6 +60,10 @@ describe Activity::AddedWorkoutView do
 
   describe 'distance' do
     subject { view.distance }
+
+    before do
+      I18n.should_receive(:t).with('units.distance', distance: 2.0) { '2.0 km' }
+    end
 
     it { should == '2.0 km' }
   end

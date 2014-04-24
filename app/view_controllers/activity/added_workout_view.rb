@@ -1,10 +1,12 @@
+require 'i18n'
+require 'units_helper'
+
 class Activity
   # View Controller for managing the logic around rendering
   # /activity/added_workout/_added_workout
   #
   class AddedWorkoutView
     include UnitsHelper
-    include Rails.application.routes.url_helpers
 
     def initialize(current_member, added_workout)
       @current_member = current_member
@@ -31,7 +33,7 @@ class Activity
     end
 
     def workout_path
-      member_workout_path(member_id: member.id, id: workout.id)
+      url_helpers.member_workout_path(member_id: member.id, id: workout.id)
     end
 
     def workout_member
@@ -58,6 +60,12 @@ class Activity
 
     def workout
       @added_workout.activity_workout
+    end
+
+    # Wrap access to rails url helpers to avoid including them. This allows us
+    # to stub them out during testing without requiring all of rails.
+    def url_helpers
+      Rails.application.routes.url_helpers
     end
   end
 end
