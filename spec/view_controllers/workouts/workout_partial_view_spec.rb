@@ -30,26 +30,15 @@ describe Workouts::WorkoutPartialView do
   describe '#title' do
     subject { view.title }
 
+    let(:name) { 'Name' }
+    let(:title) { 'Name did a workout' }
+    let(:i18n_params) { ['activity.workout.title.default', name: name] }
+
     before do
-      I18n.stub(:t).with('you') { 'You' }
+      workout_member.should_receive(:name_in_context_of) { name }
       I18n.should_receive(:t).with(*i18n_params) { title }
     end
 
-    context 'when current member did the workout' do
-      let(:workout_member) { current_member }
-      let(:title) { 'You did a workout' }
-      let(:i18n_params) { ['activity.workout.title.default', name: 'You'] }
-
-      it { should == title }
-    end
-
-    context 'when current member did not do the workout' do
-      let(:title) { 'Mike did a workout' }
-      let(:i18n_params) do
-        ['activity.workout.title.default', name: workout_member.name]
-      end
-
-      it { should == title }
-    end
+    it { should == title }
   end
 end

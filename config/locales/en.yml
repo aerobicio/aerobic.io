@@ -4,7 +4,7 @@ en:
   sign_in:    "Sign in"
   sign_out:   "Sign out"
 
-  you: 'You'
+  you: 'you'
 
   valid_email:
     validations:

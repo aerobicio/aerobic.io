@@ -57,4 +57,20 @@ describe User do
       it { should be_false }
     end
   end
+
+  describe '#name_in_context_of(member)' do
+    subject { user.name_in_context_of(member) }
+
+    context 'when member is the user' do
+      let(:member) { user }
+
+      it { should == I18n.t('you') }
+    end
+
+    context 'when member is not the user' do
+      let(:member) { User.new }
+
+      it { should == user.name }
+    end
+  end
 end

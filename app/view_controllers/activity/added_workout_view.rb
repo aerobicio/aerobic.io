@@ -43,11 +43,7 @@ class Activity
     private
 
     def name
-      if @current_member == member
-        I18n.t('you')
-      else
-        member.name
-      end
+      member.name_in_context_of(@current_member)
     end
 
     def sport
