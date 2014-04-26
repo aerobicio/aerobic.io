@@ -25,16 +25,6 @@
   }
 }
 
-// Navigation Items.
-//
-// -
-//
-// :first-child - First child has the left margin removed.
-// :hover       - Hover state
-// :focus       - Focus state
-// :active      - Active state
-//
-// Styleguide Components.Navigation.Navigation Item
 .navigation__items__item {
   @include transition(all 100ms $ease-in-out-quad);
   @include padding(medium, top);

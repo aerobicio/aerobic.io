@@ -29,7 +29,11 @@ end
 Then(/^"(.*?)" should see that I followed them in their activity feed$/) do |name|
   Capybara.session_name = name
   visit dashboard_path
-  page.should have_content "#{@my_name} followed you"
+  page.should have_content I18n.t('activity.title.html',
+                                  member_link: @my_name,
+                                  verb: 'followed',
+                                  action_link: 'You'
+                                 )
 end
 
 Then(/^"(.*?)" should see that I followed "(.*?)" in their activity feed$/) do |name, followed_name|
@@ -46,7 +50,11 @@ end
 
 Then(/^I should see that I unfollowed "(.*?)" in my activity feed$/) do |name|
   visit dashboard_path
-  page.should have_content "No longer following #{@name}"
+  page.should have_content I18n.t('activity.title.html',
+                            member_link: 'You',
+                            verb: 'unfollowed',
+                            action_link: name
+                           )
 end
 
 Then(/^"(.*?)" should not see that fact in their activity feed$/) do |name|

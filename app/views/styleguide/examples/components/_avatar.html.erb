@@ -1,9 +1,16 @@
-<% member = OpenStruct.new(email: "justin@pixelbloom.com") %>
+<% member = OpenStruct.new(email: 'justin@pixelbloom.com') %>
+
 <%= styleguide_example_for(section) do -%>
-  <div>
-    <%= gravatar_for_member(member, size: :large, extra_classes: "$modifier_class") %>
-  </div>
-  <div>
-    <%= gravatar_for_member(member, size: :large, extra_classes: "avatar--large $modifier_class") %>
-  </div>
+  <%= gravatar_for_member(member, extra_classes: "$modifier_class") %>
+<% end %>
+
+<%= styleguide_example_for(section) do -%>
+  <%= gravatar_for_member(member,
+                          extra_classes: "avatar--small $modifier_class") %>
+<% end %>
+
+<%= styleguide_example_for(section) do -%>
+  <%= gravatar_for_member(member,
+                          size: :large,
+                          extra_classes: "avatar--large $modifier_class") %>
 <% end %>

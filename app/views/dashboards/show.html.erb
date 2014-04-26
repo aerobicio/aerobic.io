@@ -1,30 +1,15 @@
 <% view = Dashboards::Show.new(self, current_user, params[:page]) %>
 
 <% cache view.cache_key do %>
-  <div class="grid">
-    <%= render('summary', weekly_totals: view.weekly_totals) %>
-    <hr class="divider">
-  </div>
-
   <div class="layout-with-sidebar">
     <div class="layout-with-sidebar__sidebar">
       <article class="panel--flat">
         <header class="panel__header--padded">
-          <h6 class="h6">Upcoming Events?</h6>
+          <h6 class="h6">Development Notice?</h6>
         </header>
         <div class="panel__content--padded">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, debitis impedit officiis quae excepturi cum temporibus mollitia eveniet rem. Unde, blanditiis quam reiciendis accusamus quis dolores vel. Nulla, provident, facilis.
-        </div>
-      </article>
-
-      <hr class="divider">
-
-      <article class="panel--flat">
-        <header class="panel__header--padded">
-          <h6 class="h6">Something Social?</h6>
-        </header>
-        <div class="panel__content--padded">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, itaque recusandae architecto. Molestias, vel, et, dicta ullam ab ipsam ut necessitatibus dolore praesentium dolorum dolorem consequatur hic molestiae impedit accusantium.
+          Here are some word about the next feature we are building or
+          announcing to all our new shiny BETA users...
         </div>
       </article>
     </div>

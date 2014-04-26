@@ -2,3 +2,14 @@ en:
   members:
     first_person: "You"
     third_person: "%{name}"
+
+    show:
+      heading: "Workouts"
+
+      card:
+        title:
+          first_person: "Hey, it’s You!"
+        joined_date: "Member Since"
+        workouts: "Workouts"
+        followers: "Followers"
+        follows: "Follows"

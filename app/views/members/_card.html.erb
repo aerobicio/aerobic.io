@@ -9,23 +9,23 @@
   <div class="entity-card__content">
     <nav class="ui-list">
       <div class="ui-list__row">
-        <div class="ui-list__key">Member Since</div>
+        <div class="ui-list__key"><%= t('members.show.card.joined_date') %></div>
         <div class="ui-list__value"><%= view.member_joined_date %></div>
       </div>
       <%= link_to(view.workouts_path, class: "ui-list__row") do %>
-        <div class="ui-list__key">Workouts</div>
+        <div class="ui-list__key"><%= t('members.show.card.workouts') %></div>
         <div class="ui-list__value">
           <span class="badge"><%= view.workouts_count %></span>
         </div>
       <% end %>
       <%= link_to(view.followers_path, class: "ui-list__row") do %>
-        <div class="ui-list__key">Followers</div>
+        <div class="ui-list__key"><%= t('members.show.card.followers') %></div>
         <div class="ui-list__value">
           <span class="badge"><%= view.follower_count %></span>
         </div>
       <% end %>
       <%= link_to(view.followings_path, class: "ui-list__row") do %>
-        <div class="ui-list__key">Follows</div>
+        <div class="ui-list__key"><%= t('members.show.card.follows') %></div>
         <div class="ui-list__value">
           <span class="badge"><%= view.following_count %></span>
         </div>

@@ -2,8 +2,6 @@ class Activity
   # View Controller for managing the logic around rendering
   # /activity/followed_users/_followed_user
   class UnfollowedUserView
-    include Rails.application.routes.url_helpers
-
     def initialize(context, current_member, unfollowed_member)
       @context = context
       @current_member = current_member
@@ -17,6 +15,13 @@ class Activity
       ].map(&:to_s).join(':')
     end
 
+    def title
+      I18n.t('activity.title.html',
+             member_link: unfollowing_member_link,
+             verb: I18n.t('activity.unfollowed_user.title.verb'),
+             action_link: unfollowed_member_link).html_safe
+    end
+
     def unfollowing_member
       @unfollowed_member.activity_user
     end
@@ -26,19 +31,35 @@ class Activity
     end
 
     def unfollowing_member_path
-      member_path(id: unfollowing_member.id)
+      url_helpers.member_path(id: unfollowing_member.id)
     end
 
     def unfollowed_member_path
-      member_path(id: unfollowed_member.id)
+      url_helpers.member_path(id: unfollowed_member.id)
     end
 
-    def title
-      [
-        @context.link_to(I18n.t('activity.title.first_person'), unfollowing_member_path),
-        I18n.t('activity.unfollowed_user.title'),
-        @context.link_to(I18n.t('activity.title.third_person', name: unfollowed_member.name), unfollowed_member_path)
-      ].join(' ').html_safe
+    private
+
+    def unfollowing_member_link
+      @context.link_to(unfollowing_member_title, unfollowing_member_path)
+    end
+
+    def unfollowed_member_link
+      @context.link_to(unfollowed_member_title, unfollowed_member_path)
+    end
+
+    def unfollowing_member_title
+      unfollowing_member.name_in_context_of(@current_member)
+    end
+
+    def unfollowed_member_title
+      unfollowed_member.name_in_context_of(@current_member)
+    end
+
+    # Wrap access to rails url helpers to avoid including them. This allows us
+    # to stub them out during testing without requiring all of rails.
+    def url_helpers
+      Rails.application.routes.url_helpers
     end
   end
 end

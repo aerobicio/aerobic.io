@@ -6,8 +6,6 @@ module Dashboards
   class Show
     include UnitsHelper
 
-    WeeklyTotals = Struct.new(:workouts, :duration, :distance, :tss)
-
     def initialize(context, member, page = 1)
       @context = context
       @member = member
@@ -31,15 +29,6 @@ module Dashboards
 
     def render_activities_pagination
       @context.paginate(activities)
-    end
-
-    def weekly_totals
-      WeeklyTotals.new(
-        @member.workouts.all.count,
-        format_duration(623_456_35),
-        format_distance(281_312_42),
-        'XXX'
-      )
     end
 
     private

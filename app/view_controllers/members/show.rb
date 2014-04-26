@@ -44,7 +44,11 @@ module Members
     end
 
     def member_title
-      viewing_self? ? 'Hey, it’s You!' : member.name
+      if viewing_self?
+        I18n.t('members.show.card.title.first_person')
+      else
+        member.name
+      end
     end
 
     def member_joined_date
@@ -52,7 +56,7 @@ module Members
     end
 
     def workouts_count
-      member.workouts.all.count
+      member.workouts.count
     end
 
     def follower_count
