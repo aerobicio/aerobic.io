@@ -39,36 +39,36 @@ describe Workouts::WorkoutPartialView do
 
     context 'when current member did the workout' do
       let(:workout_member) { current_member }
-      let(:title) {
+      let(:title) do
         '<a href="/members/1">You</a> did <a href="/members/1/workouts/1>a workout</a>'
-      }
+      end
 
       before do
         workout_member.should_receive(:name_in_context_of).with(current_member) { 'You' }
-        context.should_receive(:link_to).with('You', '/members/1') {
+        context.should_receive(:link_to).with('You', '/members/1') do
           '<a href="/members/1">You</a>'
-        }
-        context.should_receive(:link_to).with('a workout', '/members/1/workouts/1') {
+        end
+        context.should_receive(:link_to).with('a workout', '/members/1/workouts/1') do
           '<a href="/members/1/workouts/1>a workout</a>'
-        }
+        end
       end
 
       it { should == title }
     end
 
     context 'when current member did not do the workout' do
-      let(:title) {
+      let(:title) do
         '<a href="/members/2">Mike</a> did <a href="/members/2/workouts/1>a workout</a>'
-      }
+      end
 
       before do
         workout_member.should_receive(:name_in_context_of).with(current_member) { 'Mike' }
-        context.should_receive(:link_to).with('Mike', '/members/2') {
+        context.should_receive(:link_to).with('Mike', '/members/2') do
           '<a href="/members/2">Mike</a>'
-        }
-        context.should_receive(:link_to).with('a workout', '/members/2/workouts/1') {
+        end
+        context.should_receive(:link_to).with('a workout', '/members/2/workouts/1') do
           '<a href="/members/2/workouts/1>a workout</a>'
-        }
+        end
       end
 
       it { should == title }

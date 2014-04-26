@@ -43,18 +43,18 @@ describe Activity::AddedWorkoutView do
 
     context 'when current_member added the activity' do
       let(:member) { current_member }
-      let(:title) {
+      let(:title) do
         '<a href="/members/1">You</a> added <a href="/members/1/workouts/1>a workout</a>'
-      }
+      end
 
       before do
         member.should_receive(:name_in_context_of).with(current_member) { 'You' }
-        context.should_receive(:link_to).with('You', '/members/1') {
+        context.should_receive(:link_to).with('You', '/members/1') do
           '<a href="/members/1">You</a>'
-        }
-        context.should_receive(:link_to).with('a workout', '/members/1/workouts/1') {
+        end
+        context.should_receive(:link_to).with('a workout', '/members/1/workouts/1') do
           '<a href="/members/1/workouts/1>a workout</a>'
-        }
+        end
       end
 
       it { should == title }
@@ -62,18 +62,18 @@ describe Activity::AddedWorkoutView do
 
     context 'when another member added the activity' do
       let(:member) { another_member }
-      let(:title) {
+      let(:title) do
         '<a href="/members/2">Gus</a> added <a href="/members/2/workouts/1>a workout</a>'
-      }
+      end
 
       before do
         member.should_receive(:name_in_context_of).with(current_member) { 'Gus' }
-        context.should_receive(:link_to).with('Gus', '/members/2') {
+        context.should_receive(:link_to).with('Gus', '/members/2') do
           '<a href="/members/2">Gus</a>'
-        }
-        context.should_receive(:link_to).with('a workout', '/members/2/workouts/1') {
+        end
+        context.should_receive(:link_to).with('a workout', '/members/2/workouts/1') do
           '<a href="/members/2/workouts/1>a workout</a>'
-        }
+        end
       end
 
       it { should == title }
