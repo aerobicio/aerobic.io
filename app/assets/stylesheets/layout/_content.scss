@@ -1,14 +1,17 @@
 .content {}
 .content__inner {
-  @include padding(wide);
+  @include padding(medium);
   @include transform(translate3d(0, 0, 0));
   @include transition(opacity 450ms $ease-in-out-quad);
 
+  padding-top: 60px;
   border-top: 1px solid #d5d8dd;
   opacity: 1.0;
   height: 100%;
 
   @include media($desk) {
+    @include padding(wide);
+
     border-top: none;
   }
 }
