@@ -1,0 +1,10 @@
+.badge {
+  background-color: darken($background-color, 15%);
+  color: #fff;
+  display: inline-block;
+  padding: 0 8px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-left: 6px;
+}

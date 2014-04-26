@@ -1,3 +1,6 @@
 en:
   units:
-    distance: "%{distance} km"
+    distance:
+      kilometers: "%{kilometers} km"
+    duration:
+      hours: "%{hours} hr"

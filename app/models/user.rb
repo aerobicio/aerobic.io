@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
 
   def name_in_context_of(member)
     if member == self
-      I18n.t('you')
+      I18n.t('members.first_person')
     else
       name
     end

@@ -1,0 +1,20 @@
+en:
+  workouts:
+    none:
+      first_person: "You have no workouts!"
+      third_person: "%{name} has no workouts!"
+
+    title:
+      html: "%{member_link} %{verb} %{action_link}"
+      default:
+        verb: "did"
+        text: "a workout"
+      cycling:
+        verb: "went for"
+        text: "a ride"
+      running:
+        verb: "went for"
+        text: "a run"
+      swimming:
+        verb: "went for"
+        text: "a swim"

@@ -31,7 +31,7 @@
       </div>`
     else
       `<div className="subtle-text h4">
-        Select a device above to start adding workouts!
+        Select a device to start adding workouts!
       </div>`
 
   shouldRenderWorkoutList: ->

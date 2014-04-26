@@ -8,7 +8,8 @@ module Workouts
   class WorkoutPartialView
     include UnitsHelper
 
-    def initialize(current_member, workout)
+    def initialize(context, current_member, workout)
+      @context = context
       @current_member = current_member
       @workout = workout
     end
@@ -21,7 +22,10 @@ module Workouts
     end
 
     def title
-      I18n.t("activity.workout.title.#{sport}", name: name)
+      I18n.t('workouts.title.html',
+             member_link: name_link,
+             verb: verb_for_workout,
+             action_link: workout_link).html_safe
     end
 
     def duration
@@ -41,6 +45,18 @@ module Workouts
     end
 
     private
+
+    def verb_for_workout
+      I18n.t("workouts.title.#{sport}.verb")
+    end
+
+    def name_link
+      @context.link_to(name, url_helpers.member_path(id: member.id))
+    end
+
+    def workout_link
+      @context.link_to(I18n.t("workouts.title.#{sport}.text"), workout_path)
+    end
 
     def name
       member.name_in_context_of(@current_member)

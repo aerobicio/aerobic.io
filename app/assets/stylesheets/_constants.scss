@@ -4,7 +4,7 @@ $debug-mode:                false;
 
 // Root type sizing
 // ----------------------------------------
-$base-font-size:            1.1;
+$base-font-size:            1.2;
 $line-height-ratio:         1.6;
 
 // Spacing units and sizings
@@ -18,8 +18,8 @@ $_spacing-superwide:        3.6rem;
 // ----------------------------------------
 $_grid-prefix:              unquote("");
 $column:                    10rem;
-$gutter:                    2rem;
-$grid-columns:              6;
+$gutter:                    1rem;
+$grid-columns:              12;
 $max-width:                 140rem;
 $visual-grid:               false;
 $visual-grid-index:         front;
@@ -79,8 +79,8 @@ $_breakpoints: (
 
 // Branding and Style
 // ----------------------------------------
-$font-family: 'Proxima Nova Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$background-color: #F4F7F8;
+$font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$background-color: #e9ecee;
 $feature-color: #f05d5c;
 $positive-color: #9ECA51;
 $landing-hero-background-color: #093A51;

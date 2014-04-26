@@ -1,4 +1,67 @@
-<ul>
-  <li><strong>Duration:</strong> <%= @view.duration %></li>
-  <li><strong>Distance:</strong> <%= @view.distance %></li>
-</ul>
+<%= extends :authenticated do %>
+  <% prepend :content do %>
+    <header class="hero">
+      <div class="hero__inner">
+        <div class="grid">
+          <div class="flag">
+            <div class="flag__figure">
+              <%= link_to member_path(id: @view.member.id) do %>
+                <%= gravatar_for_member(@view.member, size: :large) %>
+              <% end %>
+            </div>
+            <div class="flag__content">
+              <span class="h4"><%= @view.time_boundaries %></span>
+              <h1 class="feature-h1 slam-margin"><%= @view.title %></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  <% end %>
+
+  <%= area :content_inner do %>
+    <div class="grid">
+      <div class="panel">
+        <ul class="data-row">
+          <li class="data-row__item">
+            <h6 class="h3 data-row__item__value"><%= @view.duration %></h6>
+            <span class="data-row__item__key">Duration</span>
+          </li>
+          <li class="data-row__item">
+            <h6 class="h3 data-row__item__value"><%= @view.distance %></h6>
+            <span class="data-row__item__key">Distance</span>
+          </li>
+          <li class="data-row__item">
+            <h6 class="h3 data-row__item__value">XXX</h6>
+            <span class="data-row__item__key">Training Stress Score</span>
+          </li>
+          <li class="data-row__item">
+            <h6 class="h3 data-row__item__value">
+              <ul class="avatar_row">
+                <% User.all.each do |user| %>
+                  <li class="avatar_row__item">
+                    <%= link_to member_path(id: user.id) do %>
+                      <%= gravatar_for_member(user, size: :small) %>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            </h6>
+            <span class="data-row__item__key">Training Partners</span>
+          </li>
+        </ul>
+      </div>
+
+      <hr class="divider">
+
+      <p class="feature-text">
+        The Wombat 100 is a cross country MTB marathon staged in the Wombat State Forest on the outskirts of Woodend, VIC. The 13th April 2014 will see the sixth instalment of this popular event, regarded as one of Victoria’s premier XC marathon events.
+      </p>
+
+      <p>
+        Participants can expect a world class marathon course that includes over 50% flowing, groomed single track (including the famous Wombat track), fast fire trail, pine forest single track and 4WD trails. No tarmac, guaranteed! The riding is diverse, challenging but achievable for most weekend warriors. Course options include the full 100km, a 75km option or the 50km half course. There is also an 18km loop of the wombat track for kids under the age of 16 – a perfect introduction to MTB racing!
+      </p>
+
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,20 @@
+.layout-authenticated {
+  .page {
+    @include display-box;
+    @include box-align(stretch);
+    @include box-orient(vertical);
+    @include box-pack(start);
+
+    min-height: 100vh;
+  }
+
+  .header {
+    @include box-flex(0);
+  }
+
+  .content {
+    @include box-flex(1);
+    @include box-align(top);
+    @include box-pack(top);
+  }
+}

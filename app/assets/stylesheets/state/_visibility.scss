@@ -1,0 +1,20 @@
+// Hide from both screenreaders and browsers
+.is-hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+// Hide only visually, but have it available for screenreaders
+.is-visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+// Hide visually and from screenreaders, but maintain table-layout:
+.is-invisible { visibility: hidden; }

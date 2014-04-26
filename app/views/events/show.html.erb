@@ -1,0 +1,103 @@
+<%= extends :authenticated do %>
+  <%= prepend :content do %>
+    <header class="hero">
+      <div class="hero__inner">
+        <div class="grid">
+          <div class="flag">
+            <div class="flag__figure">
+              <%= image_tag 'event_logo.png' %>
+            </div>
+            <div class="flag__content">
+              <span class="h4">Sunday 12th Apr, 2014</span>
+              <h1 class="feature-h1 slam-margin">
+                Wombat 100
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="entity-masthead">
+      <div class="entity-masthead__inner">
+        <h1 class="entity-masthead__title h4 breadcrumb">
+          <a href="#" class="breadcrumb__crumb">Events</a>
+          <a href="#" class="breadcrumb__crumb">2014</a>
+          <a href="#" class="breadcrumb__crumb">Wombat 100</a>
+        </h1>
+        <div class="entity-masthead__additional">
+          <nav class="entity-masthead__navigation">
+            <a href="#" class="entity-masthead__navigation__item is-active">Overview</a>
+            <a href="#" class="entity-masthead__navigation__item">Competitors <span class="badge">112</span></a>
+            <a href="#" class="entity-masthead__navigation__item">Enter Now!</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <%= area :content_inner do %>
+    <div class="layout-with-sidebar">
+      <aside class="layout-with-sidebar__sidebar">
+
+        <div class="panel--flat">
+          <div class="panel__content--padded">
+            <nav class="ui-list">
+              <header class="ui-list__row">
+                <h5 class="h5">Event Information</h5>
+              </header>
+              <div class="ui-list__row">
+                <span class="ui-list__key">Date</span>
+                <span class="ui-list__value">10am, Sunday 12th Apr, 2014</span>
+              </div>
+              <a href="#" class="ui-list__row">
+                <span class="ui-list__key">Location</span>
+                <span class="ui-list__value">Woodend, Victoria</span>
+              </a>
+            </nav>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="panel--flat">
+          <div class="panel__content--padded">
+            <nav class="ui-list">
+              <header class="ui-list__row">
+                <h5 class="h5">Contact Information</h5>
+              </header>
+              <a href="#" class="ui-list__row">
+                <span class="ui-list__key">Facebook</span>
+              </a>
+              <a href="#" class="ui-list__row">
+                <span class="ui-list__key">Twitter</span>
+              </a>
+              <a href="#" class="ui-list__row">
+                <span class="ui-list__key">YouTube</span>
+              </a>
+            </nav>
+          </div>
+        </div>
+      </aside>
+
+      <section class="layout-with-sidebar__content">
+        <p class="feature-text">
+          The Wombat 100 is a cross country MTB marathon staged in the Wombat State Forest on the outskirts of Woodend, VIC. The 13th April 2014 will see the sixth instalment of this popular event, regarded as one of Victoria’s premier XC marathon events.
+        </p>
+
+        <p>
+          Participants can expect a world class marathon course that includes over 50% flowing, groomed single track (including the famous Wombat track), fast fire trail, pine forest single track and 4WD trails. No tarmac, guaranteed! The riding is diverse, challenging but achievable for most weekend warriors. Course options include the full 100km, a 75km option or the 50km half course. There is also an 18km loop of the wombat track for kids under the age of 16 – a perfect introduction to MTB racing!
+        </p>
+
+        <hr class="divider">
+
+        <h3 class="h2">News</h3>
+
+        <article>
+          <h4 class="h3">Weather Update &mdash; All Systems Go!</h4>
+          <p>Let it be said that no Wombat has ever been perturbed by a little rain.  The Max Adventure crew, currently on location at the Wombat 100 have spent the last few days assessing the course and overall conditions; we’ve also consulted all stake holders on the potential impact of the wet weather on proceedings.</p>
+        </article>
+      </section>
+    </div>
+  <% end %>
+<% end %>

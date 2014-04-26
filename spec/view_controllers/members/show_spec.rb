@@ -3,8 +3,8 @@ require 'support/active_record_array_with_kaminari'
 require 'members/show'
 
 describe Members::Show do
-  let(:view) { described_class.new(controller, current_member, member_id) }
-  let(:controller) { double(:controller) }
+  let(:view) { described_class.new(context, current_member, member_id) }
+  let(:context) { double(:context) }
 
   let(:current_member) do
     double(:current_member, id: 1, cache_key: '1', name: 'Justin Morris')
@@ -14,13 +14,17 @@ describe Members::Show do
 
   let(:member) do
     double(:member,
+           name: 'Justin',
            id: member_id,
            cache_key: member_id.to_s,
            workouts: member_workouts,
-           name: 'Gareth Townsend'
+           followers: member_followers,
+           followings: member_followings
           )
   end
 
+  let(:member_followers) { [double, double, double] }
+  let(:member_followings) { [double] }
   let(:member_workouts) do
     ActiveRecordArrayWithKaminari.new([workout_1, workout_2])
   end
@@ -56,8 +60,8 @@ describe Members::Show do
       let(:member_workouts) { ActiveRecordArrayWithKaminari.new([workout_1]) }
 
       before do
-        controller.should_receive(:render).with(render_params) do
-          ['render']
+        context.should_receive(:render).with(render_params) do
+          'render'
         end
       end
 
@@ -97,5 +101,53 @@ describe Members::Show do
         end
       end
     end
+  end
+
+  describe '#member_title' do
+    subject { view.member_title }
+
+    it { should == 'Justin' }
+
+    context 'the current_member is the member' do
+      let(:current_member) { member }
+
+      it { should == 'Hey, it’s You!' }
+    end
+  end
+
+  # describe '#workouts_count' do
+  #   subject { view.workouts_count }
+
+  #   it { should == 2 }
+  # end
+
+  describe '#follower_count' do
+    subject { view.follower_count }
+
+    it { should == 3 }
+  end
+
+  describe '#following_count' do
+    subject { view.following_count }
+
+    it { should == 1 }
+  end
+
+  describe '#workouts_path' do
+    subject { view.workouts_path }
+
+    it { should == '/members/2/workouts' }
+  end
+
+  describe '#followers_path' do
+    subject { view.followers_path }
+
+    it { should == '/members/2/followers' }
+  end
+
+  describe '#followings_path' do
+    subject { view.followings_path }
+
+    it { should == '/members/2/follows' }
   end
 end

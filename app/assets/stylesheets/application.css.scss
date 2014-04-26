@@ -2,14 +2,9 @@
 
 // External Mixins and Constants
 // ----------------------------------------
-
 @import "bourbon";
 @import "constants";
 @import "neat";
-
-// Fonts
-// ----------------------------------------
-@import "lib/fonts";
 
 // Mixins, functions and placeholders
 // ----------------------------------------
@@ -30,6 +25,13 @@
 // ----------------------------------------
 @import "lib/placeholders"; // placeholders that we reuse in other modules are here
 @import "modules/*"; // BEM style modules live here.
+
+// Stateful classes
+// ----------------------------------------
+@import "state/*";
+
+// Shameful things
+// ----------------------------------------
 @import "shame"; // The shame! The shame!
 
 // Vendored styles

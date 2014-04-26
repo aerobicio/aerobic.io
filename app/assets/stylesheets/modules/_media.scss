@@ -1,0 +1,48 @@
+// [The Media object](http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code)
+// is an abstract class that is can be used to help define other
+// components where an image is combined with text or other content in a grouped
+// form with the image either left or right aligned.
+//
+// By default the image is assumed to be left-aligned but using the `--right`
+// modifier on `.media__figure` the figure can be right aligned
+//
+// -
+//
+// Styleguide Objects.Media Object
+.media {
+  @extend .margin-medium-bottom;
+  @include clearfix;
+
+  clear: both;
+  overflow: hidden;
+}
+
+.media__figure {
+  @extend .margin-medium-right;
+
+  float: left;
+  display: block;
+
+  > img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.media__figure--right {
+  @extend .media__figure;
+  @extend .margin-medium-left;
+
+  float: right;
+}
+
+.media__figure--left {
+  @extend .media__figure;
+  @extend .margin-medium-right;
+
+  float: left;
+}
+
+.media__content {
+  overflow: hidden;
+}

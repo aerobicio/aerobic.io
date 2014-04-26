@@ -40,7 +40,7 @@ describe Dashboards::Show do
 
       before do
         controller.should_receive(:render).with(render_params) do
-          ['render']
+          'render'
         end
       end
 

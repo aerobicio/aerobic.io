@@ -1,12 +1,12 @@
-<div class="account_info">
-  <% if current_user %>
-    <%= gravatar_for_member(current_user, extra_classes: "account_info__avatar") %>
+<% if current_user %>
+  <div class="account_info">
+    <%= link_to(member_path(current_user.id), class: "account_info__avatar") do %>
+      <%= gravatar_for_member(current_user) %>
+    <% end %>
     <div class="account_info__content">
       <%= current_user.name %>
       <br>
-      <%= link_to("Account", "#") %>
-      <span class="account_info__content__divider">&bull;</span>
       <%= link_to(t("sign_out"), sign_out_path, method: :put) %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
