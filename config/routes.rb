@@ -10,7 +10,8 @@ AerobicIo::Application.routes.draw do
   resource :dashboard, only: [:show]
   resources :identities, only: [:new]
   resources :sessions, only: [:create, :new]
-  resource :upload, only: [ :show, :create ]
+  resource :upload, only: [:show, :create]
+  resources :events, only: [:show]
 
   resources :members, only: [:show, :index] do
     member do
@@ -24,6 +25,8 @@ AerobicIo::Application.routes.draw do
   if defined?(Kayessess)
     mount Kayessess::Engine => "/styleguide", :as => 'kayessess'
   end
+
+  mount Peek::Railtie => '/peek'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe WorkoutsController do
-  let(:user) { double(User, id: 42) }
+  let(:user) { double(User, id: 42, email: 'lol@lol.com') }
 
   before do
     session[:user_id] = 42
@@ -13,7 +13,6 @@ describe WorkoutsController do
     let(:workout) { double(:workout, id: 101) }
 
     before do
-      User.should_receive(:find).with(user.id) { member }
       Workout.should_receive(:find_by!).with(
         user_id: member.id,
         id: workout.id

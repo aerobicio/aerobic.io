@@ -31,23 +31,23 @@ def member_fit_workouts_on_device
 end
 
 def page_has_workout1
-  page.should have_content "1:31:23 Duration"
-  page.should have_content "41.32 km Distance"
+  page.should have_content I18n.t('units.duration.hours', hours: '1:31:23').concat(" Duration")
+  page.should have_content I18n.t('units.distance.kilometers', kilometers: '41.32').concat(" Distance")
 end
 
 def page_doesnt_have_workout1
-  page.should have_no_content "1:31:23 Duration"
-  page.should have_no_content "41.32 km Distance"
+  page.should have_no_content I18n.t('units.duration.hours', hours: '1:31:23').concat(" Duration")
+  page.should have_no_content I18n.t('units.distance.kilometers', kilometers: '41.32').concat(" Distance")
 end
 
 def page_has_workout2
-  page.should have_content "0:37:30 Duration"
-  page.should have_content "17.04 km Distance"
+  page.should have_content I18n.t('units.duration.hours', hours: '0:37:30').concat(" Duration")
+  page.should have_content I18n.t('units.distance.kilometers', kilometers: '17.04').concat(" Distance")
 end
 
 def page_doesnt_have_workout2
-  page.should have_no_content "0:37:30 Duration"
-  page.should have_no_content "17.04 km Distance"
+  page.should have_no_content I18n.t('units.duration.hours', hours: '0:37:30').concat(" Duration")
+  page.should have_no_content I18n.t('units.distance.kilometers', kilometers: '17.04').concat(" Distance")
 end
 
 def page_has_tcx_workout

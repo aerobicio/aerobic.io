@@ -26,5 +26,7 @@ module AerobicIo
 
     config.lograge.enabled = true
     config.active_record.schema_format = :sql
+
+    config.peek.adapter = $redis
   end
 end

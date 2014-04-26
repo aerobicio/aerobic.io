@@ -1,0 +1,16 @@
+.layout-with-sidebar {
+  @extend .grid;
+}
+
+.layout-with-sidebar__sidebar {
+  @include media($desk) {
+    @include span-columns(3);
+  }
+}
+
+.layout-with-sidebar__content {
+  @include media($desk) {
+    @include span-columns(8);
+    @include shift(1);
+  }
+}

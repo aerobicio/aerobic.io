@@ -1,7 +1,14 @@
+<% view = Activity::UnfollowedUserView.new(self, current_user, unfollowed_user) %>
+
 <% cache unfollowed_user do %>
   <article class="panel">
-    <div class="panel__content--padded">
-      No longer following <%= unfollowed_user.activity_followed_user.name %>
-    </div>
+    <header class="panel__header--padded">
+      <figure class="panel__figure">
+        <%= gravatar_for_member(unfollowed_user.activity_user) %>
+      </figure>
+      <h6 class="panel__header__heading h6">
+        <%= view.title %>
+      </h6>
+    </header>
   </article>
 <% end %>

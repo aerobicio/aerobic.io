@@ -25,4 +25,8 @@ class ApplicationController < ActionController::Base
   def home_page_path
     ENV['STATIC_SITE_URL']
   end
+
+  def peek_enabled?
+    STAFF_EMAILS.include?(current_user.email) if current_user
+  end
 end

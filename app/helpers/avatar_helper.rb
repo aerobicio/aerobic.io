@@ -4,6 +4,7 @@
 module AvatarHelper
   GRAVATAR_URL = '//gravatar.com/avatar/'
   GRAVATAR_DIMENSIONS = {
+    small: 32,
     normal: 64,
     large:  164
   }
@@ -29,6 +30,8 @@ module AvatarHelper
   def avatar_class_for_size(size = :normal)
     if size == :normal
       'avatar'
+    elsif size == :small
+      'avatar--small'
     elsif size == :large
       'avatar--large'
     end

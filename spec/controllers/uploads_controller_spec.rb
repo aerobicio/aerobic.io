@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe UploadsController do
-  let(:user) { double(User, id: 42) }
+  let(:user) { double(User, id: 42, email: 'lol@lol.com') }
   let(:user_workouts) { double }
 
   let(:workout) do

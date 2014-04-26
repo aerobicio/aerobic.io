@@ -18,6 +18,12 @@ gem "nestive", git: "https://github.com/plasticine/nestive.git"
 gem "newrelic_rpm"
 gem "omniauth"
 gem "omniauth-identity"
+gem 'peek'
+gem 'peek-dalli'
+gem 'peek-gc'
+gem 'peek-performance_bar'
+gem 'peek-pg'
+gem 'peek-redis'
 gem "pg"
 gem "rails", "4.0.4"
 gem "react-rails", "~> 0.9.0.0"
@@ -32,6 +38,11 @@ gem "uglifier", ">= 1.3.0"
 gem "unicorn"
 gem "valid_email", :require => "valid_email/email_validator"
 gem "yui-compressor"
+
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
 
 group :development, :test do
   gem "cane"

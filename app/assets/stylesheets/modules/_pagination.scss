@@ -1,0 +1,47 @@
+.pagination {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.pagination__page,
+.pagination__gap,
+.pagination__first,
+.pagination__last,
+.pagination__next,
+.pagination__prev {
+  display: inline-block;
+
+  & > a {
+    display: inline-block;
+    border-radius: 2px;
+    border: 2px solid transparent;
+    padding: 0 8px;
+    color: #aaa;
+
+    &:hover {
+      border-color: #ddd;
+      color: darken(#aaa, 20%);
+    }
+  }
+}
+
+.pagination__page,
+.pagination__gap,
+.pagination__first,
+.pagination__last {
+  display: none;
+
+  @include media($lap-and-up) {
+    display: inline-block;
+  }
+}
+
+.pagination__page {
+  &.is-current {
+    border-radius: 2px;
+    border: 2px solid #679CEE;
+    padding: 0 8px;
+    border-radius: 2px;
+    color: #679CEE;
+  }
+}

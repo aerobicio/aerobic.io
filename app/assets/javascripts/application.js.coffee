@@ -1,4 +1,7 @@
 #= require vendor
+#= require peek
+#= require peek/views/dalli
+#= require peek/views/performance_bar
 #= require app
 #= require_tree ./lib
 #= require_tree ./config

@@ -1,4 +1,25 @@
-<ul>
-  <li><strong>Duration:</strong> <%= @view.duration %></li>
-  <li><strong>Distance:</strong> <%= @view.distance %></li>
-</ul>
+<div class="grid">
+  <div class="flag">
+    <div class="flag__figure">
+      <%= link_to member_path(id: @view.member.id) do %>
+        <%= gravatar_for_member(@view.member, size: :large) %>
+      <% end %>
+    </div>
+    <div class="flag__content"></div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="panel">
+    <ul class="data-row">
+      <li class="data-row__item">
+        <h6 class="h3 data-row__item__value"><%= @view.duration %></h6>
+        <span class="data-row__item__key">Duration</span>
+      </li>
+      <li class="data-row__item">
+        <h6 class="h3 data-row__item__value"><%= @view.distance %></h6>
+        <span class="data-row__item__key">Distance</span>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,11 +1,9 @@
 %font-weight-normal {
-  font-family: 'Proxima Nova Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 %font-weight-bold {
-  font-family: 'Proxima Nova SemiBold', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 %plane {
@@ -39,6 +37,7 @@
   border: 1px solid darken($grey, 15%);
   text-align: center;
   margin-bottom: 0;
+  font-weight: 500;
 
   &:hover {
     @include linear-gradient(lighten($grey, 10%), lighten($grey, 2%), $fallback: #fff);
@@ -50,7 +49,7 @@
   &:active {
     @include linear-gradient(darken($grey, 0%), lighten($grey, 10%), $fallback: #fff);
 
-    box-shadow: 0 1px 0 rgba(0,0,0,0.07) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.025) inset;
     color: darken($grey, 100%);
     border: 1px solid darken($grey, 10%);
     text-shadow: 0 1px 0 rgba(255,255,255,0.5);
@@ -62,10 +61,10 @@
   &:disabled:active,
   &.disabled:hover,
   &.disabled:active {
-    @include linear-gradient(lighten($grey, 10%), darken($grey, 0%), $fallback: #fbfbfb);
+    // @include linear-gradient(lighten($grey, 10%), darken($grey, 0%), $fallback: #fbfbfb);
 
     color: darken($grey, 10%);
-    border: 1px solid darken($grey, 10%);
+    // border: 1px solid darken($grey, 10%);
     box-shadow: none;
     text-shadow: none;
     cursor: not-allowed;

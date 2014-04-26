@@ -5,8 +5,11 @@
     <title><%= area :title, t("title") %></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
-    <%= render partial: "shared/vendor_header_content" %>
 
+    <%= render partial: "shared/vendor_header_content" %>
+    <%= render partial: "layouts/metaquery" %>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700,600" rel="stylesheet" type="text/css">
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "garmin_stubs", "data-turbolinks-track" => true if Rails.env.test? %>
@@ -15,6 +18,7 @@
     <%= render partial: "layouts/google_analytics" %>
   </head>
   <body class="<%= area :body_class %>" <%= area :body_data_attributes %>>
+    <%= render 'peek/bar' %>
     <%= area :main, yield %>
     <%= area :js %>
   </body>

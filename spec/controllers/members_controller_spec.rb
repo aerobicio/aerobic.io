@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe MembersController do
-  let(:user) { double(User, id: 42) }
+  let(:user) { double(User, id: 42, email: 'lol@lol.com') }
 
   before do
     session[:user_id] = 42
@@ -18,10 +18,7 @@ describe MembersController do
   end
 
   describe '#show' do
-    let(:member) { double(:member, activities: []) }
-
     before do
-      User.should_receive(:find).with('1') { member }
       get :show, id: 1
     end
 

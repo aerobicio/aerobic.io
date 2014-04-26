@@ -1,0 +1,64 @@
+.entity-masthead {
+  @include clearfix;
+  @include margin(medium, bottom);
+
+  border-bottom: 3px solid #ddd;
+}
+
+.entity-masthead__inner {
+  @extend .grid;
+
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.entity-masthead__title {
+  @include padding(medium, top);
+  @include padding(medium, bottom);
+}
+
+.entity-masthead__title,
+.entity-masthead__additional {
+  display: table-cell;
+  width: 100%;
+  vertical-align: middle;
+  color: #aaa;
+}
+
+.entity-masthead__navigation {
+  float: right;
+}
+
+.entity-masthead__navigation__item {
+  @include margin(wide, left);
+  @include padding(medium, top);
+  @include padding(medium, bottom);
+
+  display: inline-block;
+  position: relative;
+  font-weight: 600;
+
+  &:before {
+    content: '';
+    height: 3px;
+    width: 100%;
+    background-color: #ddd;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    right: 0;
+  }
+
+  &:hover {
+    color: darken(#aaa, 20%);
+
+    &:before { background-color: darken(#ddd, 20%); }
+  }
+
+  &.is-active {
+    color: #679CEE;
+
+    &:before { background-color: #679CEE; }
+  }
+}
