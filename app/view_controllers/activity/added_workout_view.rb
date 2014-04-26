@@ -51,7 +51,10 @@ class Activity
     end
 
     def workout_link
-      @context.link_to(I18n.t("activity.added_workout.title.#{sport}"), workout_path)
+      @context.link_to(
+        I18n.t("activity.added_workout.title.#{sport}"),
+        workout_path
+      )
     end
 
     def name

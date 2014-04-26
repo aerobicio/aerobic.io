@@ -44,7 +44,8 @@ describe Workouts::Show do
     subject(:distance) { view.distance }
 
     before do
-      I18n.should_receive(:t).with('units.distance.kilometers', kilometers: 1.0) { '1.0 km' }
+      I18n.should_receive(:t).with('units.distance.kilometers',
+                                   kilometers: 1.0) { '1.0 km' }
     end
 
     it 'returns the formatted workout distance' do

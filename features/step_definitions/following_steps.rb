@@ -51,10 +51,10 @@ end
 Then(/^I should see that I unfollowed "(.*?)" in my activity feed$/) do |name|
   visit dashboard_path
   page.should have_content I18n.t('activity.title.html',
-                            member_link: 'You',
-                            verb: 'unfollowed',
-                            action_link: name
-                           )
+                                  member_link: 'You',
+                                  verb: 'unfollowed',
+                                  action_link: name
+                                 )
 end
 
 Then(/^"(.*?)" should not see that fact in their activity feed$/) do |name|

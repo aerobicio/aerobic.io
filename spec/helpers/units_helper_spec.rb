@@ -16,7 +16,8 @@ describe UnitsHelper do
     let(:distance) { 100_000 }
 
     before do
-      I18n.should_receive(:t).with('units.distance.kilometers', kilometers: 1.0) { '1.0 km' }
+      I18n.should_receive(:t).with('units.distance.kilometers',
+                                   kilometers: 1.0) { '1.0 km' }
     end
 
     it { should == '1.0 km' }
