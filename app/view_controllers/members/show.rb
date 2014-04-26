@@ -55,42 +55,10 @@ module Members
       member.created_at
     end
 
-    def workouts_count
-      member.workouts.count
-    end
-
-    def follower_count
-      followers.count
-    end
-
-    def following_count
-      following.count
-    end
-
-    def workouts_path
-      member_workouts_path(member.id)
-    end
-
-    def followers_path
-      member_followers_path(member.id)
-    end
-
-    def followings_path
-      member_follows_path(member.id)
-    end
-
     private
 
     def viewing_self?
       @current_member == member
-    end
-
-    def followers
-      @followers ||= member.followers
-    end
-
-    def following
-      @following ||= member.followings
     end
 
     def workouts

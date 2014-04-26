@@ -4,6 +4,7 @@
 module AvatarHelper
   GRAVATAR_URL = '//gravatar.com/avatar/'
   GRAVATAR_DIMENSIONS = {
+    small: 32,
     normal: 64,
     large:  164
   }

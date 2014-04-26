@@ -114,40 +114,4 @@ describe Members::Show do
       it { should == 'Hey, it’s You!' }
     end
   end
-
-  # describe '#workouts_count' do
-  #   subject { view.workouts_count }
-
-  #   it { should == 2 }
-  # end
-
-  describe '#follower_count' do
-    subject { view.follower_count }
-
-    it { should == 3 }
-  end
-
-  describe '#following_count' do
-    subject { view.following_count }
-
-    it { should == 1 }
-  end
-
-  describe '#workouts_path' do
-    subject { view.workouts_path }
-
-    it { should == '/members/2/workouts' }
-  end
-
-  describe '#followers_path' do
-    subject { view.followers_path }
-
-    it { should == '/members/2/followers' }
-  end
-
-  describe '#followings_path' do
-    subject { view.followings_path }
-
-    it { should == '/members/2/follows' }
-  end
 end

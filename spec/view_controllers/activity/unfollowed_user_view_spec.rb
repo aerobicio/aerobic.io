@@ -21,7 +21,7 @@ describe Activity::UnfollowedUserView do
   describe 'cache_key' do
     subject(:cache_key) { view.cache_key }
 
-    it 'should be contain the added workout and activity workout cache keys' do
+    it 'should be contain the current and unfollowed member cache keys' do
       cache_key.should == 'foo:bar'
     end
   end

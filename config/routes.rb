@@ -19,9 +19,7 @@ AerobicIo::Application.routes.draw do
       post "unfollow"
     end
 
-    resources :workouts, only: [:index, :show]
-    resources :followers, only: [:index], controller: :followers
-    resources :follows, only: [:index], controller: :follows
+    resources :workouts, only: [:show]
   end
 
   if defined?(Kayessess)

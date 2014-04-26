@@ -6,7 +6,6 @@ describe Workouts::WorkoutPartialView do
   let(:context) { double(:context) }
   let(:current_member) { double(:current_member, name: 'Justin', cache_key: 'foo', id: 1) }
   let(:workout_member) { double(:workout_member, name: 'Mike', id: 2) }
-  # let(:url_helpers) { double }
 
   let(:workout) do
     double(:workout, id: 1,
@@ -17,10 +16,6 @@ describe Workouts::WorkoutPartialView do
                      sport?: false
           )
   end
-
-  # before do
-  #   view.stub(:url_helpers).and_return(url_helpers)
-  # end
 
   describe '#cache_key' do
     subject(:cache_key) { view.cache_key }

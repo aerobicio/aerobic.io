@@ -29,17 +29,5 @@ module Workouts
     def member
       @workout.user
     end
-
-    def title
-      'My Workout Title'
-    end
-
-    def time_boundaries
-      [
-        @workout.start_time.to_formatted_s(:rfc822),
-        content_tag(:i, '&rarr;'.html_safe, class: 'icon-rarr'),
-        @workout.end_time.to_formatted_s(:rfc822)
-      ].join(' ').html_safe
-    end
   end
 end
