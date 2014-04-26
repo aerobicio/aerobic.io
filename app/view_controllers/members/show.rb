@@ -5,8 +5,6 @@ module Members
   # View Controller for managing the logic around rendering /members/show
   #
   class Show
-    include Rails.application.routes.url_helpers
-
     attr_reader :member
 
     def initialize(context, current_member, member_id, page = 1)
@@ -63,6 +61,12 @@ module Members
 
     def workouts
       @workouts ||= member.workouts.desc.page(@page)
+    end
+
+    # Wrap access to rails url helpers to avoid including them. This allows us
+    # to stub them out during testing without requiring all of rails.
+    def url_helpers
+      Rails.application.routes.url_helpers
     end
   end
 end
