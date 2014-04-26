@@ -62,13 +62,5 @@ module Members
     def workouts
       @workouts ||= member.workouts.desc.page(@page)
     end
-
-    private
-
-    # Wrap access to rails url helpers to avoid including them. This allows us
-    # to stub them out during testing without requiring all of rails.
-    def url_helpers
-      Rails.application.routes.url_helpers
-    end
   end
 end
