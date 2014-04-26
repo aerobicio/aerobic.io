@@ -32,7 +32,7 @@ Then(/^"(.*?)" should see that I followed them in their activity feed$/) do |nam
   page.should have_content I18n.t('activity.title.html',
                                   member_link: @my_name,
                                   verb: 'followed',
-                                  action_link: 'You'
+                                  action_link: 'you'
                                  )
 end
 

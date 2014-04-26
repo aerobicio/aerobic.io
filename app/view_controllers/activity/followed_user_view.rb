@@ -41,7 +41,8 @@ class Activity
     private
 
     def following_member_link
-      @context.link_to(following_member_title, following_member_path)
+      @context.link_to(following_member_title.capitalize_first_letter,
+                       following_member_path)
     end
 
     def followed_member_link

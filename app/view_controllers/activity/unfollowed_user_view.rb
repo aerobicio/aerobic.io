@@ -41,7 +41,8 @@ class Activity
     private
 
     def unfollowing_member_link
-      @context.link_to(unfollowing_member_title, unfollowing_member_path)
+      @context.link_to(unfollowing_member_title.capitalize_first_letter,
+                       unfollowing_member_path)
     end
 
     def unfollowed_member_link

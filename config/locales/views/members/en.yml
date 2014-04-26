@@ -1,6 +1,6 @@
 en:
   members:
-    first_person: "You"
+    first_person: "you"
     third_person: "%{name}"
 
     show:
