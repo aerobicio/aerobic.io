@@ -1,6 +1,6 @@
 <ol class="grouped-list">
   <% grouped.each do |group| %>
-    <% cache group.second.map(&:cache_key).join(":") do %>
+    <% cache group.second.map(&:cache_key).join(":") + current_user.cache_key do %>
       <li class="grouped-list__group">
         <h6 class="grouped-list__group__heading">
           <%= group.first.to_formatted_s(:long) %>
