@@ -51,7 +51,8 @@ module Workouts
     end
 
     def name_link
-      @context.link_to(name, url_helpers.member_path(id: member.id))
+      @context.link_to(name.capitalize_first_letter,
+                       url_helpers.member_path(id: member.id))
     end
 
     def workout_link
