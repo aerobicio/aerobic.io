@@ -1,7 +1,7 @@
 <% cache "#{current_user.cache_key}:#{followed_user.cache_key}" do %>
   <article class="panel">
     <ul class="panel__content--padded">
-      <%= followed_user.activity_user.name_in_context_of(current_user).titleize %> followed <%= followed_user.activity_followed_user.name_in_context_of(current_user) %>
+      <%= followed_user.activity_user.name_in_context_of(current_user).capitalize_first_letter %> followed <%= followed_user.activity_followed_user.name_in_context_of(current_user) %>
     </ul>
   </article>
 <% end %>
