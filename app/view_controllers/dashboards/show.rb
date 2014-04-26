@@ -4,8 +4,10 @@ module Dashboards
   # View Controller for managing the logic around rendering /dashboards/show
   #
   class Show
-    def initialize(controller, member, page = 1)
-      @controller = controller
+    include UnitsHelper
+
+    def initialize(context, member, page = 1)
+      @context = context
       @member = member
       @page = page
     end
@@ -16,13 +18,17 @@ module Dashboards
 
     def render_activities
       if activities.any?
-        @controller.render(partial: 'activity/grouped',
-                           object: activities.group_by(&:date),
-                           locals: { activities: activities }
-                          ).first
+        @context.render(partial: 'activity/grouped',
+                        object: activities.group_by(&:date),
+                        locals: { activities: activities }
+                       )
       else
-        'You have no activity!'
+        I18n.t('activity.none.first_person')
       end
+    end
+
+    def render_activities_pagination
+      @context.paginate(activities)
     end
 
     private

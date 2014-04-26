@@ -1,0 +1,46 @@
+.ui-list {
+  font-size: 1rem;
+}
+
+.ui-list__row {
+  @extend .padding-tight-top;
+  @extend .padding-tight-bottom;
+
+  overflow: auto;
+  display: block;
+  border-top: 1px solid darken($background-color, 2.5%);
+  color: inherit;
+
+  &:first-child {
+    border-top: none;
+  }
+
+  &[href] {
+    @extend .padding-wide-right;
+
+    position: relative;
+
+    &:after {
+      @extend .padding-tight-top;
+      @extend .icon-chevron:before;
+
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: inline-block;
+      font-size: 22px;
+      color: darken($background-color, 10%);
+    }
+  }
+}
+
+.ui-list__key {
+  @extend %font-weight-bold;
+
+  float: left;
+  clear: left;
+}
+
+.ui-list__value {
+  float: right;
+}

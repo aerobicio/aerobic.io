@@ -25,18 +25,7 @@
   }
 }
 
-// Navigation Items.
-//
-// -
-//
-// :first-child - First child has the left margin removed.
-// :hover       - Hover state
-// :focus       - Focus state
-// :active      - Active state
-//
-// Styleguide Components.Navigation.Navigation Item
 .navigation__items__item {
-  @extend %font-weight-bold;
   @include transition(all 100ms $ease-in-out-quad);
   @include padding(medium, top);
   @include padding(medium, bottom);
@@ -45,13 +34,14 @@
   display: block;
   width: 100%;
   border-bottom: 1px solid darken(#d5d8dd, 5%);
+  font-weight: 600;
 
   @include media($desk) {
     @include padding(tight);
     @include padding(medium, left);
     @include padding(medium, right);
     @include margin(medium, left);
-    @include font-size(1.0, 1.5);
+    @include font-size(1.0, 1.7);
 
     border-radius: 4px;
     border: 2px solid transparent;
@@ -59,7 +49,7 @@
     float: left;
     text-transform: capitalize;
     width: auto;
-    font-size: 1.1rem;
+    font-size: 1rem;
 
     &:first-child {
       margin-left: 0;
@@ -85,12 +75,14 @@
 
   @include media($desk) {
     display: block;
-    background-color: #64A7EC;
-    border-color: #64A7EC;
-    color: #fff;
+    background-color: transparent;
+    border-color: #47536A;
+    color: #47536A;
 
     &:hover {
-      border-color: #64A7EC;
+      border-color: #47536A;
+      background-color: #47536A;
+      color: #fff;
     }
   }
 }

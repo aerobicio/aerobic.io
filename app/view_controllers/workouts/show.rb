@@ -4,7 +4,9 @@ module Workouts
   # View Controller for managing the logic around rendering /members/show
   #
   class Show
+    include ActionView::Helpers::TagHelper
     include UnitsHelper
+
     attr_reader :workout
 
     def initialize(controller, member_id, workout_id)
@@ -22,6 +24,10 @@ module Workouts
 
     def distance
       format_distance(@workout.distance)
+    end
+
+    def member
+      @workout.user
     end
   end
 end

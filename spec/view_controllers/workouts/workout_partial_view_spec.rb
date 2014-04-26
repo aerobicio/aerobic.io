@@ -1,13 +1,15 @@
-require 'load_paths_helper'
+require 'spec_helper'
 require 'workouts/workout_partial_view'
 
 describe Workouts::WorkoutPartialView do
-  let(:view) { described_class.new(current_member, workout) }
-  let(:current_member) { double(:current_member, cache_key: 'foo') }
-  let(:workout_member) { double(:workout_member, name: 'Mike') }
+  let(:view) { described_class.new(context, current_member, workout) }
+  let(:context) { double(:context) }
+  let(:current_member) { double(:current_member, name: 'Justin', cache_key: 'foo', id: 1) }
+  let(:workout_member) { double(:workout_member, name: 'Mike', id: 2) }
 
   let(:workout) do
-    double(:workout, user: workout_member,
+    double(:workout, id: 1,
+                     user: workout_member,
                      cache_key: 'lol',
                      active_duration: 999_999,
                      distance: 444_444,
@@ -30,15 +32,41 @@ describe Workouts::WorkoutPartialView do
   describe '#title' do
     subject { view.title }
 
-    let(:name) { 'Name' }
-    let(:title) { 'Name did a workout' }
-    let(:i18n_params) { ['activity.workout.title.default', name: name] }
+    context 'when current member did the workout' do
+      let(:workout_member) { current_member }
+      let(:title) do
+        '<a href="/members/1">You</a> did <a href="/members/1/workouts/1>a workout</a>'
+      end
 
-    before do
-      workout_member.should_receive(:name_in_context_of) { name }
-      I18n.should_receive(:t).with(*i18n_params) { title }
+      before do
+        workout_member.should_receive(:name_in_context_of).with(current_member) { 'You' }
+        context.should_receive(:link_to).with('You', '/members/1') do
+          '<a href="/members/1">You</a>'
+        end
+        context.should_receive(:link_to).with('a workout', '/members/1/workouts/1') do
+          '<a href="/members/1/workouts/1>a workout</a>'
+        end
+      end
+
+      it { should == title }
     end
 
-    it { should == title }
+    context 'when current member did not do the workout' do
+      let(:title) do
+        '<a href="/members/2">Mike</a> did <a href="/members/2/workouts/1>a workout</a>'
+      end
+
+      before do
+        workout_member.should_receive(:name_in_context_of).with(current_member) { 'Mike' }
+        context.should_receive(:link_to).with('Mike', '/members/2') do
+          '<a href="/members/2">Mike</a>'
+        end
+        context.should_receive(:link_to).with('a workout', '/members/2/workouts/1') do
+          '<a href="/members/2/workouts/1>a workout</a>'
+        end
+      end
+
+      it { should == title }
+    end
   end
 end

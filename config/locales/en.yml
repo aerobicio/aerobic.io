@@ -4,8 +4,6 @@ en:
   sign_in:    "Sign in"
   sign_out:   "Sign out"
 
-  you: 'you'
-
   valid_email:
     validations:
       email:
@@ -34,3 +32,7 @@ en:
       label: Github
       title: Aerobic.io on Github
       url: https://github.com/aerobicio
+    dev_blog:
+      label: Development Blog
+      title: Aerobic.io Development Blog
+      url: http://aerobicapp.tumblr.com

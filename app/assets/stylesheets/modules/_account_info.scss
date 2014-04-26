@@ -7,16 +7,17 @@
   margin-bottom: 0;
   clear: none;
   color: #a1a1a1;
-  line-height: 1.5;
+  line-height: 1.6;
   height: 6.4rem;
   border-bottom: 1px solid darken(#d5d8dd, 10%);
+  font-size: 0.9rem;
 
   @include media($desk) {
     padding: 0;
     padding-left: get_spacing(wide);
-    margin-left: get_spacing(wide) * 2;
+    margin-left: get_spacing(wide);
     float: right;
-    border-left: 2px solid #e3e4e7;
+    border-left: 2px solid darken($background-color, 10%);
     border-bottom: none;
     height: auto;
   }

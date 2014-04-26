@@ -64,7 +64,7 @@ describe User do
     context 'when member is the user' do
       let(:member) { user }
 
-      it { should == I18n.t('you') }
+      it { should == I18n.t('members.first_person') }
     end
 
     context 'when member is not the user' do

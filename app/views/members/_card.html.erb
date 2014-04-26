@@ -1,0 +1,17 @@
+<article class="entity-card">
+  <header class="entity-card__header">
+    <%= link_to(member_path(view.member)) do %>
+      <%= gravatar_for_member(view.member, size: :large, extra_classes: "entity-card__avatar avatar--large") %>
+      <h1 class="entity-card__title h4"><%= view.member_title %></h1>
+    <% end %>
+    <%= following_link_for_members(current_user, view.member) %>
+  </header>
+  <div class="entity-card__content">
+    <nav class="ui-list">
+      <div class="ui-list__row">
+        <div class="ui-list__key"><%= t('members.show.card.joined_date') %></div>
+        <div class="ui-list__value"><%= view.member_joined_date %></div>
+      </div>
+    </nav>
+  </div>
+</article>

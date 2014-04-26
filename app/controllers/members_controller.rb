@@ -6,7 +6,6 @@ class MembersController < ApplicationController
   end
 
   def show
-    @view = Members::Show.new(self, current_user, params[:id], params[:page])
   end
 
   def follow

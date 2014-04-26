@@ -1,0 +1,30 @@
+.entity-card {}
+
+.entity-card__header {
+  border-bottom: 1px solid darken($background-color, 10%);
+  background-color: #fff;
+}
+
+.entity-card__header,
+.entity-card__content {
+  @extend .padding-medium;
+}
+
+.entity-card__title,
+.entity-card__avatar {
+  text-align: center;
+  display: block;
+}
+
+.entity-card__title {
+  @extend .margin-medium-bottom;
+
+  color: #000;
+}
+
+.entity-card__avatar {
+  @extend .margin-medium-bottom;
+
+  margin-left: auto;
+  margin-right: auto;
+}

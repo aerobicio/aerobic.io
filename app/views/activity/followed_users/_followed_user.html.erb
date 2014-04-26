@@ -1,7 +1,14 @@
+<% view = Activity::FollowedUserView.new(self, current_user, followed_user) %>
+
 <% cache "#{current_user.cache_key}:#{followed_user.cache_key}" do %>
   <article class="panel">
-    <ul class="panel__content--padded">
-      <%= followed_user.activity_user.name_in_context_of(current_user).titleize %> followed <%= followed_user.activity_followed_user.name_in_context_of(current_user) %>
-    </ul>
+    <header class="panel__header--padded">
+      <figure class="panel__figure">
+        <%= gravatar_for_member(view.following_member) %>
+      </figure>
+      <h6 class="panel__header__heading h6">
+        <%= view.title %>
+      </h6>
+    </header>
   </article>
 <% end %>

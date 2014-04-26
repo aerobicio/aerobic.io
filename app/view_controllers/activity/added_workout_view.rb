@@ -8,7 +8,8 @@ class Activity
   class AddedWorkoutView
     include UnitsHelper
 
-    def initialize(current_member, added_workout)
+    def initialize(context, current_member, added_workout)
+      @context = context
       @current_member = current_member
       @added_workout = added_workout
     end
@@ -21,7 +22,10 @@ class Activity
     end
 
     def title
-      I18n.t("activity.workout.title.#{sport}", name: name)
+      I18n.t('activity.title.html',
+             member_link: name_link,
+             verb: I18n.t('activity.added_workout.title.verb'),
+             action_link: workout_link).html_safe
     end
 
     def duration
@@ -41,6 +45,17 @@ class Activity
     end
 
     private
+
+    def name_link
+      @context.link_to(name, url_helpers.member_path(id: member.id))
+    end
+
+    def workout_link
+      @context.link_to(
+        I18n.t("activity.added_workout.title.#{sport}"),
+        workout_path
+      )
+    end
 
     def name
       member.name_in_context_of(@current_member)

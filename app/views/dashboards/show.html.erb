@@ -1,6 +1,29 @@
-<% cache @view.cache_key do %>
-  <div class="grid-container">
-    <h2 class="h3">Recent Activity</h1>
-    <%= @view.render_activities %>
+<% view = Dashboards::Show.new(self, current_user, params[:page]) %>
+
+<% cache view.cache_key do %>
+  <div class="layout-with-sidebar">
+    <div class="layout-with-sidebar__sidebar">
+      <article class="panel--flat">
+        <header class="panel__header--padded">
+          <h6 class="h6">Development Notice?</h6>
+        </header>
+        <div class="panel__content--padded">
+          Here are some word about the next feature we are building or
+          announcing to all our new shiny BETA users...
+        </div>
+      </article>
+    </div>
+
+    <section class="layout-with-sidebar__content">
+      <header class="entity-masthead">
+        <h1 class="entity-masthead__title h4">
+          <%= t('activity.heading') %>
+        </h1>
+        <div class="entity-masthead__additional">
+          <%= view.render_activities_pagination %>
+        </div>
+      </header>
+      <%= view.render_activities %>
+    </section>
   </div>
 <% end %>

@@ -4,11 +4,28 @@
 
   height: 3.2rem;
   width: 3.2rem;
-  border-radius: 3.2rem;
-  display: inline-block;
-  background-color: #ccc;
+  border-radius: 50%;
+  display: block;
   position: relative;
   overflow: hidden;
+}
+
+.avatar__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+.avatar--small {
+  @extend .avatar;
+
+  height: 2.2rem;
+  width: 2.2rem;
 }
 
 .avatar--large {
@@ -16,14 +33,4 @@
 
   height: 8.2rem;
   width: 8.2rem;
-  border-radius: 8.2rem;
-  border: 0.4rem solid #053a51;
-}
-
-.avatar__image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
 }
