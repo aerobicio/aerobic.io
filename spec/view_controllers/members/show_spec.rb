@@ -111,7 +111,7 @@ describe Members::Show do
     context 'the current_member is the member' do
       let(:current_member) { member }
 
-      it { should == 'Hey, it’s You!' }
+      it { should == 'Hey, it’s you!' }
     end
   end
 end
