@@ -18,19 +18,17 @@
           <span class="badge"><%= view.workouts_count %></span>
         </div>
       <% end %>
-      <% if $switch_board.following_active?(current_user) %>
-        <%= link_to(view.followers_path, class: "ui-list__row") do %>
-          <div class="ui-list__key">Followers</div>
-          <div class="ui-list__value">
-            <span class="badge"><%= view.follower_count %></span>
-          </div>
-        <% end %>
-        <%= link_to(view.followings_path, class: "ui-list__row") do %>
-          <div class="ui-list__key">Follows</div>
-          <div class="ui-list__value">
-            <span class="badge"><%= view.following_count %></span>
-          </div>
-        <% end %>
+      <%= link_to(view.followers_path, class: "ui-list__row") do %>
+        <div class="ui-list__key">Followers</div>
+        <div class="ui-list__value">
+          <span class="badge"><%= view.follower_count %></span>
+        </div>
+      <% end %>
+      <%= link_to(view.followings_path, class: "ui-list__row") do %>
+        <div class="ui-list__key">Follows</div>
+        <div class="ui-list__value">
+          <span class="badge"><%= view.following_count %></span>
+        </div>
       <% end %>
     </nav>
   </div>

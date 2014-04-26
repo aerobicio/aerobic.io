@@ -1,5 +1,4 @@
 en:
-  workouts:
-    none:
-      first_person: "You have no workouts!"
-      third_person: "%{name} has no workouts!"
+  members:
+    first_person: "You"
+    third_person: "%{name}"

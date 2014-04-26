@@ -1,8 +1,6 @@
 # MembersController provides a restful interface onto the Member resource.
 #
 class MembersController < ApplicationController
-  before_action :ensure_following_is_active, only: [:follow, :unfollow]
-
   def index
     @view = Members::Index.new(self, current_user)
   end
@@ -43,13 +41,5 @@ class MembersController < ApplicationController
       fail ActiveRecord::Rollback unless result.success?
     end
     notice
-  end
-
-  def ensure_following_is_active
-    render_404 && return unless $switch_board.following_active?(current_user)
-  end
-
-  def render_404
-    render file: "#{Rails.root}/public/404.html", status: :not_found
   end
 end

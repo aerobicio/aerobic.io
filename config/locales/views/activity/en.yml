@@ -1,18 +1,26 @@
 en:
   activity:
+    heading: "Activity Stream"
+
     title:
-      first_person: "You"
-      third_person: "%{name}"
+      html: "%{member_link} %{verb} %{action_link}"
 
     none:
       first_person: "You have no activity!"
-
-    added_workout:
-      action: "uploaded"
-      object: "a workout"
+      third_person: "%{name} has no activity!"
 
     followed_user:
-      title: "followed"
+      title:
+        verb: "followed"
 
     unfollowed_user:
-      title: "unfollowed"
+      title:
+        verb: "unfollowed"
+
+    added_workout:
+      title:
+        verb: "added"
+        default: "a workout"
+        cycling: "a ride"
+        running: "a run"
+        swimming: "a swim"

@@ -5,7 +5,7 @@ gem "bcrypt-ruby", "~> 3.1.2"
 gem "bindata"
 gem "bourbon"
 gem "dalli"
-gem "fit-client", git: "https://github.com/aerobicio/fit-client.git", branch: 'create-workouts'
+gem "fit-client", git: "https://github.com/aerobicio/fit-client.git", branch: 'get-sport'
 gem "foreigner"
 gem "foreman"
 gem "interactor-rails", "~> 1.0"
@@ -25,7 +25,7 @@ gem "redis"
 gem "rollout"
 gem "sass-rails", "~> 4.0.3"
 gem "sentry-raven"
-gem "tcx", :git => "https://github.com/aerobicio/tcx.git"
+gem "tcx", :git => "https://github.com/aerobicio/tcx.git", branch: 'master'
 gem "turbolinks"
 gem "typogruby"
 gem "uglifier", ">= 1.3.0"

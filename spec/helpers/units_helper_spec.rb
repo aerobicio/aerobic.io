@@ -8,7 +8,7 @@ describe UnitsHelper do
     subject { format_duration(duration) }
     let(:duration) { 600_00 }
 
-    it { should == '0:01:00' }
+    it { should == '0:01:00 hr' }
   end
 
   describe '#format_distance' do
@@ -16,7 +16,7 @@ describe UnitsHelper do
     let(:distance) { 100_000 }
 
     before do
-      I18n.should_receive(:t).with('units.distance', distance: 1.0) { '1.0 km' }
+      I18n.should_receive(:t).with('units.distance.kilometers', kilometers: 1.0) { '1.0 km' }
     end
 
     it { should == '1.0 km' }

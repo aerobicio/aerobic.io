@@ -7,7 +7,6 @@ module Workouts
   #
   class WorkoutPartialView
     include UnitsHelper
-    include Rails.application.routes.url_helpers
 
     def initialize(context, current_member, workout)
       @context = context
@@ -23,11 +22,10 @@ module Workouts
     end
 
     def title
-      [
-        @context.link_to(member_title, member_path(id: member.id)),
-        I18n.t('workouts.title.action'),
-        @context.link_to(I18n.t('workouts.title.object'), workout_path)
-      ].join(' ').html_safe
+      I18n.t('workouts.title.html',
+             member_link: name_link,
+             verb: verb_for_workout,
+             action_link: workout_link).html_safe
     end
 
     def duration
@@ -48,12 +46,24 @@ module Workouts
 
     private
 
-    def member_title
-      if @current_member == member
-        I18n.t('workouts.title.first_person')
-      else
-        I18n.t('workouts.title.third_person', name: member.name)
-      end
+    def verb_for_workout
+      I18n.t("workouts.title.#{sport}.verb")
+    end
+
+    def name_link
+      @context.link_to(name, url_helpers.member_path(id: member.id))
+    end
+
+    def workout_link
+      @context.link_to(I18n.t("workouts.title.#{sport}.text"), workout_path)
+    end
+
+    def name
+      member.name_in_context_of(@current_member)
+    end
+
+    def sport
+      @workout.sport? ? @workout.sport.downcase : 'default'
     end
 
     def member

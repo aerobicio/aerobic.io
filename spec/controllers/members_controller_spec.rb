@@ -26,62 +26,36 @@ describe MembersController do
     it { should render_template(:show) }
   end
 
+  @following
   describe 'follow' do
-    @following
-    context 'when following is turned off' do
-      before do
-        $switch_board.deactivate_following
-        post :follow, id: 22
-      end
-
-      it { should respond_with(:not_found) }
+    before do
+      FollowMember.should_receive(:perform) { result }
+      post :follow, id: 22
     end
 
-    @following
-    context 'when following is turned on' do
-      before do
-        $switch_board.activate_following
-        FollowMember.should_receive(:perform) { result }
-        post :follow, id: 22
-      end
-
-      let(:result) do
-        double(:result, success?: true,
-                        notice: 'My Notice')
-      end
-
-      it { should set_the_flash[:notice].to('My Notice') }
-      it { should redirect_to(members_path) }
+    let(:result) do
+      double(:result, success?: true,
+                      notice: 'My Notice')
     end
+
+    it { should set_the_flash[:notice].to('My Notice') }
+    it { should redirect_to(members_path) }
   end
 
+  @following
   describe 'unfollow' do
-    @following
-    context 'when following is turned off' do
-      before do
-        $switch_board.deactivate_following
-        post :unfollow, id: 22
-      end
-
-      it { should respond_with(:not_found) }
+    before do
+      UnFollowMember.should_receive(:perform) { result }
+      post :unfollow, id: 22
     end
 
-    @following
-    context 'when following is turned on' do
-      before do
-        $switch_board.activate_following
-        UnFollowMember.should_receive(:perform) { result }
-        post :unfollow, id: 22
-      end
-
-      let(:result) do
-        double(:result, success?: true,
-                        notice: 'My Notice')
-      end
-
-      it { should set_the_flash[:notice].to('My Notice') }
-
-      it { should redirect_to(members_path) }
+    let(:result) do
+      double(:result, success?: true,
+                      notice: 'My Notice')
     end
+
+    it { should set_the_flash[:notice].to('My Notice') }
+
+    it { should redirect_to(members_path) }
   end
 end

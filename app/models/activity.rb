@@ -14,10 +14,6 @@ class Activity < ActiveRecord::Base
 
   default_scope { order(created_at: :desc) }
 
-  scope :exclude_following, lambda {
-    where.not(type: ['Activity::FollowedUser', 'Activity::UnfollowedUser'])
-  }
-
   def date
     created_at.try(:to_date)
   end

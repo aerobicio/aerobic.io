@@ -36,7 +36,7 @@ describe Workouts::Show do
     subject(:duration) { view.duration }
 
     it 'returns the formatted workout duration' do
-      duration.should == '0:01:00'
+      duration.should == '0:01:00 hr'
     end
   end
 
@@ -44,7 +44,7 @@ describe Workouts::Show do
     subject(:distance) { view.distance }
 
     before do
-      I18n.should_receive(:t).with('units.distance', distance: 1.0) { '1.0 km' }
+      I18n.should_receive(:t).with('units.distance.kilometers', kilometers: 1.0) { '1.0 km' }
     end
 
     it 'returns the formatted workout distance' do

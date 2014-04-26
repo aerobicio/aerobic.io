@@ -49,11 +49,7 @@ module Dashboards
     end
 
     def member_activities
-      if $switch_board.following_active?(@member)
-        @member.activities
-      else
-        @member.activities.exclude_following
-      end
+      @member.activities
     end
   end
 end

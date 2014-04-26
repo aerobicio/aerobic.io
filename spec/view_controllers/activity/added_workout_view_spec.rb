@@ -1,4 +1,5 @@
-require 'spec_helper'
+require 'load_paths_helper'
+require 'activity/added_workout_view'
 
 describe Activity::AddedWorkoutView do
   let(:view) { described_class.new(context, current_member, added_workout) }
@@ -19,7 +20,8 @@ describe Activity::AddedWorkoutView do
     double(:activity_workout, id: 1,
                               cache_key: 'bar',
                               active_duration: 100_000,
-                              distance: 200_000
+                              distance: 200_000,
+                              sport?: false
           )
   end
 
@@ -31,7 +33,7 @@ describe Activity::AddedWorkoutView do
     end
   end
 
-  describe 'title' do
+  describe '#title' do
     subject { view.title }
 
     before do
@@ -41,15 +43,18 @@ describe Activity::AddedWorkoutView do
 
     context 'when current_member added the activity' do
       let(:member) { current_member }
-      let(:title) { 'You uploaded a workout' }
+      let(:title) {
+        '<a href="/members/1">You</a> added <a href="/members/1/workouts/1>a workout</a>'
+      }
 
       before do
-        context.should_receive(:link_to)
-          .with('You', '/members/1')
-          .once { 'You' }
-        context.should_receive(:link_to)
-          .with(I18n.t('activity.added_workout.object'), '/members/1/workouts/1')
-          .once { I18n.t('activity.added_workout.object') }
+        member.should_receive(:name_in_context_of).with(current_member) { 'You' }
+        context.should_receive(:link_to).with('You', '/members/1') {
+          '<a href="/members/1">You</a>'
+        }
+        context.should_receive(:link_to).with('a workout', '/members/1/workouts/1') {
+          '<a href="/members/1/workouts/1>a workout</a>'
+        }
       end
 
       it { should == title }
@@ -57,16 +62,18 @@ describe Activity::AddedWorkoutView do
 
     context 'when another member added the activity' do
       let(:member) { another_member }
-      let(:title) { 'Gus uploaded a workout' }
+      let(:title) {
+        '<a href="/members/2">Gus</a> added <a href="/members/2/workouts/1>a workout</a>'
+      }
 
       before do
-        member.should_receive(:name)
-        context.should_receive(:link_to)
-          .with(another_member.name, '/members/2')
-          .once { another_member.name }
-        context.should_receive(:link_to)
-          .with(I18n.t('activity.added_workout.object'), '/members/2/workouts/1')
-          .once { I18n.t('activity.added_workout.object') }
+        member.should_receive(:name_in_context_of).with(current_member) { 'Gus' }
+        context.should_receive(:link_to).with('Gus', '/members/2') {
+          '<a href="/members/2">Gus</a>'
+        }
+        context.should_receive(:link_to).with('a workout', '/members/2/workouts/1') {
+          '<a href="/members/2/workouts/1>a workout</a>'
+        }
       end
 
       it { should == title }
@@ -76,11 +83,15 @@ describe Activity::AddedWorkoutView do
   describe 'duration' do
     subject { view.duration }
 
-    it { should == '0:01:40' }
+    it { should == '0:01:40 hr' }
   end
 
   describe 'distance' do
     subject { view.distance }
+
+    before do
+      I18n.should_receive(:t).with('units.distance.kilometers', kilometers: 2.0) { '2.0 km' }
+    end
 
     it { should == '2.0 km' }
   end

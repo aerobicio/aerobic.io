@@ -31,13 +31,10 @@ describe Members::Show do
 
   let(:workout_1) { double(:workout_1, cache_key: 'a1', date: Date.today) }
   let(:workout_2) { double(:workout_2, cache_key: 'a2', date: Date.today) }
-  let(:following_active) { true }
 
   before do
     stub_const('User', Class.new)
     User.should_receive(:find).with(member_id) { member }
-    $switch_board ||= Class.new
-    $switch_board.stub(:following_active?) { following_active }
   end
 
   describe '#cache_key' do

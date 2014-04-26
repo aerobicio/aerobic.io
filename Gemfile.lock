@@ -1,13 +1,14 @@
 GIT
   remote: https://github.com/aerobicio/fit-client.git
-  revision: 7999eeb4ac640f600bcd5e331b0432f80a038046
-  branch: create-workouts
+  revision: 4159d642273fbadcec1f80388f5b59e7f45b78ae
+  branch: get-sport
   specs:
     fit-client (0.0.1)
 
 GIT
   remote: https://github.com/aerobicio/tcx.git
-  revision: 69773b77f25f1c4ce5115547f3c9eddb6402b274
+  revision: 9d93b2aa11ee522039d96794339b8a1f702a7846
+  branch: master
   specs:
     tcx (0.0.1)
       ox

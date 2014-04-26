@@ -1,5 +1,5 @@
 require 'i18n'
-require_relative '../../helpers/units_helper'
+require 'units_helper'
 
 class Activity
   # View Controller for managing the logic around rendering
@@ -7,7 +7,6 @@ class Activity
   #
   class AddedWorkoutView
     include UnitsHelper
-    include Rails.application.routes.url_helpers
 
     def initialize(context, current_member, added_workout)
       @context = context
@@ -23,11 +22,10 @@ class Activity
     end
 
     def title
-      [
-        @context.link_to(member_title, member_path(id: member.id)),
-        I18n.t('activity.added_workout.action'),
-        @context.link_to(I18n.t('activity.added_workout.object'), workout_path)
-      ].join(' ').html_safe
+      I18n.t('activity.title.html',
+             member_link: name_link,
+             verb: I18n.t('activity.added_workout.title.verb'),
+             action_link: workout_link).html_safe
     end
 
     def duration
@@ -39,7 +37,7 @@ class Activity
     end
 
     def workout_path
-      member_workout_path(member_id: member.id, id: workout.id)
+      url_helpers.member_workout_path(member_id: member.id, id: workout.id)
     end
 
     def workout_member
@@ -48,12 +46,20 @@ class Activity
 
     private
 
-    def member_title
-      if @current_member == member
-        I18n.t('activity.title.first_person')
-      else
-        I18n.t('activity.title.third_person', name: member.name)
-      end
+    def name_link
+      @context.link_to(name, url_helpers.member_path(id: member.id))
+    end
+
+    def workout_link
+      @context.link_to(I18n.t("activity.added_workout.title.#{sport}"), workout_path)
+    end
+
+    def name
+      member.name_in_context_of(@current_member)
+    end
+
+    def sport
+      workout.sport? ? workout.sport.downcase : 'default'
     end
 
     def member
@@ -62,6 +68,12 @@ class Activity
 
     def workout
       @added_workout.activity_workout
+    end
+
+    # Wrap access to rails url helpers to avoid including them. This allows us
+    # to stub them out during testing without requiring all of rails.
+    def url_helpers
+      Rails.application.routes.url_helpers
     end
   end
 end

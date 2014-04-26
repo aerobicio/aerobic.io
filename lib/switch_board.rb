@@ -13,7 +13,7 @@ class SwitchBoard
     @rollout = rollout
   end
 
-  FEATURE_FLIPS = [:sign_up, :following]
+  FEATURE_FLIPS = [:sign_up]
 
   FEATURE_FLIPS.each do |flip_name|
     define_method "activate_#{flip_name}" do |group = :all|

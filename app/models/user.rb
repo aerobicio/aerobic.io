@@ -34,4 +34,12 @@ class User < ActiveRecord::Base
   def follows?(user)
     followings.map(&:id).include?(user.id)
   end
+
+  def name_in_context_of(member)
+    if member == self
+      I18n.t('members.first_person')
+    else
+      name
+    end
+  end
 end
