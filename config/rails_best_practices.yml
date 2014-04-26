@@ -22,7 +22,7 @@ ProtectMassAssignmentCheck: { }
 RemoveEmptyHelpersCheck: { }
 #RemoveTabCheck: { }
 RemoveTrailingWhitespaceCheck: { }
-RemoveUnusedMethodsInControllersCheck: { except_methods: [] }
+RemoveUnusedMethodsInControllersCheck: { except_methods: ['ApplicationController#peek_enabled?'] }
 RemoveUnusedMethodsInHelpersCheck: { except_methods: [SessionsHelper#initialize, HomesHelper#initialize, HomesHelper#to_partial_path, UnitsHelper#format_duration, UnitsHelper#format_distance] }
 RemoveUnusedMethodsInModelsCheck: { except_methods: [User#to_partial_path, Activity#date, Workout#date] }
 ReplaceComplexCreationWithFactoryMethodCheck: { attribute_assignment_count: 2 }

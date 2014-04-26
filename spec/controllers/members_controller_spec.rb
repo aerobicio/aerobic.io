@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe MembersController do
-  let(:user) { double(User, id: 42) }
+  let(:user) { double(User, id: 42, email: 'lol@lol.com') }
 
   before do
     session[:user_id] = 42

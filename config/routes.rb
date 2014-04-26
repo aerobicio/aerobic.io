@@ -25,6 +25,8 @@ AerobicIo::Application.routes.draw do
     mount Kayessess::Engine => "/styleguide", :as => 'kayessess'
   end
 
+  mount Peek::Railtie => '/peek'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

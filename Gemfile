@@ -18,6 +18,12 @@ gem "nestive", git: "https://github.com/plasticine/nestive.git"
 gem "newrelic_rpm"
 gem "omniauth"
 gem "omniauth-identity"
+gem 'peek'
+gem 'peek-dalli'
+gem 'peek-gc'
+gem 'peek-performance_bar'
+gem 'peek-pg'
+gem 'peek-redis'
 gem "pg"
 gem "rails", "4.0.4"
 gem "react-rails", "~> 0.9.0.0"
