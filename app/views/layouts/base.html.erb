@@ -19,6 +19,8 @@
           <section class="<%= area :content_class, 'content' %>" role="main">
             <%= render(partial: 'shared/burger') %>
             <%= area :content do %>
+              <%= render 'peek/bar' %>
+
               <div class="content__inner">
                 <%= area :content_inner -%>
               </div>

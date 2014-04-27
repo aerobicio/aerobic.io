@@ -18,7 +18,6 @@
     <%= render partial: "layouts/google_analytics" %>
   </head>
   <body class="<%= area :body_class %>" <%= area :body_data_attributes %>>
-    <%= render 'peek/bar' %>
     <%= area :main, yield %>
     <%= area :js %>
   </body>

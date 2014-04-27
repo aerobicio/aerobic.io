@@ -215,8 +215,6 @@ GEM
       atomic (>= 1.0.0)
       dalli
       peek
-    peek-gc (0.0.2)
-      peek
     peek-performance_bar (1.1.3)
       peek (>= 0.1.0)
     peek-pg (1.1.0)
@@ -440,7 +438,6 @@ DEPENDENCIES
   omniauth-identity
   peek
   peek-dalli
-  peek-gc
   peek-performance_bar
   peek-pg
   peek-redis
