@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 ruby "2.0.0", :patchlevel => "353"
 
+gem "acts_as_commentable"
 gem "bcrypt-ruby", "~> 3.1.2"
 gem "bindata"
 gem "bourbon"

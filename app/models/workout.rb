@@ -6,6 +6,7 @@ require 'user'
 class Workout < ActiveRecord::Base
   has_one :tcx_file
   belongs_to :user
+  acts_as_commentable
 
   validates :active_duration, :distance, :duration,  presence: true
   validates :end_time, :start_time, :user, presence: true
