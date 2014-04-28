@@ -59,7 +59,7 @@ group :development, :test do
   gem "rspec-rails", "~> 2.0"
   gem "rubocop", '~> 0.20.1'
   gem "selenium-webdriver"
-  gem "teaspoon", "~> 0.7.8"
+  gem "teaspoon", "~> 0.8.0"
 end
 
 group :doc do
