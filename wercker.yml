@@ -1,4 +1,4 @@
-box: plasticine/aerobic.io@0.0.7
+box: plasticine/aerobic.io@0.0.8
 services:
     - wercker/postgresql
     - wercker/redis
@@ -61,10 +61,6 @@ build:
             name: copy bower cache
             code: |
                 cp -R .bower-* $WERCKER_CACHE_DIR/wercker/bower
-        - plasticine/librato-build-metrics@0.0.18:
-            user: $LIBRATO_USER
-            token: $LIBRATO_TOKEN
-            namespace: aerobicio
         - sherzberg/slack-notify:
             subdomain: aerobic
             token: $SLACK_TOKEN
