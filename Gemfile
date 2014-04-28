@@ -24,7 +24,7 @@ gem 'peek-performance_bar'
 gem 'peek-pg'
 gem 'peek-redis'
 gem "pg"
-gem "rails", "4.0.4"
+gem "rails", "4.1.0"
 gem "react-rails", "~> 0.10.0.0"
 gem "redis"
 gem "rollout"
