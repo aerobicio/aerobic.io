@@ -1,7 +1,7 @@
 # Set RAILS_ROOT and load the environment if it's not already loaded.
 unless defined?(Rails)
-  ENV["RAILS_ROOT"] = File.expand_path("../../", __FILE__)
-  require File.expand_path("../../config/environment", __FILE__)
+  ENV['RAILS_ROOT'] = File.expand_path('../../', __FILE__)
+  require File.expand_path('../../config/environment', __FILE__)
 end
 
 Teaspoon.configure do |config|
@@ -12,7 +12,7 @@ Teaspoon.configure do |config|
   # Specifies the root where Teaspoon will look for files. If you're testing an engine using a dummy application it can
   # be useful to set this to your engines root (e.g. `Teaspoon::Engine.root`).
   # Note: Defaults to `Rails.root` if nil.
-  #config.root = nil
+  # config.root = nil
 
   # Paths that will be appended to the Rails assets paths
   # Note: Relative to `config.root`.
@@ -20,7 +20,7 @@ Teaspoon.configure do |config|
 
   # Fixtures are rendered through a controller, which allows using HAML, RABL/JBuilder, etc. Files in these paths will
   # be rendered as fixtures.
-  #config.fixture_paths = ["spec/javascripts/fixtures"]
+  # config.fixture_paths = ["spec/javascripts/fixtures"]
 
   # SUITES
   #
@@ -61,28 +61,28 @@ Teaspoon.configure do |config|
     # a `_boot.html.erb` in your fixtures path, and adjust the config to `"/boot"` for instance.
     #
     # Available: boot, boot_require_js
-    #suite.boot_partial = "boot"
+    # suite.boot_partial = "boot"
 
     # Partial to be rendered in the body tag of the runner. You can define your own to create a custom body structure.
-    #suite.body_partial = "body"
+    # suite.body_partial = "body"
 
     # Assets to be ignored when generating coverage reports. Accepts an array of filenames or regular expressions. The
     # default excludes assets from vendor, gems and support libraries.<br/><br/>
     suite.no_coverage = [%r{/lib/ruby/gems/},
                          %r{/vendor/assets/},
                          %r{/support/},
-                         %r{/(.+)_helper.}]
+                         /(.+)_helper./]
 
     # Hooks allow you to use `Teaspoon.hook("fixtures")` before, after, or during your spec run. This will make a
     # synchronous Ajax request to the server that will call all of the blocks you've defined for that hook name.
-    #suite.hook :fixtures, proc{ }
+    # suite.hook :fixtures, proc{ }
   end
 
   # Example suite. Since we're just filtering to files already within the root test/javascripts, these files will also
   # be run in the default suite -- but can be focused into a more specific suite.
-  #config.suite :targeted do |suite|
+  # config.suite :targeted do |suite|
   #  suite.matcher = "test/javascripts/targeted/*_test.{js,js.coffee,coffee}"
-  #end
+  # end
 
   # CONSOLE RUNNER SPECIFIC
   #
@@ -114,10 +114,10 @@ Teaspoon.configure do |config|
   config.driver_timeout = 60
 
   # Specify a server to use with Rack (e.g. thin, mongrel). If nil is provided Rack::Server is used.
-  #config.server = nil
+  # config.server = nil
 
   # Specify a port to run on a specific port, otherwise Teaspoon will use a random available port.
-  #config.server_port = nil
+  # config.server_port = nil
 
   # Timeout for starting the server in seconds. If your server is slow to start you may have to bump this, or you may
   # want to lower this if you know it shouldn't take long to start.
@@ -125,7 +125,7 @@ Teaspoon.configure do |config|
 
   # Force Teaspoon to fail immediately after a failing suite. Can be useful to make Teaspoon fail early if you have
   # several suites, but in environments like CI this may not be desirable.
-  #config.fail_fast = true
+  # config.fail_fast = true
 
   # Specify the formatters to use when outputting the results.
   # Note: Output files can be specified by using `"junit>/path/to/output.xml"`.
@@ -159,7 +159,7 @@ Teaspoon.configure do |config|
     # Which coverage reports Instanbul should generate. Correlates directly to what Istanbul supports.
     #
     # Available: text-summary, text, html, lcov, lcovonly, cobertura, teamcity
-    coverage.reports = ['text', 'html']
+    coverage.reports = %w(text html)
 
     # The path that the coverage should be written to - when there's an artifact to write to disk.
     # Note: Relative to `config.root`.
