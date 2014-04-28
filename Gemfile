@@ -57,7 +57,7 @@ group :development, :test do
   gem "rails_best_practices"
   gem "rails-erd"
   gem "rspec-rails", "~> 2.0"
-  gem "rubocop"
+  gem "rubocop", '~> 0.20.1'
   gem "selenium-webdriver"
   gem "teaspoon", "~> 0.7.8"
 end
