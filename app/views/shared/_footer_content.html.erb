@@ -1,3 +1,5 @@
+aerobic.io/home
+
 <nav class="elsewhere">
   <%= link_to t('footer.github.label'), t('footer.github.url'),
     title: t('footer.github.label'),
@@ -13,7 +15,10 @@
     title: t('footer.dev_blog.label'),
     class: 'elsewhere__link--dev_blog'
   %>
+  &bull;
+  <%= mail_to('feedback@aerobic.io', 'feedback@aerobic.io', encode: 'javascript') %>
 </nav>
 <p>
-  Created by <%= link_to t('footer.awesome.plasticine.handle'), t('footer.awesome.plasticine.url'), title: t('footer.awesome.plasticine.title') %> and <%= link_to t('footer.awesome.quamen.handle'), t('footer.awesome.quamen.url'), title: t('footer.awesome.quamen.title') %> in Melbourne, Australia.
+  &copy; 2014 Aerobic IO
+  Built by <%= link_to t('footer.awesome.plasticine.handle'), t('footer.awesome.plasticine.url'), title: t('footer.awesome.plasticine.title') %> and <%= link_to t('footer.awesome.quamen.handle'), t('footer.awesome.quamen.url'), title: t('footer.awesome.quamen.title') %> in Melbourne, Australia.
 </p>

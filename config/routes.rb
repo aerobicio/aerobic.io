@@ -1,6 +1,8 @@
 AerobicIo::Application.routes.draw do
   root "dashboards#show"
 
+  get "/home", to: redirect(ENV['STATIC_SITE_URL'])
+
   get "sign_up", to: "identities#new"
   get "sign_in", to: "sessions#new"
   put "sign_out", to: "sessions#destroy"

@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
-<svg version="1.1" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-	 y="0px" viewBox="0 0 512 512" xml:space="preserve">
-<g id="baseline">
-</g>
-<g id="Layer_2">
-	<path d="M410.644,246H292V127.356c0-6.272-5.084-11.356-11.356-11.356h-49.288c-6.272,0-11.356,5.084-11.356,11.356V246H101.356
-		C95.084,246,90,251.084,90,257.356v49.289C90,312.916,95.084,318,101.356,318H220v118.644c0,6.272,5.084,11.356,11.356,11.356
-		h49.288c6.272,0,11.356-5.084,11.356-11.356V318h118.644c6.272,0,11.356-5.084,11.356-11.356v-49.289
-		C422,251.084,416.916,246,410.644,246z"/>
-</g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.0.1 (7597) - http://www.bohemiancoding.com/sketch -->
+    <title>add</title>
+    <description>Created with Sketch.</description>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="add" sketch:type="MSArtboardGroup" fill="#000000">
+            <path d="M54,54 L54,18.0050964 C54,16.8890615 54.8913093,16 55.9907951,16 L72.0092049,16 C73.1017876,16 74,16.8977123 74,18.0050964 L74,54 L109.994904,54 C111.110939,54 112,54.8913093 112,55.9907951 L112,72.0092049 C112,73.1017876 111.102288,74 109.994904,74 L74,74 L74,109.994904 C74,111.110939 73.1086907,112 72.0092049,112 L55.9907951,112 C54.8982124,112 54,111.102288 54,109.994904 L54,74 L18.0050964,74 C16.8890615,74 16,73.1086907 16,72.0092049 L16,55.9907951 C16,54.8982124 16.8977123,54 18.0050964,54 L54,54 Z" id="Rectangle-1" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
 </svg>
