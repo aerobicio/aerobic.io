@@ -167,9 +167,9 @@ Teaspoon.configure do |config|
 
     # Various thresholds requirements can be defined, and those thresholds will be checked at the end of a run. If any
     # aren't met the run will fail with a message. Thresholds can be defined as a percentage (0-100), or nil.
-    coverage.statements = 98.13
-    coverage.branches   = 82.73
-    coverage.functions  = 99.53
-    coverage.lines      = 98.61
+    coverage.statements = 97
+    coverage.branches   = 80
+    coverage.lines      = 98
+    coverage.functions  = 99
   end
 end
