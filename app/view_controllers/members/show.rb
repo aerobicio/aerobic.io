@@ -50,7 +50,7 @@ module Members
     end
 
     def member_joined_date
-      member.created_at
+      member.created_at.to_date.to_s(:long)
     end
 
     private
