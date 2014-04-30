@@ -56,11 +56,13 @@ module Members
     end
 
     def member_follows
-      I18n.t('members.show.card.follows_members', count: member.followings.count)
+      I18n.t('members.show.card.follows_members',
+             count: member.followings.count)
     end
 
     def member_followers
-      I18n.t('members.show.card.followed_by_members', count: member.followers.count)
+      I18n.t('members.show.card.followed_by_members',
+             count: member.followers.count)
     end
 
     private
