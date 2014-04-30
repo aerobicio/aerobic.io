@@ -41,7 +41,7 @@ describe Members::Show do
     subject(:cache_key) { view.cache_key }
 
     it 'should be a combination of the members cached keys' do
-      cache_key.should == '1:2:a1:a2'
+      cache_key.should == '1:2:3:1:a1:a2'
     end
   end
 

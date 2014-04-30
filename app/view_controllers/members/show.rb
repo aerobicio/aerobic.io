@@ -18,6 +18,8 @@ module Members
       [
         @current_member.cache_key,
         member.cache_key,
+        member.followers.count,
+        member.followings.count,
         workouts.map(&:cache_key)
       ].flatten.join(':')
     end
@@ -51,6 +53,14 @@ module Members
 
     def member_joined_date
       member.created_at.to_date.to_s(:long)
+    end
+
+    def member_follows
+      I18n.t('members.show.card.follows_members', count: member.followings.count)
+    end
+
+    def member_followers
+      I18n.t('members.show.card.followed_by_members', count: member.followers.count)
     end
 
     private

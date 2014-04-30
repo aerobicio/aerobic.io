@@ -13,3 +13,11 @@ en:
         workouts: "Workouts"
         followers: "Followers"
         follows: "Follows"
+        follows_members:
+          zero: "Nobody"
+          one: "%{count} member"
+          other: "%{count} members"
+        followed_by_members:
+          zero: "Nobody"
+          one: "%{count} member"
+          other: "%{count} members"
