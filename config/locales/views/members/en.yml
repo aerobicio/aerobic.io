@@ -12,7 +12,7 @@ en:
         joined_date: "Member Since"
         workouts: "Workouts"
         followers: "Followers"
-        follows: "Follows"
+        follows: "Following"
         follows_members:
           zero: "Nobody"
           one: "%{count}"
