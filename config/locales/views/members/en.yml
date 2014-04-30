@@ -15,9 +15,9 @@ en:
         follows: "Follows"
         follows_members:
           zero: "Nobody"
-          one: "%{count} member"
-          other: "%{count} members"
+          one: "%{count}"
+          other: "%{count}"
         followed_by_members:
           zero: "Nobody"
-          one: "%{count} member"
-          other: "%{count} members"
+          one: "%{count}"
+          other: "%{count}"

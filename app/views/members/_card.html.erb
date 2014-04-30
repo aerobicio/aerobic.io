@@ -14,9 +14,15 @@
       </div>
       <div class="ui-list__row">
         <div class="ui-list__key"><%= t('members.show.card.follows') %></div>
-        <div class="ui-list__value"><%= view.member_follows %></div>
+        <div class="ui-list__value">
+          <span class="badge"><%= view.member_follows %></span>
+        </div>
+      </div>
+      <div class="ui-list__row">
         <div class="ui-list__key"><%= t('members.show.card.followers') %></div>
-        <div class="ui-list__value"><%= view.member_followers %></div>
+        <div class="ui-list__value">
+          <span class="badge"><%= view.member_followers %></span>
+        </div>
       </div>
     </nav>
   </div>
