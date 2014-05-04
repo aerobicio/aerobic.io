@@ -55,8 +55,8 @@ module Members
       member.created_at.to_date.to_s(:long)
     end
 
-    def member_follows
-      I18n.t('members.show.card.follows_members',
+    def member_following
+      I18n.t('members.show.card.following_members',
              count: member.followings.count)
     end
 
