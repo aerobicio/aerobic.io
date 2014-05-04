@@ -111,6 +111,12 @@ describe Members::Show do
     context 'the current_member is the member' do
       let(:current_member) { member }
 
+      before do
+        I18n.should_receive(:t).with('members.show.card.title.first_person') do
+          %(Hey, it’s you!)
+        end
+      end
+
       it { should == 'Hey, it’s you!' }
     end
   end
