@@ -120,4 +120,16 @@ describe Members::Show do
       it { should == 'Hey, it’s you!' }
     end
   end
+
+  describe '#member_following' do
+    subject { view.member_following }
+
+    it { should == member_followings.count }
+  end
+
+  describe '#member_followers' do
+    subject { view.member_followers }
+
+    it { should == member_followers.count }
+  end
 end

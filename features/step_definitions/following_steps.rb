@@ -96,13 +96,11 @@ end
 def assert_following(number_of_people)
   click_link(I18n.t('navigation.profile'))
 
-  text = I18n.t('members.show.card.following_members', count: number_of_people.to_i)
-  page.should have_content(text)
+  page.should have_content(number_of_people)
 end
 
 def assert_followed_by(number_of_people)
   click_link(I18n.t('navigation.profile'))
 
-  text = I18n.t('members.show.card.followed_by_members', count: number_of_people.to_i)
-  page.should have_content(text)
+  page.should have_content(number_of_people)
 end
