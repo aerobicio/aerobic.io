@@ -20,6 +20,7 @@ gem "omniauth"
 gem "omniauth-identity"
 gem 'peek'
 gem 'peek-dalli'
+gem 'peek-git'
 gem 'peek-performance_bar'
 gem 'peek-pg'
 gem 'peek-redis'

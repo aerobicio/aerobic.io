@@ -75,7 +75,11 @@ deploy:
         - heroku-deploy:
             key-name: HEROKU_KEY
             install-toolbelt: true
-            run: 'rake db:migrate && rails runner -e production Rails.cache.clear'
+            run: |
+                rake db:migrate
+                rails runner -e production Rails.cache.clear
+                export GIT_SHA=$WERCKER_GIT_COMMIT
+                export GIT_BRANCH=$WERCKER_GIT_BRANCH
     after-steps:
         - sherzberg/slack-notify:
             subdomain: aerobic

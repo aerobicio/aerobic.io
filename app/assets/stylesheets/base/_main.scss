@@ -13,8 +13,14 @@ html{
   font-size: 62.5%;  // 10px
   background-color: #fff;
 
+  #peek { display: none; }
+
   @include media($lap-and-up) {
     font-size: 75%; // 12px
+  }
+
+  @include media($desk) {
+    #peek { display: block; }
   }
 }
 
