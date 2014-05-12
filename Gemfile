@@ -5,7 +5,6 @@ gem "bcrypt-ruby", "~> 3.1.2"
 gem "bindata"
 gem "bourbon"
 gem "dalli"
-gem "fit-client", git: "https://github.com/aerobicio/fit-client.git", branch: 'get-sport'
 gem "foreigner"
 gem "foreman"
 gem "interactor-rails", "~> 1.0"

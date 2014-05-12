@@ -1,11 +1,4 @@
 GIT
-  remote: https://github.com/aerobicio/fit-client.git
-  revision: 4159d642273fbadcec1f80388f5b59e7f45b78ae
-  branch: get-sport
-  specs:
-    fit-client (0.0.1)
-
-GIT
   remote: https://github.com/aerobicio/tcx.git
   revision: 9d93b2aa11ee522039d96794339b8a1f702a7846
   branch: master
@@ -421,7 +414,6 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   faker
-  fit-client!
   fontcustom
   foreigner
   foreman
