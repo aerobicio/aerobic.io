@@ -26,6 +26,30 @@ Then(/^I should see that fact in my activity feed$/) do
   page.should have_content "You followed #{@name}"
 end
 
+Then(/^I should see that I am following (\d+) person on my profile page$/) do |count|
+  assert_following(count)
+end
+
+Then(/^"(.*?)" should see that (\d+) person is following them on their profile page$/) do |name, count|
+  Capybara.session_name = name
+
+  assert_followed_by(count)
+
+  Capybara.session_name = 'mine'
+end
+
+Then(/^I should see that I am following (\d+) people on my profile page$/) do |count|
+  assert_following(count)
+end
+
+Then(/^"(.*?)" should see that (\d+) people are following them on their profile page$/) do |name, count|
+  Capybara.session_name = name
+
+  assert_followed_by(count)
+
+  Capybara.session_name = 'mine'
+end
+
 Then(/^"(.*?)" should see that I followed them in their activity feed$/) do |name|
   Capybara.session_name = name
   visit dashboard_path
@@ -67,4 +91,16 @@ def follow(name)
   @name = name
   visit members_path
   click_button "Follow #{name}"
+end
+
+def assert_following(number_of_people)
+  click_link(I18n.t('navigation.profile'))
+
+  page.should have_content(number_of_people)
+end
+
+def assert_followed_by(number_of_people)
+  click_link(I18n.t('navigation.profile'))
+
+  page.should have_content(number_of_people)
 end

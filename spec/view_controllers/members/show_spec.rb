@@ -41,7 +41,7 @@ describe Members::Show do
     subject(:cache_key) { view.cache_key }
 
     it 'should be a combination of the members cached keys' do
-      cache_key.should == '1:2:a1:a2'
+      cache_key.should == '1:2:3:1:a1:a2'
     end
   end
 
@@ -111,7 +111,25 @@ describe Members::Show do
     context 'the current_member is the member' do
       let(:current_member) { member }
 
+      before do
+        I18n.should_receive(:t).with('members.show.card.title.first_person') do
+          %(Hey, it’s you!)
+        end
+      end
+
       it { should == 'Hey, it’s you!' }
     end
+  end
+
+  describe '#member_following' do
+    subject { view.member_following }
+
+    it { should == member_followings.count }
+  end
+
+  describe '#member_followers' do
+    subject { view.member_followers }
+
+    it { should == member_followers.count }
   end
 end
