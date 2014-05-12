@@ -5,10 +5,15 @@ describe Fit::Client::Service do
   let(:service) { Fit::Client::Service.new }
 
   before do
+    WebMock.disable_net_connect!
     Fit::Client.service_host = 'localhost'
     Fit::Client.service_port = 80
     Fit::Client.use_ssl = false
     Fit::Client.api_token = 'lol'
+  end
+
+  after do
+    WebMock.allow_net_connect!
   end
 
   describe '#post' do
