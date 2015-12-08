@@ -4,3 +4,4 @@
 --style-exclude spec/support/uploaded_activity.rb
 --style-exclude spec/view_controllers/workouts/workout_partial_view_spec.rb
 --style-exclude spec/view_controllers/activity/added_workout_view_spec.rb
+--style-exclude spec/teaspoon_env.rb

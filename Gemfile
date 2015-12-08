@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "2.0.0", :patchlevel => "353"
+ruby "2.1.1"
 
 gem "bcrypt-ruby", "~> 3.1.2"
 gem "bindata"
@@ -25,8 +25,8 @@ gem 'peek-performance_bar'
 gem 'peek-pg'
 gem 'peek-redis'
 gem "pg"
-gem "rails", "4.0.4"
-gem "react-rails", "~> 0.9.0.0"
+gem "rails", "4.1.0"
+gem "react-rails", "~> 0.10.0.0"
 gem "redis"
 gem "rollout"
 gem "sass-rails", "~> 4.0.3"
@@ -58,9 +58,9 @@ group :development, :test do
   gem "rails_best_practices"
   gem "rails-erd"
   gem "rspec-rails", "~> 2.0"
-  gem "rubocop"
+  gem "rubocop", '~> 0.20.1'
   gem "selenium-webdriver"
-  gem "teaspoon", "~> 0.7.8"
+  gem "teaspoon", "~> 0.8.0"
 end
 
 group :doc do
